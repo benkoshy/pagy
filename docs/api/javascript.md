@@ -75,7 +75,34 @@ Here is a screenshot (from the `bootstrap`extra) showing responsiveness at diffe
 
 See [extras](../extras.md) for general usage info.
 
-#### 1. Load / Initialise Pagy Javascript
+#### 1. Load  Javascript
++++ Sprockets 
+This is a Tab
++++ Webpack(er)
+This is another Tab
++++ Esbuild
+Wow! Yet another tab :+1:
++++ Rollup
+Wow! Yet another tab :+1:
++++ Importmaps
+Wow! Yet another tab :+1:
++++ Propshaft
+Wow! Yet another tab :+1:
++++
+
+2. Initialise Javascript
+
++++ Stimulus JS 
+This is a Tab
++++ Plain Javascript
+This is another Tab
++++ Turbolinks
+Wow! Yet another tab :+1:
++++ Turbo (via Hotwire)
+Wow! Yet another tab :+1:
++++
+
+Consider deleting: 
 
 The strategy might vary, depending on what you're using: sprockets / or bundlers like (webpack-esbuild-rollup etc) / importmaps / propshaft etc - see [Javascript Readme Instructions](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/README.md) for installation and initialization details.
 
