@@ -24,23 +24,27 @@ You can pick and configure [a Javascript File](https://github.com/ddnexus/pagy/t
 
 **Notice** The javascript file is required only for the `pagy*_js` helpers. Just using `'data-remote="true"'` without any `pagy*_js` helper works without any javascript file.
 
-### Faster performance with the oj gem
 
-Although it's not a requirement, you should consider adding the `gem 'oj'` to your Gemfile. When available, Pagy will automatically use it to boost the performance. (Notice: It does nothing for normal, non-js helpers.)
+!!!primary For Better Performance: Use `oj` Gem
+1. `bundle add oj`.
+2. Boosts performance for js-helpers *only*.
+!!!
 
 ### CAVEATS
 
-#### Overriding
+!!!danger Overriding `*_js` helpers?
+Not recommended (implementation details will change).
+!!!
 
-Any `*_js` helper is composed by a HTML part and some javascript code that work in sync. Overriding is likely going to break in the future as soon as the relation between the helper and the functions will change in a next release (e.g. arguments, naming, etc.), so overriding is not recommended.
+!!!warning HTML Fallback
 
-#### HTML fallback
-
-Notice that if the client browser doesn't support Javascript or if it is disabled, certain helpers will serve nothing useful for the user. If your app does not require Javascript support and you still want to use javascript helpers, then you should consider implementing your own HTML fallback. For example:
+If Javascript is not supported / disabled (on browsers), the `js` helpers will be useless. Consider a fallback: 
 
 ```erb
 <noscript><%== pagy_nav(@pagy) %></noscript>
 ```
+!!!
+
 
 # Javascript Navs
 
