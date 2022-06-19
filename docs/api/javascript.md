@@ -22,6 +22,8 @@ All the `pagy*_js` helpers render their component on the client side. The helper
 
 You can pick and configure [a Javascript File](https://github.com/ddnexus/pagy/tree/master/lib/javascripts) depending on the environment of your app. 
 
+All the javascript files expose the Pagy object, which has just one function: `init()`. You can access any of them with the following: `Pagy.root.join('javascripts', '......')`.
+
 **Notice** The javascript file is required only for the `pagy*_js` helpers. Just using `'data-remote="true"'` without any `pagy*_js` helper works without any javascript file.
 
 
@@ -44,7 +46,6 @@ If Javascript is not supported / disabled (on browsers), the `js` helpers will b
 <noscript><%== pagy_nav(@pagy) %></noscript>
 ```
 !!!
-
 
 # Javascript Navs
 
@@ -69,15 +70,92 @@ Here is a screenshot (from the `bootstrap`extra) showing responsiveness at diffe
 
 ## Installation instructions
 
-1. Load the Javascript assets.
-2. Add the relevant extra
-3. Use JS helper in a View
+1. Pick a Javascript File 
+2. Load the Javascript assets.
+3. Add the relevant extra
+4. Use JS helper in a View
 
 See [extras](../extras.md) for general usage info.
 
-#### 1. Load  Javascript
+
+#### 1. Pick a JS File
+
++++ pagy-module.js (Modern)
+Use [pagy-module.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy-module.js) as a default, ES6 module.
+
+```js
+// Use with webpack(er), esbuild, modern build tools etc.
+import Pagy from "pagy-module"
+```
+
++++ pagy.js (Old Browsers)
+
+Use [pagy.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy.js) for old browser compatibility: it's an IIFE; polyfilled and minified (~2.9k).
+
+<details>
+<summary> Works on the following browsers: </summary>
+
+- and_chr 96
+- and_ff 95
+- and_qq 10.4
+- and_uc 12.12
+- android 96
+- baidu 7.12
+- chrome 97
+- chrome 96
+- chrome 95
+- chrome 94
+- edge 97
+- edge 96
+- firefox 96
+- firefox 95
+- firefox 94
+- firefox 91
+- firefox 78
+- ie 11
+- ios_saf 15.2
+- ios_saf 15.0-15.1
+- ios_saf 14.5-14.8
+- ios_saf 14.0-14.4
+- ios_saf 12.2-12.5
+- kaios 2.5
+- op_mini all
+- op_mob 64
+- opera 82
+- opera 81
+- safari 15.2
+- safari 15.1
+- safari 14.1
+- safari 13.1
+- samsung 15.0
+- samsung 14.0
+
+**Notice**: You can generate custom targeted `pagy.js` files for the browsers you want to support by changing the [browserslist](https://github.com/browserslist/browserslist) query in `src/package.json`, then compile it with `npm run build -w src`.
+
+</details>
+
++++ pagy-dev.js (Debugging)
+Use [pagy-dev.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy-dev.js) for **debugging only**. 
+
+<details>
+<summary>
+  Why?
+</summary>
+
+* It's large size,
+* contains source map to debug typescript.
+* works only on new browsers.
+
+</details>
++++
+
+#### 2. Load  Javascript
+
 +++ Sprockets 
-This is a Tab
+```ruby
+# config/initializers/pagy.rb
+Rails.application.config.assets.paths << Pagy.root.join('javascripts') # uncomment.
+```
 +++ Webpack(er)
 This is another Tab
 +++ Esbuild
@@ -88,14 +166,43 @@ Wow! Yet another tab :+1:
 Wow! Yet another tab :+1:
 +++ Propshaft
 Wow! Yet another tab :+1:
++++ Other
+Ensure `Pagy.root.join('javascripts', 'pagy.js')` is served.
 +++
 
 2. Initialise Javascript
 
 +++ Stimulus JS 
-This is a Tab
+```js
+// pagy_initializer_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  connect() {
+    Pagy.init(this.element)
+  }
+}
+
+// Ensure the Pagy object has been loaded somehow.
+// See loading instructions above.
+```
+
+```erb
+<div data-controller="pagy-initializer">
+  <%== pagy_nav_js(@pagy) %>
+</div>
+```
+
 +++ Plain Javascript
-This is another Tab
+```js
+// ./app/assets/builds/application.js // Or:
+// ./app/assets/javascripts/application.js
+
+//= require pagy
+window.addEventListener(load, Pagy.init); // or
+window.addEventListener(turbolinks:load, Pagy.init); // turbolinks
+window.addEventListener(turbo:load, Pagy.init); // turbo, or listen for your own event
+```
 +++ Turbolinks
 Wow! Yet another tab :+1:
 +++ Turbo (via Hotwire)
