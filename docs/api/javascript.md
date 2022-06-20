@@ -77,23 +77,22 @@ Here is a screenshot (from the `bootstrap`extra) showing responsiveness at diffe
 
 See [extras](../extras.md) for general usage info.
 
-
 #### 1. Pick a JS File
 
-+++ pagy-module.js (Modern)
-Use [pagy-module.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy-module.js) as a default, ES6 module.
++++ 1. pagy-module.js (Modern)
+* For use with modern build tools.  
+* ES6 module.
+* Use as default.
+* Reference: [pagy-module.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy-module.js).
 
-```js
-// Use with webpack(er), esbuild, modern build tools etc.
-import Pagy from "pagy-module"
-```
-
-+++ pagy.js (Old Browsers)
-
-Use [pagy.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy.js) for old browser compatibility: it's an IIFE; polyfilled and minified (~2.9k).
++++ 2. pagy.js (Old Browsers)
+* Use for old browser compatibility.
+* it's an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE); 
+* polyfilled and minified (~2.9k).
+* Reference: [pagy.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy.js): 
 
 <details>
-<summary> Works on the following browsers: </summary>
+<summary> Browser compatibility list: </summary>
 
 - and_chr 96
 - and_ff 95
@@ -134,48 +133,66 @@ Use [pagy.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy.j
 
 </details>
 
-+++ pagy-dev.js (Debugging)
-Use [pagy-dev.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy-dev.js) for **debugging only**. 
++++ 3. pagy-dev.js (Debugging)
+* Use for **debugging only**.
+* Reference: [pagy-dev.js](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/pagy-dev.js): 
 
 <details>
 <summary>
-  Why?
+  Why Debugging Only?
 </summary>
 
-* It's large size,
+* Large size,
 * contains source map to debug typescript.
 * works only on new browsers.
-
 </details>
 +++
 
-#### 2. Load  Javascript
+#### 2a. Load Javascript
 
-+++ Sprockets 
++++ Sprockets / Asset Pipeline
 ```ruby
 # config/initializers/pagy.rb
 Rails.application.config.assets.paths << Pagy.root.join('javascripts') # uncomment.
 ```
-+++ Webpack(er)
-This is another Tab
-+++ Esbuild
-Wow! Yet another tab :+1:
-+++ Rollup
-Wow! Yet another tab :+1:
++++ Modern Build tools
+```js
+// Some initialisation file:
+import Pagy from "pagy-module";
+```
 +++ Importmaps
-Wow! Yet another tab :+1:
+
+```ruby
+# config/initializers/pagy.rb
+Rails.application.config.assets.paths << Pagy.root.join('javascripts') #uncomment
+```
+
+```js
+//// app/assets/config/manifest.js - add sprockets directive:
+//= link pagy-module.js
+```
+
+```ruby
+# config/importmap.rb
+pin 'pagy-module'
+```
 +++ Propshaft
-Wow! Yet another tab :+1:
+```ruby
+# config/initializers/pagy.rb
+Rails.application.config.assets.paths << Pagy.root.join('javascripts')
+```
 +++ Other
 Ensure `Pagy.root.join('javascripts', 'pagy.js')` is served.
 +++
 
-2. Initialise Javascript
+#### 2b. Initialise Javascript
 
 +++ Stimulus JS 
 ```js
 // pagy_initializer_controller.js
 import { Controller } from "@hotwired/stimulus"
+import Pagy from "pagy-module"  // if using webpack, esbuild, modern build tools etc.
+                                // if using sprockets, you can remove above line
 
 export default class extends Controller {
   connect() {
@@ -183,8 +200,7 @@ export default class extends Controller {
   }
 }
 
-// Ensure the Pagy object has been loaded somehow.
-// See loading instructions above.
+// Ensure Pagy object has been loaded (see loading instructions above)
 ```
 
 ```erb
@@ -195,7 +211,7 @@ export default class extends Controller {
 
 +++ Plain Javascript
 ```js
-// ./app/assets/builds/application.js // Or:
+// ./app/assets/builds/application.js       // Or:
 // ./app/assets/javascripts/application.js
 
 //= require pagy
