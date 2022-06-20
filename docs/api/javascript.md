@@ -8,65 +8,91 @@ image: null
 
 ## Overview
 
-A few helpers use javascript, and they are clearly recognizable by the `js` suffix:
+### Helpers Available
 
-- `pagy*_nav_js`
-- `pagy*_combo_nav_js`
-- `pagy_items_selector_js` 
+Choose from the following JS helpers / CSS frameworks:
 
-If you use any of them you should follow this documentation, if not, consider that Javascript is not used anywhere else, so you can skip this.
++++ pagy*_nav_js
 
-### How does it work?
+![bootstrap_nav_js](../assets/images/bootstrap_nav_js-g.png)
+* Shows a responsive `bootstrap_nav_js` ([`bootstrap`extra](../extras/bootstrap)) helper. 
 
-All the `pagy*_js` helpers render their component on the client side. The helper methods serve just a minimal HTML tag that contains a `data-pagy` attribute. A small javascript file (that you must include in your assets) will take care to convert the data embedded in the `data-pagy` attribute and make it work in the browser.
+<details>
+  <summary>
+    Other supported CSS frameworks:
+  </summary>
 
-You can pick and configure [a Javascript File](https://github.com/ddnexus/pagy/tree/master/lib/javascripts) depending on the environment of your app. 
+- `pagy_bootstrap_nav_js`
+- `pagy_bulma_nav_js`
+- `pagy_foundation_nav_js`
+- `pagy_materialize_nav_js`
+- `pagy_semantic_nav_js`
+- `pagy_nav_js` (no styling)
+</details>
 
-All the javascript files expose the Pagy object, which has just one function: `init()`. You can access any of them with the following: `Pagy.root.join('javascripts', '......')`.
++++ pagy*_combo_nav_js
+
+![bootstrap_combo_nav_js](../assets/images/bootstrap_combo_nav_js-g.png)
+
+* Shows a `bootstrap_combo_nav_js` ([`bootstrap`extra](../extras/bootstrap)) helper.
+* Navigation and pagination info combined in a single element.
+* Fastest and lightest `nav` on modern environments, recommended for [maximizing Performance](../how-to.md#maximize-performance).
+
+<details>
+  <summary>
+    Other CSS frameworks are supported:
+  </summary>
+- `pagy_combo_nav_js`
+- `pagy_bootstrap_combo_nav_js`
+- `pagy_bulma_combo_nav_js`
+- `pagy_foundation_combo_nav_js`
+- `pagy_materialize_combo_nav_js`
+- `pagy_semantic_combo_nav_js`
+</details>
+
++++ pagy_items_selector_js
+
+To be done: 
+(i) add a picture
+(ii) list the methods available.
+(iii) link to further information
++++
+
+### Why bother with JS helpers?
+
+1. Better performance and resource usage (see [Maximizing Performance](../how-to.md#maximize-performance))
+2. Client-side rendering
+3. Optional responsiveness
+
+### How do they work?
+
+* `pagy*_js` helpers render client-side. 
+* They serve a minimal HTML tag that: (i) contains a `data-pagy` attribute, which (ii) combined with [a javascript file](https://github.com/ddnexus/pagy/tree/master/lib/javascripts) (that you must include in your assets - pick the one that best suits), will render in the browser.
+* API Summary: All files expose a `Pagy` object, with just one function: `init()`. You can access any of them with the following: `Pagy.root.join('javascripts', '......')`.
+
 
 **Notice** The javascript file is required only for the `pagy*_js` helpers. Just using `'data-remote="true"'` without any `pagy*_js` helper works without any javascript file.
 
+### Caveats
 
-!!!primary For Better Performance: Use `oj` Gem
+!!!success For Better Performance: Use `oj` Gem
 1. `bundle add oj`.
 2. Boosts performance for js-helpers *only*.
 !!!
 
-### CAVEATS
-
-!!!danger Overriding `*_js` helpers?
-Not recommended (implementation details will change).
-!!!
-
 !!!warning HTML Fallback
-
-If Javascript is not supported / disabled (on browsers), the `js` helpers will be useless. Consider a fallback: 
+If Javascript is not supported / disabled, the `js` helpers will be useless. Consider a fallback for such browsers: 
 
 ```erb
 <noscript><%== pagy_nav(@pagy) %></noscript>
 ```
 !!!
 
+!!!danger Overriding `*_js` helpers?
+Don't: API is not stable.
+!!!
+
 # Javascript Navs
-
-The following `pagy*_nav_js` helpers:
-
-- `pagy_nav_js`
-- `pagy_bootstrap_nav_js`
-- `pagy_bulma_nav_js`
-- `pagy_foundation_nav_js`
-- `pagy_materialize_nav_js`
-- `pagy_semantic_nav_js`
-
-look like a normal `pagy*_nav` but have a few added features:
-
-1. Client-side rendering
-2. Optional responsiveness
-3. Better performance and resource usage (see [Maximizing Performance](../how-to.md#maximize-performance))
-
-Here is a screenshot (from the `bootstrap`extra) showing responsiveness at different widths:
-
-![bootstrap_nav_js](../assets/images/bootstrap_nav_js-g.png)
 
 ## Installation instructions
 
@@ -259,7 +285,9 @@ Use one of the `pagy*_nav_js` helpers in any view:
 <%== pagy_semantic_nav_js(@pagy) %>
 ```
 
-## Variables
+## API Details
+
+### Variables
 
 | Variable | Description                                                        | Default |
 |:---------|:-------------------------------------------------------------------|:--------|
@@ -295,7 +323,7 @@ The above statement means that from `0` to `540` pixels width, Pagy will use the
 
 **IMPORTANT**: You can set any number of steps with any arbitrary width/size. The only requirement is that the `:steps` hash must contain always the `0` width or a `Pagy::VariableError` exception will be raised.
 
-#### Setting the right sizes
+### Setting the right sizes
 
 Setting the widths and sizes can create a nice transition between widths or some apparently erratic behavior.
 
@@ -320,21 +348,6 @@ document.getElementById('my-pagy-nav-js').render();
 ```
 
 # Javascript Combo Navs
-
-The following `pagy*_combo_nav_js` offer an alternative pagination UI that combines navigation and pagination info in a single compact element:
-
-- `pagy_combo_nav_js`
-- `pagy_bootstrap_combo_nav_js`
-- `pagy_bulma_combo_nav_js`
-- `pagy_foundation_combo_nav_js`
-- `pagy_materialize_combo_nav_js`
-- `pagy_semantic_combo_nav_js`
-
-They are the fastest and lightest `nav` on modern environments, recommended when you care about efficiency and server load (see [Maximizing Performance](../how-to.md#maximize-performance)).
-
-Here is a screenshot (from the `bootstrap` extra):
-
-![bootstrap_combo_nav_js](../assets/images/bootstrap_combo_nav_js-g.png)
 
 ## Synopsis
 
