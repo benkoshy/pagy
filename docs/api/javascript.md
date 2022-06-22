@@ -8,18 +8,21 @@ image: null
 
 ## Overview
 
-### Helpers Available
+### What's Available?
 
-Choose from the following JS helpers / CSS frameworks:
+Choose from the following JS helpers / CSS framework flavours:
+
+1. pagy*_nav_js
+2. pagy*_combo_nav_js
+3. pagy_items_selector_js
 
 +++ pagy*_nav_js
 
 ![bootstrap_nav_js](../assets/images/bootstrap_nav_js-g.png)
-* Shows a responsive `bootstrap_nav_js` ([`bootstrap`extra](../extras/bootstrap)) helper. 
 
 <details>
   <summary>
-    Other supported CSS frameworks:
+    Helpers for other CSS frameworks:
   </summary>
 
 - `pagy_bootstrap_nav_js`
@@ -34,13 +37,11 @@ Choose from the following JS helpers / CSS frameworks:
 
 ![bootstrap_combo_nav_js](../assets/images/bootstrap_combo_nav_js-g.png)
 
-* Shows a `bootstrap_combo_nav_js` ([`bootstrap`extra](../extras/bootstrap)) helper.
-* Navigation and pagination info combined in a single element.
-* Fastest and lightest `nav` on modern environments, recommended for [maximizing Performance](../how-to.md#maximize-performance).
+* Navigation and pagination info combined.
 
 <details>
   <summary>
-    Other CSS frameworks are supported:
+    Helpers for other CSS frameworks:
   </summary>
 - `pagy_combo_nav_js`
 - `pagy_bootstrap_combo_nav_js`
@@ -58,7 +59,7 @@ To be done:
 (iii) link to further information
 +++
 
-### Why bother with JS helpers?
+### Why use JS helpers?
 
 1. Better performance and resource usage (see [Maximizing Performance](../how-to.md#maximize-performance))
 2. Client-side rendering
@@ -66,10 +67,23 @@ To be done:
 
 ### How do they work?
 
-* `pagy*_js` helpers render client-side. 
-* They serve a minimal HTML tag that: (i) contains a `data-pagy` attribute, which (ii) combined with [a javascript file](https://github.com/ddnexus/pagy/tree/master/lib/javascripts) (that you must include in your assets - pick the one that best suits), will render in the browser.
-* API Summary: All files expose a `Pagy` object, with just one function: `init()`. You can access any of them with the following: `Pagy.root.join('javascripts', '......')`.
+All `pagy*_js`helpers serve a minimal HTML tag which: 
+  - contains a `data-pagy` attribute, which 
+  - combined with [a served javascript file](https://github.com/ddnexus/pagy/tree/master/lib/javascripts) ([pick one](#1-pick-a-js-file) that best suits), creates + renders the requested components (`pagy*_nav_js`, `pagy*_combo_nav_js` or `pagy_items_selector_js`).
 
+
+```js
+// representative of all JS files
+const Pagy = (() => {    
+    return {                
+        init(arg) {  
+            // (1) search for a pagy-data attribute (created by pagy*_js helpers)
+            // (2) create elements and render in browser.            
+        }
+    };
+})();
+export default Pagy;
+```
 
 **Notice** The javascript file is required only for the `pagy*_js` helpers. Just using `'data-remote="true"'` without any `pagy*_js` helper works without any javascript file.
 
@@ -92,9 +106,9 @@ If Javascript is not supported / disabled, the `js` helpers will be useless. Con
 Don't: API is not stable.
 !!!
 
-# Javascript Navs
+## Javascript Navs
 
-## Installation instructions
+### Installation instructions
 
 1. Pick a Javascript File 
 2. Load the Javascript assets.
@@ -251,49 +265,57 @@ Wow! Yet another tab :+1:
 Wow! Yet another tab :+1:
 +++
 
-Consider deleting: 
-
-The strategy might vary, depending on what you're using: sprockets / or bundlers like (webpack-esbuild-rollup etc) / importmaps / propshaft etc - see [Javascript Readme Instructions](https://github.com/ddnexus/pagy/blob/master/lib/javascripts/README.md) for installation and initialization details.
-
 #### 2. Add the relevant extra
 
-In the `pagy.rb` initializer, require the specific extra for the style you want to use:
+In your `pagy.rb` initializer, choose your style:
 
 ```ruby
-# you only need one of the following extras
+# e.g. config/initializers/pagy.rb 
+# pick ONLY one:
 require 'pagy/extras/bootstrap'
 require 'pagy/extras/bulma'
 require 'pagy/extras/foundation'
 require 'pagy/extras/materialize'
-require 'pagy/extras/navs'
 require 'pagy/extras/semantic'
 require 'pagy/extras/uikit'
+require 'pagy/extras/navs' # no CSS framework
 ```
 
 This will make available, the below helpers:
 
 #### 3. Use the JS helper in a View
 
-Use one of the `pagy*_nav_js` helpers in any view:
-
++++ pagy*_nav_js
 ```erb
-<%== pagy_nav_js(@pagy) %>
+<-- Use just one: -->
 <%== pagy_bootstrap_nav_js(@pagy) %>
 <%== pagy_bulma_nav_js(@pagy) %>
 <%== pagy_foundation_nav_js(@pagy) %>
 <%== pagy_materialize_nav_js(@pagy) %>
 <%== pagy_semantic_nav_js(@pagy) %>
+<%== pagy_nav_js(@pagy) %> <-- No style -->
 ```
++++ pagy*_combo_nav_js
+```erb
+<-- Use just one: -->
+<%== pagy_bootstrap_combo_nav_js(@pagy, ...) %>
+<%== pagy_bulma_combo_nav_js(@pagy, ...) %>
+<%== pagy_foundation_combo_nav_js(@pagy, ...) %>
+<%== pagy_materialize_combo_nav_js(@pagy, ...) %>
+<%== pagy_semantic_combo_nav_js(@pagy, ...) %>
+<%== pagy_combo_nav_js(@pagy, ...) %> <-- No style -->
+```
++++
 
-## API Details
+### API Details
 
-### Variables
+#### Variables
 
 | Variable | Description                                                        | Default |
 |:---------|:-------------------------------------------------------------------|:--------|
 | `:steps` | Hash variable to control multiple pagy `:size` at different widths | `false` |
 
-### :steps
+#### :steps
 
 The `:steps` is an optional non-core variable used by the `pagy*_nav_js` navs. If it's `false`, the `pagy*_nav_js` will behave exactly as a static `pagy*_nav` respecting the single `:size` variable, just faster and lighter. If it's defined as a hash, it allows you to control multiple pagy `:size` at different widths.
 
@@ -323,7 +345,7 @@ The above statement means that from `0` to `540` pixels width, Pagy will use the
 
 **IMPORTANT**: You can set any number of steps with any arbitrary width/size. The only requirement is that the `:steps` hash must contain always the `0` width or a `Pagy::VariableError` exception will be raised.
 
-### Setting the right sizes
+#### Setting the right sizes
 
 Setting the widths and sizes can create a nice transition between widths or some apparently erratic behavior.
 
@@ -352,30 +374,6 @@ document.getElementById('my-pagy-nav-js').render();
 ## Synopsis
 
 See [extras](../extras.md) for general usage info.
-
-In the `pagy.rb` initializer, require the specific extra for the style you want to use:
-
-```ruby
-# you only need one of the following extras
-require 'pagy/extras/bootstrap'
-require 'pagy/extras/bulma'
-require 'pagy/extras/foundation'
-require 'pagy/extras/materialize'
-require 'pagy/extras/navs'
-require 'pagy/extras/semantic'
-require 'pagy/extras/uikit'
-```
-
-Use the `pagy*_combo_nav_js` helpers in any view:
-
-```erb
-<%== pagy_combo_nav_js(@pagy, ...) %>
-<%== pagy_bootstrap_combo_nav_js(@pagy, ...) %>
-<%== pagy_bulma_combo_nav_js(@pagy, ...) %>
-<%== pagy_foundation_combo_nav_js(@pagy, ...) %>
-<%== pagy_materialize_combo_nav_js(@pagy, ...) %>
-<%== pagy_semantic_combo_nav_js(@pagy, ...) %>
-```
 
 ## Methods
 
