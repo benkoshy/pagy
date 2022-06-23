@@ -190,16 +190,83 @@ See [extras](../extras.md) for general usage info.
 
 #### 2a. Load Javascript
 
-+++ Sprockets / Asset Pipeline
++++ Sprockets
 ```ruby
 # config/initializers/pagy.rb
 Rails.application.config.assets.paths << Pagy.root.join('javascripts') # uncomment.
 ```
-+++ Modern Build tools
+
+In your `manifest.js` file (or `application.js` file if using older versions of sprockets): 
+
 ```js
-// Some initialisation file:
-import Pagy from "pagy-module";
+//= require pagy
 ```
+
+And initialize Pagy any way you like (see below):
+
++++ Modern Build tools
+
+All strategies look in the `$(bundle show 'pagy')/lib/javascripts` gem installation path once. Choose your bundler:
+
+##### Esbuild
+
+In `package.json`, prepend the `NODE_PATH` environment variable to the `scripts.build` command:
+
+```json
+{
+  "build": "NODE_PATH=\"$(bundle show 'pagy')/lib/javascripts\" <your original command>"
+}
+```
+
+##### Webpack
+
+In `package.json`, prepend the `PAGY_PATH` environment variable to the `scripts.build` command:
+
+```json
+{
+  "build": "PAGY_PATH=\"$(bundle show 'pagy')/lib/javascripts\" <your webpack command>"
+}
+```
+
+In `webpack.confg.js`, add the `resolve.modules` array:
+
+```js
+module.exports = {
+  ...,                          // your original config
+  resolve: {                    // add resolve.modules
+    modules: [
+      "node_modules",           // node_modules dir
+      process.env.PAGY_PATH     // pagy dir
+    ]
+  }
+}
+```
+##### Rollup
+
+In `package.json`, prepend the `PAGY_PATH` environment variable to the `scripts.build` command:
+
+```json
+{
+  "build": "PAGY_PATH=\"$(bundle show 'pagy')/lib/javascripts\" <your rollup command>"
+}
+```
+
+In `rollup.confg.js`, configure the `plugins[resolve]`:
+
+```js
+export default {
+  ...,                                    // your original config
+  plugins: [
+    resolve({
+              moduleDirectories: [        // add moduleDirectories
+                "node_modules",           // node_modules dir
+                process.env.PAGY_PATH     // pagy dir
+              ] 
+    })
+  ]
+}
+```
+
 +++ Importmaps
 
 ```ruby
@@ -207,8 +274,9 @@ import Pagy from "pagy-module";
 Rails.application.config.assets.paths << Pagy.root.join('javascripts') #uncomment
 ```
 
+Add sprockets directive e.g. in `app/assets/config/manifest.js`:
+
 ```js
-//// app/assets/config/manifest.js - add sprockets directive:
 //= link pagy-module.js
 ```
 
@@ -221,8 +289,16 @@ pin 'pagy-module'
 # config/initializers/pagy.rb
 Rails.application.config.assets.paths << Pagy.root.join('javascripts')
 ```
-+++ Other
-Ensure `Pagy.root.join('javascripts', 'pagy.js')` is served.
+
+```erb
+<-- e.g. some view: appliciation.html.erb -->
+<%= javascript_include_tag "pagy" %>
+```
+And initialize Pagy any way you like (see below):
+
++++ Any Ruby Framework
+* Ensure `Pagy.root.join('javascripts', 'pagy.js')` is served.
+* Initialize Pagy any way you like (see below):
 +++
 
 #### 2b. Initialise Javascript
@@ -249,20 +325,16 @@ export default class extends Controller {
 </div>
 ```
 
-+++ Plain Javascript
++++ Plain Javascript / Turbo / Turbolinks
 ```js
 // ./app/assets/builds/application.js       // Or:
 // ./app/assets/javascripts/application.js
 
 //= require pagy
+window.addEventListener(turbo:load, Pagy.init); // Turbo
 window.addEventListener(load, Pagy.init); // or
 window.addEventListener(turbolinks:load, Pagy.init); // turbolinks
-window.addEventListener(turbo:load, Pagy.init); // turbo, or listen for your own event
 ```
-+++ Turbolinks
-Wow! Yet another tab :+1:
-+++ Turbo (via Hotwire)
-Wow! Yet another tab :+1:
 +++
 
 #### 2. Add the relevant extra
