@@ -190,26 +190,10 @@ See [extras](../extras.md) for general usage info.
 
 #### 2a. Load Javascript
 
-+++ Sprockets
-```ruby
-# config/initializers/pagy.rb
-Rails.application.config.assets.paths << Pagy.root.join('javascripts') # uncomment.
-```
-
-In your `manifest.js` file (or `application.js` file if using older versions of sprockets): 
-
-```js
-//= require pagy
-```
-
-And initialize Pagy any way you like (see below):
-
 +++ Modern Build tools
+All strategies look in the `$(bundle show 'pagy')/lib/javascripts` gem installation path:
 
-All strategies look in the `$(bundle show 'pagy')/lib/javascripts` gem installation path once. Choose your bundler:
-
-##### Esbuild
-
+==- Esbuld
 In `package.json`, prepend the `NODE_PATH` environment variable to the `scripts.build` command:
 
 ```json
@@ -217,9 +201,9 @@ In `package.json`, prepend the `NODE_PATH` environment variable to the `scripts.
   "build": "NODE_PATH=\"$(bundle show 'pagy')/lib/javascripts\" <your original command>"
 }
 ```
+===
 
-##### Webpack
-
+==- Webpack
 In `package.json`, prepend the `PAGY_PATH` environment variable to the `scripts.build` command:
 
 ```json
@@ -241,8 +225,9 @@ module.exports = {
   }
 }
 ```
-##### Rollup
+===
 
+==- Rollup
 In `package.json`, prepend the `PAGY_PATH` environment variable to the `scripts.build` command:
 
 ```json
@@ -266,7 +251,24 @@ export default {
   ]
 }
 ```
+===
 
+!!!primary No Javascript packages
+It's difficult to sync javascript package versions to gem versions. The above solutions obviate this difficulty.
+!!!
+
++++ Sprockets
+```ruby
+# config/initializers/pagy.rb
+Rails.application.config.assets.paths << Pagy.root.join('javascripts') # uncomment.
+```
+
+In your `manifest.js` file (or `application.js` file if using older versions of sprockets): 
+
+```js
+//= require pagy
+```
+And initialize Pagy any way you like (see below):
 +++ Importmaps
 
 ```ruby
@@ -303,12 +305,11 @@ And initialize Pagy any way you like (see below):
 
 #### 2b. Initialise Javascript
 
-+++ Stimulus JS 
++++ Stimulus JS
 ```js
 // pagy_initializer_controller.js
 import { Controller } from "@hotwired/stimulus"
-import Pagy from "pagy-module"  // if using webpack, esbuild, modern build tools etc.
-                                // if using sprockets, you can remove above line
+import Pagy from "pagy-module"  // if using sprockets, you can remove above line, but make sure you have the appropriate directive if your manifest.js file.
 
 export default class extends Controller {
   connect() {
@@ -325,15 +326,13 @@ export default class extends Controller {
 </div>
 ```
 
-+++ Plain Javascript / Turbo / Turbolinks
++++ Other Initialisation Strategies
 ```js
-// ./app/assets/builds/application.js       // Or:
-// ./app/assets/javascripts/application.js
-
-//= require pagy
+window.addEventListener(load, Pagy.init); // In any javascript file that is served.
 window.addEventListener(turbo:load, Pagy.init); // Turbo
-window.addEventListener(load, Pagy.init); // or
 window.addEventListener(turbolinks:load, Pagy.init); // turbolinks
+
+window.addEventListener(yourEventListener, Pagy.init); // custom listener
 ```
 +++
 
