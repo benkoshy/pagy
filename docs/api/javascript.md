@@ -496,3 +496,7 @@ document.getElementById('my-pagy-nav-js').render();
 !!!danger Overriding `*_js` helpers?
 Don't: API is not stable.
 !!!
+
+## Troubleshooting / Demos
+
+Try [any of the rails apps listed here.](https://github.com/stars/benkoshy/lists/rails-demo-apps-for-pagy)
