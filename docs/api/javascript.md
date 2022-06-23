@@ -87,28 +87,7 @@ export default Pagy;
 
 **Notice** The javascript file is required only for the `pagy*_js` helpers. Just using `'data-remote="true"'` without any `pagy*_js` helper works without any javascript file.
 
-### Caveats
-
-!!!success For Better Performance: Use `oj` Gem
-1. `bundle add oj`.
-2. Boosts performance for js-helpers *only*.
-!!!
-
-!!!warning HTML Fallback
-If Javascript is not supported / disabled, the `js` helpers will be useless. Consider a fallback for such browsers: 
-
-```erb
-<noscript><%== pagy_nav(@pagy) %></noscript>
-```
-!!!
-
-!!!danger Overriding `*_js` helpers?
-Don't: API is not stable.
-!!!
-
-## Javascript Navs
-
-### Installation instructions
+## Installation instructions
 
 1. Pick a Javascript File 
 2. Load the Javascript assets.
@@ -253,8 +232,8 @@ export default {
 ```
 ===
 
-!!!primary No Javascript packages
-It's difficult to sync javascript package versions to gem versions. The above solutions obviate this difficulty.
+!!!primary Javascript packages Not Published
+It's difficult to sync javascript versions to gem versions. The above solutions obviate this difficulty.
 !!!
 
 +++ Sprockets
@@ -328,6 +307,9 @@ export default class extends Controller {
 
 +++ Other Initialisation Strategies
 ```js
+import Pagy from "pagy-module" // if you choose pagy-module.js 
+                               // if you choose pagy.js then make sure this IIFE is loaded.
+
 window.addEventListener(load, Pagy.init); // In any javascript file that is served.
 window.addEventListener(turbo:load, Pagy.init); // Turbo
 window.addEventListener(turbolinks:load, Pagy.init); // turbolinks
@@ -378,9 +360,9 @@ This will make available, the below helpers:
 ```
 +++
 
-### API Details
+## API Details
 
-#### Variables
+### Variables
 
 | Variable | Description                                                        | Default |
 |:---------|:-------------------------------------------------------------------|:--------|
@@ -432,23 +414,9 @@ Here is what you should consider/ensure:
 
 5. If the container width snaps to specific widths in discrete steps, you should sync the quantity and widths of the pagy `:steps` to the quantity and internal widths for each discrete step of the container.
 
-#### Javascript Caveats
+### Methods
 
-In case of a window resize, the `pagy_*nav_js` elements on the page are re-rendered (when the container width changes), however if the container width changes in any other way that does not involve a window resize, then you should re-render the pagy element explicitly. For example:
-
-```js
-document.getElementById('my-pagy-nav-js').render();
-```
-
-# Javascript Combo Navs
-
-## Synopsis
-
-See [extras](../extras.md) for general usage info.
-
-## Methods
-
-### pagy*_nav_js(pagy, ...)
+#### pagy*_nav_js(pagy, ...)
 
 The method accepts also a few optional keyword arguments:
 
@@ -458,7 +426,7 @@ The method accepts also a few optional keyword arguments:
 
 **CAVEATS**: the `pagy_bootstrap_nav_js` and `pagy_semantic_nav_js` assign a class attribute to their links, so do not add another class attribute with the `:link_extra`. That would be illegal HTML and ignored by most browsers.
 
-### pagy*_combo_nav_js(pagy, ...)
+#### pagy*_combo_nav_js(pagy, ...)
 
 The method accepts also a couple of optional keyword arguments:
 
@@ -467,7 +435,7 @@ The method accepts also a couple of optional keyword arguments:
 
 **CAVEATS**: the `pagy_semantic_combo_nav_js` assigns a class attribute to its links, so do not add another class attribute with the `:link_extra`. That would be illegal HTML and ignored by most browsers.
 
-# Using AJAX
+## Using AJAX
 
 If you AJAX-render any of the javascript helpers mentioned above, you should also execute `Pagy.init(container_element);` in the javascript template. Here is an example for an AJAX-rendered `pagy_bootstrap_nav_js`:
 
@@ -501,3 +469,30 @@ Pagy.init(document.getElementById('container'));
 ```
 
 **IMPORTANT**: The `document.getElementById('container')` argument will re-init the pagy elements just AJAX-rendered in the container div. If you miss it, it will not work.
+
+## Caveats
+
+!!!success For Better Performance: Use `oj` Gem
+1. `bundle add oj`.
+2. Boosts performance for js-helpers *only*.
+!!!
+
+!!!warning HTML Fallback
+If Javascript is not supported / disabled, the `js` helpers will be useless. Consider a fallback for such browsers: 
+
+```erb
+<noscript><%== pagy_nav(@pagy) %></noscript>
+```
+!!!
+
+!!!warning Window Resizing
+If the window size changes, `pagy_*nav_js` elements are re-rendered (when the container width changes), however if the container width changes in any a way that does not involve a window resize, then you should re-render the pagy element explicitly: e.g.:
+
+```js
+document.getElementById('my-pagy-nav-js').render();
+```
+!!!
+
+!!!danger Overriding `*_js` helpers?
+Don't: API is not stable.
+!!!
