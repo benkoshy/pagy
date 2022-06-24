@@ -22,7 +22,7 @@ Choose from the following JS helpers / CSS framework flavours:
 
 <details>
   <summary>
-    Helpers for other CSS frameworks:
+  Helpers for other CSS frameworks:
   </summary>
 
 - `pagy_bootstrap_nav_js`
@@ -336,7 +336,7 @@ require 'pagy/extras/navs' # no CSS framework
 
 This will make available, the below helpers:
 
-#### 3. Use the JS helper in a View
+#### 3. Use a JS Helper in a View:
 
 +++ pagy*_nav_js
 ```erb
@@ -370,13 +370,26 @@ This will make available, the below helpers:
 
 #### :steps
 
-The `:steps` is an optional non-core variable used by the `pagy*_nav_js` navs. If it's `false`, the `pagy*_nav_js` will behave exactly as a static `pagy*_nav` respecting the single `:size` variable, just faster and lighter. If it's defined as a hash, it allows you to control multiple pagy `:size` at different widths.
+=== Summary 
+* Allows you to control the "size" of `pagy*_nav_js` nav links, depending on the size of a screen: 
+* Small screens: Show less, large screens: show more. You can control this:
 
-You can set the `:steps` as a hash where the keys are integers representing the widths in pixels and the values are the Pagy `:size` variables to be applied for that width.
+![Image showing - Visual explanation of Steps](../assets/images/steps-explanation.png)
+=== 
+==- Detailed Explanation
+* `:steps`: an optional non-core variable used by `pagy*_nav_js` navs. 
 
-As usual, depending on the scope of the customization, you can set the variables globally or for a single pagy instance, or even pass it to the `pagy*_nav_js` helper as an optional keyword argument.
+```rb
+pagy, records = pagy(collection, steps: false ) # if false
+```
 
-For example:
+If `false`, the `pagy*_nav_js` will behave exactly as a static `pagy*_nav` respecting the single `:size` variable, just faster and lighter. 
+
+If a hash, you can control multiple pagy `:size` at different widths:
+
+* keys are integers representing widths in pixels,
+* values are the Pagy `:size` variables, applied to that width.
+* you can customise the scope: e.g. global, an instance level, or even at the the `pagy*_nav_js` helper as an optional keyword argument - e.g.:
 
 ```ruby
 # globally
@@ -394,50 +407,69 @@ or pass it to the helper
 <%== pagy_nav_js(@pagy, steps: {...}) %>
 ```
 
-The above statement means that from `0` to `540` pixels width, Pagy will use the `[2,3,3,2]` size, from `540` to `720` it will use the `[3,5,5,3]` size and over `720` it will use the `[5,7,7,5]` size. (Read more about the `:size` variable in the [How to control the page links](../how-to.md#control-the-page-links) section).
+##### What does it mean?
 
-**IMPORTANT**: You can set any number of steps with any arbitrary width/size. The only requirement is that the `:steps` hash must contain always the `0` width or a `Pagy::VariableError` exception will be raised.
+* From `0` to `540` pixels width, Pagy will use the `[2,3,3,2]` size, 
+* from `540` to `720` it will use the `[3,5,5,3]` size and over 
+* `720` it will use the `[5,7,7,5]` size. 
 
-#### Setting the right sizes
+(Read more about the `:size` variable in the [How to control the page links](../how-to.md#control-the-page-links) section).
 
-Setting the widths and sizes can create a nice transition between widths or some apparently erratic behavior.
+!!!warning Steps hash must contain `0` width
+`:steps` hash must contain always the `0` width or a `Pagy::VariableError` exception will be raised.
+!!!
 
-Here is what you should consider/ensure:
+##### Setting the right sizes
+
+Ensure:
 
 1. The pagy size changes in discrete `:steps`, defined by the width/size pairs.
 
 2. The automatic transition from one size to another depends on the width available to the pagy nav. That width is the _internal available width_ of its container (excluding eventual horizontal padding).
 
-3. You should ensure that - for each step - each pagy `:size` produces a nav that can be contained in its width.
+3. For each step - each pagy `:size` produces a nav that can be contained in its width.
 
-4. You should ensure that the minimum internal width for the container div be equal (or a bit bigger) to the smaller positive width. (`540` pixels in our previous example).
+4. The minimum internal width for the container div be equal (or a bit bigger) to the smaller positive width. (`540` pixels in our previous example).
 
-5. If the container width snaps to specific widths in discrete steps, you should sync the quantity and widths of the pagy `:steps` to the quantity and internal widths for each discrete step of the container.
+5. If the container width snaps to specific widths in discrete steps, sync the quantity and widths of the pagy `:steps` to the quantity and internal widths for each discrete step of the container.
+===
 
 ### Methods
 
 #### pagy*_nav_js(pagy, ...)
 
-The method accepts also a few optional keyword arguments:
+Optional keyword arguments:
 
-- `:pagy_id` which adds the `id` HTML attribute to the `nav` tag
-- `:link_extra` which add a verbatim string to the `a` tag (e.g. `'data-remote="true"'`)
+- `:pagy_id`: adds the `id` HTML attribute to the `nav` tag
+- `:link_extra` adds a verbatim string to the `a` tag (e.g. `'data-remote="true"'`)
 - `:steps` the [:steps](#steps) variable
 
 **CAVEATS**: the `pagy_bootstrap_nav_js` and `pagy_semantic_nav_js` assign a class attribute to their links, so do not add another class attribute with the `:link_extra`. That would be illegal HTML and ignored by most browsers.
 
 #### pagy*_combo_nav_js(pagy, ...)
 
-The method accepts also a couple of optional keyword arguments:
+Optional keyword arguments:
 
-- `:pagy_id` which adds the `id` HTML attribute to the `nav` tag
-- `:link_extra` which add a verbatim string to the `a` tag (e.g. `'data-remote="true"'`)
+- `:pagy_id`: adds the `id` HTML attribute to the `nav` tag
+- `:link_extra` add a verbatim string to the `a` tag (e.g. `'data-remote="true"'`)
 
-**CAVEATS**: the `pagy_semantic_combo_nav_js` assigns a class attribute to its links, so do not add another class attribute with the `:link_extra`. That would be illegal HTML and ignored by most browsers.
+
+!!!danger Illegal HTML - Class added to `pagy_semantic_combo_nav_js`
+* Do not add a class attribute to `pagy_semantic_combo_nav_js`: 
+
+```rb
+pagy_semantic_combo_nav_js(@pagy, link_extra: 'class="do-not-do-this"'')
+```
+
+* It will be ignored, and will be illegal HTML.
+!!!
+
 
 ## Using AJAX
 
-If you AJAX-render any of the javascript helpers mentioned above, you should also execute `Pagy.init(container_element);` in the javascript template. Here is an example for an AJAX-rendered `pagy_bootstrap_nav_js`:
+If you AJAX-render any javascript helper, you must reinitialise the component: `Pagy.init(container_element);` 
+
+If you're using Stimulus JS, this will be handled automatically, once it's inserted into the document. But if you're not, consider the following AJAX-rendered `pagy_bootstrap_nav_js` example:
 
 In `pagy_remote_nav_js` controller action (notice the `link_extra` to enable AJAX):
 
@@ -465,11 +497,8 @@ In `pagy_remote_nav_js.js.erb` javascript template used for AJAX:
 
 ```js
 $('#container').html("<%= j(render 'nav_js')%>");
-Pagy.init(document.getElementById('container'));
+Pagy.init(document.getElementById('container')); // don't forget to reinitialize - otherwise it won't work
 ```
-
-**IMPORTANT**: The `document.getElementById('container')` argument will re-init the pagy elements just AJAX-rendered in the container div. If you miss it, it will not work.
-
 ## Caveats
 
 !!!success For Better Performance: Use `oj` Gem
@@ -478,7 +507,8 @@ Pagy.init(document.getElementById('container'));
 !!!
 
 !!!warning HTML Fallback
-If Javascript is not supported / disabled, the `js` helpers will be useless. Consider a fallback for such browsers: 
+If Javascript is disabled, the `js` helpers will be useless. 
+Consider a fallback for such browsers: 
 
 ```erb
 <noscript><%== pagy_nav(@pagy) %></noscript>
@@ -486,7 +516,8 @@ If Javascript is not supported / disabled, the `js` helpers will be useless. Con
 !!!
 
 !!!warning Window Resizing
-If the window size changes, `pagy_*nav_js` elements are re-rendered (when the container width changes), however if the container width changes in any a way that does not involve a window resize, then you should re-render the pagy element explicitly: e.g.:
+* If window size changes, `pagy_*nav_js` elements are automatically re-rendered.
+* But, if the container width changes *without* a window resize, you need to explicitly re-render: 
 
 ```js
 document.getElementById('my-pagy-nav-js').render();
@@ -494,7 +525,10 @@ document.getElementById('my-pagy-nav-js').render();
 !!!
 
 !!!danger Overriding `*_js` helpers?
-Don't: API is not stable.
+Not recommended: 
+
+* Reliant on tightly coupled code.
+* High fragility: likely.
 !!!
 
 ## Troubleshooting / Demos
