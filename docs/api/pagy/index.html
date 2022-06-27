@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709681581768">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709683973175">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.3.0.709681581768" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.3.0.709683973175" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.709681581768" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.709683973175" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.709681581768" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.709681581768" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.709683973175" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.709683973175" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -274,12 +274,19 @@ pagy.series
 </doc-anchor-target>
 <p>The <code v-pre>Pagy::DEFAULT</code> is a globally available hash used to set defaults variables. It is a constant for easy access, but it is mutable to allow customizable defaults. You can override it in the <code v-pre>pagy.rb</code> initializer file in order to set your own application global defaults. After you are done, you should <code v-pre>freeze</code> it, so it will not changed accidentally. It gets merged with the variables passed with the <code v-pre>new</code> method every times a <code v-pre>Pagy</code> instance gets created.</p>
 <p>You will typically use it in a <code v-pre>pagy.rb</code> initializer file to pass defaults values. For example:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">Pagy::DEFAULT[:items]     = 25
 Pagy::DEFAULT[:my_option] = 'my option'
 ...
 Pagy::DEFAULT.freeze</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <doc-anchor-target id="methods">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#methods">#</doc-anchor-trigger>

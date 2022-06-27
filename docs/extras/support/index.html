@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709681581768">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709683973175">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.3.0.709681581768" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.3.0.709683973175" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.709681581768" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.709683973175" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.709681581768" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.709681581768" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.709683973175" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.709683973175" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -241,10 +241,16 @@
     </h2>
 </doc-anchor-target>
 <p>See <a href="../">extras</a> for general usage info.</p>
-<p>In the <code v-pre>pagy.rb</code> initializer:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">require 'pagy/extras/support'</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <doc-anchor-target id="support-for-alternative-pagination-types-and-features">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#support-for-alternative-pagination-types-and-features">#</doc-anchor-trigger>
@@ -268,17 +274,33 @@
 <p>If you don&#x27;t need the navbar you can just set the <code v-pre>:size</code> variable to an empty value and the page links will be skipped from the rendering. That works with <code v-pre>Pagy</code> and <code v-pre>Pagy:Countless</code> instances. All the <code v-pre>*nav</code> helpers will render only the <code v-pre>prev</code> and <code v-pre>next</code> links/buttons, allowing for a manual incremental pagination.</p>
 <p>You can also use the <code v-pre>pagy_prev_link</code> and <code v-pre>pagy_next_link</code> helpers provided by this extra, mostly useful if you also use the <code v-pre>countless</code> extra.</p>
 <p>Here is a basic example that uses <code v-pre>pagy_countless</code> (saving one query per render):</p>
-<p><code v-pre>pagy.rb</code> initializer:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">require 'pagy/extras/countless'</code></pre>
 </doc-codeblock></div>
-<p><code v-pre>incremental</code> controller action:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>incremental (controller action)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">def incremental
   @pagy, @records = pagy_countless(Product.all, link_extra: 'data-remote=&quot;true&quot;')
 end</code></pre>
 </doc-codeblock></div>
-<p><code v-pre>incremental.html.erb</code> template:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>incremental.html.erb (template)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-erb"><code v-pre class="language-erb">&lt;div id=&quot;content&quot;&gt;
   &lt;table id=&quot;records_table&quot;&gt;
@@ -293,7 +315,13 @@ end</code></pre>
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 </doc-codeblock></div>
-<p><code v-pre>_page_items.html.erb</code> partial shared for AJAX and non-AJAX rendering:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>_page_items.html.erb (partial)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-erb"><code v-pre class="language-erb">&lt;% @records.each do |record| %&gt;
   &lt;tr&gt;
@@ -302,15 +330,29 @@ end</code></pre>
   &lt;/tr&gt;
 &lt;% end %&gt;</code></pre>
 </doc-codeblock></div>
-<p><code v-pre>_next_link.html.erb</code> partial shared for AJAX and non-AJAX rendering:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>_next_link.html.erb (partial)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-erb"><code v-pre class="language-erb">&lt;%== pagy_next_link(@pagy, text: 'More...', link_extra: 'id=&quot;next_link&quot;') %&gt;</code></pre>
 </doc-codeblock></div>
-<p><code v-pre>incremental.js.erb</code> javascript template:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>incremental.js.erb (javascript template)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-erb"><code v-pre class="language-erb">$('#records_table').append(&quot;&lt;%= j(render 'page_items')%&gt;&quot;);
 $('#div_next_link').html(&quot;&lt;%= j(render 'next_link') %&gt;&quot;);</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <doc-anchor-target id="auto-incremental">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#auto-incremental">#</doc-anchor-trigger>
@@ -325,10 +367,22 @@ $('#div_next_link').html(&quot;&lt;%= j(render 'next_link') %&gt;&quot;);</code>
 </ul>
 <p>For a plain old javascript example, we are going to use the same <doc-anchor-trigger to="#navlessincremental">Incremental</doc-anchor-trigger> code above with just a couple of changes:</p>
 <p><strong>1</strong>. Hide the link in <code v-pre>_next_link.html.erb</code> by adding a style attribute:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>_next_link.html.erb (partial)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-erb"><code v-pre class="language-erb">&lt;%== pagy_next_link(@pagy, text: 'More...', link_extra: 'id=&quot;next_link&quot; style=&quot;display: none;&quot;') %&gt;</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <p><strong>2</strong>. Add a javascript that will click the link when the listing-bottom appears in the viewport on load/resize/scroll. It will keep the page filled with results, one page at a time:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>Javascript</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">var loadNextPage = function(){
   if ($('#next_link').data(&quot;loading&quot;)){ return }  // prevent multiple loading
@@ -344,6 +398,8 @@ window.addEventListener('resize', loadNextPage);
 window.addEventListener('scroll', loadNextPage);
 window.addEventListener('load',   loadNextPage);</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <doc-anchor-target id="circularinfinite">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#circularinfinite">#</doc-anchor-trigger>
@@ -353,14 +409,28 @@ window.addEventListener('load',   loadNextPage);</code></pre>
 <p>This type of pagination sets the <code v-pre>next</code> page to <code v-pre>1</code> when the current page is the last page, allowing an infinite loop through the pages.</p>
 <p>For example, it is often used to show a few suggestions of &quot;similar products&quot; in a horizontal stripe of just a few pages of a few items each. Clicking on next will continue to loop through.</p>
 <p>For example:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>Controller (action)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">@pagy, @suggestions = pagy_countless(Product.all, count: 25, items: 5, cycle: true)</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <p>Passing a forced <code v-pre>:count</code> of 25 will generate 5 pages of 5 items each that will always have a next page. Regardless the actual collection count, you will show the first 25 items of the collection, looping in stripes of 5 items each.</p>
 <p>You may want to combine it with something like:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>View</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-erb"><code v-pre class="language-erb">&lt;%== pagy_next_link(@pagy, text: 'More...') %&gt;</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <doc-anchor-target id="methods">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#methods">#</doc-anchor-trigger>

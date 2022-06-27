@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709681581768">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709683973175">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.3.0.709681581768" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.3.0.709683973175" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.709681581768" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.709683973175" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.709681581768" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.709681581768" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.709683973175" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.709683973175" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -234,16 +234,26 @@
 </div>
 
 <p>This extra adds a specialized pagination for arrays without the need to override the <code v-pre>pagy_get_items</code> in your controller, and without the need to use any expensive array-wrapping or patching.</p>
-<doc-anchor-target id="warning">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#warning">#</doc-anchor-trigger>
-        <span>WARNING!</span>
-    </h2>
-</doc-anchor-target>
-<p><em>This warning may sound obvious, but I keep finding people improperly using this extra, so let me write it explicitly.</em></p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-yellow-500"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-yellow-500" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
+                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>WARNING</h5>
+<p>This warning may sound obvious, but I keep finding people improperly using this extra, so let me write it explicitly.</p>
 <p>The <code v-pre>array</code> extra is efficient if you really need to paginate an array, but if the data in the array comes from some DB or other persisted storage (i.e. not some in-memory storage), then you should definitely review your code!</p>
 <p>You should not pull the whole collection into an array (potentially wasting tons of memory), when you can pull just a single page of it by using the standard <code v-pre>@page, @records = pagy(your_scope)</code>.</p>
-<p>And if you think that it&#x27;s the only way to do what you need, then... think again. ;)</p>
+<p>And if you think that it&#x27;s the only way to do what you need, then... think again. <span class="docs-emoji">&#x1F9D0;</span></p>
+        </div>
+    </div>
+</div>
 <doc-anchor-target id="synopsis">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#synopsis">#</doc-anchor-trigger>
@@ -251,17 +261,29 @@
     </h2>
 </doc-anchor-target>
 <p>See <a href="../">extras</a> for general usage info.</p>
-<p>In the <code v-pre>pagy.rb</code> initializer:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">require 'pagy/extras/array'</code></pre>
 </doc-codeblock></div>
-<p>In a controller:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>Controller</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">@pagy_a, @items   = pagy_array(an_array, ...)
 
 # independently paginate some other collections as usual
 @pagy_b, @records = pagy(some_scope, ...)</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <doc-anchor-target id="files">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#files">#</doc-anchor-trigger>

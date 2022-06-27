@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709681581768">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.709683973175">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../../resources/css/retype.css?v=2.3.0.709681581768" rel="stylesheet" />
+    <link href="../../../../resources/css/retype.css?v=2.3.0.709683973175" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.3.0.709681581768" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../../resources/js/config.js?v=2.3.0.709683973175" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.3.0.709681581768" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.3.0.709681581768" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../../resources/js/lunr.js?v=2.3.0.709683973175" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../../resources/js/prism.js?v=2.3.0.709683973175" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -414,22 +414,38 @@
 <doc-tabs>
 <doc-tab id="esbuild">
 <template #title>Esbuild</template>
-<p>In <code v-pre>package.json</code>, prepend the <code v-pre>NODE_PATH</code> environment variable to the <code v-pre>scripts.build</code> command:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>package.json</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-json"><code v-pre class="language-json">{
   &quot;build&quot;: &quot;NODE_PATH=\&quot;$(bundle show 'pagy')/lib/javascripts\&quot; &lt;your original command&gt;&quot;
 }</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 </doc-tab>
 <doc-tab id="webpack">
 <template #title>Webpack</template>
-<p>In <code v-pre>package.json</code>, prepend the <code v-pre>PAGY_PATH</code> environment variable to the <code v-pre>scripts.build</code> command:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>package.json</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-json"><code v-pre class="language-json">{
   &quot;build&quot;: &quot;PAGY_PATH=\&quot;$(bundle show 'pagy')/lib/javascripts\&quot; &lt;your webpack command&gt;&quot;
 }</code></pre>
 </doc-codeblock></div>
-<p>In <code v-pre>webpack.confg.js</code>, add the <code v-pre>resolve.modules</code> array:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>webpack.config.js</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">module.exports = {
   ...,                          // your original config
@@ -441,16 +457,28 @@
   }
 }</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 </doc-tab>
 <doc-tab id="rollup">
 <template #title>Rollup</template>
-<p>In <code v-pre>package.json</code>, prepend the <code v-pre>PAGY_PATH</code> environment variable to the <code v-pre>scripts.build</code> command:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>package.json</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-json"><code v-pre class="language-json">{
   &quot;build&quot;: &quot;PAGY_PATH=\&quot;$(bundle show 'pagy')/lib/javascripts\&quot; &lt;your rollup command&gt;&quot;
 }</code></pre>
 </doc-codeblock></div>
-<p>In <code v-pre>rollup.confg.js</code>, configure the <code v-pre>plugins[resolve]</code>:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>rollup.confg.js</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">export default {
   ...,                                    // your original config
@@ -464,6 +492,8 @@
   ]
 }</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 </doc-tab>
 </doc-tabs>
 <doc-anchor-target id="rails-with-assets-pipeline">
@@ -476,47 +506,88 @@
 <doc-tabs>
 <doc-tab id="sprockets">
 <template #title>Sprockets</template>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby"># config/initializers/pagy.rb
-Rails.application.config.assets.paths &lt;&lt; Pagy.root.join('javascripts') # uncomment.</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby">Rails.application.config.assets.paths &lt;&lt; Pagy.root.join('javascripts') # uncomment.</code></pre>
 </doc-codeblock></div>
-<p>In your <code v-pre>manifest.js</code> file (or <code v-pre>application.js</code> file if using older versions of sprockets):</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>manifest.js (or <code v-pre>application.js</code> for old sprocket sprockets):</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">//= require pagy</code></pre>
 </doc-codeblock></div>
-<p>And initialize Pagy any way you like (see below):</p>
+    </div>
+</div>
 </doc-tab>
 <doc-tab id="importmaps">
 <template #title>Importmaps</template>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby"># config/initializers/pagy.rb
-Rails.application.config.assets.paths &lt;&lt; Pagy.root.join('javascripts') #uncomment</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby">Rails.application.config.assets.paths &lt;&lt; Pagy.root.join('javascripts') #uncomment</code></pre>
 </doc-codeblock></div>
-<p>Add sprockets directive e.g. in <code v-pre>app/assets/config/manifest.js</code>:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>app/assets/config/manifest.js</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-javascript"><code v-pre class="language-javascript">//= link pagy-module.js</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>config/importmap.rb</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby"># config/importmap.rb
-pin 'pagy-module'</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby">pin 'pagy-module'</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 </doc-tab>
 <doc-tab id="propshaft">
 <template #title>Propshaft</template>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby"># config/initializers/pagy.rb
-Rails.application.config.assets.paths &lt;&lt; Pagy.root.join('javascripts')</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby">Rails.application.config.assets.paths &lt;&lt; Pagy.root.join('javascripts')</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>application.html.erb</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-erb"><code v-pre class="language-erb">&lt;!-- in application.html.erb --&gt;
-&lt;%= javascript_include_tag &quot;pagy&quot; %&gt;</code></pre>
+<pre class="language-erb"><code v-pre class="language-erb">&lt;%= javascript_include_tag &quot;pagy&quot; %&gt;</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 </doc-tab>
 </doc-tabs>
-<doc-anchor-target id="other-ruby-appframework">
+<doc-anchor-target id="non-rails-apps">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#other-ruby-appframework">#</doc-anchor-trigger>
-        <span>Other ruby app/framework</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#non-rails-apps">#</doc-anchor-trigger>
+        <span>Non-Rails apps</span>
     </h3>
 </doc-anchor-target>
 <ul>
@@ -532,9 +603,13 @@ Rails.application.config.assets.paths &lt;&lt; Pagy.root.join('javascripts')</co
 <doc-tabs>
 <doc-tab id="stimulus-js">
 <template #title>Stimulus JS</template>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy_initializer_controller.js</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">// pagy_initializer_controller.js
-import { Controller } from &quot;@hotwired/stimulus&quot;
+<pre class="language-javascript"><code v-pre class="language-javascript">import { Controller } from &quot;@hotwired/stimulus&quot;
 import Pagy from &quot;pagy-module&quot;  // if using sprockets, you can remove above line, but make sure you have the appropriate directive if your manifest.js file.
 
 export default class extends Controller {
@@ -543,11 +618,20 @@ export default class extends Controller {
   }
 }</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>View</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-erb"><code v-pre class="language-erb">&lt;div data-controller=&quot;pagy-initializer&quot;&gt;
   &lt;%== pagy_nav_js(@pagy) %&gt;
 &lt;/div&gt;</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 </doc-tab>
 <doc-tab id="others">
 <template #title>Others</template>
