@@ -6,44 +6,50 @@ categories:
 ---
 # Searchkick Extra
 
-This extra deals with the pagination of `Searchkick::Results` objects either by creating a `Pagy` object out of an (already paginated) `Searchkick::Results` object or by creating the `Pagy` and `Searchkick::Results` objects from the backend params.
+Enables you to paginate `Searchkick::Results` objects. You have two choices:
+
+(i) creating a `Pagy` object out of an (already paginated) `Searchkick::Results` object, OR 
+
+(ii) by creating the `Pagy` and `Searchkick::Results` objects from the backend params.
 
 ## Synopsis
 
 See [extras](/docs/extras.md) for general usage info.
 
-Require the extra in the `pagy.rb` initializer:
-
 ```ruby
+# pagy.rb (initializer)
 require 'pagy/extras/searchkick'
 Searchkick.extend Pagy::Searchkick   # optional
 ```
 
-### Passive mode
+### (i) Passive mode
 
-If you have an already paginated `Searchkick::Results` object, you can get the `Pagy` object out of it:
+If you already have a paginated `Searchkick::Results` object, you can get the `Pagy` object out of it:
 
 ```ruby
+# any_controller
 @results = Model.search('*', page: 1, per_page: 10, ...)
 @pagy    = Pagy.new_from_searchkick(@results, ...)
 ```
 
-### Active Mode
+### (ii) Active Mode
 
-If you want Pagy to control the pagination, getting the page from the params, and returning both the `Pagy` and the `Searchkick::Results` objects automatically (from the backend params):
+If you want Pagy to control the pagination: get the page from the params, and return both the `Pagy` and the `Searchkick::Results` objects automatically (from the backend params):
 
-Extend your model:
-
+||| any_model.rb
 ```ruby
 extend Pagy::Searchkick
 ```
+|||
 
 In a controller use `pagy_search` in place of `search`:
 
+||| any_controller.rb
 ```ruby
 results         = Article.pagy_search(params[:q])
 @pagy, @results = pagy_searchkick(results, items: 10)
 ```
+|||
 
 #### Searchkick.search
 
