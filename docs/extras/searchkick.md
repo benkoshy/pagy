@@ -6,7 +6,7 @@ categories:
 ---
 # Searchkick Extra
 
-Paginate `Searchkick::Results` objects.
+Paginates `Searchkick::Results` objects.
 
 ## Setup
 
@@ -15,13 +15,11 @@ See [extras](/docs/extras.md) for general usage info.
 ||| pagy.rb (initializer)
 ```ruby
 require 'pagy/extras/searchkick'
-Searchkick.extend Pagy::Searchkick   # optional
+Searchkick.extend Pagy::Searchkick # optional - see Active Mode
 ```
 |||
 
-
 ### Modes
-
 Choose between two modes: 
 
 +++ Passive Mode
@@ -37,7 +35,7 @@ Choose between two modes:
 
 +++ Active Mode
 
-* You control the pagination.
+* Use: when you want to control the pagination.
 
 ||| Model
 ```ruby
@@ -80,13 +78,21 @@ results         = Searchkick.pagy_search(params[:q], models: [Article, Categorie
 
 ## Passive mode
 
-### Pagy.new_from_searchkick(results, vars = {})
+### Pagy.new_from_searchkick(results, vars)
 
-This constructor accepts a `Searchkick::Results` as the first argument, plus the usual optional variable hash. It sets the `:items`, `:page` and `:count` pagy variables extracted/calculated out of the `Searchkick::Results` object.
+||| Controller
+```ruby
+Pagy.new_from_searchkick(searchkick_results_object, vars)
+
+```
+|||
+
+[vars argument](./docs/api/pagy/#variables)
 
 ```ruby
 @results = Model.search('*', page: 2, per_page: 10, ...)
 @pagy    = Pagy.new_from_searchkick(@results, ...)
+# Sets the `:items`, `:page` and `:count` pagy variables from the `Searchkick::Results` object.
 ```
 
 **Notice**: you have to take care of manually manage all the params for your search, however the method extracts the `:items`, `:page` and `:count` from the results object, so you don't need to pass that again. If you prefer to manage the pagination automatically, see below.
