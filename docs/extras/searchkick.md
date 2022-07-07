@@ -24,7 +24,9 @@ Choose between two modes:
 
 +++ Passive Mode
 
-* Use when you have a paginated `Searchkick::Results` object.
+!!! Use when:
+...you have a paginated `Searchkick::Results` object.
+!!!
 
 ||| Controller
 ```ruby
@@ -35,7 +37,9 @@ Choose between two modes:
 
 +++ Active Mode
 
-* Use: when you want to control the pagination.
+!!! Use when:
+... you want to control the pagination.
+!!!
 
 ||| Model
 ```ruby
@@ -67,8 +71,6 @@ results         = Searchkick.pagy_search(params[:q], models: [Article, Categorie
 @pagy, @results = pagy_searchkick(results, items: 10) # Use `pagy_search` in place of `search`:
 ```
 |||
-
-
 +++
 
 
@@ -82,30 +84,33 @@ results         = Searchkick.pagy_search(params[:q], models: [Article, Categorie
 
 ||| Controller
 ```ruby
-Pagy.new_from_searchkick(searchkick_results_object, vars)
+Pagy.new_from_searchkick(results, vars)
 
 ```
 |||
 
-[vars argument](./docs/api/pagy/#variables)
+Accepts:
+
+* [`Searchkick::Results` object](https://www.rubydoc.info/github/ankane/searchkick/Searchkick/Results)
+* [vars argument](./docs/api/pagy/#variables)
 
 ```ruby
 @results = Model.search('*', page: 2, per_page: 10, ...)
 @pagy    = Pagy.new_from_searchkick(@results, ...)
-# Sets the `:items`, `:page` and `:count` pagy variables from the `Searchkick::Results` object.
+# Sets: `:items`, `:page` and `:count` pagy variables from the `Searchkick::Results` object.
+# No need to pass them in:
+@pagy    = Pagy.new_from_searchkick(@results, {page: "no need to pass again"}) # No!
 ```
-
-**Notice**: you have to take care of manually manage all the params for your search, however the method extracts the `:items`, `:page` and `:count` from the results object, so you don't need to pass that again. If you prefer to manage the pagination automatically, see below.
 
 ## Active Mode
 
 ## Pagy::Searchkick module
 
-Extend your model with the `Pagy::Searchkick` micro-module:
-
+||| Model
 ```ruby
 extend Pagy::Searchkick
 ```
+|||
 
 The `Pagy::Searchkick` adds the `pagy_search` class method that you must use in place of the standard `search` method when you want to paginate the search response.
 
