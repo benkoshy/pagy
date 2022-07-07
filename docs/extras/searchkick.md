@@ -6,60 +6,73 @@ categories:
 ---
 # Searchkick Extra
 
-This extra deals with the pagination of `Searchkick::Results` objects either by creating a `Pagy` object out of an (already paginated) `Searchkick::Results` object or by creating the `Pagy` and `Searchkick::Results` objects from the backend params.
+Paginate `Searchkick::Results` objects.
 
-## Synopsis
+## Setup
 
 See [extras](/docs/extras.md) for general usage info.
 
-Require the extra in the `pagy.rb` initializer:
-
+||| pagy.rb (initializer)
 ```ruby
 require 'pagy/extras/searchkick'
 Searchkick.extend Pagy::Searchkick   # optional
 ```
+|||
 
-### Passive mode
 
-If you have an already paginated `Searchkick::Results` object, you can get the `Pagy` object out of it:
+### Modes
 
+Choose between two modes: 
+
++++ Passive Mode
+
+* Use when you have a paginated `Searchkick::Results` object.
+
+||| Controller
 ```ruby
-@results = Model.search('*', page: 1, per_page: 10, ...)
+@results = Model.search('*', page: 1, per_page: 10, ...) # already paginated
 @pagy    = Pagy.new_from_searchkick(@results, ...)
 ```
+|||
 
-### Active Mode
++++ Active Mode
 
-If you want Pagy to control the pagination, getting the page from the params, and returning both the `Pagy` and the `Searchkick::Results` objects automatically (from the backend params):
+* You control the pagination.
 
-Extend your model:
-
+||| Model
 ```ruby
 extend Pagy::Searchkick
 ```
+|||
 
-In a controller use `pagy_search` in place of `search`:
 
+||| Controller
 ```ruby
 results         = Article.pagy_search(params[:q])
 @pagy, @results = pagy_searchkick(results, items: 10)
 ```
+|||
 
-#### Searchkick.search
 
-Extend also the `Searchkick` module if you are going to use `Searchkick.pagy_search`:
+If using `Searchkick.pagy_search` then:
 
+||| pagy (initializer)
 ```ruby
 # config/initializers/pagy.rb
 Searchkick.extend Pagy::Searchkick
 ```
+|||
 
-Use `pagy_search` in place of `search`:
-
+||| Controller
 ```ruby
 results         = Searchkick.pagy_search(params[:q], models: [Article, Categories])
-@pagy, @results = pagy_searchkick(results, items: 10)
+@pagy, @results = pagy_searchkick(results, items: 10) # Use `pagy_search` in place of `search`:
 ```
+|||
+
+
++++
+
 
 ## Files
 
