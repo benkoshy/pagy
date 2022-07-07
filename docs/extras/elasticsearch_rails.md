@@ -39,7 +39,7 @@ extend Pagy::ElasticsearchRails
 ```
 |||
 
-Use the `pagy_search` method in place of the standard `search` method when you want to paginate the search response:
+Use `pagy_search` in lieu of the `search` method:
 
 ||| Controller
 ```ruby
@@ -81,7 +81,7 @@ You have to take care of manually manage all the params for your search, however
 
 ## Files
 
-- [elasticsearch_rails.rb](https://github.com/ddnexus/pagy/blob/master/lib/pagy/extras/elasticsearch_rails.rb)
+[!file](https://github.com/ddnexus/pagy/blob/master/lib/pagy/extras/elasticsearch_rails.rb)
 
 ### Variables
 
