@@ -22,7 +22,6 @@ Searchkick.extend Pagy::Searchkick # optional - see Active Mode
 Choose between two modes: 
 
 +++ Passive Mode
-
 !!! Use when:
 you already have a paginated `Searchkick::Results` object.
 !!!
@@ -35,7 +34,6 @@ you already have a paginated `Searchkick::Results` object.
 |||
 
 +++ Active Mode
-
 !!! Use when:
 you want to control the pagination.
 !!!
@@ -80,15 +78,18 @@ results         = Searchkick.pagy_search(params[:q], models: [Article, Categorie
 
 ### Pagy.new_from_searchkick(results, vars)
 
-Accepts:
+**Accepts:**
 
 * [`Searchkick::Results` object](https://www.rubydoc.info/github/ankane/searchkick/Searchkick/Results)
 * [vars argument](./docs/api/pagy/#variables)
 
+**Returns:**
+
+* a pagy object
+
 ||| Controller
 ```ruby
 Pagy.new_from_searchkick(results, vars)
-
 ```
 |||
 
@@ -98,7 +99,7 @@ Pagy.new_from_searchkick(results, vars)
 @pagy    = Pagy.new_from_searchkick(@results, ...)
 ```
 !!!warning Warning
-`new_from_searchkick` sets: `:items`, `:page` and `:count` pagy variables from the `Searchkick::Results` object - so don't pass them in again.
+`new_from_searchkick` sets: `:items`, `:page` and `:count` pagy variables from the `Searchkick::Results` object - so don't pass them in.
 
 ```ruby
 @pagy = Pagy.new_from_searchkick(@results, {page: "no need to pass again"}) # No!
@@ -110,7 +111,7 @@ Pagy.new_from_searchkick(results, vars)
 
 ## Pagy::Searchkick module
 
-Adds pagy_search singleton method to model:
+* Adds `pagy_search` singleton method to Model:
 
 ||| Model
 ```ruby
@@ -118,7 +119,7 @@ class AnyModel < etc
   extend Pagy::Searchkick
 end
 
-AnyModel.pagy_search(...)
+AnyModel.pagy_search(...) # e.g.
 ```
 |||
 
@@ -133,7 +134,9 @@ AnyModel.pagy_search(...)
 
 
 **How does it work?** 
-* `pagy_search` automatically merges the calculated `:page` and `:per_page` options and then passes all arguments to the standard `search` method internally.
+
+* `pagy_search` automatically merges the calculated `:page` and `:per_page` options and then 
+* passes all arguments to the standard `search` method internally.
 
 ### Variables
 
@@ -145,13 +148,23 @@ AnyModel.pagy_search(...)
 ### Methods
 
 * Adds the `pagy_searchkick` method to the `Pagy::Backend`.
-*  to be used when you have to paginate a `Searchkick::Results` object. It also adds a `pagy_searchkick_get_vars` sub-method, used for easy customization of variables by overriding.
+
+!!! Use when:
+*  you have to paginate a `Searchkick::Results` object. 
+*  It adds a `pagy_searchkick_get_vars` sub-method, to enable customization of variables by overriding.
+!!!
 
 #### pagy_searchkick(pagy_search_args, vars={}})
 
-This method is similar to the generic `pagy` method, but specialized for Searchkick. (see the [pagy doc](/docs/api/backend.md#pagycollection-varsnil))
+* Similar to the generic `pagy` method, but specialized for Searchkick. (see the [pagy doc](/docs/api/backend.md#pagycollection-varsnil))
 
-It expects to receive a `Model.pagy_search(...)` result and returns a paginated response. You can use it in a couple of ways:
+**Accepts:**
+
+* Model.pagy_search(...)` result 
+
+**Returns:**
+
+* a paginated response. 
 
 ```ruby
 @pagy, @results = pagy_searchkick(Model.pagy_search(params[:q]), ...)
@@ -164,4 +177,4 @@ It expects to receive a `Model.pagy_search(...)` result and returns a paginated 
 
 #### pagy_searchkick_get_vars(array)
 
-This sub-method is similar to the `pagy_get_vars` sub-method, but it is called only by the `pagy_searchkick` method. (see the [pagy_get_vars doc](/docs/api/backend.md#pagy_get_varscollection-vars)).
+* Similar to the `pagy_get_vars` sub-method, but called only by the `pagy_searchkick` method. (see the [pagy_get_vars doc](/docs/api/backend.md#pagy_get_varscollection-vars)).
