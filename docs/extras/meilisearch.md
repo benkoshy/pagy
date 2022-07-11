@@ -12,11 +12,11 @@ This extra deals with the pagination of `Meilisearch` results either by creating
 
 See [extras](/docs/extras.md) for general usage info.
 
-Require the extra in the `pagy.rb` initializer:
-
+||| pagy.rb (initializer)
 ```ruby
 require 'pagy/extras/meilisearch'
 ```
+|||
 
 ### Passive mode
 
