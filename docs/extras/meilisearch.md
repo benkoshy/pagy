@@ -21,7 +21,10 @@ require 'pagy/extras/meilisearch'
 ## Modes
 
 +++ Active mode
-If you want Pagy to control the pagination, getting the page from the params, and returning both the `Pagy` and the Meilisearch results automatically (from the backend params):
+
+!!! success Pagy searches and paginates
+Use `pagy_search` in lieu of the standard `ms_search` method.
+!!!
 
 ### Usage
 
@@ -40,7 +43,10 @@ results         = Article.pagy_search(params[:q])
 |||
 
 +++ Passive Mode
-If you have an already paginated `Meilisearch` results, you can get the `Pagy` object out of it:
+
+!!! success You search and paginate
+Pagy creates its object out of your result.
+!!!
 
 ### Usage
 
@@ -50,6 +56,7 @@ If you have an already paginated `Meilisearch` results, you can get the `Pagy` o
 @pagy    = Pagy.new_from_meilisearch(@results, ...)
 ```
 |||
+
 +++
 
 ## Files
