@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.710466708928">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.710824007649">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.3.0.710466708928" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.3.0.710824007649" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.710466708928" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.710824007649" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.710466708928" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.710466708928" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.710824007649" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.710824007649" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -234,23 +234,6 @@
 </div>
 
 <p>Save one count query per request using the <a href="../../api/countless/">Pagy::Countless subclass</a> internally.</p>
-<div class="flex mb-6">
-    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
-    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
-        <div class="flex items-center ml-4 h-7">
-            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
-                <g fill="currentColor"><g>
-                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
-                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                </g></g>
-            </svg>
-        </div>
-        <div class="pr-5 ml-3 w-full">
-<p>Useful with large/slow DB tables an/or when there is no need to have a complete classic UI (e.g. infinite/scrolling).</p>
-        </div>
-    </div>
-</div>
 <doc-anchor-target id="setup">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#setup">#</doc-anchor-trigger>
@@ -292,7 +275,7 @@
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>Your app uses a classic pagination UI</p>
+<p>Your app needs a full classic pagination UI</p>
         </div>
     </div>
 </div>
@@ -327,8 +310,8 @@
         </div>
         <div class="pr-5 ml-3 w-full">
 <ul>
-<li>The <code v-pre>pagy</code> object will know whether the current page is the last one or there will be a next page so you can use it right away with any supported helper</li>
-<li>The returned paginated collection (<code v-pre>@records</code>) will be an <code v-pre>Array</code> instead of a scope (so the records are already eager-loaded from the DB)</li>
+<li>The <code v-pre>@records</code> collection is an eager-loaded <code v-pre>Array</code> of records.</li>
+<li>The <code v-pre>@pagy</code> object can be used with any supported helper.</li>
 </ul>
         </div>
     </div>
@@ -348,7 +331,7 @@
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>Your app uses no pagination UI</p>
+<p>Your app uses no or limited pagination UI</p>
         </div>
     </div>
 </div>
@@ -383,9 +366,9 @@
         </div>
         <div class="pr-5 ml-3 w-full">
 <ul>
-<li>The returned <code v-pre>pagy</code> object will contain just a handful of variables and will miss the finalization, so you cannot use it with any helpers</li>
-<li>The returned paginated collection (<code v-pre>@records</code>) will be a regular scope (i.e. no record has been load yet) so an eventual fragment caching can work as expected</li>
-<li>You will need to check the size of the paginated collection (<code v-pre>@records</code>) in order to know if it is the last page or not. You can tell it by checking <code v-pre>@records.size &lt; @pagy.vars[:items]</code>. Notice that IF the last page has exactly the <code v-pre>@pagy.vars[:items]</code> in it you will not be able to know it. In infinite scroll that would just try to load the next page returning 0 items, so it will be perfectly acceptable anyway.</li>
+<li>The <code v-pre>@records</code> collection is a regular scope.</li>
+<li>The <code v-pre>@pagy</code> object cannot be used with any helpers.</li>
+<li>The collection is over when <code v-pre>@records.size &lt; @pagy.vars[:items]</code>.</li>
 </ul>
         </div>
     </div>

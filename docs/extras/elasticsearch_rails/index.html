@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.710466708928">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.710824007649">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.3.0.710466708928" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.3.0.710824007649" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.710466708928" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.710824007649" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.710466708928" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.710466708928" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.710824007649" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.710824007649" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -343,7 +343,7 @@ collection = Article.pagy_search(params[:q]).results
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>Get the <code v-pre>Pagy</code> object out of an already paginated <code v-pre>Response</code> object</p>
+<p>Get the <code v-pre>Pagy</code> object out of a standard <code v-pre>Response</code> object</p>
         </div>
     </div>
 </div>
@@ -359,8 +359,10 @@ collection = Article.pagy_search(params[:q]).results
     </div>
     <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby">@response = Model.search('*', from: 0, size: 10, ...)
-@pagy     = Pagy.new_from_elasticsearch_rails(@response, ...)</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby"># standard response (already paginated)
+@response = Model.search('*', from: 0, size: 10, ...)
+# get the pagy object out of it
+@pagy = Pagy.new_from_elasticsearch_rails(@response, ...)</code></pre>
 </doc-codeblock></div>
     </div>
 </div>
@@ -378,7 +380,7 @@ collection = Article.pagy_search(params[:q]).results
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>You have to take care of manually manage all the params for your search, however the method extracts/calculates the <code v-pre>:items</code>, <code v-pre>:page</code> and <code v-pre>:count</code> from the response object, so you don&#x27;t need to pass that again. If you prefer to manage the pagination automatically, see below.</p>
+<p>You have to take care of manually manage all the params for your search, however the method extracts/calculates the <code v-pre>:items</code>, <code v-pre>:page</code> and <code v-pre>:count</code> from the response object, so you don&#x27;t need to pass that again.</p>
         </div>
     </div>
 </div>
@@ -429,10 +431,10 @@ collection = Article.pagy_search(params[:q]).results
     </h3>
 </doc-anchor-target>
 <p>This extra adds the <code v-pre>pagy_elasticsearch_rails</code> method to the <code v-pre>Pagy::Backend</code> to be used when you have to paginate a <code v-pre>ElasticsearchRails</code> object. It also adds a <code v-pre>pagy_elasticsearch_rails_get_variables</code> sub-method, used for easy customization of variables by overriding.</p>
-<doc-anchor-target id="pagy_elasticsearch_railspagy_search_args-vars-">
+<doc-anchor-target id="pagy_elasticsearch_railspagy_search_args-vars--">
     <h4>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_elasticsearch_railspagy_search_args-vars-">#</doc-anchor-trigger>
-        <span>pagy_elasticsearch_rails(pagy_search_args, vars =</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_elasticsearch_railspagy_search_args-vars--">#</doc-anchor-trigger>
+        <span>pagy_elasticsearch_rails(pagy_search_args, vars = {})</span>
     </h4>
 </doc-anchor-target>
 <p>This method is similar to the generic <code v-pre>pagy</code> method, but specialized for Elasticsearch Rails (see the <a href="../../api/backend/#pagycollection-varsnil">pagy doc</a>).</p>
