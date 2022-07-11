@@ -56,6 +56,13 @@ Pagy object created from **your** results.
 ```ruby
 @results = Model.ms_search(nil, offset: 10, limit: 10, ...)
 @pagy    = Pagy.new_from_meilisearch(@results, ...)
+
+# Manually pass in necessary params:
+... = Pagy.new_from_meilisearch(@results, foo: "bar")
+
+# Don't pass in: items, pagy, count: (because pagy takes care of that for you)
+... = Pagy.new_from_meilisearch(@results, count: "don't!") # don't do this
+
 ```
 |||
 
@@ -69,14 +76,7 @@ Pagy object created from **your** results.
 
 ### Pagy.new_from_meilisearch
 
-This constructor accepts a Meilisearch as the first argument, plus the usual optional variable hash. It sets the `:items`, `:page` and `:count` pagy variables extracted/calculated out of the Meilisearch object.
-
-```ruby
-@results = Model.ms_search(nil, offset: 10, limit: 10, ...)
-@pagy    = Pagy.new_from_meilisearch(@results, ...)
-```
-
-**Notice**: you have to take care of manually manage all the params for your search, however the method extracts the `:items`, `:page` and `:count` from the results object, so you don't need to pass that again. If you prefer to manage the pagination automatically, see below.
+This constructor accepts a Meilisearch as the first argument, plus the usual optional variable hash. 
 
 ## Active Mode
 
