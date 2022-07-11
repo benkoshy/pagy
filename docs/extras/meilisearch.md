@@ -46,7 +46,7 @@ results         = Article.pagy_search(params[:q])
 +++ Passive Mode
 
 !!! success You search and paginate
-Pagy creates its object out of your result.
+Pagy object created from **your** results.
 !!!
 
 ### Usage
