@@ -25,19 +25,20 @@ If you want Pagy to control the pagination, getting the page from the params, an
 
 ### Usage
 
-Extend your model:
-
+||| Model
 ```ruby
 extend Pagy::Meilisearch
 ActiveRecord_Relation.include Pagy::Meilisearch  # <--- (optional) if you use `includes` makes it work as expected
 ```
+|||
 
-In a controller use `pagy_search` in place of `search`:
-
+||| Controller (pagy_search)
 ```ruby
 results         = Article.pagy_search(params[:q])
 @pagy, @results = pagy_meilisearch(results, items: 10)
 ```
+|||
+
 +++ Passive Mode
 If you have an already paginated `Meilisearch` results, you can get the `Pagy` object out of it:
 
