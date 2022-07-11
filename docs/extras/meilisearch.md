@@ -6,7 +6,7 @@ categories:
 ---
 # Meilisearch Extra
 
-This extra deals with the pagination of `Meilisearch` results either by creating a `Pagy` object out of an (already paginated) `Meilisearch` results or by creating the `Pagy` and `Meilisearch` results from the backend params.
+Paginate `Meilisearch` results.
 
 ## Setup
 
