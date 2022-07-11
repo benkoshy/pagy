@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.710824007649">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.710842191225">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -12,7 +12,7 @@
     <!-- Primary Meta Tags -->
     <title>Searchkick | Pagy</title>
     <meta name="title" content="Searchkick | Pagy">
-    <meta name="description" content="This extra deals with the pagination of Searchkick::Results objects either by creating a Pagy object out of an (already paginated)" />
+    <meta name="description" content="Paginate Searchkick::Results objects." />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://ddnexus.github.io/pagy/docs/extras/searchkick/" />
@@ -21,22 +21,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ddnexus.github.io/pagy/docs/extras/searchkick/">
     <meta property="og:title" content="Searchkick | Pagy">
-    <meta property="og:description" content="This extra deals with the pagination of Searchkick::Results objects either by creating a Pagy object out of an (already paginated)">
+    <meta property="og:description" content="Paginate Searchkick::Results objects.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ddnexus.github.io/pagy/docs/extras/searchkick/">
     <meta property="twitter:title" content="Searchkick | Pagy">
-    <meta property="twitter:description" content="This extra deals with the pagination of Searchkick::Results objects either by creating a Pagy object out of an (already paginated)">
+    <meta property="twitter:description" content="Paginate Searchkick::Results objects.">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.3.0.710824007649" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.3.0.710842191225" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.710824007649" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.710842191225" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.710824007649" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.710824007649" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.710842191225" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.710842191225" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -234,7 +234,7 @@
     <div><a href="../../../categories/search-extras/">Search Extras</a></div>
 </div>
 
-<p>This extra deals with the pagination of <code v-pre>Searchkick::Results</code> objects either by creating a <code v-pre>Pagy</code> object out of an (already paginated) <code v-pre>Searchkick::Results</code> object or by creating the <code v-pre>Pagy</code> and <code v-pre>Searchkick::Results</code> objects from the backend params.</p>
+<p>Paginate <code v-pre>Searchkick::Results</code> objects.</p>
 <doc-anchor-target id="synopsis">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#synopsis">#</doc-anchor-trigger>
@@ -242,54 +242,123 @@
     </h2>
 </doc-anchor-target>
 <p>See <a href="../">extras</a> for general usage info.</p>
-<p>Require the extra in the <code v-pre>pagy.rb</code> initializer:</p>
+<doc-anchor-target id="setup">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setup">#</doc-anchor-trigger>
+        <span>Setup</span>
+    </h2>
+</doc-anchor-target>
+<p>See <a href="../">extras</a> for general usage info.</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">require 'pagy/extras/searchkick'
-Searchkick.extend Pagy::Searchkick   # optional</code></pre>
+Searchkick.extend Pagy::Searchkick</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="passive-mode">
+    </div>
+</div>
+<doc-anchor-target id="modes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#modes">#</doc-anchor-trigger>
+        <span>Modes</span>
+    </h2>
+</doc-anchor-target>
+<p>This extra offers two ways to paginate <code v-pre>Searchkick::Results</code> objects:</p>
+<doc-tabs>
+<doc-tab id="active-mode">
+<template #title>Active mode</template>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-green-500"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-green-500" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M21 9.09c-.55 0-1 .45-1 1v.92c0 4.96-4.04 8.99-9 8.99-4.97 0-9-4.04-9-9s4.04-9 9-9c1.27 0 2.5.26 3.66.78.51.22 1.1 0 1.32-.51.23-.5 0-1.1-.51-1.32C14.06.32 12.56 0 11.01 0H11C4.94 0 0 4.93 0 10.99 0 17.06 4.93 22 10.99 22H11c6.06 0 11-4.93 11-10.99v-.92c0-.56-.45-1-1-1z"></path>
+                    <path d="M8.71 9.31a.996.996 0 10-1.41 1.41l3 3c.19.19.44.29.71.29.27 0 .52-.11.71-.29l10-10.01a.996.996 0 10-1.41-1.41L11 11.6 8.71 9.31z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Pagy searches and paginates</h5>
+<p>You use the <code v-pre>pagy_search</code> method in place of the standard <code v-pre>search</code> method.</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="usage">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#passive-mode">#</doc-anchor-trigger>
-        <span>Passive mode</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#usage">#</doc-anchor-trigger>
+        <span>Usage</span>
     </h3>
 </doc-anchor-target>
-<p>If you have an already paginated <code v-pre>Searchkick::Results</code> object, you can get the <code v-pre>Pagy</code> object out of it:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby">@results = Model.search('*', page: 1, per_page: 10, ...)
-@pagy    = Pagy.new_from_searchkick(@results, ...)</code></pre>
-</doc-codeblock></div>
-<doc-anchor-target id="active-mode">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#active-mode">#</doc-anchor-trigger>
-        <span>Active Mode</span>
-    </h3>
-</doc-anchor-target>
-<p>If you want Pagy to control the pagination, getting the page from the params, and returning both the <code v-pre>Pagy</code> and the <code v-pre>Searchkick::Results</code> objects automatically (from the backend params):</p>
-<p>Extend your model:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>Model</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">extend Pagy::Searchkick</code></pre>
 </doc-codeblock></div>
-<p>In a controller use <code v-pre>pagy_search</code> in place of <code v-pre>search</code>:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>Controller (pagy_search)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby">results         = Article.pagy_search(params[:q])
-@pagy, @results = pagy_searchkick(results, items: 10)</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby"># single model
+collection = Article.pagy_search(params[:q])
+# multi models
+collection = Searchkick.pagy_search(params[:q], models: [Article, Categories])
+# paginate it
+@pagy, @response = pagy_searchkick(collection, items: 10)</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="searchkicksearch">
-    <h4>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#searchkicksearch">#</doc-anchor-trigger>
-        <span>Searchkick.search</span>
-    </h4>
+    </div>
+</div>
+</doc-tab>
+<doc-tab id="passive-mode">
+<template #title>Passive mode</template>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-green-500"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-green-500" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M21 9.09c-.55 0-1 .45-1 1v.92c0 4.96-4.04 8.99-9 8.99-4.97 0-9-4.04-9-9s4.04-9 9-9c1.27 0 2.5.26 3.66.78.51.22 1.1 0 1.32-.51.23-.5 0-1.1-.51-1.32C14.06.32 12.56 0 11.01 0H11C4.94 0 0 4.93 0 10.99 0 17.06 4.93 22 10.99 22H11c6.06 0 11-4.93 11-10.99v-.92c0-.56-.45-1-1-1z"></path>
+                    <path d="M8.71 9.31a.996.996 0 10-1.41 1.41l3 3c.19.19.44.29.71.29.27 0 .52-.11.71-.29l10-10.01a.996.996 0 10-1.41-1.41L11 11.6 8.71 9.31z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>You search and paginate</h5>
+<p>Pagy creates its object out of your result.</p>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="usage-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#usage-1">#</doc-anchor-trigger>
+        <span>Usage</span>
+    </h3>
 </doc-anchor-target>
-<p>Extend also the <code v-pre>Searchkick</code> module if you are going to use <code v-pre>Searchkick.pagy_search</code>:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>Controller (search)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby"># config/initializers/pagy.rb
-Searchkick.extend Pagy::Searchkick</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby"># standard response (already paginated)
+@results = Article.search('*', page: 1, per_page: 10, ...)
+# get the pagy object out of it
+@pagy = Pagy.new_from_searchkick(@results, ...)</code></pre>
 </doc-codeblock></div>
-<p>Use <code v-pre>pagy_search</code> in place of <code v-pre>search</code>:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby">results         = Searchkick.pagy_search(params[:q], models: [Article, Categories])
-@pagy, @results = pagy_searchkick(results, items: 10)</code></pre>
-</doc-codeblock></div>
+    </div>
+</div>
+</doc-tab>
+</doc-tabs>
 <doc-anchor-target id="files">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#files">#</doc-anchor-trigger>
@@ -299,48 +368,6 @@ Searchkick.extend Pagy::Searchkick</code></pre>
 <ul>
 <li><a href="https://github.com/ddnexus/pagy/blob/master/lib/pagy/extras/searchkick.rb">searchkick.rb</a></li>
 </ul>
-<doc-anchor-target id="passive-mode-1">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#passive-mode-1">#</doc-anchor-trigger>
-        <span>Passive mode</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="pagynew_from_searchkickresults-vars-">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagynew_from_searchkickresults-vars-">#</doc-anchor-trigger>
-        <span>Pagy.new_from_searchkick(results, vars =</span>
-    </h3>
-</doc-anchor-target>
-<p>This constructor accepts a <code v-pre>Searchkick::Results</code> as the first argument, plus the usual optional variable hash. It sets the <code v-pre>:items</code>, <code v-pre>:page</code> and <code v-pre>:count</code> pagy variables extracted/calculated out of the <code v-pre>Searchkick::Results</code> object.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby">@results = Model.search('*', page: 2, per_page: 10, ...)
-@pagy    = Pagy.new_from_searchkick(@results, ...)</code></pre>
-</doc-codeblock></div>
-<p><strong>Notice</strong>: you have to take care of manually manage all the params for your search, however the method extracts the <code v-pre>:items</code>, <code v-pre>:page</code> and <code v-pre>:count</code> from the results object, so you don&#x27;t need to pass that again. If you prefer to manage the pagination automatically, see below.</p>
-<doc-anchor-target id="active-mode-1">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#active-mode-1">#</doc-anchor-trigger>
-        <span>Active Mode</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="pagysearchkick-module">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagysearchkick-module">#</doc-anchor-trigger>
-        <span>Pagy::Searchkick module</span>
-    </h2>
-</doc-anchor-target>
-<p>Extend your model with the <code v-pre>Pagy::Searchkick</code> micro-module:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby">extend Pagy::Searchkick</code></pre>
-</doc-codeblock></div>
-<p>The <code v-pre>Pagy::Searchkick</code> adds the <code v-pre>pagy_search</code> class method that you must use in place of the standard <code v-pre>search</code> method when you want to paginate the search response.</p>
-<doc-anchor-target id="pagy_search">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_search">#</doc-anchor-trigger>
-        <span>pagy_search(...)</span>
-    </h3>
-</doc-anchor-target>
-<p>This method accepts the same arguments of the <code v-pre>search</code> method and you must use it in its place. This extra uses it in order to capture the arguments, automatically merging the calculated <code v-pre>:page</code> and <code v-pre>:per_page</code> options before passing them to the standard <code v-pre>search</code> method internally.</p>
 <doc-anchor-target id="variables">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#variables">#</doc-anchor-trigger>
@@ -376,7 +403,13 @@ Searchkick.extend Pagy::Searchkick</code></pre>
         <span>Methods</span>
     </h3>
 </doc-anchor-target>
-<p>This extra adds the <code v-pre>pagy_searchkick</code> method to the <code v-pre>Pagy::Backend</code> to be used when you have to paginate a <code v-pre>Searchkick::Results</code> object. It also adds a <code v-pre>pagy_searchkick_get_vars</code> sub-method, used for easy customization of variables by overriding.</p>
+<doc-anchor-target id="pagynew_from_searchkickresults-vars-">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pagynew_from_searchkickresults-vars-">#</doc-anchor-trigger>
+        <span>Pagy.new_from_searchkick(results, vars =</span>
+    </h4>
+</doc-anchor-target>
+<p>This constructor accepts a <code v-pre>Searchkick::Results</code> as the first argument, plus the usual optional variable hash. It sets the <code v-pre>:items</code>, <code v-pre>:page</code> and <code v-pre>:count</code> pagy variables extracted/calculated out of it.</p>
 <doc-anchor-target id="pagy_searchkickpagy_search_args-vars">
     <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_searchkickpagy_search_args-vars">#</doc-anchor-trigger>
@@ -384,15 +417,7 @@ Searchkick.extend Pagy::Searchkick</code></pre>
     </h4>
 </doc-anchor-target>
 <p>This method is similar to the generic <code v-pre>pagy</code> method, but specialized for Searchkick. (see the <a href="../../api/backend/#pagycollection-varsnil">pagy doc</a>)</p>
-<p>It expects to receive a <code v-pre>Model.pagy_search(...)</code> result and returns a paginated response. You can use it in a couple of ways:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby">@pagy, @results = pagy_searchkick(Model.pagy_search(params[:q]), ...)
-...
-@records = @results.results
-
-# or directly with the collection you need (e.g. records)
-@pagy, @records = pagy_searchkick(Model.pagy_search(params[:q]).results, ...)</code></pre>
-</doc-codeblock></div>
+<p>It expects to receive <code v-pre>YourModel.pagy_search(...)</code> result and returns a paginated response.</p>
 <doc-anchor-target id="pagy_searchkick_get_varsarray">
     <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_searchkick_get_varsarray">#</doc-anchor-trigger>
@@ -400,6 +425,19 @@ Searchkick.extend Pagy::Searchkick</code></pre>
     </h4>
 </doc-anchor-target>
 <p>This sub-method is similar to the <code v-pre>pagy_get_vars</code> sub-method, but it is called only by the <code v-pre>pagy_searchkick</code> method. (see the <a href="../../api/backend/#pagy_get_varscollection-vars">pagy_get_vars doc</a>).</p>
+<doc-anchor-target id="pagysearchkick-module">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pagysearchkick-module">#</doc-anchor-trigger>
+        <span>Pagy::Searchkick module</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="pagy_search">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_search">#</doc-anchor-trigger>
+        <span>pagy_search(...)</span>
+    </h4>
+</doc-anchor-target>
+<p>This method accepts the same arguments of the <code v-pre>search</code> method and you must use it in its place in active mode.</p>
 
                                 
                                 <!-- Required only on API pages -->
