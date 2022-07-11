@@ -27,6 +27,7 @@ Use `pagy_search` in lieu of the standard `ms_search` method.
 !!!
 
 ### Usage
+<br>
 
 ||| Model
 ```ruby
@@ -49,6 +50,7 @@ Pagy creates its object out of your result.
 !!!
 
 ### Usage
+<br>
 
 ||| Controller (Search)
 ```ruby
