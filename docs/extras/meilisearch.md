@@ -31,7 +31,7 @@ Use `pagy_search` in lieu of the standard `ms_search` method.
 
 ||| Model
 ```ruby
-extend Pagy::Meilisearch
+extend Pagy::Meilisearch # adds pagy_search singleton method to model
 ActiveRecord_Relation.include Pagy::Meilisearch  # <--- (optional) if you use `includes` makes it work as expected
 ```
 |||
@@ -79,16 +79,6 @@ This constructor accepts a Meilisearch as the first argument, plus the usual opt
 **Notice**: you have to take care of manually manage all the params for your search, however the method extracts the `:items`, `:page` and `:count` from the results object, so you don't need to pass that again. If you prefer to manage the pagination automatically, see below.
 
 ## Active Mode
-
-### Pagy::Meilisearch module
-
-Extend your model with the `Pagy::Meilisearch` micro-module:
-
-```ruby
-extend Pagy::Meilisearch
-```
-
-The `Pagy::Meilisearch` adds the `pagy_search` class method that you must use in place of the standard `search` method when you want to paginate the search response.
 
 ### pagy_search(...)
 
