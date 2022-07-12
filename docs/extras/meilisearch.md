@@ -102,6 +102,7 @@ This method is similar to the generic `pagy` method, but specialized for Meilise
 
 It expects to receive a `Model.pagy_search(...)` result and returns a paginated response. You can use it in a couple of ways:
 
+||| Controller
 ```ruby
 @pagy, @results = pagy_meilisearch(Model.pagy_search(params[:q]), ...)
 ...
@@ -110,6 +111,7 @@ It expects to receive a `Model.pagy_search(...)` result and returns a paginated 
 # or directly with the collection you need (e.g. records)
 @pagy, @records = pagy_meilisearch(Model.pagy_search(params[:q]).results, ...)
 ```
+|||
 
 ==- `pagy_meilisearch_get_vars(array)`
 
