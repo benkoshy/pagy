@@ -74,15 +74,16 @@ Pagy object created from **your** results.
 
 ## Pasive mode
 
-### Pagy.new_from_meilisearch
-
+==- `Pagy.new_from_meilisearch`
 This constructor accepts a Meilisearch as the first argument, plus the usual optional variable hash. 
+===
 
 ## Active Mode
 
-### pagy_search(...)
+==- `pagy_search(...)`
 
 This method accepts the same arguments of the `search` method and you must use it in its place. This extra uses it in order to capture the arguments, automatically merging the calculated `:offset` and `:limit` options before passing them to the standard `search` method internally.
+===
 
 ### Variables
 
@@ -95,7 +96,7 @@ This method accepts the same arguments of the `search` method and you must use i
 
 This extra adds the `pagy_meilisearch` method to the `Pagy::Backend` to be used when you have to paginate a Meilisearch object. It also adds a `pagy_meilisearch_get_vars` sub-method, used for easy customization of variables by overriding.
 
-### pagy_meilisearch(Model.pagy_search(...), vars={}})
+==- `pagy_meilisearch(Model.pagy_search(...), vars={}})`
 
 This method is similar to the generic `pagy` method, but specialized for Meilisearch. (see the [pagy doc](/docs/api/backend.md#pagycollection-varsnil))
 
@@ -110,6 +111,7 @@ It expects to receive a `Model.pagy_search(...)` result and returns a paginated 
 @pagy, @records = pagy_meilisearch(Model.pagy_search(params[:q]).results, ...)
 ```
 
-### pagy_meilisearch_get_vars(array)
+==- `pagy_meilisearch_get_vars(array)`
 
 This sub-method is similar to the `pagy_get_vars` sub-method, but it is called only by the `pagy_meilisearch` method. (see the [pagy_get_vars doc](/docs/api/backend.md#pagy_get_varscollection-vars)).
+===
