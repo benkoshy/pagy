@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.710902198929">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.710986498950">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.3.0.710902198929" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.3.0.710986498950" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.710902198929" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.710986498950" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.710902198929" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.710902198929" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.710986498950" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.710986498950" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -283,7 +283,7 @@ Searchkick.extend Pagy::Searchkick</code></pre>
         </div>
         <div class="pr-5 ml-3 w-full">
             <h5>Pagy searches and paginates</h5>
-<p>You use the <code v-pre>pagy_search</code> method in place of the standard <code v-pre>search</code> method.</p>
+<p>You use the <code v-pre>pagy_search</code> method in place of the <code v-pre>search</code> method.</p>
         </div>
     </div>
 </div>
@@ -369,10 +369,10 @@ collection = Searchkick.pagy_search(params[:q], models: [Article, Categories])
 <li><a href="https://github.com/ddnexus/pagy/blob/master/lib/pagy/extras/searchkick.rb">searchkick.rb</a></li>
 </ul>
 <doc-anchor-target id="variables">
-    <h3>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#variables">#</doc-anchor-trigger>
         <span>Variables</span>
-    </h3>
+    </h2>
 </doc-anchor-target>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
@@ -398,10 +398,10 @@ collection = Searchkick.pagy_search(params[:q], models: [Article, Categories])
 </table>
 </div>
 <doc-anchor-target id="methods">
-    <h3>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#methods">#</doc-anchor-trigger>
         <span>Methods</span>
-    </h3>
+    </h2>
 </doc-anchor-target>
 <doc-panels>
    <doc-panel id="pagy-searchkick-pagy-search" collapsed>
@@ -410,12 +410,12 @@ collection = Searchkick.pagy_search(params[:q], models: [Article, Categories])
    </doc-panel>
    <doc-panel id="pagy-new-from-searchkick-results-vars" collapsed>
        <template #title><code v-pre>Pagy.new_from_searchkick(results, vars={})</code></template>
-<p>This constructor accepts a <code v-pre>Searchkick::Results</code> as the first argument, plus the usual optional variable hash. It sets the <code v-pre>:items</code>, <code v-pre>:page</code> and <code v-pre>:count</code> pagy variables extracted/calculated out of it.</p>
+<p>This constructor accepts a <code v-pre>Searchkick::Results</code> as the first argument, plus the optional pagy variables. It automatically sets the <code v-pre>:items</code>, <code v-pre>:page</code> and <code v-pre>:count</code> pagy variables extracted/calculated out of it.</p>
    </doc-panel>
    <doc-panel id="pagy-searchkick-pagy-search-args-vars" collapsed>
        <template #title><code v-pre>pagy_searchkick(pagy_search_args, vars={})</code></template>
 <p>This method is similar to the generic <code v-pre>pagy</code> method, but specialized for Searchkick. (see the <a href="../../api/backend/#pagycollection-varsnil">pagy doc</a>)</p>
-<p>It expects to receive <code v-pre>YourModel.pagy_search(...)</code> result and returns a paginated response.</p>
+<p>It expects to receive <code v-pre>YourModel.pagy_search(...)</code> result and returns the paginated response.</p>
    </doc-panel>
    <doc-panel id="pagy-searchkick-get-vars-array" collapsed>
        <template #title><code v-pre>pagy_searchkick_get_vars(array)</code></template>
