@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.710986498950">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.711077367943">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.3.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.3.0.710986498950" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.3.0.711077367943" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.710986498950" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.711077367943" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.710986498950" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.710986498950" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.711077367943" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.711077367943" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -233,7 +233,24 @@
     <div><a href="../../../categories/backend-extras/">Backend Extras</a></div>
 </div>
 
-<p>This extra adds a specialized pagination for collections from sql databases with <code v-pre>GROUP BY</code> clauses, by computing the total number of results with <code v-pre>COUNT(*) OVER ()</code>. It was tested against MySQL (8.0.17) and Postgres (11.5). Before using in a different database, make sure the sql <code v-pre>COUNT(*) OVER ()</code> performs a count of all the lines after the <code v-pre>GROUP BY</code> clause is applied.</p>
+<p>This extra adds a specialized pagination for collections from sql databases with <code v-pre>GROUP BY</code> clauses, by computing the total number of results with <code v-pre>COUNT(*) OVER ()</code>.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-yellow-500"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-yellow-500" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
+                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>Tested against MySQL (8.0.17) and Postgres (11.5).
+Before using in a different database, make sure the sql <code v-pre>COUNT(*) OVER ()</code> performs a count of all the lines after the <code v-pre>GROUP BY</code> clause is applied.</p>
+        </div>
+    </div>
+</div>
 <doc-anchor-target id="synopsis">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#synopsis">#</doc-anchor-trigger>
@@ -257,10 +274,7 @@
     </div>
     <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby">@pagy_a, @items   = pagy_arel(a_collection, ...)
-
-# independently paginate some other collections as usual
-@pagy_b, @records = pagy(some_scope, ...)</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby">@pagy, @items = pagy_arel(a_collection, ...)</code></pre>
 </doc-codeblock></div>
     </div>
 </div>
@@ -279,29 +293,20 @@
         <span>Methods</span>
     </h2>
 </doc-anchor-target>
-<p>This extra adds the <code v-pre>pagy_arel</code> method to the <code v-pre>Pagy::Backend</code> to be used in place (or in parallel) of the <code v-pre>pagy</code> method when you want to paginate a collection with sql <code v-pre>GROUP BY</code> clause, where the number of groups/rows is big (for instance when group by day of the last 3 years). It also adds a <code v-pre>pagy_arel_get_variables</code> sub-method, used for easy customization of variables by overriding.</p>
-<p><strong>Notice</strong>: there is no <code v-pre>pagy_arel_get_items</code> method to override, since the items are fetched directly by the specialized <code v-pre>pagy_arel</code> method.</p>
-<doc-anchor-target id="pagy_arelcollection-varsnil">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_arelcollection-varsnil">#</doc-anchor-trigger>
-        <span>pagy_arel(collection, vars=nil)</span>
-    </h3>
-</doc-anchor-target>
+<doc-panels>
+   <doc-panel id="pagy-arel-collection-vars-nil" collapsed>
+       <template #title><code v-pre>pagy_arel(collection, vars=nil)</code></template>
 <p>This method is the same as the generic <code v-pre>pagy</code> method, but with improved speed for SQL <code v-pre>GROUP BY</code> collections. (see the <a href="../../api/backend/#pagycollection-varsnil">pagy doc</a>)</p>
-<doc-anchor-target id="pagy_arel_get_varscollection">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_arel_get_varscollection">#</doc-anchor-trigger>
-        <span>pagy_arel_get_vars(collection)</span>
-    </h3>
-</doc-anchor-target>
+   </doc-panel>
+   <doc-panel id="pagy-arel-get-vars-collection" collapsed>
+       <template #title><code v-pre>pagy_arel_get_vars(collection)</code></template>
 <p>This sub-method is the same as the <code v-pre>pagy_get_vars</code> sub-method, but it is called only by the <code v-pre>pagy_arel</code> method. (see the <a href="../../api/backend/#pagy_get_varscollection-vars">pagy_get_vars doc</a>).</p>
-<doc-anchor-target id="pagy_arel_countcollection">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_arel_countcollection">#</doc-anchor-trigger>
-        <span>pagy_arel_count(collection)</span>
-    </h3>
-</doc-anchor-target>
+   </doc-panel>
+   <doc-panel id="pagy-arel-count-collection" collapsed>
+       <template #title><code v-pre>pagy_arel_count(collection)</code></template>
 <p>This sub-method it is called only by the <code v-pre>pagy_get_vars</code> method. It will detect which query to perform based on the active record groups (sql <code v-pre>GROUP BY</code>s). In case there aren&#x27;t group values performs a normal <code v-pre>.count(:all)</code>, otherwise it will perform a <code v-pre>COUNT(*) OVER ()</code>. The last tells database to perform a count of all the lines after the <code v-pre>GROUP BY</code> clause is applied.</p>
+   </doc-panel>
+</doc-panels>
 
                                 
                                 <!-- Required only on API pages -->
