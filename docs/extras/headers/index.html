@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.3.0.711077367943">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.711187346335">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 2.3.0">
+    <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
     <title>Headers | Pagy</title>
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.3.0.711077367943" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.711187346335" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.3.0.711077367943" data-turbo-eval="false" defer></script>
-    <script type="text/javascript" src="../../../resources/js/retype.js?v=2.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.3.0.711077367943" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.3.0.711077367943" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.711187346335" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.711187346335" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.4.0.711187346335" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -234,6 +234,12 @@
 </div>
 
 <p>This extra implements the <a href="https://tools.ietf.org/html/rfc8288">RFC-8288</a> compliant http response headers (and other helpers) useful for API pagination.</p>
+<doc-anchor-target id="advantages">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#advantages">#</doc-anchor-trigger>
+        <span>Advantages</span>
+    </h2>
+</doc-anchor-target>
 <ul>
 <li>No need for an extra dependency</li>
 <li>No need to learn yet another interface</li>
@@ -388,47 +394,78 @@ Page-Items 20</code></pre>
 </div>
 <p>As usual, depending on the scope of the customization, you can set the variables globally or for a single pagy instance.</p>
 <p>For example, the following will change the header names and will suppress the <code v-pre>:pages</code> (&#x27;Total-Pages&#x27;) header:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby"># globally
-Pagy::DEFAULT[:headers] = {page: 'Current-Page', items: 'Per-Page', pages: false, count: 'Total'}
-
-# or for single instance
-pagy, records = pagy(collection, headers: {page: 'Current-Page', items: 'Per-Page', pages: false, count: 'Total'})</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby"># global
+Pagy::DEFAULT[:headers] = {page: 'Current-Page', 
+                           items: 'Per-Page', 
+                           pages: false, 
+                           count: 'Total'}</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>Controller</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-ruby"><code v-pre class="language-ruby"># or for single instance
+pagy, records = pagy(collection, 
+                     headers: {page: 'Current-Page', 
+                               items: 'Per-Page', 
+                               pages: false, 
+                               count: 'Total'})</code></pre>
+</doc-codeblock></div>
+    </div>
+</div>
 <doc-anchor-target id="methods">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#methods">#</doc-anchor-trigger>
         <span>Methods</span>
     </h2>
 </doc-anchor-target>
-<p>This extra adds a few methods to the <code v-pre>Pagy::Backend</code> (available in your controllers).</p>
-<doc-anchor-target id="pagy_headers_mergepagy">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_headers_mergepagy">#</doc-anchor-trigger>
-        <span>pagy_headers_merge(pagy)</span>
-    </h3>
-</doc-anchor-target>
+<doc-panels>
+   <doc-panel id="pagy-headers-merge-pagy" collapsed>
+       <template #title><code v-pre>pagy_headers_merge(pagy)</code></template>
 <p>This method relies on the <code v-pre>response</code> method in your controller returning a <code v-pre>Rack::Response</code> object.</p>
 <p>You should use it before rendering: it simply merges the <code v-pre>pagy_headers</code> to the <code v-pre>response.headers</code> internally.</p>
 <p>If your app doesn&#x27;t implement the <code v-pre>response</code> object that way, you should override the <code v-pre>pagy_headers_merge</code> method in your controller or use the <code v-pre>pagy_headers</code> method directly.</p>
-<doc-anchor-target id="pagy_headerspagy">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_headerspagy">#</doc-anchor-trigger>
-        <span>pagy_headers(pagy)</span>
-    </h3>
-</doc-anchor-target>
+   </doc-panel>
+   <doc-panel id="pagy-headers-pagy" collapsed>
+       <template #title><code v-pre>pagy_headers(pagy)</code></template>
 <p>This method generates a hash of <a href="https://tools.ietf.org/html/rfc8288">RFC-8288</a> compliant http headers to send with the response. It is internally used by the <code v-pre>pagy_headers_merge</code> method, so you usually don&#x27;t need to use it directly. However, if you need to edit the headers that pagy generates (for example adding extra <code v-pre>Link</code> headers), you can override it in your own controller.</p>
-<doc-anchor-target id="pagy_headers_hashpagy">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_headers_hashpagy">#</doc-anchor-trigger>
-        <span>pagy_headers_hash(pagy)</span>
-    </h3>
-</doc-anchor-target>
+   </doc-panel>
+   <doc-panel id="pagy-headers-hash-pagy" collapsed>
+       <template #title><code v-pre>pagy_headers_hash(pagy)</code></template>
 <p>This method generates a hash structure of the headers, useful only if you want to include the headers as metadata within your JSON. For example:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">render json: records.as_json.merge!(meta: {pagination: pagy_headers_hash(pagy)})</code></pre>
 </doc-codeblock></div>
-<p><strong>Notice</strong>: If you need a more complete set of metadata (e.g. if you use some javascript frontend) see the <a href="../metadata/">metadata extra</a>.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-300" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Metadata</h5>
+<p>For a more complete set of metadata you should use the <a href="../metadata/">metadata extra</a>.</p>
+        </div>
+    </div>
+</div>
+   </doc-panel>
+</doc-panels>
 
                                 
                                 <!-- Required only on API pages -->
