@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.711187369415">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.711187392889">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -12,7 +12,7 @@
     <!-- Primary Meta Tags -->
     <title>Foundation | Pagy</title>
     <meta name="title" content="Foundation | Pagy">
-    <meta name="description" content="This extra adds nav helper and templates for the Foundation pagination component." />
+    <meta name="description" content="This extra adds nav helpers and templates for the Foundation pagination component." />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://ddnexus.github.io/pagy/docs/extras/foundation/" />
@@ -21,22 +21,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ddnexus.github.io/pagy/docs/extras/foundation/">
     <meta property="og:title" content="Foundation | Pagy">
-    <meta property="og:description" content="This extra adds nav helper and templates for the Foundation pagination component.">
+    <meta property="og:description" content="This extra adds nav helpers and templates for the Foundation pagination component.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ddnexus.github.io/pagy/docs/extras/foundation/">
     <meta property="twitter:title" content="Foundation | Pagy">
-    <meta property="twitter:description" content="This extra adds nav helper and templates for the Foundation pagination component.">
+    <meta property="twitter:description" content="This extra adds nav helpers and templates for the Foundation pagination component.">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.4.0.711187369415" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.711187392889" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.711187369415" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.711187392889" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.711187369415" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.4.0.711187369415" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.711187392889" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.4.0.711187392889" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -233,7 +233,7 @@
     <div><a href="../../../categories/frontend-extras/">Frontend Extras</a></div>
 </div>
 
-<p>This extra adds nav helper and templates for the Foundation <a href="https://foundation.zurb.com/sites/docs/pagination.html">pagination component</a>.</p>
+<p>This extra adds nav helpers and templates for the Foundation <a href="https://foundation.zurb.com/sites/docs/pagination.html">pagination component</a>.</p>
 <doc-anchor-target id="synopsis">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#synopsis">#</doc-anchor-trigger>
@@ -292,30 +292,22 @@
         <span>Methods</span>
     </h2>
 </doc-anchor-target>
-<p>This extra adds 3 nav helpers to the <code v-pre>Pagy::Frontend</code> module. You can customize them by direct overriding in your own view helper.</p>
-<doc-anchor-target id="pagy_foundation_navpagy">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_foundation_navpagy">#</doc-anchor-trigger>
-        <span>pagy_foundation_nav(pagy)</span>
-    </h3>
-</doc-anchor-target>
+<doc-panels>
+   <doc-panel id="pagy-foundation-nav-pagy" collapsed>
+       <template #title><code v-pre>pagy_foundation_nav(pagy)</code></template>
 <p>This method is the same as the <code v-pre>pagy_nav</code>, but customized for Foundation.</p>
 <p>See the <a href="../../api/frontend/#pagy_navpagy-">pagy_nav(pagy, ...)</a> documentation.</p>
 <p>The <code v-pre>foundation_nav.*</code> templates produce the same output, and can be used as an easier (but slower) starting point to override it. See <a href="../../how-to/#use-templates">How to use templates</a>.</p>
-<doc-anchor-target id="pagy_foundation_nav_jspagy-">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_foundation_nav_jspagy-">#</doc-anchor-trigger>
-        <span>pagy_foundation_nav_js(pagy, ...)</span>
-    </h3>
-</doc-anchor-target>
+   </doc-panel>
+   <doc-panel id="pagy-foundation-nav-js-pagy" collapsed>
+       <template #title><code v-pre>pagy_foundation_nav_js(pagy, ...)</code></template>
 <p>See the <a href="../../api/javascript/navs/">Javascript Navs</a> documentation.</p>
-<doc-anchor-target id="pagy_foundation_combo_nav_jspagy-">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_foundation_combo_nav_jspagy-">#</doc-anchor-trigger>
-        <span>pagy_foundation_combo_nav_js(pagy, ...)</span>
-    </h3>
-</doc-anchor-target>
+   </doc-panel>
+   <doc-panel id="pagy-foundation-combo-nav-js-pagy" collapsed>
+       <template #title><code v-pre>pagy_foundation_combo_nav_js(pagy, ...)</code></template>
 <p>See the <a href="../../api/javascript/combo-navs/">Javascript Combo Navs</a> documentation.</p>
+   </doc-panel>
+</doc-panels>
 
                                 
                                 <!-- Required only on API pages -->
