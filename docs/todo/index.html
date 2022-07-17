@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.711355905695">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.711415576948">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -12,7 +12,7 @@
     <!-- Primary Meta Tags -->
     <title>TO DO | Pagy</title>
     <meta name="title" content="TO DO | Pagy">
-    <meta name="description" content="Remove all Jekyll related files" />
+    <meta name="description" content="[] Refactor the description of Pagy::Backend" />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://ddnexus.github.io/pagy/docs/todo/" />
@@ -21,21 +21,21 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ddnexus.github.io/pagy/docs/todo/">
     <meta property="og:title" content="TO DO | Pagy">
-    <meta property="og:description" content="Remove all Jekyll related files">
+    <meta property="og:description" content="[] Refactor the description of Pagy::Backend">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ddnexus.github.io/pagy/docs/todo/">
     <meta property="twitter:title" content="TO DO | Pagy">
-    <meta property="twitter:description" content="Remove all Jekyll related files">
+    <meta property="twitter:description" content="[] Refactor the description of Pagy::Backend">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.711355905695" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.711415576948" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.711355905695" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.711415576948" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.711355905695" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.711415576948" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -227,43 +227,12 @@
         <span>TO DO</span>
     </h1>
 </doc-anchor-target>
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Remove all Jekyll related files</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Remove all <code v-pre>docs-site</code> related configuration</li>
-<li>[] Replace the old Jekyll based docs in <code v-pre>docker/README.md</code> with the <code v-pre>retype</code> based docs.</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Change the icons folders for <code v-pre>api</code> and <code v-pre>extras</code> to icons that consistent with having a content, not being just a container.</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Try a small non-invasive icon for the elements in <code v-pre>api</code> and in <code v-pre>extras</code> (not sure it will improve). Better if the icons are related to the categories</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Add icons to all the entries in the left bar</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Add categories to each page in <code v-pre>api</code> and <code v-pre>extras</code> dirs</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Add the <code v-pre>image: none</code> to all the categorized pages</li>
-<li>[] Add proper descriptions for each page that has categories</li>
+<ul>
 <li>[] Refactor the description of <code v-pre>Pagy::Backend</code></li>
 <li>[] Refactor the description of <code v-pre>Pagy::I18n</code> (translation + localization)</li>
-<li>[] Refactor of <code v-pre>index.md</code>
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> It should be Home and use the classic icon</li>
-<li>[] Basic concepts should be a sub topic</li>
-</ul>
-</li>
-<li>[] Refactoring of How To
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Extract Quick Start from How to
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Replace the links in other documents</li>
-</ul>
-</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Extract the Configuration section
-<ul class="contains-task-list">
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Replace the links in other document</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> Link the <code v-pre>config/pagy.js</code> as a download link</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>[] Link the Javascript Readme to the javascript docs</li>
-<li class="task-list-item"><input disabled="disabled" type="checkbox" checked="checked" /> <code v-pre>retype.yml</code> update with pagy version (if hardcoded, add automatic replacement and condition in tests)</li>
+<li>[] Refactor of <code v-pre>index.md</code>: Rewrite the content... eventually moving part out or the README.</li>
+<li>[] Refactoring of How To: Try the panels or split in sup pages?</li>
 <li>[] Reorganize ALL the content with retype tabs, panels, columns, alert, warnings, notes etc.</li>
-<li>[] Decide whether removing the <code v-pre>extras.md</code> and <code v-pre>api.md</code> in favour of categories auto/generated pages would simplify the docs.</li>
 </ul>
 
                                 
