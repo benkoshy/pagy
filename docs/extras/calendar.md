@@ -22,34 +22,32 @@ On the other hand it does not make much sense for the result of a search that hi
 
 ## Synopsis
 
-Require and configure it in the `pagy.rb` initializer:
-
+||| initializer (pagy.rb)
 ```ruby
 require 'pagy/extras/calendar'
-# Optional: customize the default
 ```
+|||
 
-Implement and use it in your controllers:
-
+||| controller
 ```ruby
-# Define the pagy_calendar_period method in your application
+# e.g. application_controller.rb
 def pagy_calendar_period(collection)
   return_period_array_using(collection)
 end
 
-# Define the pagy_calendar_filter method in your application  
+# e.g. application_controller.rb
 def pagy_calendar_filter(collection, from, to)
   return_filtered_collection_using(collection, from, to)
 end
 
-# Use it in your actions:
+# some action:
 @calendar, @pagy, @records = pagy_calendar(collection, year:  { size:  [1, 1, 1, 1], ... },
                                                        month: { size:  [0, 12, 12, 0], ... },
                                                        pagy:  { items: 10, ...})
 ```
+|||
 
-Use the calendar and pagy objects in your views:
-
+||| view (template)
 ```erb
 <!-- calendar filtering -->
 <%== pagy_nav(@calendar[:year]) %>
@@ -63,6 +61,7 @@ Use the calendar and pagy objects in your views:
 <!-- standard pagination of the selected month -->
 <%== pagy_nav(@pagy) %>
 ```
+|||
 
 See also a few examples about [How to wrap existing pagination with pagy_calendar](/docs/how-to.md#wrap-existing-pagination-with-pagy_calendar).
 
@@ -87,7 +86,7 @@ cd pagy
 rackup -o 0.0.0.0 -p 8080 apps/pagy_calendar_app.ru
 ```
 
-Then point your browser to `http://0.0.0.0:8080`.
+Then point your browser to http://0.0.0.0:8080.
 
 ## Variables and Accessors
 
@@ -101,7 +100,7 @@ See [Pagy::Calendar](/docs/api/calendar.md#variables)
 
 All the methods in this module are prefixed with the `"pagy_calendar"` string in order to avoid any possible conflict with your own methods when you include the module in your controller. They are also all private, so they will not be available as actions.
 
-### pagy_calendar(collection, configuration)
+==- `pagy_calendar(collection, configuration)`
 
 This method wraps one or more levels of calendar filtering on top of another backend pagination method (e.g. `pagy`, `pagy_arel`, `pagy_array`, `pagy_searchkick`, `pagy_elasticsearch_rails`, `pagy_meilisearch`, ...).
 
@@ -124,6 +123,7 @@ The `collection` argument (from `ActiveRecord`, `ElasticSearchRails`, `Searchkic
 The `configuration` argument must be a Hash structure with the keys representing the type of configuration and the values being the Hash of the variables that you want to pass for the creation of the specific pagy object (or a `boolean` for the [Active flag](#active-flag)). 
 
 The `configuration` hash can be composed by the following types of configuration:
+
 
 #### Calendar configuration
 
@@ -155,13 +155,16 @@ The calendar is active by default, however you can add an optional `:active` boo
 
 Take a look at the [pagy_calendar_app.ru](https://github.com/ddnexus/pagy/blob/master/apps/pagy_calendar_app.ru) for a simple example of a manual toggle in the UI. 
 
-### pagy_calendar_period(collection)
+===
+
+==- `pagy_calendar_period(collection)`
 
 **This method must be implemented by the application.**
 
 It receives a `collection` argument that must not be changed by the method, but can be used to return the starting and ending local `TimeWithZone` objects array defining the calendar `:period`. See the [Pagy::Calendar Variables](/docs/api/calendar.md#variables) for details.
 
 Depending on the type of storage, the `collection` argument can contain a different kind of object:
+
 
 #### ActiveRecord managed storage
 
@@ -197,8 +200,9 @@ See also [Time conversion](/docs/api/calendar.md#time-conversions) for details.
 _If you use `ElasticSearchRails`, `Searchkick`, `Meilisearch` the `collection` argument is just the Array of the captured search arguments that you passed to the `Model.pagy_search` method. That array is what pagy uses internally to setup its variables before passing it to the standard `Model.search` method to do the actual search._
 
 So you should use what you need from the `collection` array and do your own `Model.search(...)` in order to get the starting and ending local `TimeWithZone` objects array to return. 
+===
 
-### pagy_calendar_filter(collection, from, to)
+==- `pagy_calendar_filter(collection, from, to)`
 
 **This method must be implemented by the application.**
 
@@ -226,6 +230,8 @@ _If you use `ElasticSearchRails`, `Searchkick`, `Meilisearch` the `collection` a
 
 So in order to filter the actual search with the `from` and `to` local `TimeWithZone` objects, you should simply return the same array with the filtering added to its relevant item. Pagy will use it to do the actual (filtered) search. 
 
+===
+
 ## Customization
 
 ### Order
@@ -251,13 +257,15 @@ You can use the calendar objects with any `pagy_*nav` and `pagy_*nav_js` helpers
 
 The `pagy_*combo_nav_js` keeps into account only page numbers and not labels, so it is not very useful (if at all) with `Pagy::Calendar::*` objects.
 
-### pagy_calendar_url_at(@calendar, time)
+==- `pagy_calendar_url_at(@calendar, time)`
 
 This helper takes the `@calendar` and a `TimeWithZone` objects and returns the url complete with all the params for the pages in each bars that include the passed time.
 
 For example: `pagy_calendar_url_at(@calendar, Time.zone.now)` will select the the bars pointing to today. You can see a working example in the [pagy_calendar_app.ru](https://github.com/ddnexus/pagy/blob/master/apps/pagy_calendar_app.ru) file.
 
 If `time` is outside the pagination range it raises a `Pagy::Calendar::OutOfRangeError`.
+
+===
 
 ### Label format
 
@@ -276,4 +284,6 @@ You have a couple of options:
 
 ## Caveats
 
-- Calendar pages with no records are accessible but empty: you may want to display some message when `@records.empty?`.
+!!!warning Display Message when empty
+Calendar pages with no records are accessible but empty: you may want to display some message when `@records.empty?`.
+!!!
