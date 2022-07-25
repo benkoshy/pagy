@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.711419066325">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.712068099100">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -33,12 +33,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.4.0.711419066325" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.712068099100" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.711419066325" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.712068099100" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.711419066325" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.4.0.711419066325" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.712068099100" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.4.0.712068099100" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -257,29 +257,44 @@
         <span>Synopsis</span>
     </h2>
 </doc-anchor-target>
-<p>Require and configure it in the <code v-pre>pagy.rb</code> initializer:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>initializer (pagy.rb)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby">require 'pagy/extras/calendar'
-# Optional: customize the default</code></pre>
+<pre class="language-ruby"><code v-pre class="language-ruby">require 'pagy/extras/calendar'</code></pre>
 </doc-codeblock></div>
-<p>Implement and use it in your controllers:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>controller</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-ruby"><code v-pre class="language-ruby"># Define the pagy_calendar_period method in your application
+<pre class="language-ruby"><code v-pre class="language-ruby"># e.g. application_controller.rb
 def pagy_calendar_period(collection)
   return_period_array_using(collection)
 end
 
-# Define the pagy_calendar_filter method in your application  
+# e.g. application_controller.rb
 def pagy_calendar_filter(collection, from, to)
   return_filtered_collection_using(collection, from, to)
 end
 
-# Use it in your actions:
+# some action:
 @calendar, @pagy, @records = pagy_calendar(collection, year:  { size:  [1, 1, 1, 1], ... },
                                                        month: { size:  [0, 12, 12, 0], ... },
                                                        pagy:  { items: 10, ...})</code></pre>
 </doc-codeblock></div>
-<p>Use the calendar and pagy objects in your views:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>view (template)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-erb"><code v-pre class="language-erb">&lt;!-- calendar filtering --&gt;
 &lt;%== pagy_nav(@calendar[:year]) %&gt;
@@ -293,6 +308,8 @@ end
 &lt;!-- standard pagination of the selected month --&gt;
 &lt;%== pagy_nav(@pagy) %&gt;</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <p>See also a few examples about <a href="../../how-to/#wrap-existing-pagination-with-pagy_calendar">How to wrap existing pagination with pagy_calendar</a>.</p>
 <p><strong>Notice</strong> For a complete and detailed example, see the <a href="https://github.com/ddnexus/pagy/blob/master/apps/pagy_calendar_app.ru">pagy_calendar_app.ru</a>.</p>
 <doc-anchor-target id="usage">
@@ -315,7 +332,7 @@ end
 cd pagy
 rackup -o 0.0.0.0 -p 8080 apps/pagy_calendar_app.ru</code></pre>
 </doc-codeblock></div>
-<p>Then point your browser to <code v-pre>http://0.0.0.0:8080</code>.</p>
+<p>Then point your browser to <a href="http://0.0.0.0:8080">http://0.0.0.0:8080</a>.</p>
 <doc-anchor-target id="variables-and-accessors">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#variables-and-accessors">#</doc-anchor-trigger>
@@ -339,12 +356,8 @@ rackup -o 0.0.0.0 -p 8080 apps/pagy_calendar_app.ru</code></pre>
     </h2>
 </doc-anchor-target>
 <p>All the methods in this module are prefixed with the <code v-pre>&quot;pagy_calendar&quot;</code> string in order to avoid any possible conflict with your own methods when you include the module in your controller. They are also all private, so they will not be available as actions.</p>
-<doc-anchor-target id="pagy_calendarcollection-configuration">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_calendarcollection-configuration">#</doc-anchor-trigger>
-        <span>pagy_calendar(collection, configuration)</span>
-    </h3>
-</doc-anchor-target>
+<doc-panel id="pagy-calendar-collection-configuration" collapsed>
+    <template #title><code v-pre>pagy_calendar(collection, configuration)</code></template>
 <p>This method wraps one or more levels of calendar filtering on top of another backend pagination method (e.g. <code v-pre>pagy</code>, <code v-pre>pagy_arel</code>, <code v-pre>pagy_array</code>, <code v-pre>pagy_searchkick</code>, <code v-pre>pagy_elasticsearch_rails</code>, <code v-pre>pagy_meilisearch</code>, ...).</p>
 <p>It filters the <code v-pre>collection</code> by the selected time units in the <code v-pre>configuration</code> (e.g. <code v-pre>year</code>, <code v-pre>month</code>, <code v-pre>day</code>, ...), and forwards it to the wrapped method.</p>
 <p>It returns an array with one more item than the usual two:</p>
@@ -398,12 +411,9 @@ rackup -o 0.0.0.0 -p 8080 apps/pagy_calendar_app.ru</code></pre>
 </doc-anchor-target>
 <p>The calendar is active by default, however you can add an optional <code v-pre>:active</code> boolean flag to the <code v-pre>configuration</code> hash in order to switch it ON or OFF, depending on its usefulness in different conditions (see the <doc-anchor-trigger to="#use-cases">Use cases</doc-anchor-trigger>).</p>
 <p>Take a look at the <a href="https://github.com/ddnexus/pagy/blob/master/apps/pagy_calendar_app.ru">pagy_calendar_app.ru</a> for a simple example of a manual toggle in the UI.</p>
-<doc-anchor-target id="pagy_calendar_periodcollection">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_calendar_periodcollection">#</doc-anchor-trigger>
-        <span>pagy_calendar_period(collection)</span>
-    </h3>
-</doc-anchor-target>
+</doc-panel>
+<doc-panel id="pagy-calendar-period-collection" collapsed>
+    <template #title><code v-pre>pagy_calendar_period(collection)</code></template>
 <p><strong>This method must be implemented by the application.</strong></p>
 <p>It receives a <code v-pre>collection</code> argument that must not be changed by the method, but can be used to return the starting and ending local <code v-pre>TimeWithZone</code> objects array defining the calendar <code v-pre>:period</code>. See the <a href="../../api/calendar/#variables">Pagy::Calendar Variables</a> for details.</p>
 <p>Depending on the type of storage, the <code v-pre>collection</code> argument can contain a different kind of object:</p>
@@ -445,12 +455,9 @@ end</code></pre>
 </doc-anchor-target>
 <p><em>If you use <code v-pre>ElasticSearchRails</code>, <code v-pre>Searchkick</code>, <code v-pre>Meilisearch</code> the <code v-pre>collection</code> argument is just the Array of the captured search arguments that you passed to the <code v-pre>Model.pagy_search</code> method. That array is what pagy uses internally to setup its variables before passing it to the standard <code v-pre>Model.search</code> method to do the actual search.</em></p>
 <p>So you should use what you need from the <code v-pre>collection</code> array and do your own <code v-pre>Model.search(...)</code> in order to get the starting and ending local <code v-pre>TimeWithZone</code> objects array to return.</p>
-<doc-anchor-target id="pagy_calendar_filtercollection-from-to">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_calendar_filtercollection-from-to">#</doc-anchor-trigger>
-        <span>pagy_calendar_filter(collection, from, to)</span>
-    </h3>
-</doc-anchor-target>
+</doc-panel>
+<doc-panel id="pagy-calendar-filter-collection-from-to" collapsed>
+    <template #title><code v-pre>pagy_calendar_filter(collection, from, to)</code></template>
 <p><strong>This method must be implemented by the application.</strong></p>
 <p>It receives the main <code v-pre>collection</code> and must return a filtered version of it using the <code v-pre>from</code> and <code v-pre>to</code> <strong>local Time</strong> objects.</p>
 <p>You should filter your collection with a logic equivalent to <code v-pre>storage_time &gt;= from &amp;&amp; storage_time &lt; to</code>, adapted to the time zone and syntax of your storage.</p>
@@ -476,6 +483,7 @@ end</code></pre>
 </doc-anchor-target>
 <p><em>If you use <code v-pre>ElasticSearchRails</code>, <code v-pre>Searchkick</code>, <code v-pre>Meilisearch</code> the <code v-pre>collection</code> argument is just the Array of the captured search arguments that you passed to the <code v-pre>Model.pagy_search</code> method. That array is what pagy uses internally to setup its variables before passing it to the standard <code v-pre>Model.search</code> method to do the actual search.</em></p>
 <p>So in order to filter the actual search with the <code v-pre>from</code> and <code v-pre>to</code> local <code v-pre>TimeWithZone</code> objects, you should simply return the same array with the filtering added to its relevant item. Pagy will use it to do the actual (filtered) search.</p>
+</doc-panel>
 <doc-anchor-target id="customization">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#customization">#</doc-anchor-trigger>
@@ -516,15 +524,12 @@ end</code></pre>
 </doc-anchor-target>
 <p>You can use the calendar objects with any <code v-pre>pagy_*nav</code> and <code v-pre>pagy_*nav_js</code> helpers or any templates in your views.</p>
 <p>The <code v-pre>pagy_*combo_nav_js</code> keeps into account only page numbers and not labels, so it is not very useful (if at all) with <code v-pre>Pagy::Calendar::*</code> objects.</p>
-<doc-anchor-target id="pagy_calendar_url_atcalendar-time">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_calendar_url_atcalendar-time">#</doc-anchor-trigger>
-        <span>pagy_calendar_url_at(@calendar, time)</span>
-    </h3>
-</doc-anchor-target>
+<doc-panel id="pagy-calendar-url-at-calendar-time" collapsed>
+    <template #title><code v-pre>pagy_calendar_url_at(@calendar, time)</code></template>
 <p>This helper takes the <code v-pre>@calendar</code> and a <code v-pre>TimeWithZone</code> objects and returns the url complete with all the params for the pages in each bars that include the passed time.</p>
 <p>For example: <code v-pre>pagy_calendar_url_at(@calendar, Time.zone.now)</code> will select the the bars pointing to today. You can see a working example in the <a href="https://github.com/ddnexus/pagy/blob/master/apps/pagy_calendar_app.ru">pagy_calendar_app.ru</a> file.</p>
 <p>If <code v-pre>time</code> is outside the pagination range it raises a <code v-pre>Pagy::Calendar::OutOfRangeError</code>.</p>
+</doc-panel>
 <doc-anchor-target id="label-format">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#label-format">#</doc-anchor-trigger>
@@ -551,9 +556,23 @@ end</code></pre>
         <span>Caveats</span>
     </h2>
 </doc-anchor-target>
-<ul>
-<li>Calendar pages with no records are accessible but empty: you may want to display some message when <code v-pre>@records.empty?</code>.</li>
-</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-yellow-500"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-yellow-500" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
+                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Display Message when empty</h5>
+<p>Calendar pages with no records are accessible but empty: you may want to display some message when <code v-pre>@records.empty?</code>.</p>
+        </div>
+    </div>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
