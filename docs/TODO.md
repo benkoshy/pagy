@@ -40,7 +40,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/foundation.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD: shorten Method description"] |
 ./extras/gearbox.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/headers.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./extras/i18n.md |          |                 |
+./extras/i18n.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/items.md |         |                 |
 ./extras/materialize.md |         |                 |
 ./extras/meilisearch.md |         |                 |
