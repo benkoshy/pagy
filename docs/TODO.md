@@ -44,7 +44,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/items.md |         |                 |
 ./extras/materialize.md |         |                 |
 ./extras/meilisearch.md |         |                 |
-./extras/metadata.md |          |                 |
+./extras/metadata.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/navs.md |          |                 |
 ./extras/overflow.md |          |                 |
 ./extras/searchkick.md |          |                 |
