@@ -31,7 +31,6 @@ require 'pagy/extras/navs'
 ```
 |||
 
-
 See [Javascript](/docs/api/javascript.md).
 
 ## Files
@@ -40,10 +39,13 @@ See [Javascript](/docs/api/javascript.md).
 
 ## Methods
 
-### pagy_nav_js(pagy, ...)
+=== `pagy_nav_js(pagy, ...)`
 
-See the [Javascript Navs](/docs/api/javascript/navs.md) documentation.
+See [Javascript Navs](/docs/api/javascript/navs.md).
+===
 
-### pagy_combo_nav_js(pagy, ...)
+=== `pagy_combo_nav_js(pagy, ...)`
 
-See the [Javascript Combo Navs](/docs/api/javascript/combo-navs.md) documentation.
+See [Javascript Combo Navs](/docs/api/javascript/combo-navs.md).
+
+===
