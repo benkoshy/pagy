@@ -48,7 +48,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/overflow.md |          |                 |
 ./extras/searchkick.md |          |                 |
-./extras/semantic.md |          |                 |
+./extras/semantic.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/standalone.md |          |                 |
 ./extras/support.md |         |                 |
 ./extras/tailwind.md |          |                 |
