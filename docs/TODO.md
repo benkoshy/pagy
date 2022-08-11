@@ -41,7 +41,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/gearbox.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/headers.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/i18n.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./extras/items.md |         |                 |
+./extras/items.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/materialize.md |         |                 |
 ./extras/meilisearch.md |         |                 |
 ./extras/metadata.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |

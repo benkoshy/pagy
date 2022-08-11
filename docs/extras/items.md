@@ -12,18 +12,25 @@ It works also with the [countless](countless.md), [searchkick](searchkick.md), [
 
 ## Synopsis
 
-In the `pagy.rb` initializer:
-
+||| pagy.rb (initializer)
 ```ruby
-require 'pagy/extras/items'
+require 'pagy/extras/items' # works without further configuration
+```
+|||
 
-# it will work without any further configuration
 
+||| Controller
+```ruby
 # you can disable it explicitly for specific requests
 @pagy, @records = pagy(Product.all, items_extra: false)
 
-# or...
+# or see below:
+```
+|||
 
+
+||| pagy.rb (initializer)
+```ruby
 # disable it by default (opt-in)
 Pagy::DEFAULT[:items_extra] = false   # default true
 # in this case you have to enable it explicitly when you want it
@@ -33,6 +40,7 @@ Pagy::DEFAULT[:items_extra] = false   # default true
 Pagy::DEFAULT[:items_param] = :custom_param       # default :items
 Pagy::DEFAULT[:max_items]   = 200                 # default 100
 ```
+|||
 
 See [Javascript](/docs/api/javascript.md) (only if you use the `pagy_items_selector_js` UI)
 
@@ -58,25 +66,35 @@ You may want to customize the variables. Depending on the scope of the customiza
 
 As a global default:
 
+||| pagy.rb (initializer)
+
 ```ruby
 Pagy::DEFAULT[:items_param] = :custom_param
 Pagy::DEFAULT[:max_items]   = 50
 ```
+|||
 
 For a single instance (overriding the global default):
+
+||| Controller
 
 ```ruby
 pagy(scope, items_param: :custom_param, max_items: 50)
 Pagy.new(count: 100, items_param: :custom_param, max_items: 50)
 ```
+|||
 
-**Notice**: you can override the items that the client sends with the params by passing the `:items` explicitly. For example:
+
+!!!info Override 'items' in Params
+You can override the items that the client sends with the params by passing the `:items` explicitly. For example:
 
 ```ruby
 # this will ignore the params[:items] (or any custom :param_name)
 # from the client for this instance, and serve 30 items
 pagy(scope, items: 30)
 ```
+!!!
+
 
 ## Methods
 
@@ -97,12 +115,19 @@ The method accepts also a few optional keyword arguments:
 - `:i18n_key` the key to lookup in a dictionary
 - `:link_extra` which add a verbatim string to the `a` tag (e.g. `'data-remote="true"'`)
 
-Notice the `:i18n_key` can be passed also to the constructor or be a less useful global variable (i.e. `Pagy::DEFAULT[:i18n_key]`
+
+!!!info Info
+The `:i18n_key` can be passed also to the constructor or be a less useful global variable (i.e. `Pagy::DEFAULT[:i18n_key]`
+
+||| some_view.html.erb
 
 ```erb
 <%== pagy_items_selector_js(@pagy, item_name: 'Product'.pluralize(@pagy.count) %>
 <%== pagy_items_selector_js(@pagy, i18n_key: 'activerecord.model.product' %>
 ```
+|||
+!!!
+
 
 <span>Show <input type="number" min="1" max="100" value="20" style="padding: 0; text-align: center; width: 3rem;"> Products per page</span>
 
