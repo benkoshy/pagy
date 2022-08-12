@@ -42,7 +42,19 @@ Pagy::DEFAULT[:url] = 'http://www.example.com/subdir'
 |:---------|:-----------------------------------------|:--------|
 | `:url`   | url string (can be absolute or relative) | `nil`   |
 
-You can use the :params variable to add params to the final URLs.
+!!!info Add Params To URLs
+...by using the `:params` variable. Example below:
+!!!
+
+||| Controller
+```rb
+@pagy, @products = pagy(Product.all, url: 'http://www.example.com/subdir', 
+	params: {"quality": "best"})
+
+# links produced:
+# http://www.example.com/subdir?quality=best&amp;page=12345678
+```
+|||
 
 ## Methods
 
