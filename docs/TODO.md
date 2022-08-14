@@ -55,7 +55,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/standalone.md |          |                 |
 ./extras/support.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/tailwind.md |          |                 |
-./extras/trim.md |          |                 |
+./extras/trim.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/uikit.md |         |                 |
 ./how-to.md |         |                 |
 ./migration-guide.md |          |                 |
