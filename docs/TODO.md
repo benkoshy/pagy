@@ -10,6 +10,9 @@ order: 0
 - [] Refactoring of How To: Try the panels or split in sup pages?
 - [] Reorganize ALL the content with retype tabs, panels, columns, alert, warnings, notes etc.
 
+
+- [] Ensure details re: request_path are added as per: [PR 403](https://github.com/ddnexus/pagy/pull/403)
+
 # Page Status
 
 **Retype Formatting:** Styling Components, Formatting
