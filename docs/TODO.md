@@ -53,7 +53,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/searchkick.md |          |                 |
 ./extras/semantic.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/standalone.md |          |                 |
-./extras/support.md |         |                 |
+./extras/support.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/tailwind.md |          |                 |
 ./extras/trim.md |          |                 |
 ./extras/uikit.md |         |                 |

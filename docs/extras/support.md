@@ -28,7 +28,7 @@ You can totally avoid one query per render by using the [countless](countless.md
 
 If you don't need the navbar you can just set the `:size` variable to an empty value and the page links will be skipped from the rendering. That works with `Pagy` and `Pagy:Countless` instances. All the `*nav` helpers will render only the `prev` and `next` links/buttons, allowing for a manual incremental pagination.
 
-You can also use the `pagy_prev_link` and `pagy_next_link` helpers provided by this extra, mostly useful if you also use the `countless` extra.
+You can also use the [`pagy_prev_link`](https://github.com/ddnexus/pagy/blob/dca8669a10cb3be13e053fe435301c22cc64406f/lib/pagy/extras/navs.rb#L46) and [`pagy_next_link`](https://github.com/ddnexus/pagy/blob/dca8669a10cb3be13e053fe435301c22cc64406f/lib/pagy/extras/navs.rb#L54) helpers provided by the [navs extra](../navs), mostly useful if you also use the `countless` extra.
 
 Here is a basic example that uses `pagy_countless` (saving one query per render): 
 
@@ -152,30 +152,32 @@ You may want to combine it with something like:
 
 ## Methods
 
-### pagy_prev_url(pagy)
+=== `pagy_prev_url(pagy)`
 
 Returns the url for the previous page. Useful to build minimalistic UIs that don't use nav bar links (e.g. `countless` extra).
 
-### pagy_next_url(pagy)
+=== `pagy_next_url(pagy)`
 
 Returns the url for the next page. Useful to build minimalistic UIs that don't use nav bar links (e.g. `countless` extra).
 
-### pagy_prev_link(pagy, text: pagy_t('pagy.nav.prev'), link_extra: "")
+=== `pagy_prev_link(pagy, text: pagy_t('pagy.nav.prev'), link_extra: "")`
 
 Returns the `a` tag for the previous page. It is the same prev link string which is part of the `pagy_nav` helper.
 
 Useful to build minimalistic helpers UIs that don't use nav bar links (e.g. `countless` extra).
 
-### pagy_next_link(pagy, text: pagy_t('pagy.nav.next'), link_extra: "")
+=== `pagy_next_link(pagy, text: pagy_t('pagy.nav.next'), link_extra: "")`
 
 Returns the `a` tag for the next page. It is the same next link string which is part of the `pagy_nav` helper.
 
 Useful to build minimalistic helpers UIs that don't use nav bar links (e.g. `countless` extra).
 
-### pagy_prev_link_tag(pagy)
+=== `pagy_prev_link_tag(pagy)`
 
 Returns the `link` tag for the previous page. Useful to add the link tag to the HTML `head`.
 
-### pagy_next_link_tag(pagy)
+=== `pagy_next_link_tag(pagy)`
 
 Returns the `link` tag for the next page. Useful to add the link tag to the HTML `head`.
+
+===
