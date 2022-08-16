@@ -45,14 +45,14 @@ Name   | Retype Formatting  | Restructuring
 ./extras/headers.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/i18n.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/items.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./extras/materialize.md |         |                 |
-./extras/meilisearch.md |         |                 |
+./extras/materialize.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
+./extras/meilisearch.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/metadata.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/overflow.md |          |                 |
 ./extras/searchkick.md |          |                 |
 ./extras/semantic.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./extras/standalone.md |          |                 |
+./extras/standalone.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/support.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/tailwind.md |          |                 |
 ./extras/trim.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
