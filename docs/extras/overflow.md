@@ -6,7 +6,7 @@ categories:
 ---
 # Overflow Extra
 
-This extra allows for easy handling of overflowing pages. It internally rescues from the `Pagy::OverflowError` offering a few different ready to use modes, quite useful for UIs and/or APIs. It works with `Pagy` and its subclasses, although with some little difference.
+This extra allows for easy handling of overflowing pages. It internally rescues from the `Pagy::OverflowError` offering a few different ready to use modes, quite useful for UIs and/or APIs. It works with `Pagy` and its subclasses some minor differences.
 
 ## Synopsis
 
