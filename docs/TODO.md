@@ -50,7 +50,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/metadata.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/overflow.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./extras/searchkick.md |          |                 |
+./extras/searchkick.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/semantic.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/standalone.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/support.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
