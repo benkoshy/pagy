@@ -49,7 +49,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/meilisearch.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/metadata.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./extras/overflow.md |          |                 |
+./extras/overflow.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/searchkick.md |          |                 |
 ./extras/semantic.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/standalone.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
