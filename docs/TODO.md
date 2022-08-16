@@ -61,7 +61,7 @@ Name   | Retype Formatting  | Restructuring
 ./migration-guide.md |          |                 |
 ./requirements.md |         |                 |
 ./TODO.md  |          |                 |
-=======
+
 
 - [] Add pictures of the various helpers to help people visualise what a helper looks like. e.g. `pagy_bulma_nav_js(pagy, ...)` - what does this look like again? Like this: show pic.
 
