@@ -12,6 +12,7 @@ order: 0
 
 
 - [] Ensure details re: request_path are added as per: [PR 403](https://github.com/ddnexus/pagy/pull/403)
+- [] [Overflow](http://benkoshy.github.io/pagy/docs/extras/overflow/) - add some alert components with handy and short instructions to help people decide which mode they should choose.
 
 # Page Status
 
