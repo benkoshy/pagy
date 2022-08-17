@@ -24,7 +24,7 @@ Name   | Retype Formatting  | Restructuring
 ---    | ---
 ./api/backend.md |          |                 |
 ./api/calendar.md |         |                 |
-./api/console.md |          |                 |
+./api/console.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/countless.md |          |                 |
 ./api/frontend.md |         |                 |
 ./api/i18n.md |         |                 |
