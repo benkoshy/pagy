@@ -20,7 +20,7 @@ require 'pagy/extras/countless'
 
 ## Modes
 
-This extra can be used in two different modes by enabling or not the `:countless_minimal` variable.
+This extra can be used in two different modes by enabling the `:countless_minimal` variable (or not).
 
 +++ Default mode
 
