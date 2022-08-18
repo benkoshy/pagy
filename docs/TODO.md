@@ -14,6 +14,7 @@ order: 0
 - [] Ensure details re: request_path are added as per: [PR 403](https://github.com/ddnexus/pagy/pull/403)
 - [] [Overflow](http://benkoshy.github.io/pagy/docs/extras/overflow/) - add some alert components with handy and short instructions to help people decide which mode they should choose.
 - [] Add a choice of styles for Tailwind (i.e. bootstrap styling) + add in pictures of the styling.
+- [] AJAX section probably needs updating - especially for new rails users. Stimulus JS + turbo streams are probably the new way of handling ajax rather than the old way of `.js.erb` templates.
 
 # Page Status
 
@@ -35,14 +36,14 @@ Name   | Retype Formatting  | Restructuring
 ./api/javascript/navs.md |          |                 |
 ./api/javascript/setup.md |         |                 |
 ./api/pagy.md |         |                 |
-./extras/arel.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD: shorten Method description"]|
-./extras/array.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD: shorten Method description"]|
+./extras/arel.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
+./extras/array.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./extras/bootstrap.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/bulma.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/calendar.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"]                |
-./extras/countless.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD: shorten Method description"] |
-./extras/elasticsearch_rails.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD: shorten Method description"] |
-./extras/foundation.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD: shorten Method description"] |
+./extras/countless.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
+./extras/elasticsearch_rails.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
+./extras/foundation.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/gearbox.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/headers.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/i18n.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
