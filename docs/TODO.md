@@ -38,7 +38,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/arel.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD: shorten Method description"]|
 ./extras/array.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD: shorten Method description"]|
 ./extras/bootstrap.md | [!badge variant="warning" text="TBD"] | [!badge variant="warning" text="TBD"]  |
-./extras/bulma.md | [!badge variant="warning" text="TBD"]        | [!badge variant="warning" text="TBD"] |
+./extras/bulma.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/calendar.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"]                |
 ./extras/countless.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD: shorten Method description"] |
 ./extras/elasticsearch_rails.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD: shorten Method description"] |
