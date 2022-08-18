@@ -37,7 +37,7 @@ Name   | Retype Formatting  | Restructuring
 ./api/pagy.md |         |                 |
 ./extras/arel.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD: shorten Method description"]|
 ./extras/array.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD: shorten Method description"]|
-./extras/bootstrap.md | [!badge variant="warning" text="TBD"] | [!badge variant="warning" text="TBD"]  |
+./extras/bootstrap.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/bulma.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/calendar.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"]                |
 ./extras/countless.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD: shorten Method description"] |
