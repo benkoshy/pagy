@@ -26,10 +26,11 @@ order: 0
 
 Name   | Retype Formatting  | Restructuring
 ---    | ---
+./index.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/backend.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/calendar.md |         |                 |
 ./api/console.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./api/countless.md |          |                 |
+./api/countless.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/frontend.md |         |                 |
 ./api/i18n.md |         |                 |
 ./api/javascript/ajax.md |          |                 |
