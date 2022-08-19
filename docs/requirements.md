@@ -3,12 +3,22 @@ order: 3
 title: Requirements
 icon: unverified-24
 ---
+
+## Ruby
++++ Pagy 4.0+
 !!! success
-Pagy `4.0+` runs on ruby `2.5+`
+Ruby `2.5+`
 !!!
+
++++ Old Pagy
 !!! info
-Older versions run on ruby `1.9+` or `jruby 1.7+` till `ruby <2.5`
+Older versions run on:
+
+* ruby `1.9+` or
+* `jruby 1.7+` till `ruby <2.5`
 !!!
+
++++
 
 ## Working environments
 

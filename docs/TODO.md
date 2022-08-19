@@ -62,7 +62,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/uikit.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./how-to.md |         |                 |
 ./migration-guide.md |          |                 |
-./requirements.md |         |                 |
+./requirements.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./TODO.md  |          |                 |
 
 
