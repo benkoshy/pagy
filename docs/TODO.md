@@ -15,6 +15,8 @@ order: 0
 - [] [Overflow](http://benkoshy.github.io/pagy/docs/extras/overflow/) - add some alert components with handy and short instructions to help people decide which mode they should choose.
 - [] Add a choice of styles for Tailwind (i.e. bootstrap styling) + add in pictures of the styling.
 - [] AJAX section probably needs updating - especially for new rails users. Stimulus JS + turbo streams are probably the new way of handling ajax rather than the old way of `.js.erb` templates.
+- [] Add pictures of the various helpers to help people visualise what a helper looks like. e.g. `pagy_bulma_nav_js(pagy, ...)` - what does this look like again? Like this: show pic.
+
 
 # Page Status
 
@@ -64,7 +66,3 @@ Name   | Retype Formatting  | Restructuring
 ./migration-guide.md |          |                 |
 ./requirements.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./TODO.md  |          |                 |
-
-
-- [] Add pictures of the various helpers to help people visualise what a helper looks like. e.g. `pagy_bulma_nav_js(pagy, ...)` - what does this look like again? Like this: show pic.
-
