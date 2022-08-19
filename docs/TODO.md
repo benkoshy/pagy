@@ -26,7 +26,7 @@ order: 0
 
 Name   | Retype Formatting  | Restructuring
 ---    | ---
-./api/backend.md |          |                 |
+./api/backend.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/calendar.md |         |                 |
 ./api/console.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/countless.md |          |                 |
