@@ -31,7 +31,7 @@ Name   | Retype Formatting  | Restructuring
 ./api/calendar.md |         |                 |
 ./api/console.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/countless.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
-./api/frontend.md |         |                 |
+./api/frontend.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/i18n.md |         |                 |
 ./api/javascript/ajax.md |          |                 |
 ./api/javascript/combo-navs.md |          |                 |
