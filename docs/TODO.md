@@ -32,7 +32,7 @@ Name   | Retype Formatting  | Restructuring
 ./api/console.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/countless.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/frontend.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
-./api/i18n.md |         |                 |
+./api/i18n.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/javascript/ajax.md |          |                 |
 ./api/javascript/combo-navs.md |          |                 |
 ./api/javascript.md |         |                 |
