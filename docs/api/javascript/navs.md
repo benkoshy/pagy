@@ -61,7 +61,7 @@ require 'pagy/extras/uikit'
 |:---------|:-------------------------------------------------------------------|:--------|
 | `:steps` | Hash variable to control multiple pagy `:size` at different widths | `false` |
 
-==- How to use the :steps variable
+=== How to use the :steps variable
 
 The `:steps` is an optional non-core variable used by the `pagy*_nav_js` navs. If it's `false`, the `pagy*_nav_js` will behave exactly as a static `pagy*_nav` respecting the single `:size` variable, just faster and lighter. If it's defined as a hash, it allows you to control multiple pagy `:size` at different widths.
 
@@ -71,16 +71,22 @@ As usual, depending on the scope of the customization, you can set the variables
 
 For example:
 
+||| pagy.rb (initializer)
 ```ruby
 # globally
 Pagy::DEFAULT[:steps] = { 0 => [2,3,3,2], 540 => [3,5,5,3], 720 => [5,7,7,5] }
+```
+|||
 
+||| Controller
+```ruby
 # or for a single instance
 pagy, records = pagy(collection, steps: { 0 => [2,3,3,2], 540 => [3,5,5,3], 720 => [5,7,7,5] } )
 
 # or use the :size as any static pagy*_nav
 pagy, records = pagy(collection, steps: false )
 ```
+|||
 
 ```erb
 or pass it to the helper
@@ -89,7 +95,9 @@ or pass it to the helper
 
 The above statement means that from `0` to `540` pixels width, Pagy will use the `[2,3,3,2]` size, from `540` to `720` it will use the `[3,5,5,3]` size and over `720` it will use the `[5,7,7,5]` size. (Read more about the `:size` variable in the [How to control the page links](/docs/how-to.md#control-the-page-links) section).
 
-**IMPORTANT**: You can set any number of steps with any arbitrary width/size. The only requirement is that the `:steps` hash must contain always the `0` width or a `Pagy::VariableError` exception will be raised.
+!!!primary :steps must contain `0` width
+You can set any number of steps with any arbitrary width/size. The only requirement is that the `:steps` hash must contain always the `0` width or a `Pagy::VariableError` exception will be raised.
+!!!
 
 #### Setting the right sizes
 
@@ -119,7 +127,7 @@ document.getElementById('my-pagy-nav-js').render();
 
 ## Methods
 
-### pagy*_nav_js(pagy, ...)
+=== `pagy*_nav_js(pagy, ...)`
 
 The method accepts also a few optional keyword arguments:
 
@@ -130,4 +138,6 @@ The method accepts also a few optional keyword arguments:
 !!!warning
 The `pagy_bootstrap_nav_js` and `pagy_semantic_nav_js` assign a class attribute to their links, so do not add another class attribute with the `:link_extra`. That would be illegal HTML and ignored by most browsers.
 !!!
+
+===
 
