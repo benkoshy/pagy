@@ -37,7 +37,7 @@ Name   | Retype Formatting  | Restructuring
 ./api/javascript/combo-navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/javascript.md |         |                 |
 ./api/javascript/navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./api/javascript/setup.md | | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
+./api/javascript/setup.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/pagy.md |         |                 |
 ./extras/arel.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./extras/array.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
