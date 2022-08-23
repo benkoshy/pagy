@@ -34,7 +34,7 @@ Name   | Retype Formatting  | Restructuring
 ./api/frontend.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/i18n.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/javascript/ajax.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./api/javascript/combo-navs.md |          |                 |
+./api/javascript/combo-navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/javascript.md |         |                 |
 ./api/javascript/navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/javascript/setup.md | | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
