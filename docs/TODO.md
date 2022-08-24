@@ -38,7 +38,7 @@ Name   | Retype Formatting  | Restructuring
 ./api/javascript.md |         |                 |
 ./api/javascript/navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/javascript/setup.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./api/pagy.md |         |                 |
+./api/pagy.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/arel.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./extras/array.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./extras/bootstrap.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
@@ -64,6 +64,6 @@ Name   | Retype Formatting  | Restructuring
 ./extras/trim.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/uikit.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./how-to.md |         |                 |
-./migration-guide.md |          |                 |
+./migration-guide.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./requirements.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./TODO.md  |          |                 |
