@@ -35,7 +35,7 @@ Name   | Retype Formatting  | Restructuring
 ./api/i18n.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/javascript/ajax.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/javascript/combo-navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./api/javascript.md |         |                 |
+./api/javascript.md | [!badge variant="success" text="complete"] | [!badge variant="danger" text="Needs Fixing!"] |
 ./api/javascript/navs.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/javascript/setup.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/pagy.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
@@ -66,4 +66,4 @@ Name   | Retype Formatting  | Restructuring
 ./how-to.md |         |                 |
 ./migration-guide.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./requirements.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
-./TODO.md  |          |                 |
+./TODO.md  | Delete when finished | Delete when finished |
