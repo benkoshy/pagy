@@ -28,7 +28,7 @@ Name   | Retype Formatting  | Restructuring
 ---    | ---
 ./index.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/backend.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
-./api/calendar.md |         |                 |
+./api/calendar.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/console.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./api/countless.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./api/frontend.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|

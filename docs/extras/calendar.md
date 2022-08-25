@@ -6,7 +6,6 @@ categories:
 image: null
 ---
 # Calendar Extra
-
 Add pagination filtering by calendar time unit: year, quarter, month, week, day (and your own [custom time units](/docs/api/calendar.md#custom-units)).
 
 This extra adds single or multiple chained calendar navs that act as calendar filters on the collection records, placing each record in its time unit. 
@@ -41,9 +40,11 @@ def pagy_calendar_filter(collection, from, to)
 end
 
 # some action:
-@calendar, @pagy, @records = pagy_calendar(collection, year:  { size:  [1, 1, 1, 1], ... },
+def index
+  @calendar, @pagy, @records = pagy_calendar(collection, year:  { size:  [1, 1, 1, 1], ... },
                                                        month: { size:  [0, 12, 12, 0], ... },
                                                        pagy:  { items: 10, ...})
+end
 ```
 |||
 
@@ -65,7 +66,9 @@ end
 
 See also a few examples about [How to wrap existing pagination with pagy_calendar](/docs/how-to.md#wrap-existing-pagination-with-pagy_calendar).
 
-**Notice** For a complete and detailed example, see the [pagy_calendar_app.ru](https://github.com/ddnexus/pagy/blob/master/apps/pagy_calendar_app.ru).
+!!!primary Demo App 
+For a complete and detailed example, see the [pagy_calendar_app.ru](https://github.com/ddnexus/pagy/blob/master/apps/pagy_calendar_app.ru).
+!!!
 
 ## Usage
 
@@ -80,11 +83,13 @@ The whole usage boils down to these steps:
 
 You can play with a quick demo app, working without any additional configuration with:
 
+||| shell
 ```shell
 git clone --depth 1 https://github.com/ddnexus/pagy
 cd pagy
 rackup -o 0.0.0.0 -p 8080 apps/pagy_calendar_app.ru
 ```
+|||
 
 Then point your browser to http://0.0.0.0:8080.
 
@@ -108,9 +113,11 @@ It filters the `collection` by the selected time units in the `configuration` (e
 
 It returns an array with one more item than the usual two:
 
+||| controller
 ```ruby
 @calendar, @pagy, @results = pagy_calendar(...)
 ```
+|||
 
 The `@calendar` contains the hash of the generated `Pagy::Calendar::*` objects that can be used in the UI.
 
@@ -124,14 +131,15 @@ The `configuration` argument must be a Hash structure with the keys representing
 
 The `configuration` hash can be composed by the following types of configuration:
 
-
 #### Calendar configuration
 
 The calendar configuration determines the calendar objects generated. These are used for filtering the collection to the selected time units.
 
 You can add one or more levels with keys like `:year`, `:quarter`, `:month`, `:week`, `:day`. Each key must be set to the hash of the variables that will be used to initialize the relative `Pagy::Calendar::*` object. Use an empty hash for default values. E.g.: `year: {}, month: {}, ...`.
 
-**Restrictions**: The `:page`, `:page_param`, `:params` and `:period` variables for the calendar objects are managed automatically by the extra. Setting them explicitly has no effect. (See also [Calendar params](#calendar-params) for solutions in case of conflicts)
+!!!warning Do not set `:page`, `:page_param`, `:params` and `:period` keys
+The `:page`, `:page_param`, `:params` and `:period` variables for the calendar objects are managed automatically by the extra. Setting them explicitly has no effect. (See also [Calendar params](#calendar-params) for solutions in case of conflicts)
+!!!
 
 #### Pagy configuration
 
@@ -155,21 +163,21 @@ The calendar is active by default, however you can add an optional `:active` boo
 
 Take a look at the [pagy_calendar_app.ru](https://github.com/ddnexus/pagy/blob/master/apps/pagy_calendar_app.ru) for a simple example of a manual toggle in the UI. 
 
-===
-
 ==- `pagy_calendar_period(collection)`
 
-**This method must be implemented by the application.**
+!!!primary Must implement
+This method must be implemented by the application.
+!!!
 
 It receives a `collection` argument that must not be changed by the method, but can be used to return the starting and ending local `TimeWithZone` objects array defining the calendar `:period`. See the [Pagy::Calendar Variables](/docs/api/calendar.md#variables) for details.
 
 Depending on the type of storage, the `collection` argument can contain a different kind of object:
 
-
 #### ActiveRecord managed storage
 
 If you use `ActiveRecord` the `collection` is going to be an `ActiveRecord::Relation` object. You can use it to return the starting and ending local `TimeWithZone` objects array. Here are a few examples with the `created_at` field (but you can pull the time from anywhere):
 
+||| controller
 ```ruby
 # Simpler version (2 queries)
 def pagy_calendar_period(collection)
@@ -192,6 +200,7 @@ def pagy_calendar_period(collection)
   params.fetch_values(:starting, :ending).map { |time| Time.parse(time).in_time_zone }
 end
 ```
+|||
 
 See also [Time conversion](/docs/api/calendar.md#time-conversions) for details.
 
@@ -200,11 +209,12 @@ See also [Time conversion](/docs/api/calendar.md#time-conversions) for details.
 _If you use `ElasticSearchRails`, `Searchkick`, `Meilisearch` the `collection` argument is just the Array of the captured search arguments that you passed to the `Model.pagy_search` method. That array is what pagy uses internally to setup its variables before passing it to the standard `Model.search` method to do the actual search._
 
 So you should use what you need from the `collection` array and do your own `Model.search(...)` in order to get the starting and ending local `TimeWithZone` objects array to return. 
-===
 
 ==- `pagy_calendar_filter(collection, from, to)`
 
-**This method must be implemented by the application.**
+!!!primary Must implement
+This method must be implemented by the application.
+!!!
 
 It receives the main `collection` and must return a filtered version of it using the `from` and `to` **local Time** objects.
 
@@ -216,11 +226,13 @@ Depending on the type of storage, the `collection` argument can contain a differ
 
 If you use `ActiveRecord` the `collection` is going to be an `ActiveRecord::Relation` object that you can easily filter. Here is an example with the `created_at` field again (but you can use anything, of course):
 
+||| controller
 ```ruby
 def pagy_calendar_filter(collection, from, to)
   collection.where(created_at: from...to)  # 3-dots range excluding the end value
 end
 ```
+|||
 
 See also [Time conversion](/docs/api/calendar.md#time-conversions) for details.
 
@@ -229,7 +241,6 @@ See also [Time conversion](/docs/api/calendar.md#time-conversions) for details.
 _If you use `ElasticSearchRails`, `Searchkick`, `Meilisearch` the `collection` argument is just the Array of the captured search arguments that you passed to the `Model.pagy_search` method. That array is what pagy uses internally to setup its variables before passing it to the standard `Model.search` method to do the actual search._
 
 So in order to filter the actual search with the `from` and `to` local `TimeWithZone` objects, you should simply return the same array with the filtering added to its relevant item. Pagy will use it to do the actual (filtered) search. 
-
 ===
 
 ## Customization
@@ -264,7 +275,6 @@ This helper takes the `@calendar` and a `TimeWithZone` objects and returns the u
 For example: `pagy_calendar_url_at(@calendar, Time.zone.now)` will select the the bars pointing to today. You can see a working example in the [pagy_calendar_app.ru](https://github.com/ddnexus/pagy/blob/master/apps/pagy_calendar_app.ru) file.
 
 If `time` is outside the pagination range it raises a `Pagy::Calendar::OutOfRangeError`.
-
 ===
 
 ### Label format
