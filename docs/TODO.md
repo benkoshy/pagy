@@ -24,6 +24,8 @@ order: 0
 
 **Restructuring:** Substantive improvements: simplifying / shortening / presenting images etc.
 
+Broken links: [!badge variant="danger" text="Needs Fixing!"]
+
 Name   | Retype Formatting  | Restructuring
 ---    | ---
 ./index.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
@@ -63,7 +65,7 @@ Name   | Retype Formatting  | Restructuring
 ./extras/tailwind.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/trim.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./extras/uikit.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
-./how-to.md |         |                 |
+./how-to.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./migration-guide.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./requirements.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./TODO.md  | Delete when finished | Delete when finished |
