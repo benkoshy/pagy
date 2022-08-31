@@ -24,9 +24,6 @@ order: 0
 
 **Restructuring:** Substantive improvements: simplifying / shortening / presenting images etc.
 
-Broken links: [!badge variant="danger" text="Needs Fixing!"]
-Broken Anchors: [!badge variant="success" text="complete"]
-
 Name   | Retype Formatting  | Restructuring
 ---    | ---
 ./index.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
@@ -72,7 +69,7 @@ Name   | Retype Formatting  | Restructuring
 ./TODO.md  | Delete when finished | Delete when finished |
 
 
-
+Broken Anchors: [!badge variant="success" text="complete"]
 
 
 
