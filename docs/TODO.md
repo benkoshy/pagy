@@ -69,3 +69,23 @@ Name   | Retype Formatting  | Restructuring
 ./migration-guide.md | [!badge variant="success" text="complete"] | [!badge variant="warning" text="TBD"] |
 ./requirements.md | [!badge variant="success" text="complete"]| [!badge variant="warning" text="TBD"]|
 ./TODO.md  | Delete when finished | Delete when finished |
+
+
+
+
+
+Broken Links to Fix:
+
+WARNING: [docs/extras/support.md:31] Consider revising URL "../navs" to a proper input path.
+
+WARNING: [docs/extras/calendar.md:79] Page anchor "#pagy_calendar_periodcollection" was not found.
+WARNING: [docs/extras/calendar.md:80] Page anchor "#pagy_calendar_filtercollection-from-to" was not found.
+WARNING: [docs/extras/calendar.md:81] Page anchor "#pagy_calendarcollection-configuration" was not found.
+WARNING: [docs/extras/countless.md:107] Page anchor "/docs/api/backend.md#pagy_get_itemscollection-pagy" was not found.
+
+
+
+
+
+
+

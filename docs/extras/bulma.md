@@ -52,7 +52,7 @@ You can customize them by overriding in your own view helper(s).
 
 This method is the same as the `pagy_nav`, but customized for Bulma.
 
-See the [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy_navpagy-) documentation.
+See the [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy-nav-pagy) documentation.
 
 The `bulma_nav.*` templates produce the same output, and can be used as an easier (but slower) starting point to override it. See [How to use templates](/docs/how-to.md#use-templates).
 

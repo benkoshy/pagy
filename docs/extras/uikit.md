@@ -48,7 +48,7 @@ This extra adds the above nav helpers to the `Pagy::Frontend` module. You can cu
 
 This method is the same as the `pagy_nav`, but customized for UIkit.
 
-See the [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy_navpagy-) documentation.
+See the [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy-nav-pagy) documentation.
 
 The `uikit_nav.*` templates produce the same output, and can be used as an easier (but slower) starting point to override it. See [How to use templates](/docs/how-to.md#use-templates).
 

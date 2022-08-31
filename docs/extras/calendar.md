@@ -76,9 +76,9 @@ Since the time can be stored or calculated in many different ways in different c
 
 The whole usage boils down to these steps:
 
-1. Define the [pagy_calendar_period](#pagy_calendar_periodcollection) method in your controller
-2. Define the [pagy_calendar_filter](#pagy_calendar_filtercollection-from-to) method in your controller
-3. Configure the [pagy_calendar](#pagy_calendarcollection-configuration) method in your action
+1. Configure the [pagy_calendar](#pagy-calendar-collection-configuration) method in your action
+2. Define the [pagy_calendar_period](#pagy-calendar-period-collection) method in your controller
+3. Define the [pagy_calendar_filter](#pagy-calendar-filter-collection-from-to) method in your controller
 4. Use it in your UI
 
 You can play with a quick demo app, working without any additional configuration with:

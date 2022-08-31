@@ -36,7 +36,7 @@ This extra adds 3 nav helpers to the `Pagy::Frontend` module. You can customize 
 
 This method is the same as the `pagy_nav`, but customized for Semantic UI.
 
-See: [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy_navpagy-).
+See: [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy-nav-pagy).
 
 === `pagy_semantic_nav_js(pagy, ...)`
 

@@ -108,7 +108,7 @@ pagy = Pagy.new(count: 1000, link_extra: 'data-remote="true" class="my-class"')
 ```
 
 !!!primary `link_extra`: must be valid HTML
-For performance reasons, the `:link_extra` variable must be a string formatted as a valid HTML attribute/value pairs. That string will get inserted verbatim in the HTML of the link. _(see more advanced details in the [pagy_link_proc documentation](api/frontend.md#pagy_link_procpagy-link_extra))_
+For performance reasons, the `:link_extra` variable must be a string formatted as a valid HTML attribute/value pairs. That string will get inserted verbatim in the HTML of the link. _(see more advanced details in the [pagy_link_proc documentation](api/frontend.md#pagy-link-proc-pagy-link-extra))_
 !!!
 
 ## Customize the params
@@ -142,7 +142,7 @@ For performance reasons the `:fragment` string must include the `"#"`.
 When you need something more radical with the URL than just massaging the params, you should override the `pagy_url_for` right in your helper.
 
 !!!warning Override `pagy_trim` if using Trim Extra
-If you are also using the [trim extra](extras/trim.md) you should also override the [pagy_trim](extras/trim#pagy_trimpagy-link) method or the `Pagy.trim` javascript function.
+If you are also using the [trim extra](extras/trim.md) you should also override the [pagy_trim](extras/trim#pagy-trim-pagy-link) method or the `Pagy.trim` javascript function.
 !!!
 
 The following are a couple of examples.
