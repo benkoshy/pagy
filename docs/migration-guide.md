@@ -44,13 +44,12 @@ Search for the class name of the pagination gem to migrate from, for example `Wi
 For example, the following configuration are equivalent:
 
 ||| initializers
+
 ```ruby
 WillPaginate.per_page = 10
 WillPaginate::ViewHelpers.pagination_options[:inner_window] = 4
 WillPaginate::ViewHelpers.pagination_options[:outer_window] = 5
-```
 
-```ruby
 Kaminari.configure do |config|
   config.max_per_page = 10
   config.window = 4
@@ -58,9 +57,7 @@ Kaminari.configure do |config|
   #config.left = 0
   #config.right = 0
 end
-```
 
-```ruby
 Pagy::DEFAULT[:items] = 10
 Pagy::DEFAULT[:size]  = [5,4,4,5]
 ```
@@ -97,9 +94,7 @@ Search for keywords like `page` and `paginate` statements and use the `pagy` met
 #@records = Product.paginate(:page => params[:page])
 
 @pagy, @records = pagy(Product.some_scope)
-```
 
-```ruby
 #@records = Product.some_scope.page(params[:page]).per(15)
 #@records = Product.some_scope.page(params[:page]).per_page(15)
 #@records = Product.paginate(page: params[:page], per_page: 15)
