@@ -28,7 +28,7 @@ You can totally avoid one query per render by using the [countless](countless.md
 
 If you don't need the navbar you can just set the `:size` variable to an empty value and the page links will be skipped from the rendering. That works with `Pagy` and `Pagy:Countless` instances. All the `*nav` helpers will render only the `prev` and `next` links/buttons, allowing for a manual incremental pagination.
 
-You can also use the [`pagy_prev_link`](https://github.com/ddnexus/pagy/blob/dca8669a10cb3be13e053fe435301c22cc64406f/lib/pagy/extras/navs.rb#L46) and [`pagy_next_link`](https://github.com/ddnexus/pagy/blob/dca8669a10cb3be13e053fe435301c22cc64406f/lib/pagy/extras/navs.rb#L54) helpers provided by the [navs extra](../navs), mostly useful if you also use the `countless` extra.
+sYou can also use the [`pagy_prev_link`](https://github.com/ddnexus/pagy/blob/dca8669a10cb3be13e053fe435301c22cc64406f/lib/pagy/extras/navs.rb#L46) and [`pagy_next_link`](https://github.com/ddnexus/pagy/blob/dca8669a10cb3be13e053fe435301c22cc64406f/lib/pagy/extras/navs.rb#L54) helpers provided by the [navs extra](navs), mostly useful if you also use the `countless` extra.
 
 Here is a basic example that uses `pagy_countless` (saving one query per render): 
 
