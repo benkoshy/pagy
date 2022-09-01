@@ -48,7 +48,7 @@ This extra adds 3 nav helpers to the `Pagy::Frontend` module.
 You can customize them by overriding in your own view helper(s).
 !!!
 
-=== `pagy_bootstrap_nav(pagy, ...)`
+==- `pagy_bootstrap_nav(pagy, ...)`
 
 This method is the same as the `pagy_nav`, but customized for Bootstrap.
 

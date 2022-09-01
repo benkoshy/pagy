@@ -38,7 +38,7 @@ All the methods in this module are prefixed with the `"pagy_"` string in order t
 
 Please, keep in mind that overriding any method is very easy with Pagy. Indeed you can do it right where you are using it: no need of monkey-patching or tricky gimmickry.
 
-=== `pagy_nav(pagy, ...)`
+==- `pagy_nav(pagy, ...)`
 
 This method takes the Pagy object and returns the HTML string with the pagination links, which are wrapped in a `nav` tag and are ready to use in your view. For example:
 
@@ -58,7 +58,7 @@ The `nav.*` templates produce the same output, and can be used as an easier (but
 
 See also [Using templates](/docs/how-to.md#use-templates).
 
-=== `pagy_info(pagy, pagy_id: ..., item_name: ..., i18n_key: ...)`
+==- `pagy_info(pagy, pagy_id: ..., item_name: ..., i18n_key: ...)`
 
 This method provides the info about the content of the current pagination. For example:
 
@@ -89,7 +89,7 @@ Displaying Products <b>476-500</b> of <b>1000</b> in total
 
 _(see [Customizing the item name](/docs/how-to.md#customize-the-item-name))_
 
-=== `pagy_url_for(pagy, page, absolute: false, html_escaped: false)`
+==- `pagy_url_for(pagy, page, absolute: false, html_escaped: false)`
 
 This method is called internally in order to produce the url of a page by passing it its number. For standard usage it works out of the box and you can just ignore it.
 
@@ -103,13 +103,13 @@ The `:fragment` variable is also appended to the URL if defined.
 
 See also [How to customize the URL](/docs/how-to.md#customize-the-url).
 
-=== `pagy_massage_params(params)`
+==- `pagy_massage_params(params)`
 
 The `pagy_massage_params` method has been deprecated and it will be ignored from version 6. Use the `:params` variable instead.
 
 See also [How to customize the params](/docs/how-to.md#customize-the-params).
 
-=== `pagy_link_proc(pagy, link_extra='')`
+==- `pagy_link_proc(pagy, link_extra='')`
 
 This method is called internally to get a very specialized and fast proc that produce the HTML links for the pages.
 
@@ -210,7 +210,7 @@ Be careful not to pass the same attribute at different levels multiple times. Th
 Specifically do not add a `class` attribute that will end up in the `pagy_bootstrap_nav_js`, `pagy_semantic_nav_js` and `pagy_semantic_combo_nav_js`, which define already their own.
 !!!
 
-=== `pagy_t(key, vars={})`
+==- `pagy_t(key, vars={})`
 
 This method is similar to the `I18n.t` and its equivalent rails `t` helper. It is called internally (from helpers and templates) in order to get the interpolated strings out of a YAML dictionary file. _(see I18n below)_
 

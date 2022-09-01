@@ -95,12 +95,11 @@ pagy(scope, items: 30)
 ```
 !!!
 
-
 ## Methods
 
 The `items` extra adds the `pagy_items_selector_js` helper to the `Pagy::Frontend` module.
 
-### pagy_items_selector_js(pagy, ...)
+==- `pagy_items_selector_js(pagy, ...)`
 
 This helper provides an items selector UI, which allows the user to select any arbitrary number of items per page (below the `:max_items` number) in a numeric input field. It looks like:
 
@@ -136,3 +135,5 @@ _(see [How to customize the item name](/docs/how-to.md#customize-the-item-name))
 When the items number is changed with the selector, pagy will reload the pagination UI using the selected items per page. It will also request the _right_ page number calculated in order to contain the first item of the previously displayed page. That way the new displayed page will roughly show the same items in the collection before the items change.
 
 This method can take an extra `id` argument, which is used to build the `id` attribute of the `nav` tag.
+
+===

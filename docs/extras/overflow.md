@@ -170,7 +170,7 @@ end
 
 ## Methods
 
-=== `overflow?`
+==- `overflow?`
 
 Use this method in order to know if the requested page is overflowing. The original requested page is available as `pagy.vars[:page]` (useful when used with the `:last_page` mode, in case you want to give some feedback about the rescue to the user/client).
 ===

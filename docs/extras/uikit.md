@@ -44,7 +44,7 @@ require 'pagy/extras/uikit'
 
 This extra adds the above nav helpers to the `Pagy::Frontend` module. You can customize it by direct overriding in your own view helper.
 
-=== pagy_uikit_nav(pagy)
+==- `pagy_uikit_nav(pagy)`
 
 This method is the same as the `pagy_nav`, but customized for UIkit.
 
@@ -52,11 +52,11 @@ See the [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy-nav-pagy) documentation
 
 The `uikit_nav.*` templates produce the same output, and can be used as an easier (but slower) starting point to override it. See [How to use templates](/docs/how-to.md#use-templates).
 
-=== pagy_uikit_nav_js(pagy, ...)
+==- `pagy_uikit_nav_js(pagy, ...)`
 
 See the [Javascript Navs](/docs/api/javascript/navs.md) documentation
 
-=== pagy_uikit_combo_nav_js(pagy, ...)
+=== `pagy_uikit_combo_nav_js(pagy, ...)`
 
 See the [Javascript Combo Navs](/docs/api/javascript/combo-navs.md) documentation.
 

@@ -51,11 +51,11 @@ You can set the `Pagy::DEFAULT[:trim_extra]` default to `false` if you want to e
 
 The `trim` extra overrides the `pagy_link_proc` method in the `Pagy::Frontend` module.
 
-=== `pagy_link_proc(pagy, link_extra='')`
+==- `pagy_link_proc(pagy, link_extra='')`
 
 This method overrides the `pagy_link_proc` using the `pagy_trim` to process the link to the first page.
 
-=== `pagy_trim(pagy, link)`
+==- `pagy_trim(pagy, link)`
 
 Sub-method called only by the `pagy_link_proc` method, it removes the the `:page_param` param from the first page link (usually `page=1`).
 

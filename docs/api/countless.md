@@ -58,10 +58,12 @@ Retrieving these variables may be useful to supply a UI as complete as possible,
 
 The construction of the final `Pagy::Countless` object is split into 2 steps: the regular `initialize` method and the `finalize` method, which will use the retrieved items number to calculate the rest of the pagination integers.
 
-### Pagy::Countless.new(vars)
+==- `Pagy::Countless.new(vars)`
 
 The initial constructor takes the usual hash of variables, calculating only the requested `items` and the `offset`, useful to query the page of items.
 
-### finalize(fetched_size)
+==- `finalize(fetched_size)`
 
 The actual calculation of all the internal variables for the pagination is calculated using the size of the fetched items. The method returns the finalized instance object.
+
+===

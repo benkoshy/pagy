@@ -51,7 +51,7 @@ require 'pagy/extras/uikit'
 |||
 ## Methods
 
-=== `pagy*_combo_nav_js(pagy, ...)`
+==- `pagy*_combo_nav_js(pagy, ...)`
 
 The method accepts also a couple of optional keyword arguments:
 

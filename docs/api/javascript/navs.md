@@ -127,7 +127,7 @@ document.getElementById('my-pagy-nav-js').render();
 
 ## Methods
 
-=== `pagy*_nav_js(pagy, ...)`
+==- `pagy*_nav_js(pagy, ...)`
 
 The method accepts also a few optional keyword arguments:
 

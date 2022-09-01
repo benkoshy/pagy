@@ -41,7 +41,7 @@ All the methods in this module are prefixed with the `"pagy_"` string, to avoid 
 
 Please, keep in mind that overriding any method is very easy with Pagy. Indeed you can do it right where you are using it: no need of monkey-patching or perform any tricky gimmickry.
 
-=== `pagy(collection, vars=nil)`
+==- `pagy(collection, vars=nil)`
 
 This is the main method of this module. It takes a collection object (e.g. a scope), and an optional hash of variables (passed to the `Pagy.new` method) and returns the `Pagy` instance and the page of records. For example:
 
@@ -53,7 +53,7 @@ The built-in `pagy` method is designed to be easy to customize by overriding any
 
 If you need to use multiple different types of collections in the same app or action, you may want to define some alternative and self contained custom `pagy` method. (see [Writing your own Pagy methods](#writing-your-own-pagy-methods))
 
-=== `pagy_get_vars(collection, vars)`
+==- `pagy_get_vars(collection, vars)`
 
 Sub-method called only by the `pagy` method, it returns the hash of variables used to initialize the Pagy object.
 
@@ -67,7 +67,7 @@ output _(see [How to customize the item name](/docs/how-to.md#customize-the-item
 
 See also the [How To](/docs/how-to.md) page for some usage examples.
 
-=== `pagy_get_items(collection, pagy)`
+==- `pagy_get_items(collection, pagy)`
 
 Sub-method called only by the `pagy` method, it returns the page items (i.e. the records belonging to the current page).
 

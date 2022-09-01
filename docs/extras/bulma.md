@@ -48,7 +48,7 @@ This extra adds 3 nav helpers to the `Pagy::Frontend` module.
 You can customize them by overriding in your own view helper(s).
 !!!
 
-=== pagy_bulma_nav(pagy)
+==- `pagy_bulma_nav(pagy)`
 
 This method is the same as the `pagy_nav`, but customized for Bulma.
 
@@ -56,11 +56,11 @@ See the [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy-nav-pagy) documentation
 
 The `bulma_nav.*` templates produce the same output, and can be used as an easier (but slower) starting point to override it. See [How to use templates](/docs/how-to.md#use-templates).
 
-=== pagy_bulma_nav_js(pagy, ...)
+==- `pagy_bulma_nav_js(pagy, ...)`
 
 See the [Javascript Navs](/docs/api/javascript/navs.md) documentation.
 
-=== pagy_bulma_combo_nav_js(pagy, ...)
+=== `pagy_bulma_combo_nav_js(pagy, ...)`
 
 ![bulma_combo_nav_js](/docs/assets/images/bulma_combo_nav_js-g.png)
 

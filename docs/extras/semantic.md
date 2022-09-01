@@ -32,17 +32,17 @@ require 'pagy/extras/semantic'
 
 This extra adds 3 nav helpers to the `Pagy::Frontend` module. You can customize them by direct overriding in your own view helper.
 
-=== `pagy_semantic_nav(pagy)`
+==- `pagy_semantic_nav(pagy)`
 
 This method is the same as the `pagy_nav`, but customized for Semantic UI.
 
 See: [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy-nav-pagy).
 
-=== `pagy_semantic_nav_js(pagy, ...)`
+==- `pagy_semantic_nav_js(pagy, ...)`
 
 See: [Javascript Navs](/docs/api/javascript/navs.md).
 
-=== `pagy_semantic_combo_nav_js(pagy, ...)`
+==- `pagy_semantic_combo_nav_js(pagy, ...)`
 
 See: [Javascript Combo Navs](/docs/api/javascript/combo-navs.md).
 
