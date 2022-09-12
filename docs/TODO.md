@@ -16,7 +16,7 @@ order: 0
 - [] Add a choice of styles for Tailwind (i.e. bootstrap styling) + add in pictures of the styling.
 - [] AJAX section probably needs updating - especially for new rails users. Stimulus JS + turbo streams are probably the new way of handling ajax rather than the old way of `.js.erb` templates.
 - [] Add pictures of the various helpers to help people visualise what a helper looks like. e.g. `pagy_bulma_nav_js(pagy, ...)` - what does this look like again? Like this: show pic.
-- Consider: updating [AJAX](docs/api/javascript/ajax/) for the modern day tooling - nobody uses `.js.erb` anymore - Turbo Streams (and Stimulus JS) are what they use, and it serves much the same purpose.
+- Consider: updating [AJAX](./api/javascript/ajax/) for the modern day tooling - nobody uses `.js.erb` anymore - Turbo Streams (and Stimulus JS) are what they use, and it serves much the same purpose.
 
 # Page Status
 
