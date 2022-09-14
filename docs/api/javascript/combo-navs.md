@@ -51,7 +51,7 @@ require 'pagy/extras/uikit'
 |||
 ## Methods
 
-### pagy*_combo_nav_js(pagy, ...)
+==- `pagy*_combo_nav_js(pagy, ...)`
 
 The method accepts also a couple of optional keyword arguments:
 
@@ -61,3 +61,4 @@ The method accepts also a couple of optional keyword arguments:
 !!!warning
 The `pagy_semantic_combo_nav_js` assigns a class attribute to its links, so do not add another class attribute with the `:link_extra`. That would be illegal HTML and ignored by most browsers.
 !!!
+===

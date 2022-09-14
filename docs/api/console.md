@@ -45,7 +45,7 @@ The pagy console uses the [standalone extra](/docs/extras/standalone.md) and set
 
 Include the module in your console window in order to include also the `Pagy::Backend` and `Pagy::Frontend` modules.
 
-### pagy_extras(*extras)
+==- `pagy_extras(*extras)`
 
 Simple utility method to save some typing in the console. It will require the extras arguments. For example:
 
@@ -54,3 +54,5 @@ pagy_extras :array, :bootstrap, :support, :headers, ...
 ```
 
 You will be able to use any frontend or backend method implemented by pagy and the required extras right away.
+
+===

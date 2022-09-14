@@ -31,7 +31,7 @@ require 'pagy/extras/bootstrap'
 ```
 |||
 
-See [Javascript](/docs/api/javascript.md) if you use `pagy_bootstrap_nav_js` or `pagy_bootstrap_combo_nav_js`.
+See: [Javascript](/docs/api/javascript.md) if you use `pagy_bootstrap_nav_js` or `pagy_bootstrap_combo_nav_js`.
 
 ## Files
 
@@ -42,24 +42,30 @@ See [Javascript](/docs/api/javascript.md) if you use `pagy_bootstrap_nav_js` or 
 
 ## Methods
 
-This extra adds 3 nav helpers to the `Pagy::Frontend` module. You can customize them by direct overriding in your own view helper.
+This extra adds 3 nav helpers to the `Pagy::Frontend` module. 
 
-### pagy_bootstrap_nav(pagy, ...)
+!!!info Overriding Helpers
+You can customize them by overriding in your own view helper(s).
+!!!
+
+==- `pagy_bootstrap_nav(pagy, ...)`
 
 This method is the same as the `pagy_nav`, but customized for Bootstrap.
 
-See the [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy_navpagy-) documentation.
+See: [pagy_nav(pagy, ...)](/docs/api/frontend.md#pagy-nav-pagy).
 
 The `bootstrap_nav.*` templates produce the same output, and can be used as an easier (but slower) starting point to override it. See [How to use templates](/docs/how-to.md#use-templates).
 
-### pagy_bootstrap_nav_js(pagy, ...)
+=== `pagy_bootstrap_nav_js(pagy, ...)`
 
 ![bootstrap_combo_nav_js](/docs/assets/images/bootstrap_nav_js-g.png)
 
-See the [Javascript Navs](/docs/api/javascript/navs.md) documentation.
+See: [Javascript Navs](/docs/api/javascript/navs.md).
 
-### pagy_bootstrap_combo_nav_js(pagy, ...)
+=== `pagy_bootstrap_combo_nav_js(pagy, ...)`
 
 ![bootstrap_combo_nav_js](/docs/assets/images/bootstrap_combo_nav_js-g.png)
 
-See the [Javascript Combo Navs](/docs/api/javascript/combo-navs.md) documentation.
+See: [Javascript Combo Navs](/docs/api/javascript/combo-navs.md).
+
+===

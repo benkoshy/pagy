@@ -89,12 +89,12 @@ This constructor accepts an `Elasticsearch::Model::Response::Response`, plus the
 
 ==- `pagy_elasticsearch_rails(pagy_search_args, vars={})`
 
-This method is similar to the generic `pagy` method, but specialized for Elasticsearch Rails (see the [pagy doc](/docs/api/backend.md#pagycollection-varsnil)).
+This method is similar to the generic `pagy` method, but specialized for Elasticsearch Rails (see the [pagy doc](/docs/api/backend.md#pagy-collection-vars-nil)).
 
 It expects to receive `YourModel.pagy_search(...)` result and returns the paginated response. 
 
 ==- `pagy_elasticsearch_rails_get_vars(array)`
 
-This sub-method is similar to the `pagy_get_vars` sub-method, but it is called only by the `pagy_elasticsearch_rails` method. (see the [pagy_get_vars doc](/docs/api/backend.md#pagy_get_varscollection-vars)).
+This sub-method is similar to the `pagy_get_vars` sub-method, but it is called only by the `pagy_elasticsearch_rails` method. (see the [pagy_get_vars doc](/docs/api/backend.md#pagy-get-vars-collection-vars)).
 
 ===

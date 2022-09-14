@@ -28,7 +28,7 @@ Pagy::DEFAULT[:url] = 'http://www.example.com/subdir'
 ||| Controller
 ```ruby
 # pass a :url variable to work in standalone mode (no need of any request object nor Rack env)
-@pagy, @records = pagy(Product.all, url: 'http://www.example.com/subdir', params: {...})
+@pagy, @products = pagy(Product.all, url: 'http://www.example.com/subdir', params: {...})
 ```
 |||
 
@@ -42,14 +42,15 @@ Pagy::DEFAULT[:url] = 'http://www.example.com/subdir'
 |:---------|:-----------------------------------------|:--------|
 | `:url`   | url string (can be absolute or relative) | `nil`   |
 
-You can use the `:params` variable to add params to the final URLs.
+You can use the :params variable to add params to the final URLs.
 
 ## Methods
 
-### Overridden pagy_url_for
+==- Overridden `pagy_url_for`
 
 The `standalone` extra overrides the `pagy_url_for` method used internally. If it finds a set `:url` variable it assumes there is no `request` object, so it uses the `:url` variable verbatim to produce the final URL, only adding the query string, composed by merging the `:page` param to the `:params` variable. If there is no `:url` variable set it works like usual, i.e. it uses the rake `request` object to extract the base_url, path from the request, merging the params returned from the `params` controller method, the `:params` variable and the `:page` param to it.
 
-### Dummy params method
+==- Dummy `params` method
 
 This extra creates a dummy `params` method (if not already defined) in the module where you include the `Pagy::Backend` (usually a controller). The method is called by pagy to retrieve backend variables coming from the request, and expects a hash, so the dummy param method returns an empty hash avoiding an error.
+===
