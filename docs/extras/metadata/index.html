@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.712916746272">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.716510687137">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.4.0.712916746272" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.716510687137" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.712916746272" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.716510687137" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.712916746272" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.4.0.712916746272" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.716510687137" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=2.4.0.716510687137" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -90,7 +90,7 @@
                                             <path fill-rule="evenodd" d="M1.75 1A1.75 1.75 0 000 2.75v9.5C0 13.216.784 14 1.75 14H3v1.543a1.457 1.457 0 002.487 1.03L8.061 14h6.189A1.75 1.75 0 0016 12.25v-9.5A1.75 1.75 0 0014.25 1H1.75zM1.5 2.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v9.5a.25.25 0 01-.25.25h-6.5a.75.75 0 00-.53.22L4.5 15.44v-2.19a.75.75 0 00-.75-.75h-2a.25.25 0 01-.25-.25v-9.5z"/><path d="M22.5 8.75a.25.25 0 00-.25-.25h-3.5a.75.75 0 010-1.5h3.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0122.25 20H21v1.543a1.457 1.457 0 01-2.487 1.03L15.939 20H10.75A1.75 1.75 0 019 18.25v-1.465a.75.75 0 011.5 0v1.465c0 .138.112.25.25.25h5.5a.75.75 0 01.53.22l2.72 2.72v-2.19a.75.75 0 01.75-.75h2a.25.25 0 00.25-.25v-9.5z"/>
                                         </g>
                                     </svg>
-                                    <span>Discussions</span>
+                                    <span>Help</span>
                                 </a>
                             </li>
         
@@ -196,7 +196,7 @@
                                                     <path fill-rule="evenodd" d="M1.75 1A1.75 1.75 0 000 2.75v9.5C0 13.216.784 14 1.75 14H3v1.543a1.457 1.457 0 002.487 1.03L8.061 14h6.189A1.75 1.75 0 0016 12.25v-9.5A1.75 1.75 0 0014.25 1H1.75zM1.5 2.75a.25.25 0 01.25-.25h12.5a.25.25 0 01.25.25v9.5a.25.25 0 01-.25.25h-6.5a.75.75 0 00-.53.22L4.5 15.44v-2.19a.75.75 0 00-.75-.75h-2a.25.25 0 01-.25-.25v-9.5z"/><path d="M22.5 8.75a.25.25 0 00-.25-.25h-3.5a.75.75 0 010-1.5h3.5c.966 0 1.75.784 1.75 1.75v9.5A1.75 1.75 0 0122.25 20H21v1.543a1.457 1.457 0 01-2.487 1.03L15.939 20H10.75A1.75 1.75 0 019 18.25v-1.465a.75.75 0 011.5 0v1.465c0 .138.112.25.25.25h5.5a.75.75 0 01.53.22l2.72 2.72v-2.19a.75.75 0 01.75-.75h2a.25.25 0 00.25-.25v-9.5z"/>
                                                 </g>
                                             </svg>
-                                            <span>Discussions</span>
+                                            <span>Help</span>
                                         </a>
                                     </li>
             
@@ -242,16 +242,28 @@
         <span>Synopsis</span>
     </h2>
 </doc-anchor-target>
-<p>In the <code v-pre>pagy.rb</code> initializer:</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>pagy.rb (initializer)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">require 'pagy/extras/metadata'</code></pre>
 </doc-codeblock></div>
-<p>In your controller action:</p>
+    </div>
+</div>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(1, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-mono leading-snug text-white docs-columns-code-title">
+        <span>Controller (action)</span>
+    </div>
+    <div class="docs-columns-code docs-columns-content">
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">pagy, records = pagy(Product.all)
 render json: { data: records,
                pagy: pagy_metadata(pagy, ...) }</code></pre>
 </doc-codeblock></div>
+    </div>
+</div>
 <doc-anchor-target id="files">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#files">#</doc-anchor-trigger>
@@ -287,10 +299,10 @@ render json: { data: records,
 </div>
 <p>As usual, depending on the scope of the customization, you can set the <code v-pre>:metadata</code> variable globally or for a single pagy instance.</p>
 <p>IMPORTANT: Don&#x27;t rely on the broad default! You should explicitly set the <code v-pre>:metadata</code> variable with only the keys that you will actually use in the frontend, for obvious performance reasons. Besides you can also add other pagy method names not included in the default.</p>
-<doc-anchor-target id="scaffold_url-key">
+<doc-anchor-target id="the-scaffold_url-key">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#scaffold_url-key">#</doc-anchor-trigger>
-        <span>:scaffold_url key</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#the-scaffold_url-key">#</doc-anchor-trigger>
+        <span>The <code v-pre>:scaffold_url</code> key</span>
     </h3>
 </doc-anchor-target>
 <p>This is a special url string that you can use as the scaffold to build real page urls in your frontend (instead of producing them on the backend).</p>
@@ -301,7 +313,24 @@ render json: { data: records,
 <pre class="language-javascript"><code v-pre class="language-javascript">page_url = scaffold_url.replace(/__pagy_page__/, page_number)</code></pre>
 </doc-codeblock></div>
 <p>This is particularly useful when you want to build some dynamic pagination UI (e.g. similar to what the <code v-pre>pagy_*combo_js</code> generates), but right in your frontend app, saving backend resources with obvious performance benefits.</p>
-<p><strong>Notice</strong>: for simple cases you might want to use the other few <code v-pre>:*_url</code> metadata directly, instead of using the <code v-pre>:scaffold_url</code>.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-300"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-300" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5><code v-pre>scaffold_url</code> not necessary for simple cases</h5>
+<p>For simple cases you might want to use the other few <code v-pre>:*_url</code> metadata directly, instead of using the <code v-pre>:scaffold_url</code>.</p>
+        </div>
+    </div>
+</div>
 <doc-anchor-target id="methods">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#methods">#</doc-anchor-trigger>
@@ -309,13 +338,10 @@ render json: { data: records,
     </h2>
 </doc-anchor-target>
 <p>This extra adds a single method to the <code v-pre>Pagy::Backend</code> (available in your controllers).</p>
-<doc-anchor-target id="pagy_metadatapagy-absolute-nil">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pagy_metadatapagy-absolute-nil">#</doc-anchor-trigger>
-        <span>pagy_metadata(pagy, absolute: nil)</span>
-    </h3>
-</doc-anchor-target>
+<doc-panel id="pagy-metadata-pagy-absolute-nil" collapsed>
+    <template #title><code v-pre>pagy_metadata(pagy, absolute: nil)</code></template>
 <p>This method returns a hash with the keys/values defined by the <code v-pre>:metadata</code> variable.  When true, the <code v-pre>absolute</code> boolean argument will cause all the <code v-pre>:*_url</code> metadata to be absolute instead of relative.</p>
+</doc-panel>
 
                                 
                                 <!-- Required only on API pages -->
