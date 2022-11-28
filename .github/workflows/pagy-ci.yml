@@ -112,7 +112,7 @@ jobs:
         run: npm i --legacy-peer-deps cypress@latest @cypress/snapshot html-validate cypress-html-validate typescript@latest
 
       - name: Run Cypress Tests
-        uses: cypress-io/github-action@v4.1.1
+        uses: cypress-io/github-action@v4.2.1
         with:
           install: false
           config-file: cypress.config.ts
