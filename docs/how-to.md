@@ -111,6 +111,50 @@ pagy = Pagy.new(count: 1000, link_extra: 'data-remote="true" class="my-class"')
 For performance reasons, the `:link_extra` variable must be a string formatted as a valid HTML attribute/value pairs. That string will get inserted verbatim in the HTML of the link. _(see more advanced details in the [pagy_link_proc documentation](api/frontend.md#pagy-link-proc-pagy-link-extra))_
 !!!
 
+## Customize the request path
+
++++ Bad
+!!!danger No Path Passed In
+Path customization typically required when rendering multiple `@pagy` instances in the same view. e.g.:
+```rb
+# dashboard_controller
+def index
+  @pagy_foos, @foos = pagy(Foo.all)
+  @pagy_bars, @foos = pagy(Bars.all)
+end
+```
+```erb
+<-- /dashboard.html.erb -->
+<% turbo_frame "foos" do %>
+ <%== pagy_nav(@pagy_foos) %> 
+<% end%>
+<% turbo_frame "bars" do %>
+ <%== pagy_nav(@pagy_bars) %>
+<% end%>
+ <-- Pagination links will be `/dashboard?page=2` -->
+ <-- We don't want that! -->
+```
+!!!
++++ Good
+!!!success Request Path Passed In:
+
+```rb
+# dashboard_controller
+def index
+  @pagy_foos, @foos = pagy(Foo.all,  request_path: '/foos')
+  @pagy_bars, @foos = pagy(Bar.all, request_path: '/bars')
+end
+```
+```erb
+<-- /dashboard.html.erb -->
+ <%== pagy_nav(@pagy_foos) %> 
+ <%== pagy_nav(@pagy_bars) %>
+<-- Pagination links of `/foos?page=2` instead of `/dashboard?page=2` -->
+<-- Pagination links of `/bars?page=2` etc. -->
+<-- Success -->
+```
++++
+
 ## Customize the params
 
 When you need to add some custom param or alter the params embedded in the URLs of the page links, you can set the variable `:params` to a `Hash` of params to add to the URL, or a `Proc` that can edit/add/delete the request params.

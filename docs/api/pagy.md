@@ -133,6 +133,7 @@ They are all integers:
 | `:link_extra` | The extra attributes string (formatted as a valid HTML attribute/value pairs) added to the page links _(see [How to customize the link attributes](/docs/how-to.md#customize-the-link-attributes))_    | `""`               |
 | `:i18n_key`   | The i18n key to lookup the `item_name` that gets interpolated in a few helper outputs (see [How to customize the item name](/docs/how-to.md#customize-the-item-name))                                  | `"pagy.item_name"` |
 | `:cycle`      | Enable cycling/circular/infinite pagination: `true` sets `next` to `1` when the current page is the last page                                                                                       | `false`            |
+| `:request_path` | Allows overriding the request path for pagination links. If left blank, helpers will use `request.path`. NB: Do not pass in a full URL, but the path: For example, given `https://ddnexus.github.io/pagy/docs/api/pagy/` the path to be passed in is: `pagy/docs/api/pagy/`. (See: [Customize the request path](/docs/how-to.md#customize-the-request-path) )| `request.path` |
 
 There is no specific validation for non-instance variables.
 
@@ -155,6 +156,7 @@ Pagy exposes all the instance variables needed for the pagination through a few 
 | `next`   | The next page number or `nil` if there is no next page                                                             |
 | `vars`   | The variables hash                                                                                                 |
 | `params` | The `:params` variable (`Hash` or `Proc`)                                                                          |
+| `request_path` | The request path used for pagination helpers.  If blank, helpers will use `request.path`                           |
 
 ### Lowest limit analysis
 
