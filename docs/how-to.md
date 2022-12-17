@@ -113,6 +113,24 @@ For performance reasons, the `:link_extra` variable must be a string formatted a
 
 ## Customize the request path
 
++++ Good
+!!!success Request Path Passed In:
+```rb
+# dashboard_controller
+def index
+  @pagy_foos, @foos = pagy(Foo.all,  request_path: '/foos')
+  @pagy_bars, @foos = pagy(Bar.all, request_path: '/bars')
+end
+```
+```erb
+<-- /dashboard.html.erb -->
+ <%== pagy_nav(@pagy_foos) %> 
+ <%== pagy_nav(@pagy_bars) %>
+<-- Pagination links of `/foos?page=2` instead of `/dashboard?page=2` -->
+<-- Pagination links of `/bars?page=2` etc. -->
+<-- Success -->
+```
+!!!
 +++ Bad
 !!!danger No Path Passed In
 Path customization typically required when rendering multiple `@pagy` instances in the same view. e.g.:
@@ -135,24 +153,6 @@ end
  <-- We don't want that! -->
 ```
 !!!
-+++ Good
-!!!success Request Path Passed In:
-
-```rb
-# dashboard_controller
-def index
-  @pagy_foos, @foos = pagy(Foo.all,  request_path: '/foos')
-  @pagy_bars, @foos = pagy(Bar.all, request_path: '/bars')
-end
-```
-```erb
-<-- /dashboard.html.erb -->
- <%== pagy_nav(@pagy_foos) %> 
- <%== pagy_nav(@pagy_bars) %>
-<-- Pagination links of `/foos?page=2` instead of `/dashboard?page=2` -->
-<-- Pagination links of `/bars?page=2` etc. -->
-<-- Success -->
-```
 +++
 
 ## Customize the params
