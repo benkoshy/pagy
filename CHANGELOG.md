@@ -430,3 +430,5 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - Improved the usage of e2e tests
 - Updated doc, gemfiles and github workflow
 - Other minor fixes and improvements in code and doc
+
+[LEGACY CHANGELOG >>>](CHANGELOG_LEGACY.md)

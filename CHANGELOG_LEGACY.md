@@ -1,10 +1,9 @@
 ---          
-title: CHANGELOG (legacy)
 icon: versions-24
 layout: page
 ---
 
-# CHANGELOG LEGACY
+# LEGACY CHANGELOG
 
 ## Version 4.11.0
 
