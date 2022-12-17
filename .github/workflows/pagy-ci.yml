@@ -2,7 +2,8 @@ name: Pagy CI
 
 on:
   push:
-    branches: ['**']
+    branches-ignore:
+      - 'retype*' # ignore ruby ci when push to retype      
   pull_request:
     branches: ['**']
 
