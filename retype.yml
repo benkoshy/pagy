@@ -16,7 +16,10 @@ links:
   - text: Issues
     link: https://github.com/ddnexus/pagy/issues
     icon: issue-opened-24
-  - text: Help
+  - text: Q&A
+    link: https://github.com/ddnexus/pagy/discussions/categories/q-a
+    icon: comment-discussion-24
+  - text: Discussions
     link: https://github.com/ddnexus/pagy/discussions
     icon: comment-discussion-24
 
