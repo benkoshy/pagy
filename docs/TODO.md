@@ -71,6 +71,11 @@ Name   | Retype Formatting  | Restructuring
 
 Broken Anchors: [!badge variant="success" text="complete"]
 
-
-
-
+## Ensure before release
+                                                                       
+- [] Edit the README.md with the new features and notable changes in v6 (also integrate with CHANGELOG)
+- [] Check for broken links to the new retype doc (especially README.md)
+- [] Remove all the gitter links, replace them with Q&A section of the Discussions
+- [] Ensure that the tickets for moving new features to retype are closed
+- [] Last review of the retype doc
+- [] Remove the old-docs dir; update the retype and test CI
