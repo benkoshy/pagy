@@ -78,4 +78,5 @@ Broken Anchors: [!badge variant="success" text="complete"]
 - [] Remove all the gitter links, replace them with Q&A section of the Discussions
 - [] Ensure that the tickets for moving new features to retype are closed
 - [] Last review of the retype doc
-- [] Remove the old-docs dir; update the retype and test CI
+- [] Remove the old-docs dir and its exclusion from retype.yml; update the retype and test CI
+- [] Remove this very file

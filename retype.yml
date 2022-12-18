@@ -22,6 +22,7 @@ links:
 
 exclude:
   - README.md
+  - docs-old
 
 edit:
   repo: "https://github.com/ddnexus/pagy"
