@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725414237947">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725916143282">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,12 +31,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/pagy/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.725414237947" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.725916143282" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725414237947" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725916143282" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725414237947" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.725414237947" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725916143282" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.725916143282" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -611,7 +611,7 @@ end</code></pre>
     </div>
 </div>
 <p>That would produce links that look like e.g. <code v-pre>&lt;a href=&quot;2&quot;&gt;2&lt;/a&gt;</code>. Then you can attach a javascript &quot;click&quot; event on the page links. When triggered, the <code v-pre>href</code> content (i.e. the page number) should get copied to a hidden <code v-pre>&quot;page&quot;</code> input and the form should be posted.</p>
-<p>For a detailed tutorial about this topic see <a href="https://benkoshy.github.io/2019/10/09/paginating-search-results-with-a-post-request.html">Handling Pagination When POSTing Complex Search Forms</a> by Ben Koshy.</p>
+<p>For a broader tutorial about this topic see <a href="https://benkoshy.github.io/2019/10/09/paginating-search-results-with-a-post-request.html">Handling Pagination When POSTing Complex Search Forms</a> by Ben Koshy.</p>
 <doc-anchor-target id="customize-the-item-name">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#customize-the-item-name">#</doc-anchor-trigger>
@@ -936,7 +936,7 @@ count = collection.count</code></pre>
         <span>Paginate collections with metadata</span>
     </h2>
 </doc-anchor-target>
-<p>When your collection is already paginated and contains counts and pagination metadata, you don&#x27;t need any <code v-pre>pagy*</code> controller method. For example this is a Tmdb API search result object, but you can apply the same principe to any other type of collection metadata:</p>
+<p>When your collection is already paginated and contains counts and pagination metadata, you don&#x27;t need any <code v-pre>pagy*</code> controller method. For example this is a Tmdb API search result object, but you can apply the same principle to any other type of collection metadata:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-ruby"><code v-pre class="language-ruby">#&lt;Tmdb::Result page=1, total_pages=23, total_results=446, results=[#&lt;Tmdb::Movie ..&gt;,#&lt;Tmdb::Movie...&gt;,...]...&gt;</code></pre>
 </doc-codeblock></div>
@@ -1339,10 +1339,10 @@ end</code></pre>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../docs/api/pagy/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../docs/api/javascript/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Pagy</span>
+                                                <span class="block mt-1">Javascript</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
