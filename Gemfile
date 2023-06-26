@@ -23,6 +23,8 @@ group :test do
   gem 'rubocop-performance'
   gem 'rubocop-rake'
   gem 'simplecov', require: false
+  gem "rails"
+  gem "debug"
 end
 
 group :apps do

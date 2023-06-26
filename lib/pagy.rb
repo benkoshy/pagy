@@ -133,3 +133,5 @@ end
 require 'pagy/backend'
 require 'pagy/frontend'
 require 'pagy/exceptions'
+
+require 'generators/pagy/engine' if defined?(Rails) # load engine only if Rails is used in the application
