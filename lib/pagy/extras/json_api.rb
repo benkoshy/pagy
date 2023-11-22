@@ -1,35 +1,43 @@
-require_relative '../../test_helper'
+# frozen_string_literal: true
 
 
-class Pagy
+# See the Pagy documentation: https://ddnexus.github.io/pagy/docs/extras/json_api # remember to add a page here
+
+require 'pagy/url_helpers'
+
+class Pagy # :nodoc:
+
+  DEFAULT[:metadata] = %i[ scaffold_url first_url prev_url page_url next_url last
+                           count page items vars pages last in from to prev next series ]
+  # there is a conflict between last, and the last_usl
+
+
+  
   module JsonAPI
-    # similar to metadata extra
-    # but provide the default return values so that it complies with json api specs.
+    private
 
-    # we may also need to change the default params that pagy uses.
-    # e.g. instead of having as per standard default.
-    # http://example.com/articles?&page=4
-    # params # => {"page"=>{"number"=>"4", "size" => 123} }
-
-    # pagy, records = pagy(Product.all)
-    # render json: { data: records, links: pagy_json_api(pagy, ...) }
-
-    def pagy_json_api
+    include UrlHelpers
+    
+    def pagy_json_api(pagy, absolute: nil)
+      
+      scaffold_url = pagy_url_for(pagy, PAGE_PLACEHOLDER, absolute: absolute)  # pagy_url_for must handle nested params
+      {}.tap do |json_api|
+        keys = defined?(Calendar) && pagy.is_a?(Calendar) ? pagy.vars[:json_api] - %i[count items] : pagy.vars[:json_api]
+        keys.each do |key|
+          json_api[key] = case key
+                          when :scaffold_url then scaffold_url
+                          when :first    then scaffold_url.sub(PAGE_PLACEHOLDER, 1.to_s)
+                          when :prev     then scaffold_url.sub(PAGE_PLACEHOLDER, pagy.prev.to_s)
+                          when :page_url     then scaffold_url.sub(PAGE_PLACEHOLDER, pagy.page.to_s)
+                          when :next     then scaffold_url.sub(PAGE_PLACEHOLDER, pagy.next.to_s)
+                          when :last     then scaffold_url.sub(PAGE_PLACEHOLDER, pagy.last.to_s)
+                          else pagy.send(key)
+                          end
+        rescue NoMethodError
+          raise VariableError.new(pagy, :json_api, 'to contain known keys', key)
+        end
+      end
     end
-
-    def links
-    end
-
-    # Generic specs: https://jsonapi.org/format/#fetching-pagination
-    # We must return the following object
-=begin
-    "links": {
-      "self": "http://example.com/articles?page[number]=3&page[size]=1",
-      "first": "http://example.com/articles?page[number]=1&page[size]=1",
-      "prev": "http://example.com/articles?page[number]=2&page[size]=1",
-      "next": "http://example.com/articles?page[number]=4&page[size]=1",
-      "last": "http://example.com/articles?page[number]=13&page[size]=1"
-    }
-=end
   end
+  Backend.prepend JsonAPI
 end
