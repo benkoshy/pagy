@@ -18,6 +18,8 @@ class Pagy
     # You may need to override the count call for non AR collections
     def pagy_get_vars(collection, vars)
       pagy_set_items_from_params(vars) if defined?(ItemsExtra)
+      
+      vars = flatten_json_api_params(vars)  if get_page_param.is_a?(Hash)
       vars[:count] ||= (count = collection.count(:all)).is_a?(Hash) ? count.size : count
       vars[:page]  ||= params[vars[:page_param] || DEFAULT[:page_param]]
       vars
@@ -27,6 +29,14 @@ class Pagy
     # You may need to override this method for collections without offset|limit
     def pagy_get_items(collection, pagy)
       collection.offset(pagy.offset).limit(pagy.items)
+    end
+
+    def flatten_json_api_params(vars)            
+        vars.merge(params[:page])
+    end    
+
+    def get_page_param
+       params[vars[:page_param] || DEFAULT[:page_param]]
     end
   end
 end
