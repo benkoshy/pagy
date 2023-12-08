@@ -19,7 +19,7 @@ class Pagy
     def pagy_get_vars(collection, vars)
       pagy_set_items_from_params(vars) if defined?(ItemsExtra)
       
-      vars = flatten_json_api_params(vars)  if get_page_param.is_a?(Hash)
+      vars = flatten_json_api_params(vars)  if get_page_param(vars).is_a?(Hash)
       vars[:count] ||= (count = collection.count(:all)).is_a?(Hash) ? count.size : count
       vars[:page]  ||= params[vars[:page_param] || DEFAULT[:page_param]]
       vars
@@ -32,10 +32,10 @@ class Pagy
     end
 
     def flatten_json_api_params(vars)            
-        vars.merge(params[:page])
+        vars.merge(get_page_param)
     end    
 
-    def get_page_param
+    def get_page_param(vars)
        params[vars[:page_param] || DEFAULT[:page_param]]
     end
   end
