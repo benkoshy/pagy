@@ -132,21 +132,14 @@ class SerializableBook < JSONAPI::Serializable::Resource
     @object.created_at
   end
 
-  belongs_to :author
-
-  has_many :authors do        
-
-    meta do
-      { count: @object.id }
-    end
-  end
-
-  link :self do
-    @url_helpers.book_url(@object.id)
-  end
+  belongs_to :author 
 
   link :links do
-      @url_helpers.book_url(@object.id)
+      {
+        first: @url_helpers.book_url(@object.id),
+        second: "https://benkoshy.github.io/"  
+      }
+      
   end
 
 end
@@ -168,6 +161,17 @@ class TestController < ActionController::Base # :nodoc:
     # books         = Book.includes(:author).pagy_search('*')
     # @pagy, @books = pagy_meilisearch(books, items: 10)
     # @books.each(&:author)
+
+    @pagy, @books = pagy(Book.all, items: 10)
+
+    renderer = JSONAPI::Serializable::Renderer.new
+
+    renderer.render(@books,
+                class: { Book: SerializableBook},
+                include: [:author],
+                fields:  { author: [:id, :name],
+                           books: [:id, :name] })
+
     
   end
 
@@ -184,8 +188,7 @@ class TestControllerTest < ActionDispatch::IntegrationTest # :nodoc:
 
   test 'pagy json output - example' do
     get '/'
-    assert_equal response.parsed_body, { 'data' => Book.first(10).as_json, 'meta' =>
-                                         { 'first_url' => '/?page=1', 'last_url' => '/?page=1' } }
+    assert_equal response.parsed_body, "work out why it is not working"
   end
 
   def test_my_pagy_problem_here
