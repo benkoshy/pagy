@@ -122,6 +122,36 @@ Author.all.each_with_index do |author, i|
   Book.create(author: author, name: i)
 end
 
+
+class SerializableBook < JSONAPI::Serializable::Resource
+  type 'posts'
+
+  attributes :id, :name
+
+  attribute :date do
+    @object.created_at
+  end
+
+  belongs_to :author
+
+  has_many :authors do        
+
+    meta do
+      { count: @object.id }
+    end
+  end
+
+  link :self do
+    @url_helpers.book_url(@object.id)
+  end
+
+  link :links do
+      @url_helpers.book_url(@object.id)
+  end
+
+end
+
+
 ## Optional: Meilisearch example
 # Book.reindex!
 
@@ -136,7 +166,6 @@ class TestController < ActionController::Base # :nodoc:
     # books         = Book.includes(:author).pagy_search('*')
     # @pagy, @books = pagy_meilisearch(books, items: 10)
     # @books.each(&:author)
-
     render json: { data: @books, meta: pagy_metadata(meta) }
   end
 
