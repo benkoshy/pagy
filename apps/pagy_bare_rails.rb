@@ -25,17 +25,18 @@ gemfile(true) do
   # gem 'debase'
   # gem 'ruby-debug-ide'
 
-  # gem 'pagy'            # <--install from rubygems
-  gem 'pagy', path: '../' # <-- use the local repo
+  gem 'pagy'            # <--install from rubygems
+  # gem 'pagy', path: '../' # <-- use the local repo
 
   # gem "rails", github: "rails/rails", branch: "main"
-  gem 'rails', '~> 6.1'
+  gem 'rails', '~> 7.1'
   gem 'actionpack'
   gem 'railties'
   gem 'sqlite3'
 
   ## Optional: Meilisearch example
   # gem 'meilisearch-rails'
+  gem 'jsonapi-rails'
 end
 
 require 'debug'
