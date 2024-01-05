@@ -160,13 +160,15 @@ class TestController < ActionController::Base # :nodoc:
   include Pagy::Backend
 
   def index
-    meta, @books = pagy(Book.all, items: 10)
+    # standard output
+    # meta, @books = pagy(Book.all, items: 10)
+    # render json: { data: @books, meta: pagy_metadata(meta) }
 
     ## Optional: Meilisearch example
     # books         = Book.includes(:author).pagy_search('*')
     # @pagy, @books = pagy_meilisearch(books, items: 10)
     # @books.each(&:author)
-    render json: { data: @books, meta: pagy_metadata(meta) }
+    
   end
 
   ## override pagy methods if you need to here:
