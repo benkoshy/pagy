@@ -415,12 +415,6 @@ See also the [How To Page](https://ddnexus.github.io/pagy/docs/how-to)
 - [The Stargazers](https://github.com/ddnexus/pagy/stargazers) for showing their support
 
 
-<details>
-
-<summary><b>Contributions List</b></summary>
-
-[![Contributors](https://img.shields.io/github/all-contributors/benkoshy/pagy?color=ee8449&style=flat-square)](#contributors)
-
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -430,8 +424,6 @@ See also the [How To Page](https://ddnexus.github.io/pagy/docs/how-to)
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-
-</details>
 
 ## 📃 License
 
