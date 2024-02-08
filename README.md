@@ -425,6 +425,7 @@ See also the [How To Page](https://ddnexus.github.io/pagy/docs/how-to)
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 
+
 ## 📃 License
 
 [MIT](https://opensource.org/licenses/MIT)
