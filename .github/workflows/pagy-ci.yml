@@ -77,6 +77,10 @@ jobs:
         if: ${{ env.CHECK_MANIFEST == 'true' }}
         run: bundle exec rake manifest:check
 
+      - name: Add contributors
+        uses: akhilmhdh/contributors-readme-action@v2.3.6
+        env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   e2e_test:
     needs: should_run
