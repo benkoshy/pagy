@@ -77,11 +77,6 @@ jobs:
         if: ${{ env.CHECK_MANIFEST == 'true' }}
         run: bundle exec rake manifest:check
 
-      - name: Add contributors
-        uses: akhilmhdh/contributors-readme-action@v2.3.6
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   e2e_test:
     needs: should_run
     if: ${{ needs.should_run.outputs.should_skip != 'true' }}
@@ -161,3 +156,12 @@ jobs:
           quiet: # optional
           # Lets the action know that Cypress is running component tests and not e2e tests
           component: # optional
+
+
+  add_contributors:
+    needs: should_run
+    if: ${{ needs.should_run.outputs.should_skip != 'true' }}
+      - name: Add contributors
+        uses: akhilmhdh/contributors-readme-action@v2.3.6
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
