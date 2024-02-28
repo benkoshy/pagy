@@ -38,6 +38,12 @@ stylesheet_path = Pagy.root.join('stylesheets', 'pagy.css')
 +++ pagy.tailwind.scss
 
 [Download file](/lib/stylesheets/pagy.tailwind.scss)
+[!file  /lib/stylesheets/pagy.tailwind.scss](/lib/stylesheets/pagy.tailwind.scss)
+[!file  ../../lib/stylesheets/pagy.tailwind.scss](/lib/stylesheets/pagy.tailwind.scss)
+
+
+
+
 
 ```ruby 
 stylesheet_path = Pagy.root.join('stylesheets', 'pagy.tailwind.scss')
