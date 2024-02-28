@@ -17,6 +17,7 @@ untouched
 
 +++ pagy.scss
 
+
 [Download file](/lib/stylesheets/pagy.scss)
 
 ```ruby 
@@ -27,7 +28,9 @@ stylesheet_path = Pagy.root.join('stylesheets', 'pagy.scss')
 
 +++ pagy.css
 
+
 [Download file](/lib/stylesheets/pagy.css)
+
 
 ```ruby 
 stylesheet_path = Pagy.root.join('stylesheets', 'pagy.css')
@@ -37,7 +40,9 @@ stylesheet_path = Pagy.root.join('stylesheets', 'pagy.css')
 
 +++ pagy.tailwind.scss
 
+
 [Download file](/lib/stylesheets/pagy.tailwind.scss)
+
 
 ```ruby 
 stylesheet_path = Pagy.root.join('stylesheets', 'pagy.tailwind.scss')
