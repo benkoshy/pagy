@@ -17,7 +17,7 @@ untouched
 
 +++ pagy.scss
 
-[!file pagy.scss](lib/stylesheets/pagy.scss)
+[!file pagy.scss](/lib/stylesheets/pagy.scss)
 
 ```ruby 
 stylesheet_path = Pagy.root.join('stylesheets', 'pagy.scss')
@@ -27,7 +27,7 @@ stylesheet_path = Pagy.root.join('stylesheets', 'pagy.scss')
 
 +++ pagy.css
 
-[!file pagy.css](lib/stylesheets/pagy.css)
+[!file pagy.css](/lib/stylesheets/pagy.css)
 
 ```ruby 
 stylesheet_path = Pagy.root.join('stylesheets', 'pagy.css')
@@ -37,7 +37,7 @@ stylesheet_path = Pagy.root.join('stylesheets', 'pagy.css')
 
 +++ pagy.tailwind.scss
 
-[!file pagy.tailwind.scss](lib/stylesheets/pagy.tailwind.scss)
+[!file pagy.tailwind.scss](/lib/stylesheets/pagy.tailwind.scss)
 
 
 ```ruby 
