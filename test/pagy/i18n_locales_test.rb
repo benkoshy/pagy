@@ -17,12 +17,24 @@ describe 'pagy/locales' do
     }
   end
 
-  # locale files loop
-  Pagy.root.join('locales').each_child do |f|
-    next unless f.extname == '.yml'
+  # helpers
+  def self.get_locale_files
+    Pagy.root.join('locales') # locale files returns Pathname array
+  end
+
+  def self.is_yaml_file?(f)
+    f.extname == '.yml'
+  end
+
+  def self.get_locale_name(f)
+    f.basename.to_s[0..-5]
+  end
+  
+  get_locale_files.each_child do |f|
+    next unless is_yaml_file?(f)
 
     message = "locale file #{f}"
-    locale  = f.basename.to_s[0..-5]
+    locale  = get_locale_name(f)
     comment = f.readlines.first.to_s.strip
     rule    = comment.to_s.split[1][1..].to_s.to_sym
 
@@ -46,4 +58,5 @@ describe 'pagy/locales' do
       end
     end
   end
+  
 end
