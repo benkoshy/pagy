@@ -119,6 +119,15 @@ class PagyStyles < Sinatra::Base
       formatter = Rouge::Formatters::HTMLInline.new('monokai')
       %(<details><summary>HTML</summary><pre>#{formatter.format(lexer.lex(indented))}</pre></details>)
     end
+
+
+      def wrap_js(html)
+      %Q(<div class="pagy-nav-js-display">
+            #{html}
+</div>
+      )
+    end
+
   end
 end
 
@@ -168,14 +177,14 @@ __END__
 
 
      function escapePagy() {
-
-         pagy_navs = document.getElementsByClassName("pagy");
+         pagy_navs = document.getElementsByClassName("pagy-nav-js-display");
 
 
          for (var i = 0; i < pagy_navs.length; i++) {
                 var result = escapehtml(pagy_navs[i].innerHTML)
-
                 console.log(result)
+
+                pagy_navs[i].innerHTML = result                
           }        
     }
 
@@ -313,7 +322,10 @@ __END__
        steps: { 0 => [1,3,3,1], 600 => [2,4,4,2], 900 => [3,4,4,3] }) %>
   <%= highlight(html) %>
 
-  <div id="pagy-js"> </div>
+
+  Escape the javascript here:
+
+  <%= wrap_js(html) %>  
 
   <h4>pagy_<%= prefix %>combo_nav_js</h4>
   <%= html = send(:"pagy_#{prefix}combo_nav_js", @pagy, pagy_id: 'combo-nav-js', nav_aria_label: 'Pages combo_nav_js') %>
@@ -327,3 +339,7 @@ __END__
   <%= html = pagy_info(@pagy, pagy_id: 'pagy-info') %>
   <%= highlight(html) %>
 </div>
+
+
+
+
