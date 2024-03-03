@@ -29,7 +29,7 @@ end
 if run_from_repo?
   require 'bundler'
   Bundler.require(:default, :apps)
-  require 'oj' # require false in Gemfile
+  # require 'oj' # require false in Gemfile
   $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
   require 'pagy'
 else
@@ -154,7 +154,31 @@ __END__
     <title>Pagy Styles</title>
     <script src="<%= %(/javascripts/#{"pagy#{'-dev' if ENV['DEBUG']}.js"}) %>"></script>
     <script>
-      window.addEventListener("load", Pagy.init);
+    window.addEventListener("load", Pagy.init);
+
+
+    window.addEventListener("load", escapePagy);
+
+    function escapehtml(unsafe) {
+            var text = document.createTextNode(unsafe);
+            var p = document.createElement('p');
+            p.appendChild(text);
+            return p.innerHTML;
+      };
+
+
+     function escapePagy() {
+
+         pagy_navs = document.getElementsByClassName("pagy");
+
+
+         for (var i = 0; i < pagy_navs.length; i++) {
+                var result = escapehtml(pagy_navs[i].innerHTML)
+
+                console.log(result)
+          }        
+    }
+
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= erb :"#{style}_head" if defined?(style) %>
@@ -288,6 +312,8 @@ __END__
        nav_aria_label: 'Pages nav_js_responsive',
        steps: { 0 => [1,3,3,1], 600 => [2,4,4,2], 900 => [3,4,4,3] }) %>
   <%= highlight(html) %>
+
+  <div id="pagy-js"> </div>
 
   <h4>pagy_<%= prefix %>combo_nav_js</h4>
   <%= html = send(:"pagy_#{prefix}combo_nav_js", @pagy, pagy_id: 'combo-nav-js', nav_aria_label: 'Pages combo_nav_js') %>
