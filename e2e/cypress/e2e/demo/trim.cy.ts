@@ -1,5 +1,4 @@
-// @ts-expect-error TS2835: Relative import paths ... cypress is fine with it
-import {styles, stylesCal, navIds} from "../support/test-helper";
+import {styles, navIds} from "../../support/test-helper.ts";
 
 describe("Test trim in all helpers and styles", () => {
     const testLoop = (styles:string[], ids:string[], param:string) => {
@@ -14,7 +13,6 @@ describe("Test trim in all helpers and styles", () => {
         }
     };
     testLoop(styles, [...navIds, "#combo-nav-js"], "page");
-    testLoop(stylesCal, navIds, "month_page");
 
     it("Test the trimmed location.href after using the items_selector", () => {
         cy.visit("/pagy?trim=true&page=1&items=20");

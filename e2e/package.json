@@ -25,9 +25,7 @@
     },
     "scripts": {
         "lint-fix": "eslint --fix cypress --ext .ts",
-        "pagy-app": "bundle exec rackup -q -p 4566 pagy_app.ru",
-        "test-app": "bundle exec rackup -q -p 4567 pagy_app.ru",
-        "test": "start-test test-app 4567 'cypress run'",
-        "test-open": "start-test test-app 4567 'cypress open'"
+        "test": "start-test \"bundle exec pagy $APP -p 8080\" 8080 \"cypress run --spec cypress/e2e/$APP/**/*\"",
+        "test-open": "start-test \"bundle exec pagy $APP -p 8080\" 8080 \"cypress open\""
     }
 }

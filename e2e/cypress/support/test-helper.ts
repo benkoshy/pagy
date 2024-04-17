@@ -1,18 +1,11 @@
 export const navIds = ["#nav", "#nav-js"];
-const widths = [500, 750, 1000];
-const specialStylesRe = /^\/(bulma)/;
+const widths = [450, 700, 950, 1050];
 
 export const styles = [
-    "/bootstrap",
-    "/bulma",
-    "/foundation",
-    "/materialize",
     "/pagy",
-    "/semantic",
-    "/uikit"
+    "/bootstrap",
+    "/bulma"
 ];
-
-export const stylesCal = styles.map(s => `${s}-calendar`);
 
 export function snapId(id:string) {
     cy.get("#records").snapshot();
@@ -39,30 +32,24 @@ export function navsLoop(styles:string[]) {
 }
 
 function checkStyleId(style:string, id:string) {
-    const pages = /-calendar$/.test(style)
-                  ? ["2022-01", "2023-11"]
-                  : ["3", "50"];
+    const pages = ["3", "50"];
     cy.visit(style);
     snapId(id);
 
-    goCheckNext(style, id);
+    goCheckNext(id);
     for (const page of pages) {
         cy.get(id).contains(page).click();
         snapId(id);
     }
-    goCheckPrev(style, id);
+    goCheckPrev(id);
 }
 
-export function goCheckNext(style:string, id:string) {
-    specialStylesRe.test(style)
-    ? cy.get(id).contains(">").click()
-    : cy.get(`${id} a:last`).click();
+export function goCheckNext(id:string) {
+    cy.get(id).contains(">").click()
     snapId(id);
 }
 
-export function goCheckPrev(style:string, id:string) {
-    specialStylesRe.test(style)
-    ? cy.get(id).contains("<").click()
-    : cy.get(`${id} a:first`).click();
+export function goCheckPrev(id:string) {
+    cy.get(id).contains("<").click()
     snapId(id);
 }
