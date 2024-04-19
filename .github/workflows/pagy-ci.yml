@@ -88,9 +88,9 @@ jobs:
       - name: Cypress Test
         uses: cypress-io/github-action@v6.6.0
         with:
+          working-directory: e2e
           config: baseUrl=http://0.0.0.0:8080,video=false
           start: bundle exec pagy ${{ matrix.app }} -p 8080
           install: false
           wait-on: http://0.0.0.0:8080
-          project: ./e2e
           spec: cypress/e2e/${{ matrix.app }}/**/*
