@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="turbo-root" content="/pagy">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.766538741604">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.769149980699">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,12 +31,12 @@
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=3.5.0.766538741604" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.769149980699" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.766538741604" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.769149980699" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.766538741604" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.766538741604" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.769149980699" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.5.0.769149980699" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -53,7 +53,7 @@
                     <div class="flex items-center px-2 md:px-6">
                         <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-2xl">
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Pagy</span>
-                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">8.1.2</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">8.4.0</span>
                     </div>
         
                     <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
@@ -462,7 +462,7 @@ collections in the same action. Depending on the scope of the customization, you
 <li><code v-pre>pagy(scope, page_param: :custom_param)</code> or <code v-pre>Pagy.new(count:100, page_param: :custom_param)</code> will be used for a single
 instance (overriding the global default)</li>
 </ol>
-<p>You can also override the <code v-pre>pagy_get_vars</code> if you need some special way to get the page number.</p>
+<p>You can also override the <a href="../api/backend/#pagy-get-page-vars">pagy_get_page</a> if you need some special way to get the page number.</p>
 <doc-anchor-target id="customize-the-link-attributes">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#customize-the-link-attributes">#</doc-anchor-trigger>
@@ -622,9 +622,8 @@ the <a href="https://github.com/ddnexus/pagy/blob/master/gem/locales">dictionary
 </doc-anchor-target>
 <p>For all its own interactive helpers the pagy gem includes a few <a href="../api/stylesheets/">stylesheets</a> that you can customize.</p>
 <p>Besides that, pagy provides a few frontend extras
-for <a href="../extras/bootstrap/">bootstrap</a>, <a href="../extras/bulma/">bulma</a>, <a href="../extras/foundation/">foundation</a>,
-<a href="../extras/materialize/">materialize</a>, <a href="../extras/semantic/">semantic</a>, <a href="../api/stylesheets/#pagy-tailwind-scss">tailwind</a>
-and <a href="../extras/uikit/">uikit</a> that come with a decent styling provided by their respective framework.</p>
+for <a href="../extras/bootstrap/">bootstrap</a>, <a href="../extras/bulma/">bulma</a> and <a href="../api/stylesheets/#pagy-tailwind-scss">tailwind</a>
+that come with a decent styling provided by their respective framework.</p>
 <p>If you need to further customize the styles provided by the extras, you don&#x27;t necessary need to override the helpers in most of
 them: here are a few alternatives:</p>
 <ul>
@@ -675,6 +674,18 @@ end
 Pagy::Backend.prepend MyOverridingModule
 # and/or
 Pagy::Frontend.prepend MyOverridingModule</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="override-pagy_get_count-use-count_documents-with-mongoid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#override-pagy_get_count-use-count_documents-with-mongoid">#</doc-anchor-trigger>
+        <span>Override <code v-pre>pagy_get_count</code>: use <code v-pre>count_documents</code> with Mongoid</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-ruby"><code v-pre class="language-ruby"># e.g. applicaton_controller.rb
+def pagy_get_count(collection, vars)
+  collection.respond_to?(:count_documents) ? collection.count_documents : super
+end</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="paginate-an-array">
     <h2>
@@ -923,6 +934,8 @@ def index # controller action
   @pagy_nebulae, @nebulae = pagy(Nebula.all, page_param: :page_nebulae)
 end</code></pre>
 </doc-codeblock></div>
+   </doc-panel>
+</doc-panels>
 <doc-anchor-target id="wrap-existing-pagination-with-pagy_calendar">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#wrap-existing-pagination-with-pagy_calendar">#</doc-anchor-trigger>
@@ -949,8 +962,6 @@ to different existing statements.</p>
                                                                      any_vars: value, ... })</code></pre>
 </doc-codeblock></div>
 <p>Then follow the <a href="../extras/calendar/">calendar extra documentation</a> for more details.</p>
-   </doc-panel>
-</doc-panels>
 <doc-anchor-target id="paginate-only-max_pages-regardless-the-count">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#paginate-only-max_pages-regardless-the-count">#</doc-anchor-trigger>
@@ -1148,19 +1159,13 @@ extra count query may affect the performance of the app quite badly.</p>
        <template #title>Cache the count</template>
 <p>Depending on the nature of the app, a possible cheap solution would be caching the count of the collection, and Pagy makes that
 really simple.</p>
-<p>Pagy gets the collection count through its <code v-pre>pagy_get_vars</code> method, so you can override it in your controller. Here is an example
+<p>Pagy gets the collection count through its <code v-pre>pagy_get_count</code> method, so you can override it in your controller. Here is an example
 using the rails cache:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <div class="codeblock-title">controller</div>
-<pre class="language-ruby"><code v-pre class="language-ruby"># override the pagy_get_vars method so it will call your cache_count method
-def pagy_get_vars(collection, vars)
-  vars[:count] ||= cache_count(collection)
-  vars[:page]  ||= params[vars[:page_param] || Pagy::DEFAULT[:page_param]]
-  vars
-end
-
-# add Rails.cache wrapper around the count call
-def cache_count(collection)
+<pre class="language-ruby"><code v-pre class="language-ruby"># override the pagy_get_count method adding
+# the Rails.cache wrapper around the count call
+def pagy_get_count(collection, _vars)
   cache_key = &quot;pagy-#{collection.model.name}:#{collection.to_sql}&quot;
   Rails.cache.fetch(cache_key, expires_in: 20 * 60) do
     collection.count(:all)
@@ -1182,14 +1187,6 @@ DB writing, and probably not particularly useful with a DB in constant change.</
 need for a count query, still providing an acceptable subset of the full pagination features.</p>
    </doc-panel>
 </doc-panels>
-<doc-anchor-target id="use-ajax">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#use-ajax">#</doc-anchor-trigger>
-        <span>Use AJAX</span>
-    </h2>
-</doc-anchor-target>
-<p>You can trigger ajax render in rails by <doc-anchor-trigger to="#customize-the-link-attributes">customizing the link attributes</doc-anchor-trigger>.</p>
-<p>See also <a href="../api/javascript/ajax/#using-ajax">Using AJAX</a>.</p>
 <doc-anchor-target id="maximize-performance">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#maximize-performance">#</doc-anchor-trigger>

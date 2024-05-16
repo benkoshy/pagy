@@ -18,22 +18,27 @@ class Pagy
     # You may need to override the count call for non AR collections
     def pagy_get_vars(collection, vars)
       pagy_set_items_from_params(vars) if defined?(ItemsExtra)
-      count_args = vars[:count_args] || DEFAULT[:count_args]
-      vars[:count] ||= (count = collection.count(*count_args)).is_a?(Hash) ? count.size : count
+      vars[:count] ||= pagy_get_count(collection, vars)
       vars[:page]  ||= pagy_get_page(vars)
       vars
+    end
+
+    # Get the count from the collection
+    def pagy_get_count(collection, vars)
+      count_args = vars[:count_args] || DEFAULT[:count_args]
+      (count     = collection.count(*count_args)).is_a?(Hash) ? count.size : count
     end
 
     # Get the page integer from the params
     # Overridable by the jsonapi extra
     def pagy_get_page(vars)
-      (params[vars[:page_param] || DEFAULT[:page_param]] || 1).to_i
+      [params[vars[:page_param] || DEFAULT[:page_param]].to_i, 1].max
     end
 
     # Sub-method called only by #pagy: here for easy customization of record-extraction by overriding
     # You may need to override this method for collections without offset|limit
     def pagy_get_items(collection, pagy)
-      collection.offset(pagy.offset).limit(pagy.items)
+      collection.offset(pagy.offset).limit(pagy.in)
     end
   end
 end
