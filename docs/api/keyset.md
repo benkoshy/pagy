@@ -58,7 +58,7 @@ And in order to save resources and complexity: you don't know the previous and t
 
 ### ORMs
 
-`Pagy::Keyset` implments the classes for `activerecord` or `sequel` sets
+`Pagy::Keyset` implements the classes for `activerecord` or `sequel` sets.
 
 
 ## How pagy keyset works
@@ -70,16 +70,16 @@ encoding the information into the `page` param of the `next` URL. At each reques
 
 ==- `Pagy::Keyset.new(set, **vars)`
 
-The constructor takes the `set`, (that can be an activerecord scope or a sequel dataset) and an optional hash of 
-[variables](#variables) 
+The constructor takes the `set`, (that can be an Activerecord Scope or a Sequel Dataset) and an optional hash of 
+[variables](#variables). 
 
 ==- `next`
 
-The next `:page`, i.e. the encoded cursor used to exclude the records retrieved up to that point
+The next `:page`, i.e. the encoded cursor used to exclude the records retrieved up to that point .
 
 ==- `records`
 
-The array of records in the current page
+The array of records in the current page.
 
 ===
 
@@ -87,7 +87,7 @@ The array of records in the current page
 
 === `:page`
 
-The current page (i.e. the encoded cursor). Default `nil` for the first page
+The current page (i.e. the encoded cursor). Default `nil` for the first page.
 
 === `:items`
 
@@ -97,7 +97,7 @@ automatically from the request param.
 === `:row_comaprison`
 
 Boolish variable that enables the row comparison query for same-direction keysets (and B-tree indices for performance). Default 
-`nil`
+`nil`.
 
 ==- `:where_query`
 
