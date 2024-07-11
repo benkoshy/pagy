@@ -47,8 +47,7 @@ class PagyKeyset < Rails::Application # :nodoc:
   Rails.logger  = config.logger
 
   routes.draw do
-    root to: 'comments#index'
-    get '/javascripts/:file', to: 'pagy#javascripts', file: /.*/
+    root to: 'pets#index'
   end
 end
 
@@ -82,7 +81,7 @@ class Pet < ActiveRecord::Base # :nodoc:
 end # :nodoc:
 
 # Helpers
-module CommentsHelper
+module PetsHelper
   include Pagy::Frontend
 
   def order_symbol(dir)
@@ -91,7 +90,7 @@ module CommentsHelper
 end
 
 # Controllers
-class CommentsController < ActionController::Base # :nodoc:
+class PetsController < ActionController::Base # :nodoc:
   include Rails.application.routes.url_helpers
   include Pagy::Backend
 
