@@ -9,8 +9,15 @@ class Pagy # :nodoc:
     private
 
     # Return Pagy::Keyset object and paginated records
-    def pagy_keyset(scope, **vars)
-      pagy = Keyset.new(scope, **pagy_keyset_get_vars(vars))
+    def pagy_keyset(set, **vars)
+      adapter = if defined?(ActiveRecord) && set.is_a?(ActiveRecord::Relation)
+                  Keyset::Activerecord
+                elsif defined?(Sequel) && set.is_a?(Sequel::Dataset)
+                  Keyset::Sequel
+                else
+                  raise NotImplementedError, 'Keyset support only ActiveRecord and Sequel'
+                end
+      pagy = adapter.new(set, **pagy_keyset_get_vars(vars))
       [pagy, pagy.records]
     end
 

@@ -15,7 +15,7 @@ describe 'pagy/extras/keyset' do
                                Pet.order(:animal, :name, :id),
                                row_comparison: true,
                                items: 10)
-      _(pagy).must_be_instance_of Pagy::Keyset
+      _(pagy).must_be_instance_of Pagy::Keyset::Activerecord
       _(records.size).must_equal 10
       _(pagy.next).must_equal "eyJhbmltYWwiOiJjYXQiLCJuYW1lIjoiRWxsYSIsImlkIjoxOH0"
     end
