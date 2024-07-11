@@ -10,7 +10,7 @@ class Pagy # :nodoc:
   class Keyset
     include InitVars
 
-    attr_reader :page, :vars
+    attr_reader :page, :cursor, :vars
 
     def initialize(set, page: nil, **vars)
       @set  = set
@@ -21,11 +21,10 @@ class Pagy # :nodoc:
       raise InternalError, 'the set must be ordered' if @keyset.empty?
       return unless @page
 
-      cursor = JSON.parse(B64.urlsafe_decode(@page))
+      cursor  = JSON.parse(B64.urlsafe_decode(@page)).transform_keys(&:to_sym)
+      @cursor = @vars[:typecast_cursor]&.(cursor) || typecast_cursor(cursor)
       raise InternalError, 'page and keyset are not consistent' \
-            unless cursor.keys == @keyset.keys
-
-      @cursor = typecast_cursor(cursor)
+            unless @cursor.keys == @keyset.keys
     end
 
     # The next page
@@ -33,17 +32,14 @@ class Pagy # :nodoc:
       records
       return unless @more
 
-      @next ||= begin
-        cursor = @records.last.slice(*@keyset.keys)
-        B64.urlsafe_encode(cursor.to_json)
-      end
+      @next ||= B64.urlsafe_encode(cursor_from(@records.last).to_json)
     end
 
     # The array of records for the current page
     def records
       @records ||= begin
         @set    = @set.select(*@keyset.keys.map(&:to_sym)) if select?
-        @set    = @set.where((@vars[:where_query] || where_query), @cursor) if @cursor
+        @set    = @vars[:after_where]&.(@set, @cursor) || after_where if @cursor
         records = @set.limit(@items + 1).to_a
         @more   = records.size > @items && !records.pop.nil?
         records
@@ -52,25 +48,25 @@ class Pagy # :nodoc:
 
     protected
 
-    # Prepare the where query
-    def where_query
+    # Prepare the after where literal query
+    def after_where_query
       operator   = { asc: '>', desc: '<' }
       directions = @keyset.values
       if @vars[:row_comparison] && (directions.all?(:asc) || directions.all?(:desc))
         # Row comparison: works for same directions keysets
-        # Use b-tree index for performance
+        # Use B-tree index for performance
         columns      = @keyset.keys
-        placeholders = columns.map { |column| placeholder_for(column) }.join(', ')
+        placeholders = columns.map { |column| ":#{column}" }.join(', ')
         "( #{columns.join(', ')} ) #{operator[directions.first]} ( #{placeholders} )"
       else
         # Generic comparison: works for keysets ordered in mixed or same directions
         keyset = @keyset.to_a
         where  = []
         until keyset.empty?
-          last_col, last_dir = keyset.pop
+          last_column, last_direction = keyset.pop
           query = +'( '
-          query << (keyset.map { |column, _d| "#{column} = #{placeholder_for(column)}" } \
-                    << "#{last_col} #{operator[last_dir]} :#{last_col}").join(' AND ')
+          query << (keyset.map { |column, _d| "#{column} = :#{column}" } \
+                    << "#{last_column} #{operator[last_direction]} :#{last_column}").join(' AND ')
           query << ' )'
           where << query
         end
@@ -81,3 +77,4 @@ class Pagy # :nodoc:
 end
 
 require_relative 'keyset/activerecord'
+require_relative 'keyset/sequel'

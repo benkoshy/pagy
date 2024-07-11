@@ -24,7 +24,7 @@ class Pagy # :nodoc:
 
       # Return the jsonapi links
       def pagy_jsonapi_links(pagy, **opts)
-        if defined?(Pagy::Keyset) && pagy.instance_of?(Pagy::Keyset)
+        if defined?(Pagy::Keyset) && pagy.is_a?(Pagy::Keyset)
           { first: pagy_url_for(pagy, nil, **opts),
             last: nil,
             prev: nil,

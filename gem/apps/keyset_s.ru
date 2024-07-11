@@ -29,11 +29,12 @@ gemfile(ENV['PAGY_INSTALL_BUNDLE'] == 'true') do
   # activerecord/sqlite3_adapter.rb probably useless) constraint !!!
   # https://github.com/rails/rails/blame/v7.1.3.4/activerecord/lib/active_record/connection_adapters/sqlite3_adapter.rb#L14
   gem 'sqlite3', '~> 1.4.0'
+  gem 'sequel'
 end
 
 # require 'rails/all'     # too much stuff
 require 'action_controller/railtie'
-require 'active_record'
+require 'sequel'
 
 OUTPUT = Rails.env.showcase? ? IO::NULL : $stdout
 
@@ -65,20 +66,82 @@ require 'pagy/extras/keyset'
 Pagy::DEFAULT[:items] = 10
 Pagy::DEFAULT.freeze
 
-# Activerecord initializer
-ActiveRecord::Base.logger = Logger.new(OUTPUT)
-ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: "#{dir}/tmp/pagy-keyset.sqlite3")
-ActiveRecord::Schema.define do
-  create_table :pets, force: true do |t|
-    t.string   :animal
-    t.string   :name
-    t.datetime :birthdate
-  end
+PETS = <<~PETS
+  Luna  | dog    | 2018-03-10
+  Coco  | cat    | 2019-05-15
+  Dodo  | dog    | 2020-06-25
+  Wiki  | bird   | 2018-03-12
+  Baby  | rabbit | 2020-01-13
+  Neki  | horse  | 2021-07-20
+  Tino  | donkey | 2019-06-18
+  Plot  | cat    | 2022-09-21
+  Riki  | cat    | 2018-09-14
+  Susi  | horse  | 2018-10-26
+  Coco  | pig    | 2020-08-29
+  Momo  | bird   | 2023-08-25
+  Lili  | cat    | 2021-07-22
+  Beli  | pig    | 2020-07-26
+  Rocky | bird   | 2022-08-19
+  Vyvy  | dog    | 2018-05-16
+  Susi  | horse  | 2024-01-25
+  Ella  | cat    | 2020-02-20
+  Rocky | dog    | 2019-09-19
+  Juni  | rabbit | 2020-08-24
+  Coco  | bird   | 2021-03-17
+  Susi  | dog    | 2021-07-28
+  Luna  | horse  | 2023-05-14
+  Gigi  | pig    | 2022-05-19
+  Coco  | cat    | 2020-02-20
+  Nino  | donkey | 2019-06-17
+  Luna  | cat    | 2022-02-09
+  Popi  | dog    | 2020-09-26
+  Lili  | pig    | 2022-06-18
+  Mina  | horse  | 2021-04-21
+  Susi  | rabbit | 2023-05-18
+  Toni  | donkey | 2018-06-22
+  Rocky | horse  | 2019-09-28
+  Lili  | cat    | 2019-03-18
+  Roby  | cat    | 2022-06-19
+  Anto  | horse  | 2022-08-18
+  Susi  | pig    | 2021-04-21
+  Boly  | bird   | 2020-03-29
+  Sky   | cat    | 2023-07-19
+  Lili  | dog    | 2020-01-28
+  Fami  | snake  | 2023-04-27
+  Lopi  | pig    | 2019-06-19
+  Rocky | snake  | 2022-03-13
+  Denis | dog    | 2022-06-19
+  Maca  | cat    | 2022-06-19
+  Luna  | dog    | 2022-08-15
+  Jeme  | horse  | 2019-08-08
+  Sary  | bird   | 2023-04-29
+  Rocky | bird   | 2023-05-14
+  Coco  | dog    | 2023-05-27
+PETS
+
+Sequel.default_timezone = :utc
+
+## Sequel initializer
+DB = Sequel.connect(adapter: 'sqlite', user: 'root', password: 'password', host: 'localhost', port: '3306',
+                    database: "#{dir}/tmp/pagy-keyset-s.sqlite3", max_connections: 10, loggers: [Logger.new(OUTPUT)])
+
+DB.create_table! :pets, force: true do
+  primary_key :id
+  String :animal,    unique: false, null: false
+  String :name,      unique: false, null: false
+  Date   :birthdate, unique: false, null: false
+end
+
+dataset = DB[:pets]
+
+PETS.each_line(chomp: true) do |pet|
+  name, animal, birthdate = pet.split('|').map(&:strip)
+  dataset.insert(name:, animal:, birthdate:)
 end
 
 # Models
-class Pet < ActiveRecord::Base # :nodoc:
-end # :nodoc:
+class Pet < Sequel::Model
+end
 
 # Helpers
 module PetsHelper
@@ -97,8 +160,8 @@ class PetsController < ActionController::Base # :nodoc:
   def index
     Time.zone = 'UTC'
 
-    @order = { animal: :asc, name: :asc, birthdate: :desc, id: :asc }
-    @pagy, @pets = pagy_keyset(Pet.order(@order))
+    @order = {}
+    @pagy, @pets = pagy_keyset(Pet.order(:animal, :name, Sequel.desc(:birthdate), :id).select(:name))
     render inline: TEMPLATE
   end
 end
@@ -157,7 +220,7 @@ TEMPLATE = <<~ERB
           <tr>
             <td><%= pet.animal %></td>
             <td><%= pet.name %></td>
-            <td><%= pet.birthdate.to_date %></td>
+            <td><%= pet.birthdate %></td>
             <td><%= pet.id %></td>
           </tr>
           <% end %>
@@ -172,66 +235,5 @@ TEMPLATE = <<~ERB
     </body>
   </html>
 ERB
-
-PETS = <<~PETS
-  Luna  | dog    | 2018-03-10
-  Coco  | cat    | 2019-05-15
-  Dodo  | dog    | 2020-06-25
-  Wiki  | bird   | 2018-03-12
-  Baby  | rabbit | 2020-01-13
-  Neki  | horse  | 2021-07-20
-  Tino  | donkey | 2019-06-18
-  Plot  | cat    | 2022-09-21
-  Riki  | cat    | 2018-09-14
-  Susi  | horse  | 2018-10-26
-  Coco  | pig    | 2020-08-29
-  Momo  | bird   | 2023-08-25
-  Lili  | cat    | 2021-07-22
-  Beli  | pig    | 2020-07-26
-  Rocky | bird   | 2022-08-19
-  Vyvy  | dog    | 2018-05-16
-  Susi  | horse  | 2024-01-25
-  Ella  | cat    | 2020-02-20
-  Rocky | dog    | 2019-09-19
-  Juni  | rabbit | 2020-08-24
-  Coco  | bird   | 2021-03-17
-  Susi  | dog    | 2021-07-28
-  Luna  | horse  | 2023-05-14
-  Gigi  | pig    | 2022-05-19
-  Coco  | cat    | 2020-02-20
-  Nino  | donkey | 2019-06-17
-  Luna  | cat    | 2022-02-09
-  Popi  | dog    | 2020-09-26
-  Lili  | pig    | 2022-06-18
-  Mina  | horse  | 2021-04-21
-  Susi  | rabbit | 2023-05-18
-  Toni  | donkey | 2018-06-22
-  Rocky | horse  | 2019-09-28
-  Lili  | cat    | 2019-03-18
-  Roby  | cat    | 2022-06-19
-  Anto  | horse  | 2022-08-18
-  Susi  | pig    | 2021-04-21
-  Boly  | bird   | 2020-03-29
-  Sky   | cat    | 2023-07-19
-  Lili  | dog    | 2020-01-28
-  Fami  | snake  | 2023-04-27
-  Lopi  | pig    | 2019-06-19
-  Rocky | snake  | 2022-03-13
-  Denis | dog    | 2022-06-19
-  Maca  | cat    | 2022-06-19
-  Luna  | dog    | 2022-08-15
-  Jeme  | horse  | 2019-08-08
-  Sary  | bird   | 2023-04-29
-  Rocky | bird   | 2023-05-14
-  Coco  | dog    | 2023-05-27
-PETS
-
-# DB seed
-pets = []
-PETS.each_line(chomp: true) do |pet|
-  name, animal, birthdate = pet.split('|').map(&:strip)
-  pets << { name:, animal:, birthdate: }
-end
-Pet.insert_all(pets)
 
 run PagyKeyset

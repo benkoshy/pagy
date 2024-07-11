@@ -25,9 +25,9 @@ class Pagy # :nodoc:
       hash    = { 'link' => link(pagy) }
       hash[headers[:page]]  = pagy.page.to_s if pagy.page && headers[:page]
       hash[headers[:items]] = pagy.vars[:items].to_s \
-          if headers[:items] && !(defined?(Calendar) && pagy.is_a?(Calendar))
-      return hash if (defined?(Countless) && pagy.instance_of?(Countless)) || \
-                     (defined?(Keyset) && pagy.instance_of?(Keyset))
+          if headers[:items] && !(defined?(Calendar) && pagy.is_a?(Calendar::Unit))
+      return hash if (defined?(Countless) && pagy.is_a?(Countless)) || \
+                     (defined?(Keyset) && pagy.is_a?(Keyset))
 
       hash[headers[:pages]] = pagy.pages.to_s if headers[:pages]
       hash[headers[:count]] = pagy.count.to_s if pagy.count && headers[:count] # count may be nil with Calendar
@@ -36,7 +36,7 @@ class Pagy # :nodoc:
 
     def link(pagy)
       [].tap do |link|
-        if defined?(Keyset) && pagy.instance_of?(Keyset)
+        if defined?(Keyset) && pagy.is_a?(Keyset)
           link << %(<#{pagy_url_for(pagy, nil, absolute: true)}>; rel="first")
           link << %(<#{pagy_url_for(pagy, pagy.next, absolute: true)}>; rel="next") if pagy.next
         else
@@ -45,7 +45,7 @@ class Pagy # :nodoc:
           link << %(<#{url_str.sub(PAGE_TOKEN, pagy.prev.to_s)}>; rel="prev") if pagy.prev
           link << %(<#{url_str.sub(PAGE_TOKEN, pagy.next.to_s)}>; rel="next") if pagy.next
           link << %(<#{url_str.sub(PAGE_TOKEN, pagy.last.to_s)}>; rel="last") \
-              unless defined?(Countless) && pagy.instance_of?(Countless)
+              unless defined?(Countless) && pagy.is_a?(Countless)
         end
       end.join(', ')
     end
