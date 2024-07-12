@@ -32,10 +32,11 @@ When you have to serve millions of records, that is not an option, so that is wh
 
 ### Keyset Glossary
 
-`set`: uniquely ordered `ActiveRecord::Relation` or `Sequel::Dataset`
-`keyset`: the hash of column/order-direction pairs used to order the `set`. It works similarly to a composite primary `key` for the ordered table, for that reason the concatenation of the values of the ordered columns must be unique for each record.
-`cursor`: the hash of `keyset` attributes of the last retrieved record
-`page`: the `Base64.urlsafe_encoded` `cursor` that can be passed around as a param
+- `set`: uniquely ordered `ActiveRecord::Relation` or `Sequel::Dataset`
+- `keyset`: the hash of column/order-direction pairs used to order the `set`. It works similarly to a composite primary `key` 
+  for the ordered table, for that reason the concatenation of the values of the ordered columns must be unique for each record.
+- `cursor`: the hash of `keyset` attributes of the last retrieved record
+- `page`: the `Base64.urlsafe_encoded` `cursor` that can be passed around as a param
 
 ## Overview
 
@@ -56,11 +57,12 @@ Similarly to the Pagy Offset pagination:
   - You paginate only forward. To go backward... just reverse the order
     in your scope and paginate forward in the reversed order.
 
-And in order to save resources and complexity: you don't know the previous and the last page.
-
-The `set` must be uniquely ordered: you can add the primary key (usually `:id`) as the last order column as a tie-breaker if the concatenation of the ordered columns might not be unique
-
-You should add the best index for your ordering strategy for performance. The keyset pagination would work even without any index, but it defeats its purpose of speed.
+Besides:
+  - In order to save resources and complexity: you don't know the previous and the last page.
+  - The `set` must be uniquely ordered: you can add the primary key (usually `:id`) as the last order column as a tie-breaker if 
+    the concatenation of the ordered columns might not be unique
+  - You should add the best index for your ordering strategy for performance. The keyset pagination would work even without any 
+      index, but it defeats its purpose of speed.
 
 ### ORMs
 
@@ -104,10 +106,27 @@ Boolish variable that enables the row comparison query for same-direction keyset
 
 ==- `:after_where`
 
-A lambda that you can use to override the query automatically generated and applied by pagy to the `set` in order to exclude the already retrieved records. If defined, pagy will call it passing the `set` and the `cursor`. Use it for DB-specific extra optimization if you know what you are doing
+A lambda that you can use to override the query automatically generated and applied by pagy to the `set` in order to exclude 
+the already retrieved records. If defined, pagy will call it passing the `set` and the `cursor`. Use it for DB-specific extra 
+optimization if you know what you are doing. For example:
+
+```ruby
+after_where = lambda do |set, cursor|
+    set.where(literal_after_query, **cursor)
+end
+```
  
 =- `:typecast_cursor`
 
-A lambda that you can use to override the automatic typecasting of your ORM. For example: the sqlite DB stores date and times as strings, and the query interpolation may fail composing and comparing string dates. The `typecast_cursor` is an effective last resort to fix it when fix the typecasting in your models and/or the data your storage is not an option.
+A lambda that you can use to override the automatic typecasting of your ORM. For example: the sqlite DB stores date and times 
+as strings, and the query interpolation may fail composing and comparing string dates. The `typecast_cursor` is an effective 
+last-resort option when fixing the typecasting in your models and/or the data your storage is not convenient.
+
+```ruby
+typecast_cursor = lambda do |cursor| 
+  cursor[:birthdate] = DateTime.parse(cursor[:birthdate]).strftime('%F %T')
+  cursor
+end
+```
 
 ===
