@@ -16,9 +16,9 @@ class Pagy
     def self.new(set, **vars)
       if self == Pagy::Keyset
         if defined?(::ActiveRecord) && set.is_a?(::ActiveRecord::Relation)
-          ActiveRecord
+          ::Pagy::Keyset::ActiveRecord  # see keyset/active_record 
         elsif defined?(::Sequel) && set.is_a?(::Sequel::Dataset)
-          Sequel
+          ::Pagy::Keyset::Sequel # see keyset/sequel 
         else
           raise TypeError, "expected set to be an instance of ActiveRecord::Relation or Sequel::Dataset; got #{set.class}"
         end.new(set, **vars)
