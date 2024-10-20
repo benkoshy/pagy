@@ -43,7 +43,7 @@ require 'pagy/keyset'
                                 limit: 10,
                                 tuple_comparison: true)        
         records = pagy.records
-        _(pagy.send(:extract_latest, page)).must_equal({animal: "cat", name: "Ella", id: 18})
+        _(pagy.latest).must_equal({animal: "cat", name: "Ella", id: 18})
         _(records.size).must_equal 10
         _(records.first.id).must_equal 13        
       end
