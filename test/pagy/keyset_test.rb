@@ -37,13 +37,15 @@ require 'pagy/keyset'
     end
     describe 'uses optional variables' do
       it 'use the :tuple_comparison' do
+        page = "eyJhbmltYWwiOiJjYXQiLCJuYW1lIjoiRWxsYSIsImlkIjoxOH0"
         pagy = Pagy::Keyset.new(model.order(:animal, :name, :id),
-                                page: "eyJhbmltYWwiOiJjYXQiLCJuYW1lIjoiRWxsYSIsImlkIjoxOH0",
+                                page: page,
                                 limit: 10,
-                                tuple_comparison: true)
+                                tuple_comparison: true)        
         records = pagy.records
+        _(pagy.send(:extract_latest, page)).must_equal({animal: "cat", name: "Ella", id: 18})
         _(records.size).must_equal 10
-        _(records.first.id).must_equal 13
+        _(records.first.id).must_equal 13        
       end
       it 'uses :typecast_latest' do
         pagy = Pagy::Keyset.new(model.order(:id),
