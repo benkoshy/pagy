@@ -1,3 +1,5 @@
+# See Pagy API documentation: https://ddnexus.github.io/pagy/docs/api/keyset
+# and https://ddnexus.github.io/pagy/docs/extras/keyset/
 # frozen_string_literal: true
 
 require_relative '../../test_helper'
@@ -6,6 +8,7 @@ require 'pagy/extras/limit'
 
 require_relative '../../files/models'
 require_relative '../../mock_helpers/app'
+
 
 describe 'pagy/extras/keyset' do
   [Pet, PetSequel].each do |model|
