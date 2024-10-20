@@ -42,8 +42,8 @@ class Pagy
       raise InternalError, 'the set must be ordered' if @keyset.empty?
       return unless @page
 
-      latest  = JSON.parse(B64.urlsafe_decode(@page)).transform_keys(&:to_sym)
-      @latest = @vars[:typecast_latest]&.(latest) || typecast_latest(latest)
+      @latest = extract_latest(@page)
+
       raise InternalError, 'page and keyset are not consistent' \
             unless @latest.keys == @keyset.keys
     end
@@ -91,6 +91,14 @@ class Pagy
         where.join(' OR ')
       end
     end
+
+    private
+
+    def extract_latest(page)
+      latest  = JSON.parse(B64.urlsafe_decode(page)).transform_keys(&:to_sym)
+      @vars[:typecast_latest]&.(latest) || typecast_latest(latest)
+    end
+    
   end
 end
 

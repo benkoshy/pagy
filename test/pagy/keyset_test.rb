@@ -19,9 +19,13 @@ require 'pagy/keyset'
       it 'raises ArgumentError without order' do
         err = assert_raises(Pagy::InternalError) { Pagy::Keyset.new(model.select(:id)) }
         assert_match(/the set must be ordered/, err.message)
-      end
+      end      
       it 'is an instance of Pagy::Keyset' do
         _(Pagy::Keyset.new(model.order(:id))).must_be_kind_of Pagy::Keyset
+      end
+      it "#extract_latest - decodes page variable into keyset attributes of the 'latest' record" do
+        page = "eyJpZCI6MTB9" # encoded "latest" page
+        _(Pagy::Keyset.new(model.order(:id)).send(:extract_latest, page)).must_equal({id: 10}) # extract_latest is a private method
       end
       it 'raises Pagy::InternalError for inconsistent page/keyset' do
         page_animal_id = Pagy::B64.urlsafe_encode({animal: 'dog', id: 23}.to_json)
