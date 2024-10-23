@@ -58,7 +58,7 @@ class Pagy
 
     # Retrieve the array of records for the current page
     def records
-      @records ||= begin
+      @records ||= begin                            # begin / end is useful for memoization
         @set    = apply_select if select?
         @set    = @vars[:after_latest]&.(@set, @latest) || after_latest if @latest
         records = @set.limit(@limit + 1).to_a
