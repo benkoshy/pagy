@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 
 require_relative '../calendar'
-require_relative '../calendar/helper'
 
 class Pagy # :nodoc:
   # Add pagination filtering by calendar unit (:year, :quarter, :month, :week, :day) to the regular pagination
@@ -20,10 +19,12 @@ class Pagy # :nodoc:
 
         conf[:pagy] ||= {}
         unless conf.key?(:active) && !conf[:active]
-          calendar, from, to = Calendar::Helper.send(:init, conf, pagy_calendar_period(collection), params)
-          collection         = pagy_calendar_filter(collection, from, to)
+          calendar, from, to = Calendar.send(:init, conf, pagy_calendar_period(collection), params) do |unit, period|
+                                 pagy_calendar_counts(collection, unit, *period) if respond_to?(:pagy_calendar_counts)
+                               end
+          collection = pagy_calendar_filter(collection, from, to)
         end
-        pagy, results = send(conf[:pagy][:backend] || :pagy, collection, conf[:pagy])  # use backend: :pagy when omitted
+        pagy, results = send(conf[:pagy][:backend] || :pagy, collection, **conf[:pagy])  # use backend: :pagy when omitted
         [calendar, pagy, results]
       end
 
@@ -40,6 +41,31 @@ class Pagy # :nodoc:
       end
     end
 
+    # Override the pagy_anchor
+    module FrontendOverride
+      # Consider the vars[:counts]
+      def pagy_anchor(pagy, anchor_string: nil)
+        return super unless (counts = pagy.vars[:counts])
+
+        anchor_string &&= %( #{anchor_string})
+        left, right = %(<a#{anchor_string} href="#{pagy_url_for(pagy, PAGE_TOKEN)}").split(PAGE_TOKEN, 2)
+        # lambda used by all the helpers
+        lambda do |page, text = pagy.label_for(page), classes: nil, aria_label: nil|
+          count = counts[page - 1]
+          if count.zero?
+            classes  = "#{classes && (classes + ' ')}empty-page"
+            info_key = 'pagy.info.no_items'
+          else
+            info_key = 'pagy.info.single_page'
+          end
+          title      = %( title="#{pagy_t(info_key, item_name: pagy_t('pagy.item_name', count:), count:)}")
+          classes    = %( class="#{classes}") if classes
+          aria_label = %( aria-label="#{aria_label}") if aria_label
+          %(#{left}#{page}#{right}#{title}#{classes}#{aria_label}>#{text}</a>)
+        end
+      end
+    end
+
     # Additions for the Frontend module
     module UrlHelperAddOn
       # Return the url for the calendar page at time
@@ -49,5 +75,5 @@ class Pagy # :nodoc:
     end
   end
   Backend.prepend CalendarExtra::BackendAddOn, CalendarExtra::UrlHelperAddOn
-  Frontend.prepend CalendarExtra::UrlHelperAddOn
+  Frontend.prepend CalendarExtra::UrlHelperAddOn, CalendarExtra::FrontendOverride
 end

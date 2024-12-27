@@ -1,21 +1,22 @@
 # frozen_string_literal: true
 
-# Starting point to reproduce rails related pagy issues
-
+# DESCRIPTION
+#    Reproduce rails related issues
+#
+# DOC
+#    https://ddnexus.github.io/pagy/playground/#2-rails-app
+#
+# BIN HELP
+#    bundle exec pagy -h
+#
 # DEV USAGE
-#    pagy clone rails
-#    pagy ./rails.ru
-
+#    bundle exec pagy clone rails
+#    bundle exec pagy ./rails.ru
+#
 # URL
 #    http://0.0.0.0:8000
 
-# HELP
-#    pagy -h
-
-# DOC
-#    https://ddnexus.github.io/pagy/playground/#2-rails-app
-
-VERSION = '8.4.0'
+VERSION = '9.3.3'
 
 # Gemfile
 require 'bundler/inline'
@@ -25,8 +26,8 @@ gemfile(ENV['PAGY_INSTALL_BUNDLE'] == 'true') do
   source 'https://rubygems.org'
   gem 'oj'
   gem 'puma'
-  gem 'rails'
-  gem 'sqlite3', '~> 1.4.0'
+  gem 'rails', '~> 8.0'
+  gem 'sqlite3'
 end
 
 # require 'rails/all'     # too much stuff
@@ -46,7 +47,7 @@ class PagyRails < Rails::Application # :nodoc:
 
   routes.draw do
     root to: 'comments#index'
-    get '/javascript' => 'pagy#javascript'
+    get '/javascripts/:file', to: 'pagy#javascripts', file: /.*/
   end
 end
 
@@ -59,13 +60,15 @@ end
 
 # Pagy initializer
 require 'pagy/extras/pagy'
-require 'pagy/extras/items'
+require 'pagy/extras/limit'
 require 'pagy/extras/overflow'
-Pagy::DEFAULT[:size]     = [1, 4, 4, 1]
-Pagy::DEFAULT[:items]    = 10
+require 'pagy/extras/headers'
+Pagy::DEFAULT[:limit]    = 10
 Pagy::DEFAULT[:overflow] = :empty_page
 Pagy::DEFAULT.freeze
 
+# Activerecord initializer
+ActiveRecord::Base.logger = Logger.new(OUTPUT)
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: "#{dir}/tmp/pagy-rails.sqlite3")
 ActiveRecord::Schema.define do
   create_table :posts, force: true do |t|
@@ -87,6 +90,10 @@ class Comment < ActiveRecord::Base # :nodoc:
   belongs_to :post
 end # :nodoc:
 
+# Unused model, useful to test overriding conflicts
+module Calendar
+end
+
 # DB seed
 1.upto(11) do |pi|
   Post.create(title: "Post #{pi + 1}")
@@ -94,9 +101,6 @@ end
 Post.all.each_with_index do |post, pi|
   2.times { |ci| Comment.create(post:, body: "Comment #{ci + 1} to Post #{pi + 1}") }
 end
-
-# Down here to avoid logging the DB seed above at each restart
-ActiveRecord::Base.logger = Logger.new(OUTPUT)
 
 # Helpers
 module CommentsHelper
@@ -110,15 +114,20 @@ class CommentsController < ActionController::Base # :nodoc:
 
   def index
     @pagy, @comments = pagy(Comment.all)
+    pagy_headers_merge(@pagy)
     render inline: TEMPLATE
   end
 end
 
 # You don't need this in real rails apps (see https://ddnexus.github.io/pagy/docs/api/javascript/setup/#2-configure)
 class PagyController < ActionController::Base
-  def javascript
-    file = "pagy#{'-dev' if ENV['DEBUG']}.js"
-    render js: Pagy.root.join('javascripts', file).read
+  def javascripts
+    format = params[:file].split('.').last
+    if format == 'js'
+      render js: Pagy.root.join('javascripts', params[:file]).read
+    elsif format == 'map'
+      render json: Pagy.root.join('javascripts', params[:file]).read
+    end
   end
 end
 
@@ -130,7 +139,7 @@ TEMPLATE = <<~ERB
     <html>
     <head>
     <title>Pagy Rails App</title>
-      <script src="/javascript"></script>
+      <script src="/javascripts/pagy.min.js"></script>
       <script>
         window.addEventListener("load", Pagy.init);
       </script>
@@ -138,7 +147,7 @@ TEMPLATE = <<~ERB
       <style type="text/css">
         @media screen { html, body {
           font-size: 1rem;
-          line-heigth: 1.2s;
+          line-height: 1.2s;
           padding: 0;
           margin: 0;
         } }
@@ -196,8 +205,8 @@ TEMPLATE = <<~ERB
         <h4>pagy_combo_nav_js</h4>
         <%== pagy_combo_nav_js(@pagy, id: 'combo-nav-js', aria_label: 'Pages combo_nav_js') %>
 
-        <h4>pagy_items_selector_js</h4>
-        <%== pagy_items_selector_js(@pagy, id: 'items-selector-js') %>
+        <h4>pagy_limit_selector_js</h4>
+        <%== pagy_limit_selector_js(@pagy, id: 'limit-selector-js') %>
 
         <h4>pagy_info</h4>
         <%== pagy_info(@pagy, id: 'pagy-info') %>

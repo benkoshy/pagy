@@ -3,9 +3,10 @@
 
 class Pagy # :nodoc:
   class Calendar # :nodoc:
-    # Calendar quarter subclass
-    class Quarter < Calendar
+    # Quarter unit subclass
+    class Quarter < Unit
       DEFAULT = { size:   4,      # rubocop:disable Style/MutableConstant
+                  ends: false,
                   order:  :asc,
                   format: 'Q%q' } # '%q' token
 
@@ -18,8 +19,8 @@ class Pagy # :nodoc:
 
       protected
 
-      # Setup the calendar variables
-      def setup_unit_vars
+      # Set up the calendar variables
+      def assign_unit_vars
         super
         @initial = @starting.beginning_of_quarter
         @final   = @ending.next_quarter.beginning_of_quarter

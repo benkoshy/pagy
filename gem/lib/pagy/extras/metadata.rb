@@ -5,7 +5,7 @@ require_relative '../url_helpers'
 
 class Pagy # :nodoc:
   DEFAULT[:metadata] = %i[ scaffold_url first_url prev_url page_url next_url last_url
-                           count page items vars pages last in from to prev next series ]
+                           count page limit vars pages last in from to prev next series ]
 
   # Add a specialized backend method for pagination metadata
   module MetadataExtra
@@ -17,7 +17,11 @@ class Pagy # :nodoc:
     def pagy_metadata(pagy, absolute: nil)
       scaffold_url = pagy_url_for(pagy, PAGE_TOKEN, absolute:)
       {}.tap do |metadata|
-        keys = defined?(Calendar) && pagy.is_a?(Calendar) ? pagy.vars[:metadata] - %i[count items] : pagy.vars[:metadata]
+        keys = if defined?(::Pagy::Calendar::Unit) && pagy.is_a?(Calendar::Unit)
+                 pagy.vars[:metadata] - %i[count limit]
+               else
+                 pagy.vars[:metadata]
+               end
         keys.each do |key|
           metadata[key] = case key
                           when :scaffold_url then scaffold_url

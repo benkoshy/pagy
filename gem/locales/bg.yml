@@ -1,4 +1,4 @@
-# :one_other pluralization (see https://github.com/ddnexus/pagy/blob/master/lib/pagy/i18n.rb)
+# :one_other pluralization (see https://github.com/ddnexus/pagy/blob/master/gem/lib/pagy/i18n.rb)
 bg:
   pagy:
     aria_label:
@@ -18,4 +18,4 @@ bg:
       single_page: "Показани са %{count} %{item_name}"
       multiple_pages: "Показани са %{item_name} %{from}-%{to} от %{count} общо"
     combo_nav_js: "Страница %{page_input} от %{pages}"
-    items_selector_js: "Покажи %{items_input} %{item_name} на страница"
+    limit_selector_js: "Покажи %{limit_input} %{item_name} на страница"

@@ -3,15 +3,15 @@
 
 class Pagy # :nodoc:
   class Calendar # :nodoc:
-    # Calendar week subclass
-    class Week < Calendar
+    # Week unit subclass
+    class Week < Unit
       DEFAULT  = { order:  :asc,      # rubocop:disable Style/MutableConstant
                    format: '%Y-%W' }
 
       protected
 
-      # Setup the calendar variables
-      def setup_unit_vars
+      # Set up the calendar variables
+      def assign_unit_vars
         super
         @initial = @starting.beginning_of_week
         @final   = @ending.next_week.beginning_of_week

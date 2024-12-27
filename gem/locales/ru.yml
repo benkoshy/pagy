@@ -1,4 +1,4 @@
-# :east_slavic pluralization (see https://github.com/ddnexus/pagy/blob/master/lib/pagy/i18n.rb)
+# :east_slavic pluralization (see https://github.com/ddnexus/pagy/blob/master/gem/lib/pagy/i18n.rb)
 ru:
   pagy:
     aria_label:
@@ -22,4 +22,4 @@ ru:
       single_page: "%{count} %{item_name}"
       multiple_pages: "Всего %{count} %{item_name}, показаны с %{from} по %{to}"
     combo_nav_js: "Страница %{page_input} из %{pages}"
-    items_selector_js: "Показать %{items_input} %{item_name} на странице"
+    limit_selector_js: "Показать %{limit_input} %{item_name} на странице"

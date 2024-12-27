@@ -7,17 +7,9 @@ class Pagy # :nodoc:
     private
 
     # Return Pagy object and paginated collection/results
-    def pagy_arel(collection, vars = {})
-      pagy = Pagy.new(pagy_arel_get_vars(collection, vars))
-      [pagy, pagy_get_items(collection, pagy)]
-    end
-
-    # Sub-method called only by #pagy_arel: here for easy customization of variables by overriding
-    def pagy_arel_get_vars(collection, vars)
-      pagy_set_items_from_params(vars) if defined?(ItemsExtra)
+    def pagy_arel(collection, **vars)
       vars[:count] ||= pagy_arel_count(collection)
-      vars[:page]  ||= pagy_get_page(vars)
-      vars
+      pagy(collection, **vars)
     end
 
     # Count using Arel when grouping
@@ -28,7 +20,7 @@ class Pagy # :nodoc:
       else
         # COUNT(*) OVER ()
         sql = Arel.star.count.over(Arel::Nodes::Grouping.new([]))
-        collection.unscope(:order).limit(1).pluck(sql).first.to_i
+        collection.unscope(:order).pick(sql).to_i
       end
     end
   end

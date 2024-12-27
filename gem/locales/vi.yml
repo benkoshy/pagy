@@ -1,4 +1,4 @@
-# :other pluralization (see https://github.com/ddnexus/pagy/blob/master/lib/pagy/i18n.rb)
+# :other pluralization (see https://github.com/ddnexus/pagy/blob/master/gem/lib/pagy/i18n.rb)
 vi:
   pagy:
     aria_label:
@@ -14,4 +14,4 @@ vi:
       single_page: "%{count} %{item_name}"
       multiple_pages: "Đang hiển thị %{from}-%{to} trong tổng số %{count} %{item_name}"
     combo_nav_js: "Trang %{page_input} trên %{pages}"
-    items_selector_js: "Hiển thị %{items_input} %{item_name} mỗi trang"
+    limit_selector_js: "Hiển thị %{limit_input} %{item_name} mỗi trang"

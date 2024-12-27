@@ -113,12 +113,13 @@ class Pagy
                  hash['zh-CN'] = RULE[:other]
                  hash['zh-HK'] = RULE[:other]
                  hash['zh-TW'] = RULE[:other]
+                 hash['dz']    = RULE[:other]
                end.freeze
     end
 
     # Stores the i18n DATA structure for each loaded locale
     # default on the first locale DATA
-    DATA = Hash.new { |hash, _| hash.first[1] }
+    DATA = Hash.new { |hash,| hash.first[1] }
 
     private
 
@@ -154,7 +155,7 @@ class Pagy
     end
 
     # Translate and pluralize the key with the locale DATA
-    def translate(locale, key, opts = {})
+    def translate(locale, key, **opts)
       data, pluralize = DATA[locale]
       translation = data[key] || (opts[:count] && data[key += ".#{pluralize.call(opts[:count])}"]) \
                       or return %([translation missing: "#{key}"])

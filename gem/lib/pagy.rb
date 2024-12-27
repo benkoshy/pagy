@@ -2,126 +2,102 @@
 # frozen_string_literal: true
 
 require 'pathname'
+require_relative 'pagy/shared_methods'
 
-# Core class
+# Top superclass: it should define only what's common to all the subclasses
 class Pagy
-  VERSION = '8.4.0'
+  VERSION = '9.3.3'
+
+  # Core default: constant for easy access, but mutable for customizable defaults
+  DEFAULT = { count_args: [:all], # rubocop:disable Style/MutableConstant
+              ends:       true,
+              limit:      20,
+              outset:     0,
+              page:       1,
+              page_param: :page,
+              size:       7 }  # AR friendly
 
   # Gem root pathname to get the path of Pagy files stylesheets, javascripts, apps, locales, etc.
   def self.root
     @root ||= Pathname.new(__dir__).parent.freeze
   end
 
-  # Core defult: constant for easy access, but mutable for customizable defaults
-  DEFAULT = { page:       1, # rubocop:disable Style/MutableConstant
-              items:      20,
-              outset:     0,
-              size:       7,
-              cycle:      false,
-              count_args: [:all],  # AR friendly
-              page_param: :page }
+  include SharedMethods
 
-  attr_reader :count, :page, :items, :vars, :last, :offset, :in, :from, :to, :prev, :next
+  attr_reader :count, :from, :in, :last, :next, :offset, :prev, :to
   alias pages last
 
   # Merge and validate the options, do some simple arithmetic and set the instance variables
-  def initialize(vars)
-    normalize_vars(vars)
-    setup_vars(count: 0, page: 1, outset: 0)
-    setup_items_var
-    setup_last_var
-    raise OverflowError.new(self, :page, "in 1..#{@last}", @page) if @page > @last
-
-    setup_offset_var
+  def initialize(**vars)
+    assign_vars(DEFAULT, vars)
+    assign_and_check(count: 0, page: 1, outset: 0)
+    assign_limit
+    assign_offset
+    assign_last
+    check_overflow
     @from = [@offset - @outset + 1, @count].min
-    @to   = [@offset - @outset + @items, @count].min
+    @to   = [@offset - @outset + @limit, @count].min
     @in   = [@to - @from + 1, @count].min
+    assign_prev_and_next
+  end
+
+  # Setup @last (overridden by the gearbox extra)
+  def assign_last
+    @last = [(@count.to_f / @limit).ceil, 1].max
+    @last = @vars[:max_pages] if @vars[:max_pages] && @last > vars[:max_pages]
+  end
+
+  # Assign @offset (overridden by the gearbox extra)
+  def assign_offset
+    @offset = (@limit * (@page - 1)) + @outset  # may be already set from gear_box
+  end
+
+  # Assign @prev and @next
+  def assign_prev_and_next
     @prev = (@page - 1 unless @page == 1)
     @next = @page == @last ? (1 if @vars[:cycle]) : @page + 1
   end
 
-  # Return the array of page numbers and :gap items e.g. [1, :gap, 7, 8, "9", 10, 11, :gap, 36]
-  def series(size: @vars[:size], **_)
-    series = []
-    if size.is_a?(Array) && size.size == 4 && size.all? { |num| !num.negative? rescue false } # rubocop:disable Style/RescueModifier
-      # This algorithm is up to ~5x faster and ~2.3x lighter than the previous one (pagy < 4.3)
-      left_gap_start  =     1 + size[0]
-      left_gap_end    = @page - size[1] - 1
-      right_gap_start = @page + size[2] + 1
-      right_gap_end   = @last - size[3]
-      left_gap_end    = right_gap_end  if left_gap_end   > right_gap_end
-      right_gap_start = left_gap_start if left_gap_start > right_gap_start
-      start           = 1
-      if (left_gap_end - left_gap_start).positive?
-        series.push(*start...left_gap_start, :gap)
-        start = left_gap_end + 1
-      end
-      if (right_gap_end - right_gap_start).positive?
-        series.push(*start...right_gap_start, :gap)
-        start = right_gap_end + 1
-      end
-      series.push(*start..@last)
-    elsif size.is_a?(Integer) && size.positive?    # only central series
-      # The simplest and fastest algorithm
-      size  = @last if size > @last                # reduce the max size to @last
-      left  = ((size - 1) / 2.0).floor             # left half might be 1 page shorter for even size
-      start = if @page <= left                     # beginning pages
-                1
-              elsif @page > @last - (size - left)  # end pages
-                @last - size + 1
-              else                                 # intermediate pages
-                @page - left
-              end
-      series = (start..start + size - 1).to_a
-    else
-      return [] if size.empty?
-
-      raise VariableError.new(self, :size, 'to be a single positive Integer or an Array of 4', size)
-    end
-    series[series.index(@page)] = @page.to_s
-    series
-  end
-
-  # Label for any page. Allow the customization of the output (overridden by the calendar extra)
-  def label_for(page)
-    page.to_s
+  # Checks the @page <= @last
+  def check_overflow
+    raise OverflowError.new(self, :page, "in 1..#{@last}", @page) if @page > @last
   end
 
   # Label for the current page. Allow the customization of the output (overridden by the calendar extra)
-  def label
-    @page.to_s
-  end
+  def label = @page.to_s
 
-  protected
+  # Label for any page. Allow the customization of the output (overridden by the calendar extra)
+  def label_for(page) = page.to_s
 
-  # Apply defaults, cleanup blanks and set @vars
-  def normalize_vars(vars)
-    @vars = DEFAULT.merge(vars.delete_if { |k, v| DEFAULT.key?(k) && (v.nil? || v == '') })
-  end
+  # Return the array of page numbers and :gap e.g. [1, :gap, 8, "9", 10, :gap, 36]
+  def series(size: @vars[:size], **_)
+    raise VariableError.new(self, :size, 'to be an Integer >= 0', size) \
+    unless size.is_a?(Integer) && size >= 0
+    return [] if size.zero?
 
-  # Setup and validates the passed vars: var must be present and value.to_i must be >= to min
-  def setup_vars(name_min)
-    name_min.each do |name, min|
-      raise VariableError.new(self, name, ">= #{min}", @vars[name]) \
-            unless @vars[name]&.respond_to?(:to_i) && instance_variable_set(:"@#{name}", @vars[name].to_i) >= min
+    [].tap do |series|
+      if size >= @last
+        series.push(*1..@last)
+      else
+        left  = ((size - 1) / 2.0).floor             # left half might be 1 page shorter for even size
+        start = if @page <= left                     # beginning pages
+                  1
+                elsif @page > (@last - size + left)  # end pages
+                  @last - size + 1
+                else                                 # intermediate pages
+                  @page - left
+                end
+        series.push(*start...start + size)
+        # Set first and last pages plus gaps when needed, respecting the size
+        if vars[:ends] && size >= 7
+          series[0]  = 1
+          series[1]  = :gap  unless series[1]  == 2
+          series[-2] = :gap  unless series[-2] == @last - 1
+          series[-1] = @last
+        end
+      end
+      series[series.index(@page)] = @page.to_s
     end
-  end
-
-  # Setup @items (overridden by the gearbox extra)
-  def setup_items_var
-    setup_vars(items: 1)
-  end
-
-  # Setup @last (overridden by the gearbox extra)
-  def setup_last_var
-    @last = [(@count.to_f / @items).ceil, 1].max
-    @last = vars[:max_pages] if vars[:max_pages] && @last > vars[:max_pages]
-  end
-  alias setup_pages_var setup_last_var
-
-  # Setup @offset based on the :gearbox_items variable
-  def setup_offset_var
-    @offset = (@items * (@page - 1)) + @outset  # may be already set from gear_box
   end
 end
 

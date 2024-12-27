@@ -3,16 +3,17 @@
 
 class Pagy # :nodoc:
   class Calendar # :nodoc:
-    # Calendar year subclass
-    class Year < Calendar
+    # Year unit subclass
+    class Year < Unit
       DEFAULT = { size:   10,   # rubocop:disable Style/MutableConstant
+                  ends: false,
                   order:  :asc,
                   format: '%Y' }
 
       protected
 
-      # Setup the calendar variables
-      def setup_unit_vars
+      # Set up the calendar variables
+      def assign_unit_vars
         super
         @initial = @starting.beginning_of_year
         @final   = @ending.next_year.beginning_of_year
