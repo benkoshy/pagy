@@ -5,3 +5,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+      version: 2
+  - package-ecosystem: "bundler"
+    target-branch: "master"
+    directory: "/"
+    schedule:
+      interval: "weekly"
