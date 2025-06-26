@@ -12,7 +12,7 @@ order: 80
 
 Pagy version 43 is a complete redesign and a new approach, but is simpler and more powerful. 
 
-!!!success Follow this guide to upgrade your app in just a few minutes.
+!!!success Quick-start
 
 Cherry-pick only what applies to your app: you can safely skip all the rest.
 
