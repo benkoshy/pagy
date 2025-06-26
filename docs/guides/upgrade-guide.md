@@ -10,8 +10,7 @@ order: 80
 
 ---
 
-Pagy version 43 is a complete redesign of the legacy code. Its improvements make pagination a lot simpler and powerful, but 
-require a quite different way to use it.
+Pagy version 43 is a complete redesign and a new approach, but is simpler and more powerful. 
 
 !!!success Follow this guide to upgrade your app in just a few minutes.
 
