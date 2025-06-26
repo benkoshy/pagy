@@ -41,7 +41,15 @@ wget https://ddnexus.github.io/pagy-pre/gem/config/pagy.rb --directory-prefix=./
 
 - Search the `pagy-old.rb` for code-occurrences of `Pagy::DEFAULT[...]` and move them to the new `pagy.rb` (remove them from the
   `pagy-old.rb`)
+
 - Replace all the `Pagy::DEFAULT[...]` entries just added to the new `pagy.rb` with `Pagy.options[...]`.
+
+!!!info Info
+```diff
+- Pagy::DEFAULT.freeze  # delete this line
+```
+The pagy default hash is now frozen automatically.
+!!!
 
 _In the next steps we will use the `pagy-old.rb` as the blueprint to guide most of the changes, and we will edit the new `pagy.rb`
 as needed._
