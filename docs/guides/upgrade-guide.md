@@ -33,12 +33,6 @@ This guide focuses on getting the job done quickly. If you want to learn more ab
 - Rename your `pagy.rb` initializer as `pagy-old.rb`, and add the new, concise
   [pagy.rb](../resources/initializer) initializer in its place:
 
-```sh
-# if using rails you can copy these commands:
-mv config/initializers/pagy.rb config/initializers/pagy-old.rb
-wget https://ddnexus.github.io/pagy-pre/gem/config/pagy.rb --directory-prefix=./config/initializers/
-```
-
 - Search the `pagy-old.rb` for code-occurrences of `Pagy::DEFAULT[...]` and move them to the new `pagy.rb` (remove them from the
   `pagy-old.rb`)
 
