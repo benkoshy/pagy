@@ -3,9 +3,6 @@
 # Pagy initializer file (43.0.0.pre.1)
 # See https://ddnexus.github.io/pagy/resources/initializer/
 
-############ Upgrading to Pagy 43 ##########################################################
-# There is no need, anymore, to require pagy extras. You may safely delete them now.
-
 ############ Global Options ################################################################
 # See https://ddnexus.github.io/pagy/toolbox/options/ for details.
 # Add your global options below. They will be applied globally.
