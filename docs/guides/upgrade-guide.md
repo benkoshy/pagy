@@ -311,8 +311,8 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 - It was mostly useless and half-baked, causing many complications in both the Ruby and JavaScript code for no significant
   benefit.
 - Use an appropriate approach to address your requirement, such as utilizing URL rewriting at the HTTP server level.
-
 ===
+
 </details>
 
 ### 3. Final steps
