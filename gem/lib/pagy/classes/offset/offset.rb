@@ -9,6 +9,7 @@ class Pagy
     DEFAULT = { page: 1 }.freeze
 
     autoload :Countless, Pathname.new(__dir__).join('countless')
+    autoload :Throttled, Pathname.new(__dir__).join('throttled')
 
     include Rangeable
     include Shiftable

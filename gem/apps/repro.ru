@@ -57,6 +57,7 @@ class PagyRepro < Sinatra::Base
     collection = MockCollection.new
     @pagy, @records = pagy(collection)
     # @pagy, @records = pagy(:offset, collection, limit: 7, client_max_limit: 30)
+    # @pagy, @records = pagy(:throttled, collection, count_ttl: 20)
     # @pagy, @records = pagy(:countless, collection)
     # @pagy, @records = pagy(Array(1..1000))
     # response.headers.merge!(@pagy.headers_hash)
