@@ -1,7 +1,7 @@
 require_relative '../../../test_helper'
 require_relative '../../../mock_helpers/collection'
 require_relative '../../../mock_helpers/app'
-require "debug"
+
 require "active_support/testing/time_helpers" 
 
 include ActiveSupport::Testing::TimeHelpers
