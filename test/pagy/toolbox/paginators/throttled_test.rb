@@ -20,29 +20,41 @@ describe 'Throttle' do
       @collection = MockCollection.new
     end
 
-    it "paginate with page string" do
+    it "paginate with page string" do      
       app = MockApp.new(params: { page: '1 2 3' })
       pagy, records = app.send(:pagy, :throttled, @collection)
 
       _(pagy).must_be_instance_of Pagy::Offset::Throttled
       _(pagy.page).must_equal 1
       _(pagy.count).must_equal 2
+      _(pagy.limit).must_equal 20
     end
 
-    it "paginate with count_ttl options " do
-      app = MockApp.new(params: { page: '1 2 2000000000', count_ttl: "2000" })
-      pagy, records = app.send(:pagy, :throttled, @collection)    
-      pagy2, records = app.send(:pagy, :throttled, @collection, count: 777)
+    it "paginate with count_ttl options - expired - get_count " do      
+      now = 2
+      time = 1     
 
-      _(pagy.count).must_equal 2
+      travel_to Time.at(now)      
+
+      app = MockApp.new(params: { page: "1 2 #{time}"})      
+      pagy, records = app.send(:pagy, :throttled, @collection, count_ttl: 1)         
       
-      travel 1.second
-
-      _(pagy2.count).must_equal 2  # we should use the cached count result - something is not working
+      _(pagy.count).must_equal 1000      
     end
 
-    it "paginate with empty page and a request object" do
-      skip "work in progress"
+
+    it "paginate with count_ttl options - unexpired - use cache " do      
+      time = 1
+      now = 2
+
+      travel_to Time.at(now)      
+
+      app = MockApp.new(params: { page: "1 2 #{time}"})      
+      pagy, records = app.send(:pagy, :throttled, @collection, count_ttl: 2)   
+      _(pagy.count).must_equal 2
     end
+
+
+
   end
 end
