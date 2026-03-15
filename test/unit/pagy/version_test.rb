@@ -65,10 +65,6 @@ describe 'Version match' do
       _(js_path.join('pagy.js').read).must_match "version: \"#{version}\","
     end
 
-    it 'matches in pagy.js.map' do
-      _(js_path.join('pagy.js.map').read).must_match "version: \\\"#{version}\\\","
-    end
-
     it 'matches in pagy.mjs' do
       _(js_path.join('pagy.mjs').read).must_match "version: \"#{version}\","
     end

@@ -3,12 +3,19 @@
 class Pagy
   # Add configuration methods
   module Configurable
-    # Sync the pagy javascript targets
-    def sync_javascript(destination, *targets)
-      names   = %w[pagy.mjs pagy.js pagy.js.map pagy.min.js]
-      targets = names if targets.empty?
-      targets.each { |filename| FileUtils.cp(ROOT.join('javascripts', filename), destination) }
-      (names - targets).each { |filename| FileUtils.rm_f(File.join(destination, filename)) }
+    # Deprecated: Sync the pagy javascript targets. Use sync(:javascripts, ...) instead.
+    def sync_javascript(...)
+      warn "[PAGY] 'Pagy.sync_javascript(...) is deprecated: use Pagy.sync(:javascript, ...) instead.'"
+      sync(:javascript, ...)
+    end
+
+    # Sync the pagy resource targets.
+    def sync(resource, destination, *targets)
+      files    = ROOT.join("#{resource}s").glob("{#{targets.join(',')}}")
+      unknownn = targets - files.map { |f| f.basename.to_s }
+      raise InternalError, "Resource not known: #{unknownn.join(', ')}" if unknownn.any?
+
+      FileUtils.cp(files, destination)
     end
 
     # Generate the script and style tags to help development

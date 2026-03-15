@@ -17,11 +17,15 @@
 Pagy::OPTIONS.freeze
 
 
-############ JavaScript ####################################################################
-# See https://ddnexus.github.io/pagy/resources/javascript/ for details.
-# Copy and keep synced the JavaScript files in your app
-# javascript_dir = Rails.root.join('app/javascript')
-# Pagy.sync_javascript(javascript_dir, 'pagy.mjs', 'pagy.min.js') if Rails.env.development?
+############ JS and CSS ####################################################################
+# See https://ddnexus.github.io/pagy/resources/javascript/
+# and https://ddnexus.github.io/pagy/resources/stylesheets/ for more resources and details.
+# Copy and keep the resource files synced in the app.
+#
+# if Rails.env.development?
+#   Pagy.sync(:javascript, Rails.root.join('app/javascript'), 'pagy.mjs')
+#   Pagy.sync(:stylesheet, Rails.root.join('app/assets/stylesheets'), 'pagy.css')
+# end
 
 
 ############# Overriding Pagy::I18n Lookup #################################################

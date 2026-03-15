@@ -30,6 +30,7 @@ class Pagy
   autoload :Searchkick,         path.join('classes/offset/search')
   autoload :TypesenseRails,     path.join('classes/offset/search')
   autoload :Keyset,             path.join('classes/keyset/keyset')
+  autoload :SyncTask,           path.join('tasks/sync')
 
   OPTIONS = {} # rubocop:disable Style/MutableConstant
   def self.options = OPTIONS
