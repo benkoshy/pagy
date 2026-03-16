@@ -15,7 +15,7 @@
   <img src="https://github.com/ddnexus/pagy/raw/dev/assets/images/try-it.svg" width="130">
 </a><br><br>
 
-## Version 43
+### Version 43
 
 We needed a leap version to unequivocally signal that it's not just a major version: it's a complete redesign of the legacy code at all levels, usage and API included.
 

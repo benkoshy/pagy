@@ -79,7 +79,7 @@ edit_file?(release_body_path, 'Release Body')
 
 ##### CHANGELOG
 # Add the changes to the CHANGELOG
-replace_string_in_file('docs/CHANGELOG.md', /<hr>\n/, "<hr>\n\n## Version #{new_version}\n\n#{changes}")
+replace_string_in_file('docs/CHANGELOG.md', /<hr>\n/, "<hr>\n\n### Version #{new_version}\n\n#{changes}")
 replace_string_in_file('docs/CHANGELOG.md', "(e.g. `#{old_version}", "(e.g. `#{new_version}")
 
 # Run the test to check the consistency of versioning across files

@@ -24,7 +24,7 @@ _Agnostic pagination in plain ruby_
   <img src="https://github.com/ddnexus/pagy/raw/dev/assets/images/try-it.svg" width="130">
 </a><br><br>
 
-## Version 43
+### Version 43
 
 We needed a leap version to unequivocally signal that it's not just a major version: it's a complete redesign of the legacy code at all levels, usage and API included.
 
@@ -64,7 +64,7 @@ Take a look at the [Examples](#-examples) for a quick overview of the new API.
 
 ### <span style="font-size: .65em; vertical-align: middle">💚</span> v3 was already quite good...
 
-[<img src="assets/images/ips-chart.png" title="~40x Faster!">](https://ddnexus.github.io/pagination-comparison/gems.html#ips-benchmark) [<img src="assets/images/memory-chart.png" title="~36x Lighter!">](https://ddnexus.github.io/pagination-comparison/gems.html#memory-profile) [<img src="assets/images/objects-chart.png" title="~35x Simpler!">](https://ddnexus.github.io/pagination-comparison/gems.html#memory-profile) [<img src="assets/images/resource-consumption-chart.png" title="1,410x More Efficient!">](https://ddnexus.github.io/pagination-comparison/gems.html#efficiency-ratio)
+[<img src="assets/images/ips-chart.png" title="~40x Faster!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#ips-benchmark) [<img src="assets/images/memory-chart.png" title="~36x Lighter!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#memory-profile) [<img src="assets/images/objects-chart.png" title="~35x Simpler!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#memory-profile) [<img src="assets/images/resource-consumption-chart.png" title="1,410x More Efficient!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#efficiency-ratio)
 
 <br/>
 
@@ -136,7 +136,7 @@ Combine `time-range` and `offset` pagination.
 
 _(Available time units: year, quarter, month, week, and day)_
 
-<img src="assets/images/calendar-app.png" width="721"><br/>
+<img src="assets/images/calendar-app.png" width="450"><br/>
 
 ```ruby
 @calendar, @pagy, @records = pagy(:calendar, collection, year: {}, month: {}, offset: {})
@@ -212,7 +212,7 @@ Integrate pagy with your app's themes interactively ([watch demo](https://youtu.
 <%== Pagy.dev_tools %>
 ```
 
-<img src="assets/images/dev-tools.png" width="606"><br/>
+<img src="assets/images/dev-tools.png" width="450"><br/>
 
 <a href="https://ddnexus.github.io/pagy/sandbox/playground/#demo-app">
   <img src="https://github.com/ddnexus/pagy/raw/dev/assets/images/try-it.svg" width="130">

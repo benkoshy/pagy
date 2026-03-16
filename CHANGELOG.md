@@ -45,25 +45,25 @@ If you upgrade from version `< 9.0.0` see the following:
 
 <hr>
 
-## Version 43.3.3
+### Version 43.3.3
 
 - Fix Request#resolve_page with jsonapi, limit, and missing page param (#885)
 - Fix pagy-tailwind.css inconsistencies
 - Improve ts/js build process and wand help
 - Move the next_tag into the Pagy class
 
-## Version 43.3.2
+### Version 43.3.2
 
 - Implement NumericUI module to avoid including the numeric helpers in keynav classes
 - Improve offset accessors and update docs
 - Add basic RBS
 
-## Version 43.3.1
+### Version 43.3.1
 
 - Update assets for a few apps
 - Fix pagy.ts /.js input_nav update
 
-## Version 43.3.0
+### Version 43.3.0
 
 - Add :typesense_rails paginator (See typesense/typesense-rails#17)
 - Accept a variable number of search arguments
@@ -71,7 +71,7 @@ If you upgrade from version `< 9.0.0` see the following:
 - Use Pagy::OPTIONS instead of Pagy.options for efficiency
 - Simplify assign options
 
-## Version 43.2.10
+### Version 43.2.10
 
 - Add failing test and revert code that caused empty aria label
 - Avoid invalid limit param (similar to #862)
@@ -81,30 +81,30 @@ If you upgrade from version `< 9.0.0` see the following:
 - Replace require with require_relative in Pagy::CLI
 - Make Pagy::OPTIONS thread-safe
 
-## Version 43.2.9
+### Version 43.2.9
 
 - Fix NoMethodError with tampered params (#872)
 
-## Version 43.2.8
+### Version 43.2.8
 
 - Add fallback to 'en' for unknown locale. Implement #868.
 - Fix resolve_page with empty page in classes with non-integer page. Close #863
 - Simplify keyset syntax
 
-## Version 43.2.7
+### Version 43.2.7
 
 - Add a hint predicate for DB optimizers, to multi-column keysets
 - Improve code readability and style
 - Refactor anchor tag helpers
 
-## Version 43.2.6
+### Version 43.2.6
 
 - Refactor i18n:
   - Raise exceptions for missing 'pagy' and 'p11n' keys in the dictionary
   file
   - Improve efficiency and readability
 
-## Version 43.2.5
+### Version 43.2.5
 
 - Fix Pagy::I18n.locale to ensure to_s. Close #861.
 - Reduce endless methods to very short, paramless ones
@@ -121,23 +121,23 @@ If you upgrade from version `< 9.0.0` see the following:
   - Improve readability
 - Improve simplicity and readability
 
-## Version 43.2.4
+### Version 43.2.4
 
 - Fix anchor_string option not being read from @options in a_lambda. Close #857
 - Fix page '0' raising an exception
 
-## Version 43.2.3
+### Version 43.2.3
 
 - Remove rerun
 - Improved direction handling in CSSs
 
-## Version 43.2.2
+### Version 43.2.2
 
 - Refactor bin/pagy to use the Pagy::CLI class
 - Replace optimist with the optparse standard lib
 - Simplify apps by using SQLite :memory:
 
-## Version 43.2.1
+### Version 43.2.1
 
 - Fix the shallow cloning of root_key params. Close #851.
 - Implements support for easy overriding
@@ -147,12 +147,12 @@ If you upgrade from version `< 9.0.0` see the following:
 - Remove warning when fit_time
 - Fix respond_to_missing definition arguments in Search::Arguments
 
-## Version 43.2.0
+### Version 43.2.0
 
 - Implement :countish paginator
 - Simplify Pagy::Linkable
 
-## Version 43.1.8
+### Version 43.1.8
 
 - Refactoring of elasticsearch_rails paginator:
   - Fix "response" shadowing. Close #842.
@@ -160,7 +160,7 @@ If you upgrade from version `< 9.0.0` see the following:
   - Improve readability: rename variables and methods in more natural
   and unambiguous language
 
-## Version 43.1.7
+### Version 43.1.7
 
 - Fix and improve search paginators:
   - Add support for elasticsearch_rails v8
@@ -169,20 +169,20 @@ If you upgrade from version `< 9.0.0` see the following:
   - Fix the ignored :search_method paginator option
   - Close #837, close #838, close #839.
 
-## Version 43.1.6
+### Version 43.1.6
 
 - Ensure the request GET and POST merge into a proper params Hash
 - Simplify code efficiency and readability
 
-## Version 43.1.5
+### Version 43.1.5
 
 - Fix and improve the composition of the page url. Close #835
 
-## Version 43.1.4
+### Version 43.1.4
 
 - Add full support for legacy countless params, url composition and (limited) behavior
 
-## Version 43.1.3
+### Version 43.1.3
 
 - Improve the page options handling for countless:
   - Replace the crippled handling of legacy last-less links params
@@ -193,21 +193,21 @@ If you upgrade from version `< 9.0.0` see the following:
   - Improve testing
 - Improve the info message for empty collection in countless paginations
 
-## Version 43.1.2
+### Version 43.1.2
 
 - Support easy countless page param overriding (for legacy param and behavior). See #816
 - Handle legacy page param for :countless paginator. Close #832
 - Improve mock collections
 - Improve code comments
 
-## Version 43.1.1
+### Version 43.1.1
 
 - Makes keynav pagination compatible with nested params:
   - Improve the URL composing and unescaping
   - Adds the keynav+root_key.ru showcase app
 - Simplify the request code and arguments
 
-## Version 43.1.0
+### Version 43.1.0
 
 - Translate the aria_label.nav entry in the id, ja, kn, sw locales. Close #588, close #590, close #591, close #603.
 - Improve the Pagy AI panel
@@ -217,40 +217,40 @@ If you upgrade from version `< 9.0.0` see the following:
   - Simplify the :jsonapi handling as a special case of nested params
 - Fix and simplify the pagy console code
 
-## Version 43.0.7
+### Version 43.0.7
 
 - Add compatibility for searchkick 6. Close #831
 - Fix the search paginators request in passive mode. Close #830.
 
-## Version 43.0.6
+### Version 43.0.6
 
 - Improve Pagy AI Widget scripts
 
-## Version 43.0.5
+### Version 43.0.5
 
 - Add console loader for easier usage
 - Add comment for the calendar usage. Close #827.
 
-## Version 43.0.4
+### Version 43.0.4
 
 - Remove the Pagy::OPTIONS from the Calendar configuration. Close #825
 
-## Version 43.0.3
+### Version 43.0.3
 
 - Update tr.yml (#824)
 
-## Version 43.0.2
+### Version 43.0.2
 
 - Ensure the Pagy::Request#params are the original params sent with the request. Close #821
 
-## Version 43.0.1
+### Version 43.0.1
 
 - Reimplement reading params from POST requests; rename internal variables. Close #821
 - Fix AI widget problem for apps. Close #817.
 - Improve I18n documentation. Close #811
 - Link to documentation website's CHANGELOG page (#804)
 
-## Version 43.0.0
+### Version 43.0.0
 
 We needed a leap version to unequivocally signal that it's not just a major version: it's a complete redesign of the legacy
 code at all levels, usage and API included.

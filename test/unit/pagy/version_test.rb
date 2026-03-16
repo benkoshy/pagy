@@ -41,7 +41,7 @@ describe 'Version match' do
 
     it 'has a section in CHANGELOG.md' do
       content = repo_root.join('docs/CHANGELOG.md').read
-      _(content).must_match "## Version #{version}"
+      _(content).must_match "### Version #{version}"
     end
   end
 
