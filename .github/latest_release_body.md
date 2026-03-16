@@ -1,10 +1,11 @@
-### Changes in 43.3.3
+### Changes in 43.4.0
 
 <!-- changes_start -->
-- Fix Request#resolve_page with jsonapi, limit, and missing page param (#885)
-- Fix pagy-tailwind.css inconsistencies
-- Improve ts/js build process and wand help
-- Move the next_tag into the Pagy class
+- Improve stylesheets and docs
+- Improve JavaScript:
+  - Add sync method and task
+  - Deprecate sync_javascript
+  - Simplify build, configuration and docs
 <!-- changes_end -->
 
 [CHANGELOG](https://ddnexus.github.io/pagy/changelog)

@@ -16,7 +16,7 @@ expect the old/deprecated functionality to be supported ONLY during the current 
 
 ## Recommended Version Constraint
 
-Given a version number `MAJOR.MINOR.PATCH` (e.g. `43.3.30`):
+Given a version number `MAJOR.MINOR.PATCH` (e.g. `43.4.30`):
 
 The `gem 'pagy', '~> 43.0'` Gemfile entry (without the PATCH number) ensures that the `bundle update` command will update pagy to
 the most recent version WITHOUT BREAKING CHANGES.
@@ -44,6 +44,14 @@ If you upgrade from version `< 9.0.0` see the following:
 > from scratch might be faster.
 
 <hr>
+
+### Version 43.4.0
+
+- Improve stylesheets and docs
+- Improve JavaScript:
+  - Add sync method and task
+  - Deprecate sync_javascript
+  - Simplify build, configuration and docs
 
 ### Version 43.3.3
 
