@@ -6,11 +6,11 @@ visibility: hidden
 
 # LEGACY CHANGELOG
 
-## Version 9.3.4
+### Version 9.3.4
 
 - Fix method visibility in JsonApiExtra (#765)
 
-## Version 9.3.3
+### Version 9.3.3
 
 - Add test for locales - to find problematic keys (#752)
 - Update locales: zh-CN, zh-HK, zh-TW  (#751) (fix #608, fix #609, fix #610)
@@ -18,26 +18,26 @@ visibility: hidden
   - Change :item_name which had :one_other keys to default to the :other key
   - Fix comment
 
-## Version 9.3.2
+### Version 9.3.2
 
 - Improve gapped series computation by a few milliseconds
 
-## Version 9.3.1
+### Version 9.3.1
 
 - Added qualified column names to the keyset query
 
-## Version 9.3.0
+### Version 9.3.0
 
 - Remove the :typecast_latest variable
 - Add the :jsonify_keyset_attributes variable to override the encoding (#749)
 
-## Version 9.2.2
+### Version 9.2.2
 
 - Replace inline templates with template block in sinatra apps
 - Replace the rails calendar app with a sinatra app
 - Add PagyApps::INDEX
 
-## Version 9.2.1
+### Version 9.2.1
 
 - Improve bin/pagy to dynamically find apps and descriptions
 - Apps refactoring:
@@ -45,49 +45,49 @@ visibility: hidden
   - Replace rails AR keyset apps with sinatra apps
   - Improve consistency
 
-## Version 9.2.0
+### Version 9.2.0
 
 - Simplify the keyset API:
   - Deprecate the :after_latest variable in favour of :filter_newest
   - Add the keyset argument to the :filter_newest lambda
   - Rename protected after_latest_query > filter_newest_query
 
-## Version 9.1.1
+### Version 9.1.1
 
 - Simplify calendar code
 
-## Version 9.1.0
+### Version 9.1.0
 
 - Add Dzongkha (dz locale) (#741)
 
-## Version 9.0.9
+### Version 9.0.9
 
 - Set freeze flag to false (#737)
 - Fix: Prefix DEFAULT with Pagy:: (#736)
 
-## Version 9.0.8
+### Version 9.0.8
 
 - Keep offset and limit variables untouched by the overflow extra in :empty_page mode (closes #733)
 
-## Version 9.0.7
+### Version 9.0.7
 
 - Absolutize generic define? to fix module resolution
 
-## Version 9.0.6
+### Version 9.0.6
 
 - Fix docs (closes #732)
 - Replace pluck with pick
 
-## Version 9.0.5
+### Version 9.0.5
 
 - Fix for missing variables passed to pagy_anchor from pagy_nav (closes #728)
 
-## Version 9.0.4
+### Version 9.0.4
 
 - Fix groupdate timezone error on certain machines/config
 - Fix gem containing tmp files
 
-## Version 9.0.3
+### Version 9.0.3
 
 - Remove legacy and unused javascript files
 - Improve pagy_get_page with force_integer option
@@ -96,19 +96,19 @@ visibility: hidden
   - Remove the pagy*_get_vars methods now useless
   - Use to_i on the page variable for the search extras
 
-## Version 9.0.2
+### Version 9.0.2
 
 - Rename and document the link header to pagy_link_header
 - Add first and next url helpers to the keyset extra; add the keyset section to config/pagy.rb
 - Fix nil page in keyset URL not overriding the params page
 - Extracted shared method
 
-## Version 9.0.1
+### Version 9.0.1
 
 - Fix countless executing the count query
 - Rename row_comparison > tuple_comparison; ignore mixed orders
 
-## Version 9.0.0
+### Version 9.0.0
 
 ### Breaking Changes
 
@@ -175,29 +175,29 @@ table below:
 - BREAKING: Refactor the anchor_string system
 - BREAKING: Drop the support for 8+ deprecations
 
-## Version 8.6.3
+### Version 8.6.3
 
 - Add missing DEFAULT[:max_pages] hint to the config/pagy.rb
 - Improve activerecord handling in playground apps
 - Fix the missing "ar.pagy.aria_label.nav.other" (closes #577)
 
-## Version 8.6.2
+### Version 8.6.2
 
 - Fix the legacy size in code and test
 - Improve code readability and size check in series
 - Fix the old terminology in the demo.ru app
 
-## Version 8.6.1
+### Version 8.6.1
 
 - Update playground apps and e2e tests
 - Update pagy.rb initializer
 
-## Version 8.6.0
+### Version 8.6.0
 
 - Add translated pluralized aria_label.nav for "ar" locale (close #577)
 - Deprecate the legacy bar. Insert first and last pages and gaps when needed into the simple bar
 
-## Version 8.5.0
+### Version 8.5.0
 
 - Improve pagy playground launcher
 - Refactor calendar class structure
@@ -209,7 +209,7 @@ table below:
 - Remove redundant Warning
 - Convert calendar.ru to calendar_rails.ru
 
-## Version 8.4.5
+### Version 8.4.5
 
 - Fix pluralization rule link on locale files (#716)
 - Install gems in pagy CI
@@ -218,33 +218,33 @@ table below:
 - Fill aria_label.nav ca pluralized entry (#715) (Fixes #581)
 - Fix typos (#710)
 
-## Version 8.4.4
+### Version 8.4.4
 
 - Update eslint: new configuration, stricter rules and javascript code
 
-## Version 8.4.3
+### Version 8.4.3
 
 - Deprecate/rename javascript files keeping copies of old files to avoid production breaking changes; updates playground apps
 
-## Version 8.4.2
+### Version 8.4.2
 
 - Limit the playground --rerun option to linux platforms
 - Simplify and improve the js environment by using bun
 
-## Version 8.4.1
+### Version 8.4.1
 
 - Fix pagy.in in pagy_get_items method  introduced in 8.4.0 (see #696) (closes #704) (closes #708) (#707)
 - Fix renamed Frontend Helpers to JS Tools and typo `next_a` "aria-label" (#700)
 - Fix rubocop
 
-## Version 8.4.0
+### Version 8.4.0
 
 - Retrieve only @in items:
   - improve the performance of the last page in
     particular storage conditions (see #696)
 - Improve pagy launcher for pagy devs
 
-## Version 8.3.0
+### Version 8.3.0
 
 - Discontinue foundation materialize, semantic and uikit CSS extras
 - Improve playground:
@@ -253,37 +253,37 @@ table below:
   - Remove unused styles from the demo app
 - Hardcode version in pagy.gemspec
 
-## Version 8.2.2
+### Version 8.2.2
 
 - Add nav translation for ko (closes #592) (#690)
 
-## Version 8.2.1
+### Version 8.2.1
 
 - Fix empty page param raising error (closes #689)
 
-## Version 8.2.0
+### Version 8.2.0
 
 - Fix the '#pagy_url_for' method for calendar pagination (#688)
 - Extend the use of pagy_get_page to the arel, array and countless extras
 - Add the pagy_get_count method to the backend
 
-## Version 8.1.2
+### Version 8.1.2
 
 - Added "da" locale for aria_label.nav (closes #583)
 
-## Version 8.1.1
+### Version 8.1.1
 
 - Fixed broken aria-label for disabled links in Foundation (#685)
 - Simplification of input variables and defaults: params and request_path are not instance variables
 
-## Version 8.1.0
+### Version 8.1.0
 
 - Implement max_pages to limit the pagination regardless the actual count
 - Improve efficiency of params in pagy_url_for
 - Remove nil variables from DEFAULT
 - Removed redundant @pages, aliased with @last
 
-## Version 8.0.2
+### Version 8.0.2
 
 - Minor change in rails app and RM run config
 - Fix canonical gem root:
@@ -294,13 +294,13 @@ table below:
 - Complete translation of aria.nav for "ru" locale (close #599)
 - Docs improvement and fixes
 
-## Version 8.0.1
+### Version 8.0.1
 
 - Reorganize the gem root dir: it was the lib dir (containing everything), now is the gem dir (containing lib and everything
   else).
 - Fix broken link in README
 
-## Version 8.0.0
+### Version 8.0.0
 
 ### Breaking changes
 
@@ -366,21 +366,21 @@ table below:
 - Docs Improvements
 - Better code issue template
 
-## Version 7.0.11
+### Version 7.0.11
 
 - Fix jsonapi prev and next keys for unavailable links (#665)
 - Docs fixes
 
-## Version 7.0.10
+### Version 7.0.10
 
 - Added name attribute to combo and items input tags; removed pagy_marked_link and refactored js input action
 
-## Version 7.0.9
+### Version 7.0.9
 
 - Improve all pagy apps
 - Normalized bootstrap, bulma, foundation, navs extra
 
-## Version 7.0.8
+### Version 7.0.8
 
 - Update gems and fix a rubocop bug
 - Add all styles to pagy_styles.ru
@@ -388,19 +388,19 @@ table below:
 - Fix for uikit extra prev and next link duplicating chevrons
 - Change aria_Label to aria_label for Arabic locale (#657)
 
-## Version 7.0.7
+### Version 7.0.7
 
 - Fix for retype excluding linked files and showing category images
 - Fix for first *nav_js page not active with trim (introduced with the #656 fix 7e2f118)
 - Normalize pagy apps; implement pagy_styles.ru
 
-## Version 7.0.6
+### Version 7.0.6
 
 - Internal renaming of frontend constants
 - Fix for disabled links and missing or extra ARIA attributes in frontend extras
 - Bootstrap fix for current page link; pagy.js fix for trim of current page (closes #656)
 
-## Version 7.0.5
+### Version 7.0.5
 
 - Updated gems, npm modules, contributors
 - Added the pagy stylesheets to the gem, updated apps, docs and manifest
@@ -408,7 +408,7 @@ table below:
 - Docs: fix formatting, grammar in README.md (#654)
 - Add note about PR base branches to readme (#653)
 
-## Version 7.0.4
+### Version 7.0.4
 
 - Tailwind styles integrated with the pagy-items-selector-js (#646)
 - Deprecated the "pagination" CSS class, use the "pagy" CSS class that has been added to all the interactive pagy helper outputs
@@ -416,23 +416,23 @@ table below:
 - Update cs translations (#648)
 - Expand/Correct changes about `pagy.prev` and `pagy.next` (#649)
 
-## Version 7.0.3
+### Version 7.0.3
 
 - Remove extra space in `pagy_nav`, `pagy_nav_js` and `.pagy-combo-input`
 - Refactor of tailwind styles and docs (closes #646)
 - Add `pagy_tailwind_app.ru` (#646)
 - Add missing CSS breaking change to the CHANGELOG (#646)
 
-## Version 7.0.2
+### Version 7.0.2
 
 - Fix for missing to fetch count_args default (close #645)
 - Non-code improvements
 
-## Version 7.0.1
+### Version 7.0.1
 
 - Updates ckb translations to be complaint with ARIA in v7.x.x (#643)
 
-## Version 7.0.0
+### Version 7.0.0
 
 ### Breaking changes
 
@@ -505,37 +505,37 @@ You should not have used any of the private methods, but if you did so, you will
 - Updated code and tests for latest gem and npm module versions
 - Internal improvements of automation scripts
 
-## Version 6.5.0
+### Version 6.5.0
 
 - Add ckb: "pagination" entry (#641)
 
-## Version 6.4.4
+### Version 6.4.4
 
 - Adapt pagy-ci workflow to run on current gemfile (no-failure for new gems enabled in leading version)
 - Fix for wrong arguments types in meilisearch pagy_search extension
 
-## Version 6.4.3
+### Version 6.4.3
 
 - Exclude coverage for prepend conditional, ruby < 3.0 syntax for prepend
 
-## Version 6.4.2
+### Version 6.4.2
 
 - Better module overrides in jsonapi
 - Replaced the is_a?(Hash) check for jsonapi reserved :page param with respond_to?(:Fetch) and prepended to the Frontend
 - Docs improvements and fixes
 
-## Version 6.4.1
+### Version 6.4.1
 
 - Remove dependency on base64 (#618)Ruby 3.3 prints a warning if base64 is used without specifying it in the gemfile.
   Ruby 3.4 will error
 
-## Version 6.4.0
+### Version 6.4.0
 
 - Implement JSON:API specifications
 - Added simpler nav generation, triggered by setting the size variable to a positive Integer
 - Fix for pagy_calendar_app.ru
 
-## Version 6.3.0
+### Version 6.3.0
 
 - Calendar improvements:
   - Added the :fit_time option to page_at and pagy_calendar_url_at methods. It avoids the OutOfRangeError by returning the first or last page
@@ -545,38 +545,38 @@ You should not have used any of the private methods, but if you did so, you will
 - Updated node modules (dev on node 20)
 - Updated Gemfile and fixed new rubocop complaints
 
-## Version 6.2.0
+### Version 6.2.0
 
 - Add Belarusian locale (#567)
 - Reordered RubyMine tasks (fix #541)
 
-## Version 6.1.0
+### Version 6.1.0
 
 - Add Vietnamese locale (#550)
 - Maintenance (docs, test, gems and node modules updates) fixes and improvements
 
-## Version 6.0.4
+### Version 6.0.4
 
 - Updated gems and npm modules
 - fix: Extras::Trim - fix trimming first page (#516)
 - Fix for new rubocop
 
-## Version 6.0.3
+### Version 6.0.3
 
 - Updated Gemfile and npm modules
 - Improved Danish translation (#502)
 
-## Version 6.0.2
+### Version 6.0.2
 
 - Fix: foundation combo helper (#469)
 
-## Version 6.0.1
+### Version 6.0.1
 
 - Fix for pagy_bootstrap_combo_nav_js disabled input in certain bootstrap versions
 - Fix for wrong module in standalone extra
 - Fix for broken links in code comments and docs
 
-## Version 6.0.0
+### Version 6.0.0
 
 ### Breaking changes
 
@@ -649,11 +649,11 @@ Removed support for the deprecation of `5.0`:
 - Added missing info
 - Fix: docs - typo, minimise ambiguity (#372)
 
-## Version 5.10.1
+### Version 5.10.1
 
 - Changed default for :meilisearch_search method to always defined :ms_search method
 
-## Version 5.10.0
+### Version 5.10.0
 
 - Adjusted Psych::VERSION condition to avoid deprecations
 - Improvement of search extras: (closes #367) (closes #369)
@@ -668,12 +668,12 @@ Removed support for the deprecation of `5.0`:
 - Added specific webpack javascript configuration info
 - Update javascript.md (#362)
 
-## Version 5.9.3
+### Version 5.9.3
 
 - Fix for too generalized html_escape in pagy_url_for. (closes #363)
 - Docs updates
 
-## Version 5.9.2
+### Version 5.9.2
 
 - Added info about using pagy-module.js with importmap
 - Bundle and npm update
@@ -685,14 +685,14 @@ Removed support for the deprecation of `5.0`:
 - Docs improvements
 - Improved the javascript files docs and moved into the lib/javascripts/README.md file
 
-## Version 5.9.1
+### Version 5.9.1
 
 - Updated build.sh to set window.Pagy in pagy-dev.js
 - Update pagy.md (#360)
 - Minor - fix syntax highlighting (#361)
 - Updated info about the current way to use pagy.js with jsbuilder-rails/esbundle
 
-## Version 5.9.0
+### Version 5.9.0
 
 - Npm and bundle update
 - Fix and refactoring of pagy calendar calculation of local time (closes #358):
@@ -706,17 +706,17 @@ Removed support for the deprecation of `5.0`:
 - Reduced the public interface of pagy.js and relative files to just `version` and `init()`
 - Add Ruby 3.1 to CI (#354)
 
-## Version 5.8.1
+### Version 5.8.1
 
 - Shorter warning messages and minified pagy.js
 - Fix for wrong decoding of non latin charsets
 
-## Version 5.8.0
+### Version 5.8.0
 
 - The JSON in data-pagy attributes is base64 encoded: it is smaller than HTML escaped and it avoids crawlers to follow look-alike links
 - Removed redundant PagyJSON type
 
-## Version 5.7.6
+### Version 5.7.6
 
 - Updated Gemfile.lock and package-lock.json
 - Broader browserslist and better doc for javascript
@@ -728,33 +728,33 @@ Removed support for the deprecation of `5.0`:
   - Replaced getOwnPropertyNames with keys
 - Fix for missing entry in CHANGELOG.md
 
-## Version 5.7.5
+### Version 5.7.5
 
 - Fix for unwanted offset in source map data
 
-## Version 5.7.4
+### Version 5.7.4
 
 - Added parcel-plugin-nuke-dist
 - Renamed pagy.mjs -> pagy-module.js; added TypeScript declaration file and build.sh
 
-## Version 5.7.3
+### Version 5.7.3
 
 - npm update
 - Simper pagy-dev.js; added pagy.mjs module
 - Updated .eslintrc.json and package.json files
 
-## Version 5.7.2
+### Version 5.7.2
 
 - Simplified keyword naming
 - Better compilation and development support for pagy.js. Replaced babel with parcel.
 
-## Version 5.7.1
+### Version 5.7.1
 
 - Simpler syntax for nav js helpers
 - Added input e2e test file
 - Simpler abstraction of input based js helpers
 
-## Version 5.7.0
+### Version 5.7.0
 
 - Bundle and npm update
 - TypeScript/Javascript improvements:
@@ -764,7 +764,7 @@ Removed support for the deprecation of `5.0`:
   - Improved typing, function naming
   - Added error catching
 
-## Version 5.6.10
+### Version 5.6.10
 
 - Improvement and fixes for client-side related structure
 - Replaced e2e/cy script with a couple of npm scripts backed by the start-server-and-test
@@ -774,7 +774,7 @@ Removed support for the deprecation of `5.0`:
 - Reorganized cypress tests: faster and more accurate
 - Simpler pagy.ts
 
-## Version 5.6.9
+### Version 5.6.9
 
 - Better doc for e2e related commands in docker/README.md
 - Updated package-lock.json and improved ci-cache.sh
@@ -786,13 +786,13 @@ Removed support for the deprecation of `5.0`:
   - Converted all the e2e test to typescript
 - Updated Docker, VSC and .idea configurations
 
-## Version 5.6.8
+### Version 5.6.8
 
 - Reorganized TypeScript/JavaScript with npm workspaces and better script naming
 - Fix typo in gemspec
 - Better typescript configuration with source maps and declarations
 
-## Version 5.6.7
+### Version 5.6.7
 
 - GitHub Actions: added quotes to version ruby 3.0
 - Added typescript + babel environment for better pagy.js
@@ -802,14 +802,14 @@ Removed support for the deprecation of `5.0`:
 - Minor update of gemfiles and docs
 - Added more gemspec metadata entries (closes #351)
 
-## Version 5.6.6
+### Version 5.6.6
 
 - Docs improvements
 - Added **_ to series and sequels
 - Updated rematch and gemfiles
 - Updated release-gem.yml workflow
 
-## Version 5.6.5
+### Version 5.6.5
 
 - Improved a few code comments; added post link in README
 - Full name for translate, aliased as t
@@ -817,18 +817,18 @@ Removed support for the deprecation of `5.0`:
 - Updated gemfiles
 - Small docs layout adjustment
 
-## Version 5.6.4
+### Version 5.6.4
 
 - Updated RM run configurations
 - Fix for missing innerHTML reset, unintentionally committed during a cleanup (closes #350)
 - Updated gemfiles, docs and comments
 
-## Version 5.6.3
+### Version 5.6.3
 
 - Improved readability and efficiency of calendar files
 - Fix for English spelling in local variable name
 
-## Version 5.6.2
+### Version 5.6.2
 
 - Updated pagy.manifest for Tamil locale
 - Add Tamil (ta) translation (#349)
@@ -840,27 +840,27 @@ Removed support for the deprecation of `5.0`:
 - Docs reorganization
 - Update paths_ignore for skip CI and docs
 
-## Version 5.6.1
+### Version 5.6.1
 
 - Updated cypress and bundler
 - Improved efficiency of unit labelling and support for custom calendar unit sub formats
 - Added missing initializer default for calendar quarter and missing doc for custom units
 
-## Version 5.6.0
+### Version 5.6.0
 
 - Updated gemfiles
 - Updated docs
 - Added calendar quarter tests
 - Internal calendar refactoring to allow custom units; added quarter unit
 
-## Version 5.5.1
+### Version 5.5.1
 
 - Docs updates
 - upgrade bootstrap template navs: call pagy_link_proc with link_extra key (#348)
 - Renamed internal #time_for -> #start_for
 - Docs fixes and improvements
 
-## Version 5.5.0
+### Version 5.5.0
 
 - Updated cypress and related packages
 - **Calendar API: FINAL breaking changes** (stable from now on):
@@ -885,7 +885,7 @@ Removed support for the deprecation of `5.0`:
   - Documentation fixes and improvements
   - Removed the warning for the API changes: the API is stable after these changes
 
-## Version 5.4.0
+### Version 5.4.0
 
 - **Calendar API breaking changes** for refactoring of `Pagy::Calendar` and calendar extra:
   - Added complete compatibility with all the backend extras
@@ -898,7 +898,7 @@ Removed support for the deprecation of `5.0`:
 - Removed unnecessary empty section in calendar docs
 - Fixes for typos and misalignment
 
-## Version 5.3.1
+### Version 5.3.1
 
 - Added screenshot to the calendar extra (closes #346)
 - Added bump.sh script to bump the version in multiple files; check for consistency and optionally commit the changes
@@ -907,7 +907,7 @@ Removed support for the deprecation of `5.0`:
 - Reversed CHANGELOG (closes #345)
 - Calendar I18n small internal renaming and docs improvements
 
-## Version 5.3.0
+### Version 5.3.0
 
 - Implemented localization of time labels through the i18n extra delegation
 - Renamed internal module and files of SharedExtra to FrontendHelpers
@@ -917,24 +917,24 @@ Removed support for the deprecation of `5.0`:
 - Added apps README
 - Completed overflow fix for pagy Countless
 
-## Version 5.2.3
+### Version 5.2.3
 
 - Fix for overflow :empty_page in regular Pagy instances, not returning an empty page
 - docs: add tutorial, simplify header (#343)
 - Refactoring of rails_inline_input.rb (include and close #342)
 
-## Version 5.2.2
+### Version 5.2.2
 
 - Fix for missing defined?(Calendar) checks; small simplification in headers extra
 - Calendar docs improvements and fixes
 
-## Version 5.2.1
+### Version 5.2.1
 
 - Reorganization of mock collection classes; enabled rubocop layout in tests
 - Small refactoring of the overview extra
 - A few improvements for the Calendar pagination; added the current_page_label method
 
-## Version 5.2.0
+### Version 5.2.0
 
 - Small changes in code; updated gemfiles, tests and docs
 - Implemented calendar extra to paginate a Time periods by unit (year, month, week or day)
@@ -944,7 +944,7 @@ Removed support for the deprecation of `5.0`:
 - Docker better mounts
 - Used gem-generic release-gem action
 
-## Version 5.1.3
+### Version 5.1.3
 
 - Added single action standalone rails_inline_output.rb
 - Small improvements in code and docs
@@ -952,19 +952,19 @@ Removed support for the deprecation of `5.0`:
 - Documentation improvements
 - A few details tag in the README should be opened by default
 
-## Version 5.1.2
+### Version 5.1.2
 
 - Refactoring of pagy_url_for and relative test:
   - Fix for ignoring the items_extra variable
   - Replaced request.GET with request.params to enable POST pagination
   - Refactoring of Mock test classes for better handling of params
 
-## Version 5.1.1
+### Version 5.1.1
 
 - This reverts commit 1d77e672d5b7813108b40c13ca93fdec045f4c03.
   Generating the URL by using the application params method breaks rails apps because it requires manual changes in the apps.
 
-## Version 5.1.0
+### Version 5.1.0
 
 - Fix and refactoring of pagy_url_for and relative test:
   - Fix for ignoring the params not coming from the request
@@ -973,7 +973,7 @@ Removed support for the deprecation of `5.0`:
 - Improved code comments, formatting and docs fixes
 - Countless extra: simplified code, internal renaming of locals and docs update
 
-## Version 5.0.1
+### Version 5.0.1
 
 - Updated docs and issue templates
 - Added cypress-dark theme to e2e test
@@ -982,7 +982,7 @@ Removed support for the deprecation of `5.0`:
 - Refactoring of exceptions
 - Added CHANGELOG_LEGACY
 
-## Version 5.0.0
+### Version 5.0.0
 
 ### Breaking changes - 1. Code update
 
@@ -1052,7 +1052,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - Updated doc, gemfiles and github workflow
 - Other minor fixes and improvements in code and doc
 
-## Version 4.11.0
+### Version 4.11.0
 
 ### Changes
 
@@ -1068,7 +1068,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [74aa300](http://github.com/ddnexus/pagy/commit/74aa300): Remove minor extra parenthesis in trim docs [ci-skip] (#326)
 - [f8b96eb](http://github.com/ddnexus/pagy/commit/f8b96eb): docs - add links directly to docs page [ci-skip] (#324)
 
-## Version 4.10.2
+### Version 4.10.2
 
 ### Changes
 
@@ -1088,7 +1088,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [922fd7f](http://github.com/ddnexus/pagy/commit/922fd7f): better tailwind rules
 - [28983e6](http://github.com/ddnexus/pagy/commit/28983e6): added doc for using Searchkick.pagy_search (closes #319)
 
-## Version 4.10.1
+### Version 4.10.1
 
 ### Changes
 
@@ -1098,7 +1098,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 
 - [ec748c2](http://github.com/ddnexus/pagy/commit/ec748c2): Fixes for Meilisearch extra (#318)
 
-## Version 4.10.0
+### Version 4.10.0
 
 ### Changes
 
@@ -1109,7 +1109,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [9bc548e](http://github.com/ddnexus/pagy/commit/9bc548e): added missing keys for Arabic (#317) (closes #295)
 - [1b95674](http://github.com/ddnexus/pagy/commit/1b95674): Add arabic locale, pluralization and tests; alpha ordered tests
 
-## Version 4.9.0
+### Version 4.9.0
 
 ### Changes
 
@@ -1124,7 +1124,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [fb65260](http://github.com/ddnexus/pagy/commit/fb65260): updated issue templates
 - [1c3d283](http://github.com/ddnexus/pagy/commit/1c3d283): Added Pagy::Console links to README
 
-## Version 4.8.1
+### Version 4.8.1
 
 ### Changes
 
@@ -1135,7 +1135,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [0f1a7f2](http://github.com/ddnexus/pagy/commit/0f1a7f2): improved deprecation_tests (see #311)
 - [7e9c9cd](http://github.com/ddnexus/pagy/commit/7e9c9cd): fix(pagy): deprecated_var is a class method (#311)
 
-## Version 4.8.0
+### Version 4.8.0
 
 ### Changes
 
@@ -1164,7 +1164,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [4ec03f1](http://github.com/ddnexus/pagy/commit/4ec03f1): added HTML validation for all the helpers and styles
 - [87b2f62](http://github.com/ddnexus/pagy/commit/87b2f62): refactoring e2e: replaced snapshot plugin; updated to cypress 7.3.0
 
-## Version 4.7.1
+### Version 4.7.1
 
 ### Changes
 
@@ -1182,7 +1182,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [789773b](http://github.com/ddnexus/pagy/commit/789773b): removed faulty PAGY_REMATCH variable function; added rematch_all rake task
 - [eb2df6d](http://github.com/ddnexus/pagy/commit/eb2df6d): updated docs [skip ci]
 
-## Version 4.7.0
+### Version 4.7.0
 
 ### Changes
 
@@ -1201,7 +1201,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [57e6f91](http://github.com/ddnexus/pagy/commit/57e6f91): added rematch test to ease maintenance of tests
 - [94561a0](http://github.com/ddnexus/pagy/commit/94561a0): updated puma
 
-## Version 4.6.0
+### Version 4.6.0
 
 ### Changes
 
@@ -1229,7 +1229,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [c8e41e3](http://github.com/ddnexus/pagy/commit/c8e41e3): added superails screencast; resized thumbnails [skip ci]
 - [6116c32](http://github.com/ddnexus/pagy/commit/6116c32): added a few references in the how_to doc [skip ci]
 
-## Version 4.5.1
+### Version 4.5.1
 
 ### Changes
 
@@ -1251,7 +1251,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [1b7b014](http://github.com/ddnexus/pagy/commit/1b7b014): Add: clarity, further instructions to run pagy tests [skip ci] (#304)
 - [7c723ba](http://github.com/ddnexus/pagy/commit/7c723ba): added basic structure to run cypress tests and open the cypress IDE
 
-## Version 4.4.0
+### Version 4.4.0
 
 ### Changes
 
@@ -1303,7 +1303,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [7927f37](http://github.com/ddnexus/pagy/commit/7927f37): added manifest:check to CI for master and dev and to the default rake task
 - [01f8f1c](http://github.com/ddnexus/pagy/commit/01f8f1c): refactoring of Rakefile now split in different task files
 
-## Version 4.3.0
+### Version 4.3.0
 
 ### Changes
 
@@ -1333,7 +1333,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [5e6f749](http://github.com/ddnexus/pagy/commit/5e6f749): simpler test tasks
 - [e5ee4e7](http://github.com/ddnexus/pagy/commit/e5ee4e7): CI: Remove Bundler 1.x workaround (#296)The "github" source now has that form, already.
 
-## Version 4.2.0
+### Version 4.2.0
 
 ### Changes
 
@@ -1371,7 +1371,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [df3c8d6](http://github.com/ddnexus/pagy/commit/df3c8d6): small syntax normalization
 - [618d226](http://github.com/ddnexus/pagy/commit/618d226): docker README fix [ci-skip]
 
-## Version 4.1.0
+### Version 4.1.0
 
 ### Changes
 
@@ -1382,7 +1382,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [8da0e06](http://github.com/ddnexus/pagy/commit/8da0e06): Add Serbian locale (#283)
 - [dcfc659](http://github.com/ddnexus/pagy/commit/dcfc659): Add locales for Bosnian and Croatian language (#281)
 
-## Version 4.0.0
+### Version 4.0.0
 
 ### Breaking Changes
 
@@ -1428,7 +1428,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [fcaab88](http://github.com/ddnexus/pagy/commit/fcaab88): updated gemfile and gemspec
 - [467b985](http://github.com/ddnexus/pagy/commit/467b985): added docker development environment
 
-## Version 3.11.0
+### Version 3.11.0
 
 ### Changes
 
@@ -1440,7 +1440,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [ebbac6b](http://github.com/ddnexus/pagy/commit/ebbac6b): Fix: broken links (#272) [ci-skip]
 - [2178436](http://github.com/ddnexus/pagy/commit/2178436): restored file removed by mistake
 
-## Version 3.10.0
+### Version 3.10.0
 
 ### Changes
 
@@ -1452,7 +1452,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [2e7fa1b](http://github.com/ddnexus/pagy/commit/2e7fa1b): Update with 'cs' (#269)added lambda for 'west_slavic' and 'hash for 'cs' language
 - [70760c6](http://github.com/ddnexus/pagy/commit/70760c6): Czech localization (#268)
 
-## Version 3.9.0
+### Version 3.9.0
 
 ### Changes
 
@@ -1473,7 +1473,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [01e4a14](http://github.com/ddnexus/pagy/commit/01e4a14): [ci-skip] Add note re: html safe helpers (#254)Fixes discussion noted in: #6
 - [1d812be](http://github.com/ddnexus/pagy/commit/1d812be): doc improvements [ci-skip]
 
-## Version 3.8.3
+### Version 3.8.3
 
 ### Changes
 
@@ -1492,7 +1492,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [614a3e1](http://github.com/ddnexus/pagy/commit/614a3e1): fix for extra "-js" in "pagy-combo-nav-js"
 - [8673ca4](http://github.com/ddnexus/pagy/commit/8673ca4): a couple of how_to additions
 
-## Version 3.8.2
+### Version 3.8.2
 
 ### Changes
 
@@ -1504,7 +1504,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [0a70110](http://github.com/ddnexus/pagy/commit/0a70110): item_name can be overridden by passing an already pluralized string to pagy_info
 - [28913d6](http://github.com/ddnexus/pagy/commit/28913d6): Use proper attributes for "previous" links (#244)
 
-## Version 3.8.1
+### Version 3.8.1
 
 ### Changes
 
@@ -1519,7 +1519,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [d7a9f7a](http://github.com/ddnexus/pagy/commit/d7a9f7a): Fixes boundary character escaping in regex in js trim function (#239)
 - [3561885](http://github.com/ddnexus/pagy/commit/3561885): gems update
 
-## Version 3.8.0
+### Version 3.8.0
 
 ### Changes
 
@@ -1535,7 +1535,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [7ced96c](http://github.com/ddnexus/pagy/commit/7ced96c): fix for missing suffix fr method reference in doc
 - [73600be](http://github.com/ddnexus/pagy/commit/73600be): improved consistency in searchkick and elasticsearch_rails documentation examples (#231)
 
-## Version 3.7.5
+### Version 3.7.5
 
 ### Changes
 
@@ -1550,7 +1550,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [e57215f](http://github.com/ddnexus/pagy/commit/e57215f): added ruby 2.7 travis testing and rubocop target version
 - [280164a](http://github.com/ddnexus/pagy/commit/280164a): re-enabled travis testing for old jruby (travis fixed the jruby images issue)
 
-## Version 3.7.4
+### Version 3.7.4
 
 ### Changes
 
@@ -1568,14 +1568,14 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [00bd312](http://github.com/ddnexus/pagy/commit/00bd312): bundle update (closes #208, closes #223, closes #224)
 - [133da16](http://github.com/ddnexus/pagy/commit/133da16): Add tutorial link (#222) [ci skip]
 
-## Version 3.7.3
+### Version 3.7.3
 
 ### Commits
 
 - [a2b915e](http://github.com/ddnexus/pagy/commit/a2b915e): reorganization of Javascript documentation
 - [fead55c](http://github.com/ddnexus/pagy/commit/fead55c): Remove duplicated pagination class for Bootstrap (#212)
 
-## Version 3.7.2
+### Version 3.7.2
 
 ### Changes
 
@@ -1585,7 +1585,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 
 - [6a93b97](http://github.com/ddnexus/pagy/commit/6a93b97): headers must be strings (closes #211)
 
-## Version 3.7.1
+### Version 3.7.1
 
 ### Changes
 
@@ -1596,7 +1596,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [cbe4a97](http://github.com/ddnexus/pagy/commit/cbe4a97): Type cast pagy_arel_count value to integer (#207)
 - [973f4fe](http://github.com/ddnexus/pagy/commit/973f4fe): updated link [ci skip]
 
-## Version 3.7.0
+### Version 3.7.0
 
 ### Changes
 
@@ -1618,7 +1618,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [846eece](http://github.com/ddnexus/pagy/commit/846eece): fix in README.md
 - [224748a](http://github.com/ddnexus/pagy/commit/224748a): fix for resurrected-by-mistake line in README
 
-## Version 3.6.0
+### Version 3.6.0
 
 ### Changes
 
@@ -1641,7 +1641,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [281da85](http://github.com/ddnexus/pagy/commit/281da85): update grammar (#187)
 - [739f032](http://github.com/ddnexus/pagy/commit/739f032): Update how-to: Correct to require header for API (#188)
 
-## Version 3.5.1
+### Version 3.5.1
 
 ### Changes
 
@@ -1655,7 +1655,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [fb8bcf4](http://github.com/ddnexus/pagy/commit/fb8bcf4): doc fix for missing :partial key in rendering example (closes #180)
 - [7160a18](http://github.com/ddnexus/pagy/commit/7160a18): Minor docs changes [ci skip]
 
-## Version 3.5.0
+### Version 3.5.0
 
 ### Changes
 
@@ -1676,7 +1676,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [0b42e5c](http://github.com/ddnexus/pagy/commit/0b42e5c): Add translation ko.yml for korean (#172)
 - [da3fc37](http://github.com/ddnexus/pagy/commit/da3fc37): minor doc fixes [ci skip]
 
-## Version 3.4.1
+### Version 3.4.1
 
 ### Changes
 
@@ -1688,7 +1688,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [0ac5c27](http://github.com/ddnexus/pagy/commit/0ac5c27): refactoring of pagy_search and its usage in order to allow optional term argument for searchkick (#169)
 - [389755b](http://github.com/ddnexus/pagy/commit/389755b): small docs editing [ci skip]
 
-## Version 3.4.0
+### Version 3.4.0
 
 ### Changes
 
@@ -1698,7 +1698,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 
 - [1eb25ec](http://github.com/ddnexus/pagy/commit/1eb25ec): Implement UIkit pagination (#164)
 
-## Version 3.3.2
+### Version 3.3.2
 
 ### Changes
 
@@ -1710,7 +1710,7 @@ FYI: The `@pagy.items` is now always equal to `@pagy.vars[:items]` (i.e. the req
 - [aff8cbb](http://github.com/ddnexus/pagy/commit/aff8cbb): better handling of resize listeners; added render function to the pagy element
 - [c699fe5](http://github.com/ddnexus/pagy/commit/c699fe5): fix for javascript/turbolink nav.render firing when element not found (#163)
 
-## Version 3.3.1
+### Version 3.3.1
 
 ### Changes
 
@@ -1720,7 +1720,7 @@ Namespacing of all exceptions, still backward compatible with legacy rescues
 
 - [530cb24](http://github.com/ddnexus/pagy/commit/530cb24): all the exceptions are namespaced and can return more information for easier rescue of special cases
 
-## Version 3.3.0
+### Version 3.3.0
 
 ### Changes
 
@@ -1732,7 +1732,7 @@ Namespacing of all exceptions, still backward compatible with legacy rescues
 - [7111cec](http://github.com/ddnexus/pagy/commit/7111cec): Bulgarian language yml file. (#162)
 - [a46f6b5](http://github.com/ddnexus/pagy/commit/a46f6b5): improved suggestion for headers usage
 
-## Version 3.2.1
+### Version 3.2.1
 
 ### Commits
 
@@ -1744,7 +1744,7 @@ Namespacing of all exceptions, still backward compatible with legacy rescues
 - [459edaa](http://github.com/ddnexus/pagy/commit/459edaa): improved notes about preventing crawlers to follow look-alike links
 - [01c73d3](http://github.com/ddnexus/pagy/commit/01c73d3): added search box to docs
 
-## Version 3.2.0
+### Version 3.2.0
 
 ### Commits
 
@@ -1755,7 +1755,7 @@ Namespacing of all exceptions, still backward compatible with legacy rescues
   - use of RegExp patterns in pagy.js
   - added and improved tests
 
-## Version 3.1.0
+### Version 3.1.0
 
 ### Commits
 
@@ -1770,7 +1770,7 @@ Namespacing of all exceptions, still backward compatible with legacy rescues
 - [e0b2a2b](http://github.com/ddnexus/pagy/commit/e0b2a2b): removed duplication in LEGACY_CHANGELOG
 - [ecb6822](http://github.com/ddnexus/pagy/commit/ecb6822): fix typo in README
 
-## Version 3.0.0
+### Version 3.0.0
 
 ### Breaking Changes
 
@@ -1910,7 +1910,7 @@ Dropped `pagy_serialized`, `pagy_apply_init_tag` and `PagyInit` javascript names
 - [2f67dfa](http://github.com/ddnexus/pagy/commit/2f67dfa): UPDATE pagy locales id (#151)
 - [15732da](http://github.com/ddnexus/pagy/commit/15732da): fix for broken migration link (#150)
 
-## Version 2.1.5
+### Version 2.1.5
 
 ### Changes
 
@@ -1931,7 +1931,7 @@ Dropped `pagy_serialized`, `pagy_apply_init_tag` and `PagyInit` javascript names
 - [95cdf61](http://github.com/ddnexus/pagy/commit/95cdf61): docs improvements
 - [310c804](http://github.com/ddnexus/pagy/commit/310c804): Update lib/locales/README.md (#148)
 
-## Version 2.1.4
+### Version 2.1.4
 
 ### Changes
 
@@ -1949,7 +1949,7 @@ Dropped `pagy_serialized`, `pagy_apply_init_tag` and `PagyInit` javascript names
 - [119ba78](http://github.com/ddnexus/pagy/commit/119ba78): fix for support.md auto-incremental javascript example
 - [1f376d4](http://github.com/ddnexus/pagy/commit/1f376d4): Update support.md (#146) Fix incremental/infinite scroll examples
 
-## Version 2.1.3
+### Version 2.1.3
 
 ### Changes
 
@@ -1969,7 +1969,7 @@ Dropped `pagy_serialized`, `pagy_apply_init_tag` and `PagyInit` javascript names
 - [198883c](http://github.com/ddnexus/pagy/commit/198883c): Fix legacy changelog url (#144)
 
 
-## Version 2.1.2
+### Version 2.1.2
 
 ### Changes
 
@@ -1981,7 +1981,7 @@ Dropped `pagy_serialized`, `pagy_apply_init_tag` and `PagyInit` javascript names
 - [4086181](http://github.com/ddnexus/pagy/commit/4086181): fix compilant > compliant typos in docs
 - [5d6edf6](http://github.com/ddnexus/pagy/commit/5d6edf6): reconciliation between test strings
 
-## Version 2.1.1
+### Version 2.1.1
 
 ### Changes
 
@@ -1993,7 +1993,7 @@ Dropped `pagy_serialized`, `pagy_apply_init_tag` and `PagyInit` javascript names
 - [e9f467a](http://github.com/ddnexus/pagy/commit/e9f467a): fix for pagy_url_for not working with multiple pagy in the same request (#143)
 - [75329b4](http://github.com/ddnexus/pagy/commit/75329b4): better configuration example and documentation for responsive breakpoints (#140)
 
-## Version 2.1.0
+### Version 2.1.0
 
 ### Changes
 
@@ -2012,7 +2012,7 @@ Dropped `pagy_serialized`, `pagy_apply_init_tag` and `PagyInit` javascript names
 - [5bd7c0a](http://github.com/ddnexus/pagy/commit/5bd7c0a): updated docs notes for the searchkick and elasticsearch_rails extras
 - [0ca5539](http://github.com/ddnexus/pagy/commit/0ca5539): updated comments in config/pagy.rb (#138)
 
-## Version 2.0.1
+### Version 2.0.1
 
 ### Changes
 
@@ -2033,7 +2033,7 @@ Dropped `pagy_serialized`, `pagy_apply_init_tag` and `PagyInit` javascript names
 - [4156121](http://github.com/ddnexus/pagy/commit/4156121): added how-to for custom count for custom scopes (#130); other minor adjustments
 - [4c7b50a](http://github.com/ddnexus/pagy/commit/4c7b50a): docs fixes and additions (#128)
 
-## Version 2.0.0
+### Version 2.0.0
 
 ### Breaking Changes
 
@@ -2160,7 +2160,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [ca18374](http://github.com/ddnexus/pagy/commit/ca18374): Cache gemset for faster Travis builds (#126)
 - [71a3e5f](http://github.com/ddnexus/pagy/commit/71a3e5f): Always return the same object as Pagy.root (#125)* Update copyright notice to 2019 (#121)
 
-## Version 1.3.3
+### Version 1.3.3
 
 ### Commits
 
@@ -2169,7 +2169,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [78141a3](http://github.com/ddnexus/pagy/commit/78141a3): Improve default German translation (#120)
 - [c0fe0df](http://github.com/ddnexus/pagy/commit/c0fe0df): minor typo corrections (#119)
 
-## Version 1.3.2
+### Version 1.3.2
 
 ### Changes
 
@@ -2179,7 +2179,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 
 - [332c6a2](http://github.com/ddnexus/pagy/commit/332c6a2): fix for responsive javascript error in slow loading pages (#115)
 
-## Version 1.3.1
+### Version 1.3.1
 
 ### Changes
 
@@ -2189,7 +2189,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 
 - [3ead159](http://github.com/ddnexus/pagy/commit/3ead159): fix for temp items variable in items extra (#117)
 
-## Version 1.3.0
+### Version 1.3.0
 
 ### Changes
 
@@ -2217,7 +2217,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [e9ab4a1](http://github.com/ddnexus/pagy/commit/e9ab4a1): renamed argument items > fetched; removed redundant assignation
 
 
-## Version 1.2.1
+### Version 1.2.1
 
 ### Changes
 
@@ -2258,7 +2258,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [35078ab](http://github.com/ddnexus/pagy/commit/35078ab): deprecated and renamed bootstrap navs in code, tests and docs
 - [04ec860](http://github.com/ddnexus/pagy/commit/04ec860): added Pagy.deprecate method
 
-## Version 1.1.0
+### Version 1.1.0
 
 ### Changes
 
@@ -2279,7 +2279,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [37cf51a](http://github.com/ddnexus/pagy/commit/37cf51a): series can return an empty array if size is empty
 - [7bf9d14](http://github.com/ddnexus/pagy/commit/7bf9d14): fix for a few missing lines in the extras docs
 
-## Version 1.0.0
+### Version 1.0.0
 
 ### Breaking Changes
 
@@ -2301,13 +2301,13 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
   - method: out_of_range? > overflow?
 - [a0b411a](http://github.com/ddnexus/pagy/commit/a0b411a): added README note about semantic versioning
 
-## Version 0.23.1
+### Version 0.23.1
 
 ### Commits
 
 - [e8a2251](http://github.com/ddnexus/pagy/commit/e8a2251): fix for ArgumentError feedback in Pagy constructor should show the originally passed offending value (#104)
 
-## Version 0.23.0
+### Version 0.23.0
 
 ### Changes
 
@@ -2319,7 +2319,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [b6149ec](http://github.com/ddnexus/pagy/commit/b6149ec): docs fixes
 - [408cc32](http://github.com/ddnexus/pagy/commit/408cc32): fix for typo in CHANGELOG
 
-## Version 0.22.0
+### Version 0.22.0
 
 ### Changes
 
@@ -2329,7 +2329,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 
 - [59064c2](http://github.com/ddnexus/pagy/commit/59064c2): Added Norwegian locale (#100)
 
-## Version 0.21.0
+### Version 0.21.0
 
 ### Changes
 
@@ -2344,7 +2344,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [5ed458a](https://github.com/ddnexus/pagy/commit/5ed458a): added README disclaimer
 - [02b0a74](https://github.com/ddnexus/pagy/commit/02b0a74): Update link to Semantic-UI pagination
 
-## Version 0.20.0
+### Version 0.20.0
 
 ### Breaking Changes
 
@@ -2363,7 +2363,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [c1aec4c](https://github.com/ddnexus/pagy/commit/c1aec4c): removed marginal pagy.nav.current key used only by foundation an fixed consistency in foundation helpers and templates
 - [15e413b](https://github.com/ddnexus/pagy/commit/15e413b): refactoring of the composition of i18n strings for compact helpers and items selector
 
-## Version 0.19.4
+### Version 0.19.4
 
 ### Changes
 
@@ -2379,7 +2379,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [5e4f93d](https://github.com/ddnexus/pagy/commit/5e4f93d): corrected chinese translation (#88)
 - [26654d4](https://github.com/ddnexus/pagy/commit/26654d4): updated README
 
-## Version 0.19.3
+### Version 0.19.3
 
 ### Changes
 
@@ -2391,7 +2391,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [31823f9](https://github.com/ddnexus/pagy/commit/31823f9): fix for compact nav in bootstrap 3 (#86)
 - [ac2a76c](https://github.com/ddnexus/pagy/commit/ac2a76c): docs fixes
 
-## Version 0.19.2
+### Version 0.19.2
 
 ### Changes
 
@@ -2406,7 +2406,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [a62b222](https://github.com/ddnexus/pagy/commit/a62b222): small refactoring of the trim extra
 - [c23505a](https://github.com/ddnexus/pagy/commit/c23505a): fix for doc typo
 
-## Version 0.19.1
+### Version 0.19.1
 
 ### Changes
 
@@ -2422,7 +2422,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [435e849](https://github.com/ddnexus/pagy/commit/435e849): updated docs
 
 
-## Version 0.19.0
+### Version 0.19.0
 
 ### Important Changes
 
@@ -2434,7 +2434,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [f147cca](https://github.com/ddnexus/pagy/commit/f147cca): Semantic UI nav helper (#73)
 - [429ac14](https://github.com/ddnexus/pagy/commit/429ac14): updated pagy.js requirements info
 
-## Version 0.18.0
+### Version 0.18.0
 
 ### Breaking Changes
 
@@ -2448,7 +2448,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [f093c7e](https://github.com/ddnexus/pagy/commit/f093c7e): reorganization of tests
 - [cd11c4f](https://github.com/ddnexus/pagy/commit/cd11c4f): reorganization of extras dir
 
-## Version 0.17.0
+### Version 0.17.0
 
 ### Important Changes
 
@@ -2460,7 +2460,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [d78f85d](https://github.com/ddnexus/pagy/commit/d78f85d): Foundation extra (#79)
 - [13f37a0](https://github.com/ddnexus/pagy/commit/13f37a0): restyling of extras in README, docs and initializer example
 
-## Version 0.16.0
+### Version 0.16.0
 
 ### Important Changes
 
@@ -2472,7 +2472,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [5227bd1](https://github.com/ddnexus/pagy/commit/5227bd1): added searchkick references in docs, README and initializer example (#75)
 - [b9acf0c](https://github.com/ddnexus/pagy/commit/b9acf0c): Searchkick extra (#75)
 
-## Version 0.15.1
+### Version 0.15.1
 
 ### Important Changes
 
@@ -2488,7 +2488,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [6f774d7](https://github.com/ddnexus/pagy/commit/6f774d7): added missing doc menu for trim extra
 - [5f6de56](https://github.com/ddnexus/pagy/commit/5f6de56): added a few tests for the trim extra
 
-## Version 0.15.0
+### Version 0.15.0
 
 ### Important Changes
 
@@ -2499,7 +2499,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [868be25](https://github.com/ddnexus/pagy/commit/868be25): added trim extra
 - [fb48976](https://github.com/ddnexus/pagy/commit/fb48976): chained method for extra items overrides
 
-## Version 0.14.0
+### Version 0.14.0
 
 ### Important Changes
 
@@ -2511,7 +2511,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [1dd38c9](https://github.com/ddnexus/pagy/commit/1dd38c9): added materialize extra (#44)
 - [30c1a57](https://github.com/ddnexus/pagy/commit/30c1a57): updated docs
 
-## Version 0.13.1
+### Version 0.13.1
 
 ### Important Changes
 
@@ -2525,7 +2525,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [5958dc5](https://github.com/ddnexus/pagy/commit/5958dc5): out_of_range extra improvements (#68)
 - [7177cd9](https://github.com/ddnexus/pagy/commit/7177cd9): added note about the out_of_range exta to the README
 
-## Version 0.13.0
+### Version 0.13.0
 
 ### Important Changes
 
@@ -2540,7 +2540,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [3d732dd](https://github.com/ddnexus/pagy/commit/3d732dd): docs for empty page OutOfRangeError (#69)
 - [a3be52e](https://github.com/ddnexus/pagy/commit/a3be52e): Fixed screenshot name for compact bulma extra (#67)
 
-## Version 0.12.0
+### Version 0.12.0
 
 ### Important Changes
 
@@ -2560,13 +2560,13 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [da34b94](https://github.com/ddnexus/pagy/commit/da34b94): fix typo (#61)
 - [cdab354](https://github.com/ddnexus/pagy/commit/cdab354): added better I18n comments in initializer_example.rb
 
-## Version 0.11.2
+### Version 0.11.2
 
 ### Commits
 
 - [76fc273](https://github.com/ddnexus/pagy/commit/76fc273): used merge! in place of **
 
-## Version 0.11.1
+### Version 0.11.1
 
 ### Important Changes
 
@@ -2582,7 +2582,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [228109e](https://github.com/ddnexus/pagy/commit/228109e): fix for typos
 - [0a1ed94](https://github.com/ddnexus/pagy/commit/0a1ed94): updated initializer_example.rb
 
-## Version 0.11.0
+### Version 0.11.0
 
 ### Breaking Changes
 
@@ -2598,7 +2598,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [ea7c22b](https://github.com/ddnexus/pagy/commit/ea7c22b): breaking change for compact and responsive extras: renaming of pagy_nav_bootstrap_* helpers to pagy_nav_*_bootstrap, consistent with extras structure
 - [7d1a573](https://github.com/ddnexus/pagy/commit/7d1a573): internal consistency renaming of local/test variables; minor fixes and improvements
 
-## Version 0.10.1
+### Version 0.10.1
 
 ### Commits
 
@@ -2606,7 +2606,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [99081ee](https://github.com/ddnexus/pagy/commit/99081ee): small performance improvement for #51 and updated doc
 - [5863ceb](https://github.com/ddnexus/pagy/commit/5863ceb): add support for counting grouped collections (#51)
 
-## Version 0.10.0
+### Version 0.10.0
 
 ### Breaking Changes
 
@@ -2621,7 +2621,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
   - updated tests and docs
 - [32d0afc](https://github.com/ddnexus/pagy/commit/32d0afc): doc fix: UI selector > selector UI
 
-## Version 0.9.2
+### Version 0.9.2
 
 ### Important Changes
 
@@ -2638,7 +2638,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [9afa9d9](https://github.com/ddnexus/pagy/commit/9afa9d9): Default Frozen Strings for Ruby Files (#49)
 - [036c87f](https://github.com/ddnexus/pagy/commit/036c87f): Fix typo in :page_param configuration (#48)
 
-## Version 0.9.1
+### Version 0.9.1
 
 ### Important Changes
 
@@ -2651,7 +2651,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [00cd5bb](https://github.com/ddnexus/pagy/commit/00cd5bb): Fix typo (#45)
 - [8b3a733](https://github.com/ddnexus/pagy/commit/8b3a733): fix for header level in README
 
-## Version 0.9.0
+### Version 0.9.0
 
 ### Important Changes
 
@@ -2673,7 +2673,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [c41e823](https://github.com/ddnexus/pagy/commit/c41e823): additions and normalization of documentation and comments
 - [38f9a49](https://github.com/ddnexus/pagy/commit/38f9a49): fix for broken links in readme
 
-## Version 0.8.6
+### Version 0.8.6
 
 ### Commits
 
@@ -2683,7 +2683,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [1d16e3d](https://github.com/ddnexus/pagy/commit/1d16e3d): documentation additions
 - [62c420d](https://github.com/ddnexus/pagy/commit/62c420d): updated doc and charts
 
-## Version 0.8.5
+### Version 0.8.5
 
 ### Important Changes
 
@@ -2693,7 +2693,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 
 - [31b815d](https://github.com/ddnexus/pagy/commit/31b815d): fix for I18n exception on startup (#41)
 
-## Version 0.8.4
+### Version 0.8.4
 
 ### Important Changes
 
@@ -2712,7 +2712,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
   - add Pagy::VARS[:link_extra] empty default
 - [2f0d384](https://github.com/ddnexus/pagy/commit/2f0d384): docs additions
 
-## Version 0.8.3
+### Version 0.8.3
 
 ### Important Changes
 
@@ -2732,7 +2732,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [504b943](https://github.com/ddnexus/pagy/commit/504b943): added missing tests to frontend_test.rb
 - [6168df3](https://github.com/ddnexus/pagy/commit/6168df3): use actionable code coverage (#29)
 
-## Version 0.8.2
+### Version 0.8.2
 
 ### Important Changes
 
@@ -2752,7 +2752,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [a585fe6](https://github.com/ddnexus/pagy/commit/a585fe6): clean up gemspec (#32)
 - [ae48f13](https://github.com/ddnexus/pagy/commit/ae48f13): test on all supported ruby versions and split out rubocop (#30)
 
-## Version 0.8.1
+### Version 0.8.1
 
 ### Important Changes
 
@@ -2764,7 +2764,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [62fd6c8](https://github.com/ddnexus/pagy/commit/62fd6c8): better forward improvements with pagy_url_for receiving the pagy instance instead of the single pagy_param
 - [748de0d](https://github.com/ddnexus/pagy/commit/748de0d): readme and changelog improvement
 
-## Version 0.8.0
+### Version 0.8.0
 
 ### Important Changes
 
@@ -2803,14 +2803,14 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [7050ee0](https://github.com/ddnexus/pagy/commit/7050ee0): basic rubocop setup (#18)
 - [7aee689](https://github.com/ddnexus/pagy/commit/7aee689): small docs improvements
 
-## Version 0.7.2
+### Version 0.7.2
 
 ### Commits
 
 - [527cd8e](https://github.com/ddnexus/pagy/commit/527cd8e): simplification of pagy_url_for
 - [144c997](https://github.com/ddnexus/pagy/commit/144c997): URIs are always joined with forward slash (#11)
 
-## Version 0.7.1
+### Version 0.7.1
 
 ### Commits
 
@@ -2824,7 +2824,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [358a806](https://github.com/ddnexus/pagy/commit/358a806): a couple of links added to the doc
 - [fac1f34](https://github.com/ddnexus/pagy/commit/fac1f34): docs small fixes and improvements
 
-## Version 0.7.0
+### Version 0.7.0
 
 ### Commits
 
@@ -2834,7 +2834,7 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [6ea7a48](https://github.com/ddnexus/pagy/commit/6ea7a48): changes for PR #2: - use of local variable zero_one instead of constant I18N_PLURALS - VARS cannot be frozen
 - [fb8975b](https://github.com/ddnexus/pagy/commit/fb8975b): Freeze class immutable constant variable at first
 
-## Version 0.6.0
+### Version 0.6.0
 
 ### Commits
 

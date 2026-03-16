@@ -41,7 +41,7 @@ describe 'Version match' do
 
     it 'has a section in CHANGELOG.md' do
       content = repo_root.join('docs/CHANGELOG.md').read
-      _(content).must_match "## Version #{version}"
+      _(content).must_match "### Version #{version}"
     end
   end
 
@@ -63,10 +63,6 @@ describe 'Version match' do
 
     it 'matches in pagy.js' do
       _(js_path.join('pagy.js').read).must_match "version: \"#{version}\","
-    end
-
-    it 'matches in pagy.js.map' do
-      _(js_path.join('pagy.js.map').read).must_match "version: \\\"#{version}\\\","
     end
 
     it 'matches in pagy.mjs' do

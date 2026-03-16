@@ -1,10 +1,11 @@
-### Changes in 43.3.3
+### Changes in 43.4.0
 
 <!-- changes_start -->
-- Fix Request#resolve_page with jsonapi, limit, and missing page param (#885)
-- Fix pagy-tailwind.css inconsistencies
-- Improve ts/js build process and wand help
-- Move the next_tag into the Pagy class
+- Improve stylesheets and docs
+- Improve JavaScript:
+  - Add sync method and task
+  - Deprecate sync_javascript
+  - Simplify build, configuration and docs
 <!-- changes_end -->
 
 [CHANGELOG](https://ddnexus.github.io/pagy/changelog)
@@ -15,7 +16,7 @@
   <img src="https://github.com/ddnexus/pagy/raw/dev/assets/images/try-it.svg" width="130">
 </a><br><br>
 
-## Version 43
+### Version 43
 
 We needed a leap version to unequivocally signal that it's not just a major version: it's a complete redesign of the legacy code at all levels, usage and API included.
 

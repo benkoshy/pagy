@@ -10,7 +10,7 @@ require_relative 'pagy/toolbox/helpers/loaders'
 # Top superclass: it defines only what's common to all the subclasses
 # noinspection RubyMismatchedArgumentType
 class Pagy
-  VERSION     = '43.3.3'
+  VERSION     = '43.4.0'
   ROOT        = Pathname.new(__dir__).parent.freeze
   DEFAULT     = { limit: 20, limit_key: 'limit', page_key: 'page' }.freeze
   PAGE_TOKEN  = EscapedValue.new('P ')
@@ -30,6 +30,7 @@ class Pagy
   autoload :Searchkick,         path.join('classes/offset/search')
   autoload :TypesenseRails,     path.join('classes/offset/search')
   autoload :Keyset,             path.join('classes/keyset/keyset')
+  autoload :SyncTask,           path.join('tasks/sync')
 
   OPTIONS = {} # rubocop:disable Style/MutableConstant
   def self.options = OPTIONS

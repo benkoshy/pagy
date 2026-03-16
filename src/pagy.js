@@ -1,4 +1,5 @@
-export default (() => {
+// pagy.ts
+var pagy_default = (() => {
   const storageSupport = "sessionStorage" in window && "BroadcastChannel" in window;
   let pagy = "pagy", storage, sync, tabId;
   if (storageSupport) {
@@ -128,7 +129,7 @@ export default (() => {
     });
   };
   return {
-    version: "43.4.0",
+    version: "43.3.3",
     init(arg) {
       const target = arg instanceof HTMLElement ? arg : document, elements = target.querySelectorAll("[data-pagy]");
       for (const element of elements) {
@@ -151,3 +152,9 @@ export default (() => {
     }
   };
 })();
+
+// pagy-shim.ts
+window.Pagy = pagy_default;
+
+//# debugId=021E66019640F5E464756E2164756E21
+//# sourceMappingURL=pagy.js.map
