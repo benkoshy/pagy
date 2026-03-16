@@ -17,15 +17,21 @@
 Pagy::OPTIONS.freeze
 
 
-############ JS and CSS ####################################################################
+############ JS and CSS Resources ##########################################################
 # See https://ddnexus.github.io/pagy/resources/javascript/
 # and https://ddnexus.github.io/pagy/resources/stylesheets/ for more resources and details.
-# Copy and keep the resource files synced in the app.
+# Copy and keep the resource files synced in the app. For example:
 #
 # if Rails.env.development?
 #   Pagy.sync(:javascript, Rails.root.join('app/javascript'), 'pagy.mjs')
-#   Pagy.sync(:stylesheet, Rails.root.join('app/assets/stylesheets'), 'pagy.css')
+#   Pagy.sync(:stylesheet, Rails.root.join('app/stylesheets'), 'pagy.css')
 # end
+#
+# OR Alternative config ONLY for apps with an asset pipeline
+#
+# Rails.application.config.assets.paths << Pagy::ROOT.join(':javascripts')
+# Rails.application.config.assets.paths << Pagy::ROOT.join(':stylesheets')
+
 
 
 ############# Overriding Pagy::I18n Lookup #################################################

@@ -8,17 +8,13 @@ order: 80
 
 ## DevTools
 
-:::raised
-![PagyWand](../assets/images/dev-tools.png){width=606}
-:::
-
-<br>
+---
 
 Pagy offers a couple of tools to ease your development process.
 
-You can activate them by adding this line in the `head` of your layout/page:
+You can activate them by adding this line in the `<head>` of your layout/page:
 
-```ruby
+```erb
 <%== Pagy.dev_tools %>
 ```
 
@@ -26,16 +22,22 @@ You can activate them by adding this line in the `head` of your layout/page:
 
 #### Pagy Wand
 
-Customizes the CSS and integrates it with your app's themes _interactively_.
+Adjust a few slider to see the style change in real time, right in your app...
 
 - Control most of the visual aspects of pagy with a few presets and sliders.
 - Copy/paste the generated "CSS Override" block in your stylesheet to persist it in your app.
 - Click on the :icon-question: icon on the Wand for help.
 
+:::raised
+![PagyWand](../assets/images/dev-tools.png){width=450}
+:::
+
+<br>
+
 Watch the Pagy wand [demo video](https://youtu.be/GhhNRrVG9jg):
 
 :::raised
-[![](../assets/images/pagy-wand-demo-screenshot.png)](https://youtu.be/GhhNRrVG9jg)
+[![](../assets/images/pagy-wand-demo-screenshot.png){width=450}](https://youtu.be/GhhNRrVG9jg)
 :::
 
 <br>

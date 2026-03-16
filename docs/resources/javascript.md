@@ -58,47 +58,7 @@ With inline sourcemap
 
 +++
 
->>> Pick a configuration...
-
-+++ Sync
- 
-!!!success Works with any app
-!!!
-
-The following statement will copy and keep synced the JavaScript file(s) in your own `app/javascript` dir _(or any dir you want use)_.
-
-After that you should use them exactly as you use your own.
-
-```rb [pagy.rb initializer](../toolbox/configuration/initializer)
-# Use the pagy.* format you picked
-Pagy.sync(:javascript, Rails.root.join('app/javascript'), 'pagy.*') if Rails.development?
-```
-==- Sync Task
-
-If you prefer to sync manually or during an automation step, you can define your own task with a single line in the `Rakefile`, or `*.rake` file:
-
-```rb
-# Pagy::SyncTask.new(:javascript, destination, *targets)
-Pagy::SyncTask.new(:javascript, Rails.root.join('app/javascript'), 'pagy.*')
-```
-
-and exec it with...
-
-```sh
-bundle exec rake pagy:sync:javascripts
-```
-===
-
-+++ Pipeline
-
-!!!success Works only with apps with an assets pipeline
-!!!
-
-```rb
-Rails.application.config.assets.paths << Pagy::ROOT.join('javascript') 
-```
-
-+++
+{{ include "snippets/pick_a_conf" resource: ":javascript" resource_dir: "javascripts" remote_dir: "app/javascript" }}
 
 >>> Add the `Pagy.init` to an event...
 

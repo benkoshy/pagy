@@ -3,6 +3,7 @@ label: Stylesheets
 icon: file
 order: 90
 image: ""
+
 ---
 
 #  
@@ -10,67 +11,68 @@ image: ""
 ## Pagy Stylesheet
 
 ---
-Pagy includes a couple of CSS files that you can download, link, or copy, and integrate with your app.
+
+Pagy includes a couple of CSS files and the tools to integrate with your app's themes _interactively_.
 
 !!!warning
 
 You don't need any stylesheets if you use the pagy `:bootstrap` or `:bulma` helpers and styles.
+
 !!!
 
-### RTL Support
-
-The pagy stylesheets automatically support Right-To-Left (RTL) languages. You just need to set the `dir="rtl"` attribute on the `html` tag or any parent element of the pagination.
-
-### Pagy Wand
-
-The [Pagy Wand](../sandbox/dev_tools/#pagy-wand) customizes the CSS and integrates it with your app's themes _interactively_.
-
-:::raised
-![PagyWand](../assets/images/dev-tools.png){width=606}
-:::
-
-Watch the Pagy wand [demo video](https://youtu.be/GhhNRrVG9jg):
-
-:::raised
-[![](../assets/images/pagy-wand-demo-screenshot.png)](https://youtu.be/GhhNRrVG9jg)
-:::
-
-<br>
-
-Should you need finer control, the `pagy.css` and `pagy-tailwind.css` calculate more specific variables, that you can manually override.
-
-==- CSS Files
-
-!!!success
-
-Color variables are calculated automatically, however, you can customize any color by just overriding its variable.
-
-Use the [Pagy Wand](#pagy-wand) right in your app or in the [Demo app](../sandbox/playground#demo-app).
-!!!
+>>> Pick a file...
 
 +++ pagy.css
 
-[!file](../gem/stylesheets/pagy.css)
+!!!success
 
-```ruby 
-stylesheet_path = Pagy::ROOT.join('stylesheets/pagy.css')
-```
+Good for any app
+
+!!!
+
+==- CSS Source
 
 :::code source="/gem/stylesheets/pagy.css" title="pagy.css":::
+ 
+===
 
 +++ pagy-tailwind.css
 
-[!file](../gem/stylesheets/pagy-tailwind.css)
+!!!warning Good only for apps using tailwind
 
-```ruby 
-stylesheet_path = Pagy::ROOT.join('stylesheets/pagy-tailwind.css')
-```
+!!!
+ 
+==- CSS Source
 
 :::code source="/gem/stylesheets/pagy-tailwind.css" title="pagy-tailwind.css":::
+  
+===
 
 +++
 
-==- HTML Structure of Nav Bars
+{{ include "snippets/pick_a_conf" resource: ":stylesheet" resource_dir: "stylesheets" remote_dir: "app/stylesheets" }}
+   
+>>> Customize the style...
+
+Add this line to any template `<head>`...
+
+```erb
+<%== Pagy.dev_tools %>
+```
+
+and adjust a few slider to see the change in real time, right in your app, with the [Pagy Wand](../sandbox/dev_tools)
+
+:::raised
+![PagyWand](../assets/images/dev-tools.png){width=300}
+:::
+
+>>>
+
+==- RTL Support
+
+The pagy stylesheets automatically support Right-To-Left (RTL) languages. It respects the standard `dir="rtl"` attribute of the `html` tag or any parent element of the pagination.
+
+==- In Depth: HTML Structure
 
 To ensure a minimalistic valid output, complete with all the ARIA attributes, pagy outputs a single line with the minimum number of tags and attributes required to identify all the parts of the nav bars:
 
@@ -82,7 +84,7 @@ To ensure a minimalistic valid output, complete with all the ARIA attributes, pa
 
 - You can target the `gap` with `.pagy a:[role="separator"]`
 - You can target the previous and next links by using `.pagy a:first-child` and `.pagy a:last-child` pseudo classes
-- Check the stylesheet comment to target other specific elements.
+- Check the stylesheet comments to target other specific elements.
 
 !!!
 
