@@ -9,7 +9,7 @@ categories:
 
 #
 
-## :icon-search: :meilisearch
+## :icon-search-24:&nbsp;&nbsp;:meilisearch
 
 ---
 

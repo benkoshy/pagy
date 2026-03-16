@@ -10,7 +10,7 @@ categories:
 
 #
 
-## :icon-code-square: limit_tag_js
+## :icon-code-square-24:&nbsp;&nbsp;limit_tag_js&nbsp;&nbsp;[!badge variant="warning" icon="file-code" size="m" corners="pill" text="Requires JavaScript Support"](../../resources/javascript)
 
 ---
 

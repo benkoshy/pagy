@@ -1,12 +1,12 @@
 ---
 label: URLs
-icon: link-24
+icon: crosshairs
 order: 50
 ---
 
 #
 
-## URLs
+## :icon-crosshairs-24:&nbsp;&nbsp;URLs
 
 ---
 

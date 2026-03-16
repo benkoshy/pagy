@@ -1,12 +1,12 @@
 ---
 label: Upgrade to 43
-icon: sun
+icon: check-circle
 order: 80
 ---
 
 #
 
-## Upgrade to 43
+## :icon-check-circle-24:&nbsp;&nbsp;Upgrade to 43
 
 ---
 

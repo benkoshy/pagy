@@ -8,7 +8,7 @@ image: ""
 
 #  
 
-## Pagy Stylesheet
+## :icon-file-24:&nbsp;&nbsp;Stylesheets
 
 ---
 
@@ -60,7 +60,7 @@ Add this line to any template `<head>`...
 <%== Pagy.dev_tools %>
 ```
 
-and adjust a few slider to see the change in real time, right in your app, with the [Pagy Wand](../sandbox/dev_tools)
+and adjust a few sliders to see the change in real time, right in your app, with the [Pagy Wand](../sandbox/dev_tools)
 
 :::raised
 ![PagyWand](../assets/images/dev-tools.png){width=300}

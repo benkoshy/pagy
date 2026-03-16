@@ -8,14 +8,11 @@ categories:
 
 #
 
-## :icon-key: :keynav_js
+## :icon-key-24:&nbsp;&nbsp;:keynav_js&nbsp;&nbsp;[!badge variant="warning" icon="file-code" size="m" corners="pill" text="Requires JavaScript Support"](../../resources/javascript)
 
 ---
 
 `:keynav_js` is a fast KEYSET paginator that supports the UI. It's a pagy exclusive technique.
-
-- It requires [JavaScript Support](../../resources/javascript.md) and a browser that implements `sessionStorage` _(largely supported by all browsers)_.
-  - If those conditions are not met, it falls back to the [:countless](countless.md) paginator seamlessly.
 
 ```ruby Controller 
 @pagy, @records = pagy(:keynav_js, collection, **options)
@@ -55,6 +52,8 @@ Integrates the [Keyset Glossary](keyset#glossary)
 ==- How it works
 
 The Keynav pagination adds the numeric variables (`@page`, `@last`, `@previous`, `@next`, `@in`) to its instances, supporting their usage with the UI. It does so by transparently exchanging data with the client, that stores the state of the pagination.
+
+If something goes wrong on the client side, it falls back to the [:countless](countless.md) paginator seamlessly.
 
 You can use the `:keyset_js` paginator as you would use the [:countless paginator](countless.md). You just need the [Keyset Setup](keyset#setup) and [JavaScript Support](../../resources/javascript.md), to get a lot more performance.
 

@@ -8,11 +8,9 @@ categories:
 
 #
 
-## Paginators
+## ✳&nbsp;&nbsp;Paginators
 
----
-
-### The `pagy` Method
+=== The `pagy` Method
 
 The `pagy` method provides a common interface to all paginators. Include it where you are going to paginate a collection _(usually in ApplicationController)_:
 
@@ -36,9 +34,11 @@ You can use it to paginate ANY collection, with ANY technique. For example:
 The `pagy` method expects to find the rack request at `self.request`, however, you can also use pagy [outside controllers or views](../guides/how-to/#use-pagy-outside-controllers-or-views), or even [with a non-rack app](../guides/how-to/#use-pagy-with-non-rack-apps).
 !!!
 
+===
+
 ### Paginators
 
-!!!tip Read also the [Choose Right Guide](../guides/choose_right.md) to ensure good performance and smooth workflow.
+!!!tip Read also the [Choose Right Guide](../guides/choose-right.md) to ensure good performance and smooth workflow.
 !!!
 
 The `paginators` are symbolic names of different pagination types/contexts (e.g., `:offset`, `:keyset`, `countless`, etc.). You pass the name to the `pagy` method and pagy will internally instantiate and handle the appropriate paginator class.

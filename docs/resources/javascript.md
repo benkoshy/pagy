@@ -6,7 +6,7 @@ order: 80
 
 #
 
-## JavaScript Support
+## :icon-file-code-24:&nbsp;&nbsp;JavaScript Support
 
 ---
 

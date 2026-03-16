@@ -6,7 +6,7 @@ order: 40
 
 #
 
-## RBS Signatures
+## :icon-verified-24:&nbsp;&nbsp;RBS Signatures
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 label: page_url
-icon: arrow-right
+icon: diff-renamed
 order: 175
 categories:
   - Methods
@@ -9,7 +9,7 @@ categories:
 
 #
 
-## :icon-arrow-right: page_url
+## :icon-diff-renamed-24:&nbsp;&nbsp;page_url
 
 ---
 

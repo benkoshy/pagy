@@ -6,7 +6,7 @@ icon: tools
 
 #
 
-## How To
+## :icon-tools-24:&nbsp;&nbsp;How To
 
 ---
 
@@ -16,7 +16,7 @@ You can also [ask the Pagy AI](https://gurubase.io/g/pagy) for instant answers t
 
 ==- Choose the right pagination technique
 
-Check the [Choose Right Guide](choose_right)
+Check the [Choose Right Guide](choose-right)
 
 ==- Control the items per page
 

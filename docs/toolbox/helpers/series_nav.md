@@ -11,7 +11,7 @@ categories:
 
 #
 
-## :icon-code: series_nav
+## :icon-code-24:&nbsp;&nbsp;series_nav
 
 ---
 

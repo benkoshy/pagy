@@ -6,7 +6,7 @@ icon: play
 
 #   
 
-## Pagy Playground
+## :icon-play-24:&nbsp;&nbsp;Playground
 
 ---
 
@@ -16,7 +16,7 @@ You can showcase, clone, and develop a few Pagy apps without needing to set anyt
 $ pagy --help
 ```
 
-### Pagy Apps
+### Apps
 
 We have a few single-file apps ready to run in your browser for various purposes. These are all tested and used to run the [E2e Test](https://github.com/ddnexus/pagy/blob/master/.github/workflows/e2e-test.yml) workflow.
 

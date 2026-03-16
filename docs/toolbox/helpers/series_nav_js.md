@@ -11,7 +11,7 @@ categories:
 
 #
 
-## :icon-code: series_nav_js
+## :icon-code-24:&nbsp;&nbsp;series_nav_js&nbsp;&nbsp;[!badge variant="warning" icon="file-code" size="m" corners="pill" text="Requires JavaScript Support"](../../resources/javascript)
 
 <br>
 

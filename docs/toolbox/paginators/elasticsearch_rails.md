@@ -9,7 +9,7 @@ categories:
 
 #
 
-## :icon-search: :elasticsearch_rails
+## :icon-search-24:&nbsp;&nbsp;:elasticsearch_rails
 
 ---
 

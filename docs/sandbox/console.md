@@ -6,7 +6,7 @@ order: 90
 
 #
 
-## Console
+## :icon-terminal-24:&nbsp;&nbsp;Console
 
 ---
 

@@ -6,7 +6,7 @@ order: 80
 
 #
 
-## DevTools
+## :icon-ai-model-24:&nbsp;&nbsp;DevTools
 
 ---
 
@@ -22,7 +22,7 @@ You can activate them by adding this line in the `<head>` of your layout/page:
 
 #### Pagy Wand
 
-Adjust a few slider to see the style change in real time, right in your app...
+Adjust a few sliders to see the style change in real time, right in your app...
 
 - Control most of the visual aspects of pagy with a few presets and sliders.
 - Copy/paste the generated "CSS Override" block in your stylesheet to persist it in your app.

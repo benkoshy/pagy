@@ -6,9 +6,15 @@ icon: rocket
 
 #
 
-## Quick Start
+## :icon-rocket-24:&nbsp;&nbsp;Quick Start
 
 ---
+
+!!!question Migrating from another pagination gem?
+
+Check the [Migration Guide](migration-guide) first
+
+!!!
 
 >>> Install
 
@@ -18,49 +24,43 @@ Prevent unexpected breaking changes in stable releases (see [omit the patch vers
 gem 'pagy', '~> 43.4' # Omit the patch segment to avoid breaking changes
 ```
 
-!!! You can try pagy directly
+==- Try pagy...
 
 - **In the Browser**
   - Run `pagy demo` in your terminal, and visit http://127.0.0.1:8000
 - **In IRB**
   - Include the [Pagy::Console](../sandbox/console)
-!!!
+
+===
 
 >>> Use it in your app
 
-- Include the `pagy` method where you are going to use it _(usually ApplicationController)_:
-  ```ruby
-  include Pagy::Method
-  ```
+=== [!badge variant="contrast" size="xs" corners="pill" text="1"]&nbsp;&nbsp;Include the `pagy` method where you are going to use it _(usually ApplicationController)_:
 
-- Use it to paginate any collection with any technique:
-  ```ruby
-  @pagy, @records = pagy(:offset, Product.some_scope, **options) # :offset paginator
-  @pagy, @records = pagy(:keyset, Product.some_scope, **options) # :keyset paginator
-  @pagy, @records = pagy(...)
-  ```
+```ruby
+include Pagy::Method
+```
 
-  _See all the available [paginators](../toolbox/paginators#paginators)_
+=== [!badge variant="contrast" size="xs" corners="pill" text="2"]&nbsp;&nbsp;Use it to paginate any collection with any technique:
 
-- Render navigator tags and other helpers with the `@pagy` instance methods:
+```ruby
+@pagy, @records = pagy(:offset, Product.some_scope, **options) # :offset paginator
+@pagy, @records = pagy(:keyset, Product.some_scope, **options) # :keyset paginator
+@pagy, @records = pagy(...)
+```
 
-  ```erb
-  <%# Render navigation bar helpers with various types and styles %>
-  <%== @pagy.series_nav %>
-  <%== @pagy.series_nav_js(:bootstrap) %>
-  <%== @pagy.input_nav_js(:bulma) %>
-  <%== @pagy.info_tag %>
-  ```
-  _See all the available [@pagy methods](../toolbox/helpers)_
+_Read the [Choose Right](choose-right) guide to pick the right [paginators](../toolbox/paginators#paginators) for your app_
 
->>> Configure global options and special features
+=== [!badge variant="contrast" size="xs" corners="pill" text="3"]&nbsp;&nbsp;Render navigator tags and other helpers with the `@pagy` instance methods:
 
-- **Options**
-  - See [Options](../toolbox/configuration/options) and [pagy.rb initializer](../toolbox/configuration/initializer)
-- **CSS**
-  - For native pagy helpers you can integrate the [Stylesheets (CSS or Tailwind)](../resources/stylesheets) into your app.
-  - For `:bootstrap` and `:bulma` styles, no additional CSS file is needed.
-- **JavaScript**
-  - See [JavaScript support](../resources/javascript)
-  
+```erb
+<%# Render navigation bar helpers with various types and styles %>
+<%== @pagy.series_nav %>
+<%== @pagy.series_nav_js(:bootstrap) %>
+<%== @pagy.input_nav_js(:bulma) %>
+<%== @pagy.info_tag %>
+```
+_See all the available [@pagy helpers](../toolbox/helpers)_
+
+===
 >>>

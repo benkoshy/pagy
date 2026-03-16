@@ -10,7 +10,7 @@ categories:
 
 #
 
-## :icon-code-square: anchor_tags
+## :icon-code-square-24:&nbsp;&nbsp;anchor_tags
 
 ---
 

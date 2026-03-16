@@ -6,7 +6,7 @@ order: 100
 
 #
 
-## Options Hierarchy
+## :icon-sliders-24:&nbsp;&nbsp;Options Hierarchy
 
 ---
 
@@ -17,7 +17,7 @@ The actual options are documented alongside the [paginators](../paginators) and 
 
 Pagy has a top-down hierarchical options system that allows you to set and override options at different levels.
 
-#### Global level
+>>> Global level
 
 - For example `Pagy::OPTIONS[:limit] = 10`.
 - Set in the [pagy.rb initializer](initializer).
@@ -26,16 +26,18 @@ Pagy has a top-down hierarchical options system that allows you to set and overr
 - **Notice**: Using the legacy `Pagy.options` accessor is discouraged but supported.
 - **IMPORTANT**: Freeze it after you are done in the initializer, for good safe practice.
 
-#### Paginator level
+>>> Paginator level
 
 - For example `pagy(paginator, collection, **options)`.
 - The options passed to a paginator override the `Pagy::OPTIONS` set upstream for that instance. 
 
-#### Helper level
+>>> Helper level
 
 - For example `@pagy.series_nav(**options)`.
 - The options passed to a helper override all the upstream options for its output.
 - The options consumed upstream are not affected.
+   
+>>>
 
 !!!success
 
