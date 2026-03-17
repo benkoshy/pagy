@@ -10,7 +10,7 @@ categories:
 
 #
 
-## :icon-code-square-24:&nbsp;&nbsp;limit_tag_js&nbsp;&nbsp;[!badge variant="warning" icon="file-code" size="m" corners="pill" text="Requires JavaScript Support"](../../resources/javascript)
+## :icon-code-square-24:&nbsp;&nbsp;limit_tag_js{{ include "snippets/js-required" }}
 
 ---
 
@@ -19,7 +19,7 @@ categories:
 :::
 <br/>
 
-[!button corners="pill" variant="success" text=":icon-play: Try it now!"](../../sandbox/playground#demo-app)
+{{ include "snippets/run-app" app: "demo" }}
 
 The `limit_tag_js` allows the user to select any arbitrary limit per page, up to the `:client_max_limit` option. It raises an `OptionError` exception if the `:client_max_limit` is not truthy.
 

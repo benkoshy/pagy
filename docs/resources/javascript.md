@@ -15,6 +15,17 @@ order: 80
 The helpers and paginators suffixed with `*_js` **require** JavaScript support.
 !!!
 
+!!!tip Add the `oj` gem to your gemfile
+It is not a requirement, but if present, the pagy `JSON` generation will be faster.
+
+!!!
+
+<br>
+
+### Setup Steps
+
+<br>
+
 >>> Pick a format...
 
 +++ pagy.mjs
@@ -58,7 +69,7 @@ With inline sourcemap
 
 +++
 
-{{ include "snippets/pick_a_conf" resource: ":javascript" resource_dir: "javascripts" remote_dir: "app/javascript" }}
+{{ include "snippets/pick-a-conf" resource: ":javascript" resource_dir: "javascripts" remote_dir: "app/javascript" }}
 
 >>> Add the `Pagy.init` to an event...
 

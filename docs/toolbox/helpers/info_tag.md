@@ -21,6 +21,8 @@ categories:
 :::
 <br>
 
+{{ include "snippets/run-app" app: "demo" }}
+
 `info_tag` provides information about the content of the current pagination.
 
 !!!warning It works with all paginators but `:keyset`

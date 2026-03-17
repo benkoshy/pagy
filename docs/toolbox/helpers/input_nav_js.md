@@ -11,7 +11,7 @@ categories:
 
 #
 
-## :icon-code-24:&nbsp;&nbsp;input_nav_js&nbsp;&nbsp;[!badge variant="warning" icon="file-code" size="m" corners="pill" text="Requires JavaScript Support"](../../resources/javascript)
+## :icon-code-24:&nbsp;&nbsp;input_nav_js{{ include "snippets/js-required" }}
 
 ---
 
@@ -26,8 +26,9 @@ categories:
 
 ![input_nav_js(:bulma)](../../assets/images/bulma-input_nav_js.png){width=201}
 :::
+<br/>
 
-[!button corners="pill" variant="success" text=":icon-play: Try it now!"](../../sandbox/playground#demo-app)
+{{ include "snippets/run-app" app: "demo" }}
 
 `input_nav_js` combines navigation and pagination info in a single compact element.
 

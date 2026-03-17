@@ -19,7 +19,7 @@ categories:
 :::
 <br/>
 
-[!button corners="pill" variant="success" text=":icon-play: Try it now!"](../../sandbox/playground#demo-app)
+{{ include "snippets/run-app" app: "demo" }}
 
 The `previous_tag` and `next_tag` return the enabled/disabled previous/next page anchor tag.
 

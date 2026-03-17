@@ -20,6 +20,12 @@ You don't need any stylesheets if you use the pagy `:bootstrap` or `:bulma` help
 
 !!!
 
+<br>
+
+### Setup Steps
+
+<br>
+
 >>> Pick a file...
 
 +++ pagy.css
@@ -50,7 +56,7 @@ Good for any app
 
 +++
 
-{{ include "snippets/pick_a_conf" resource: ":stylesheet" resource_dir: "stylesheets" remote_dir: "app/stylesheets" }}
+{{ include "snippets/pick-a-conf" resource: ":stylesheet" resource_dir: "stylesheets" remote_dir: "app/stylesheets" }}
    
 >>> Customize the style...
 

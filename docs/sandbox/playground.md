@@ -18,13 +18,13 @@ $ pagy --help
 
 ### Apps
 
-We have a few single-file apps ready to run in your browser for various purposes. These are all tested and used to run the [E2e Test](https://github.com/ddnexus/pagy/blob/master/.github/workflows/e2e-test.yml) workflow.
+We have a few single-file apps ready to run in your browser for various purposes. Most of them are used to run the [E2e Test](https://github.com/ddnexus/pagy/blob/master/.github/workflows/e2e-test.yml) workflow.
 
-==- Repro App
+=== Repro App {#repro}
 
 You can use this app as a starting point to try Pagy or reproduce issues to get support or file bug reports.
 
-||| Clone the `repro` app
+>>> Clone the `repro` app
 
 ```sh
 pagy clone repro
@@ -32,9 +32,7 @@ pagy clone repro
 
 You should find the `./repro.ru` cloned app file in the current directory. Feel free to rename or move it as you wish.
 
-|||
-
-||| Develop it
+>>> Develop it
 
 This command runs your `rackup` app with a `puma` server.
 
@@ -42,90 +40,53 @@ This command runs your `rackup` app with a `puma` server.
 pagy path/to/your-repro.ru
 ```
 
-Open a browser and navigate to http://127.0.0.1:8000
+>>> Open a browser and navigate to http://127.0.0.1:8000
 
-Edit it at will.
+>>>
 
-!!! Tip
+!!!success
 
 Bundler installs the required gems during the first run.
 
 !!!
 
-|||
-
-==- Rails App
-
-You can use this app as a starting point to reproduce **Rails-related** Pagy issues. It has the same usage as the [Repro App](#repro-app), i.e.:
-
-```sh
-pagy clone rails
-pagy ./rails.ru
-```
-
-==- Demo App
-
-This is the interactive showcase for all the pagy helpers and CSS styles.
-
-!!!success Try it now!
-
-Run the interactive demo from your terminal:
-
-```sh
-pagy demo
-```
-
-...and point your browser to http://127.0.0.1:8000
-!!!
-
-_Run `pagy clone demo` to inspect the app file_
-
-If you want to see how your CSS changes look, you can follow the same usage as the [Repro App](#repro-app) to iterate through them.
-
-==- Calendar App
-
-This is the interactive showcase and reproduction tool for the `:calendar` paginator:
-
-!!!success Try it now!
-
-Run the interactive demo from your terminal:
-
-```sh
-pagy calendar
-```
-
-...and point your browser to http://127.0.0.1:8000
-!!!
-
-_Run `pagy clone calendar` to inspect the app file._
-
-If you need to reproduce any calendar-related issue, you can follow the same usage as the [Repro App](#repro-app).
-
-==- Keyset Apps
-
-These are the interactive showcase/repro for the `:keyset` paginator with `ActiveRecord` or `Sequel` sets:
-
-!!!success Try it now!
-
-Run the interactive demo from your terminal:
-
-```sh      
-pagy | grep key   
-  keynav                     Showcase the Keynav pagination (ActiveRecord example)
-  keyset                     Showcase the Keyset pagination (ActiveRecord example)
-  keyset_sequel              Showcase the Keyset pagination (Sequel example)
- 
-pagy keynav
-pagy keyset
-pagy keyset_sequel
-```
-
-...and point your browser to http://127.0.0.1:8000
-!!!
-
-_Run for example `pagy clone keyset` to inspect the cloned keyset app file._
-
 ===
+
+Rails App {#rails}
+: Use it to reproduce **Rails-related** Pagy issues
+
+  ```sh
+  pagy clone rails
+  pagy ./rails.ru
+  ```
+
+Demo App {#demo}
+: The interactive showcase for all the pagy helpers and CSS styles
+
+  ```sh
+  pagy demo
+  ```
+
+Calendar App {#calendar}
+: This is the interactive showcase and reproduction tool for the `:calendar` paginator
+
+  ```sh
+  pagy calendar
+  ```
+
+Keyset Apps  {#keysets}
+: These are the interactive showcase/repro for the `:keyset` paginator with `ActiveRecord` or `Sequel` sets:
+
+  ```sh      
+  pagy | grep key   
+    keynav                     Showcase the Keynav pagination (ActiveRecord example)
+    keyset                     Showcase the Keyset pagination (ActiveRecord example)
+    keyset_sequel              Showcase the Keyset pagination (Sequel example)
+   
+  pagy keynav
+  pagy keyset
+  pagy keyset_sequel
+  ```
 
 ### Troubleshooting
 

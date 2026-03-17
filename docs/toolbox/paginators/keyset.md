@@ -14,6 +14,8 @@ categories:
 
 `:keyset` is the **fastest** paginator for SQL collections.
 
+{{ include "snippets/run-app" app: "keyset" anchor: "keysets" }}
+
 !!!success
 
 - **It works with:**
@@ -46,8 +48,6 @@ Use the [:keynav_js](keynav_js.md) paginator.
 <!-- The only supported UI helper -->
 <%== @pagy.next_tag(text: 'Next page &gt;') %>
 ```
-
-[!button corners="pill" variant="success" text=":icon-play: Try it now!"](../../sandbox/playground#keyset-apps)
 
 ==- Glossary
 

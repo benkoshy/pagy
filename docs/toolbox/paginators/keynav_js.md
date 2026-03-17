@@ -8,11 +8,13 @@ categories:
 
 #
 
-## :icon-key-24:&nbsp;&nbsp;:keynav_js&nbsp;&nbsp;[!badge variant="warning" icon="file-code" size="m" corners="pill" text="Requires JavaScript Support"](../../resources/javascript)
+## :icon-key-24:&nbsp;&nbsp;:keynav_js{{ include "snippets/js-required" }}
 
 ---
 
 `:keynav_js` is a fast KEYSET paginator that supports the UI. It's a pagy exclusive technique.
+
+{{ include "snippets/run-app" app: "keynav" anchor: "keysets" }}
 
 ```ruby Controller 
 @pagy, @records = pagy(:keynav_js, collection, **options)
@@ -20,8 +22,6 @@ categories:
 
 - `@pagy` is the pagination instance. It provides the [readers](#readers) and the [helpers](../helpers) to use in your code.
 - `@records` is the eager-loaded `Array` of the page records.
-
-[!button corners="pill" variant="success" text=":icon-play: Try it now!"](../../sandbox/playground#keyset-apps)
 
 !!!warning This documentation integrates the [:keyset](keyset.md) documentation.
 

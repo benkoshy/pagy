@@ -11,7 +11,11 @@ categories:
 
 ## :icon-calendar-24:&nbsp;&nbsp;:calendar
 
----
+:::raised
+![calendar_app](/assets/images/calendar-app.png){width=600}
+:::
+
+{{ include "snippets/run-app" app: "calendar" }}
 
 !!!warning ActiveSupport Required!
 !!!
@@ -19,10 +23,6 @@ categories:
 The `:calendar` paginator combines the functionality of `time-range` with the `OFFSET` pagination.
 
 It enables cascade-filtering of the collection by time units _(year, quarter, month, week, and day)_, followed by paginating the filtered collection using the `:offset` paginator.
-
-![calendar_app](/assets/images/calendar-app.png){with=721}
-
-[!button corners="pill" variant="success" text=":icon-play: Try it now!"](../../sandbox/playground#calendar-app)
 
 !!!success Use this paginator when most pages contain results.
 !!!
@@ -42,7 +42,7 @@ It enables cascade-filtering of the collection by time units _(year, quarter, mo
 
 ==- Usage
 
-You must define a few simple methods in your app to configure and coordinate the objects created by the `pagy` method. Se the following examples and comments (adapted from the [Calendar app code](../../sandbox/playground.md/#calendar-app))
+You must define a few simple methods in your app to configure and coordinate the objects created by the `pagy` method. Se the following examples and comments (adapted from the [Calendar app code](../../sandbox/playground.md/#calendar))
 
 ```ruby Controller
 # Note: All time values must be instances of ActiveSupport::TimeWithZone.

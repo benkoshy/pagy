@@ -28,7 +28,7 @@ categories:
 :::
 <br/>
 
-[!button corners="pill" variant="success" text=":icon-play: Try it now!"](../../sandbox/playground#demo-app)
+{{ include "snippets/run-app" app: "demo" }}
 
 `series_nav` returns an HTML string containing pagination links, wrapped in a `nav` tag, ready to be used in your view.
 

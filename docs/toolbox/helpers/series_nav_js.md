@@ -11,7 +11,7 @@ categories:
 
 #
 
-## :icon-code-24:&nbsp;&nbsp;series_nav_js&nbsp;&nbsp;[!badge variant="warning" icon="file-code" size="m" corners="pill" text="Requires JavaScript Support"](../../resources/javascript)
+## :icon-code-24:&nbsp;&nbsp;series_nav_js{{ include "snippets/js-required" }}
 
 <br>
 
@@ -53,8 +53,7 @@ categories:
 
 +++
 
-
-[!button corners="pill" variant="success" text=":icon-play: Try it now!"](../../sandbox/playground#demo-app)
+{{ include "snippets/run-app" app: "demo" }}
 
 `series_nav_js` functions similarly to a [series_nav](series_nav.md), with the following added features:
 

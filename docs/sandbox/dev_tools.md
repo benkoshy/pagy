@@ -18,7 +18,8 @@ You can activate them by adding this line in the `<head>` of your layout/page:
 <%== Pagy.dev_tools %>
 ```
 
-[!button corners="pill" variant="success" text=":icon-play: Try it now!"](../sandbox/playground#demo-app)
+{{ include "snippets/run-app" app: "demo" }}
+
 
 #### Pagy Wand
 

@@ -12,7 +12,7 @@
 
 <!-- whats_new_start -->
 
-<a href="https://ddnexus.github.io/pagy/sandbox/playground/#demo-app">
+<a href="https://ddnexus.github.io/pagy/sandbox/playground/#demo">
   <img src="https://github.com/ddnexus/pagy/raw/dev/assets/images/try-it.svg" width="130">
 </a><br><br>
 
