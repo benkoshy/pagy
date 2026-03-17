@@ -28,11 +28,11 @@ The [:keynav_js](keynav_js.md) offers identical UI features but utilizes the fas
 
 ==- Options
 
-- `headless: true`
-  - Use this option when UI is unnecessary (e.g., for infinite scrolling) and/or to skip eager loading. In this scenario:
-    - `@pagy` is incompatible with any helpers.
-    - `@records` behaves like a standard collection.
-    - The collection ends when `@records.size < @pagy.limit`.
+`headless: true`
+: Use this option when UI is unnecessary (e.g., for infinite scrolling) and/or to skip eager loading. In this scenario:
+  - `@pagy` is incompatible with any helpers.
+  - `@records` behaves like a standard collection.
+  - The collection ends when `@records.size < @pagy.limit`.
 
 See also [Offset Options](offset#options)
 

@@ -30,10 +30,11 @@ It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
 
 ==- Readers
 
-- `last`
-  - The last page.
-- `pages`
-  - The number of pages.
+`last`
+: The last page.
+
+`pages`
+: The number of pages.
 
 See also [Keyset Readers](keyset#readers)
 
@@ -43,11 +44,14 @@ Integrates the [Keyset Glossary](keyset#glossary)
 
 { .compact }
 
-| Term                | Description                                                                                                                                                                 |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `keynav pagination` | The pagy exclusive technique to use `keyset` pagination, providing **nearly complete** support for **most** navigation helpers. The fastest technique with UI capabilities. |
-| `page`              | The array of options from the client prepared by the `keynav_js`, to paginate the requested page.                                                                           |
-| `cutoffs`           | The array of `cutoff`s of the known pagination state, used to keep track of the visited pages during the navigation. They are cached in the `sessionStorage` of the client. |
+`keynav pagination`
+: The pagy exclusive technique to use `keyset` pagination, providing **nearly complete** support for **most** navigation helpers. The fastest technique with UI capabilities.
+
+`page`
+: The array of options from the client prepared by the `keynav_js`, to paginate the requested page.
+
+`cutoffs`
+: The array of `cutoff`s of the known pagination state, used to keep track of the visited pages during the navigation. They are cached in the `sessionStorage` of the client.
 
 ==- How it works
 

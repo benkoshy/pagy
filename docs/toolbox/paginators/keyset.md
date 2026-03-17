@@ -53,20 +53,35 @@ Use the [:keynav_js](keynav_js.md) paginator.
 
 There are a few peculiar aspects of the keyset pagination technique that you might not be familiar with. Here is a concise list:
 
-{ .compact }
+`offset pagination`
+: The technique to fetch each page by incrementing the `offset` from the collection start.<br/>It requires two queries per page (or only one if you use [countless](countless.md)): it's slow toward the end of big tables.<br/>It can be used for a rich frontend: it's the classic pagy pagination.
 
-| Term                | Description                                                                                                                                                                                                                                                                                                                                |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `offset pagination` | The technique to fetch each page by incrementing the `offset` from the collection start.<br/>It requires two queries per page (or only one if you use [countless](countless.md)): it's slow toward the end of big tables.<br/>It can be used for a rich frontend: it's the classic pagy pagination.                                        |
-| `keyset pagination` | The technique to fetch the next page starting after the latest fetched record in a `uniquely ordered` collection.<br/>It requires only one query per page (without OFFSET). if properly indexed, it's the fastest technique, regardless of the table size and position. Supports only infinite pagination, with no other frontend helpers. |
-| `keynav pagination` | The pagy exclusive technique to use `keyset` pagination, providing **nearly complete** UI support. The fasted technique with UI capabilities.                                                                                                                                                                                              |
-| `uniquely ordered`  | The property of a `set`, when the concatenation of the values of the ordered columns is unique for each record. It is similar to a composite primary `key` for the ordered table, but dynamically based on the `keyset` columns.                                                                                                           |
-| `set`               | The `uniquely ordered` `ActiveRecord::Relation` or `Sequel::Dataset` collection to paginate.                                                                                                                                                                                                                                               |
-| `keyset`            | The hash of column/order pairs. Pagy extracts it from the order of the `set`.                                                                                                                                                                                                                                                              |
-| `keyset attributes` | The hash of attributes of the `keyset` columns of a record.                                                                                                                                                                                                                                                                                |
-| `cutoff`            | The value that identifies where the `page` ends, and the `next` one begins. It is the `Base64` URL-safe encoded string of the serialized array of the `keyet attribute` values.                                                                                                                                                            |
-| `page`              | The current `page`, i.e. the page of records beginning after the `cutoff` of the previous page. Also the `:page` option, which is set to the `cutoff` of the previous page                                                                                                                                                                 |
-| `next`              | The next `page`, i.e. the page of records beginning after the `cutoff`. Also the `cutoff` value retured by the `next` method.                                                                                                                                                                                                              |
+`keyset pagination`
+: The technique to fetch the next page starting after the latest fetched record in a `uniquely ordered` collection.<br/>It requires only one query per page (without OFFSET). if properly indexed, it's the fastest technique, regardless of the table size and position. Supports only infinite pagination, with no other frontend helpers.
+
+`keynav pagination`
+: The pagy exclusive technique to use `keyset` pagination, providing **nearly complete** UI support. The fasted technique with UI capabilities.
+
+`uniquely ordered`
+: The property of a `set`, when the concatenation of the values of the ordered columns is unique for each record. It is similar to a composite primary `key` for the ordered table, but dynamically based on the `keyset` columns.
+
+`set`
+: The `uniquely ordered` `ActiveRecord::Relation` or `Sequel::Dataset` collection to paginate.
+
+`keyset`
+: The hash of column/order pairs. Pagy extracts it from the order of the `set`.
+
+`keyset attributes`
+: The hash of attributes of the `keyset` columns of a record.
+
+`cutoff`
+: The value that identifies where the `page` ends, and the `next` one begins. It is the `Base64` URL-safe encoded string of the serialized array of the `keyet attribute` values.
+
+`page`
+: The current `page`, i.e. the page of records beginning after the `cutoff` of the previous page. Also the `:page` option, which is set to the `cutoff` of the previous page
+
+`next`
+: The next `page`, i.e. the page of records beginning after the `cutoff`. Also the `cutoff` value retured by the `next` method.
 
 ==- Constraints
 
@@ -125,25 +140,27 @@ It is fast out of the box without any setup.
 
 ==- Options
 
-- `keyset: {...}`
-  - Set it only to force the `keyset` hash of column/order pairs. _(It is set automatically from the set order)_
-- `tuple_comparison: true`
-  - Enable the tuple comparison e.g. `(brand, id) > (:brand, :id)`. It works only with the same direction order, hence, it's ignored for mixed order. Check how your DB supports it (your `keyset` should include only `NOT NULL` columns).
-- `pre_serialize: serialize`
-  - Set it to a `lambda` that receives the `keyset_attributes` hash. Modify this hash directly to customize the serialization of specific values (e.g., to preserve `Time` object precision). The lambda's return value is ignored.
-    ```ruby 
-    serialize = lambda do |attributes|
-      # Convert it to a string matching the stored value/format in SQLite DB
-      attributes[:created_at] = attributes[:created_at].strftime('%F %T.%6N')
-    end
-    ```
+`keyset: {...}`
+: Set it only to force the `keyset` hash of column/order pairs. _(It is set automatically from the set order)_
+
+`tuple_comparison: true`
+: Enable the tuple comparison e.g. `(brand, id) > (:brand, :id)`. It works only with the same direction order, hence, it's ignored for mixed order. Check how your DB supports it (your `keyset` should include only `NOT NULL` columns).
+
+`pre_serialize: serialize`
+: Set it to a `lambda` that receives the `keyset_attributes` hash. Modify this hash directly to customize the serialization of specific values (e.g., to preserve `Time` object precision). The lambda's return value is ignored.
+  ```ruby 
+  serialize = lambda do |attributes|
+    # Convert it to a string matching the stored value/format in SQLite DB
+    attributes[:created_at] = attributes[:created_at].strftime('%F %T.%6N')
+  end
+  ```
 
 See also [Common Options](../paginators#common-options)
 
 ==- Readers
 
-- `records`
-  - The `Array` of fetched records for the current page.
+`records`
+: The `Array` of fetched records for the current page.
 
 See also [Common Readers](../paginators#common-readers)
 
@@ -151,10 +168,10 @@ See also [Common Readers](../paginators#common-readers)
 
 <br/>
 
-- You pass an `uniquely ordered` `set` and pagy pulls the `:limit` of records of the first page.
-- You request the `next` URL, which has the `page` param set to the `cutoff` of the current page.
-- At each request, the new `page` is decoded into arguments that are coupled with a `where` filter query, and a `:limit` of new records is retrieved.
-- The collection ends when `pagy.next.nil?`.
+1. You pass an `uniquely ordered` `set` and pagy pulls the `:limit` of records of the first page.
+2. You request the `next` URL, which has the `page` param set to the `cutoff` of the current page.
+3. At each request, the new `page` is decoded into arguments that are coupled with a `where` filter query, and a `:limit` of new records is retrieved.
+4. The collection ends when `pagy.next.nil?`.
 
 ==- In Depth: Cutoffs
 

@@ -30,9 +30,9 @@ It **fully** supports all the helpers and navigators.
 
 ==- Options
 
-- `:ttl` (Time To Live in seconds)
-  - Let it `nil` (falsey) to query the DB for the COUNT only once, and reuse it for all the other pages served.
-  - Set it to a positive number of seconds to enable recounting.
+`:ttl = 180`
+: `nil` (falsey) queries the DB for the COUNT only once, and reuse it for all the other pages served.
+  : A positive number of seconds enables recounting.
 
 !!!warning Recounting/TTL
 

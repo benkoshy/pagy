@@ -57,10 +57,11 @@ require 'pagy/console'
 
 ==- Options
 
-- `text: 'My Page'`
-  - Override the default generated page label
-- `aria_label: 'My Link'`
-  - Override the default aria label string looked up in the dictionary
+`text: 'My Page'`
+: Override the default generated page label
+
+`aria_label: 'My Link'`
+: Override the default aria label string looked up in the dictionary
 
 See also [Common URL Options](../paginators#common-url-options)
 

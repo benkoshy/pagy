@@ -113,24 +113,26 @@ The calendar is enabled by default. However, you can include an optional `:disab
 
 ==- Calendar Methods
 
-:::
-- `@calendar.url_at(time_with_zone, **options)`
-  - Returns a URL complete with all parameters for the pages in each filter bar that includes the given time. For example:
-    `@calendar.url_at(Time.zone.now)` generates the filter bar URLs pointing to today.
-  - If `time` is outside the pagination range it raises a `Pagy::RangeError`, however you can pass the `fit_time: true` option to avoid the error and get the url to the page closest to the passed time argument (first or last page).
-:::
+||| `@calendar.url_at(time_with_zone, **options)`
 
-:::
-- `@calendar.showtime`
-  - Displays the time of the smallest time unit currently visible on the calendar.
-:::
+Returns a URL complete with all parameters for the pages in each filter bar that includes the given time. For example:
+    `@calendar.url_at(Time.zone.now)` generates the filter bar URLs pointing to today.
+
+If `time` is outside the pagination range it raises a `Pagy::RangeError`, however you can pass the `fit_time: true` option to avoid the error and get the url to the page closest to the passed time argument (first or last page).
+|||
+
+||| `@calendar.showtime`
+
+Displays the time of the smallest time unit currently visible on the calendar.
+|||
 
 ==- Unit Options
 
-- `order: :desc`
-  - Sets the order of the unit, either `:asc` or `:desc`. Make sure to order your collection accordingly.
-- `format: '<strftime>'`
-  - Change the label format for the unit links.
+`order: :desc`
+: Sets the order of the unit, either `:asc` or `:desc`. Make sure to order your collection accordingly.
+
+`format: '<strftime>'`
+: Change the label format for the unit links.
 
 ==- Offset configuration
 

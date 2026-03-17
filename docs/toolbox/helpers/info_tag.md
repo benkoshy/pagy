@@ -55,9 +55,10 @@ require 'pagy/console'
 
 The method also accepts a few optional keyword arguments:
 
-- `id: 'my-info'`
-  - The `id` HTML attribute to the `span` tag wrapping the info.
-- `item_name: 'Products'` 
-  - The already pluralized string that will be used in place of the default `item/items`
+`id: 'my-info'`
+: The `id` HTML attribute to the `span` tag wrapping the info.
+
+`item_name: 'Products'` 
+: The already pluralized string that will be used in place of the default `item/items`
 
 ===

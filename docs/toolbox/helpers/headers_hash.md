@@ -44,25 +44,28 @@ require 'pagy/console'
 
 ==- Options
 
-- `header_names`
-  - The default pagy `:headers_names` are:
-    ```ruby
-    { page:  'current-page',
-      limit: 'page-limit',
-      count: 'total-count',
-      pages: 'total-pages' }
-    ```
-  - You can customize or disable them. For example:
+||| `header_names`
+The default pagy `:headers_names` are:
 
-    ```ruby Controller 
-    headers_map = { page:  'current-page',
-                    limit: 'per-page',
-                    pages: false,  # disables the output
-                    count: 'total' }
-    headers = @pagy.headers_hash(pagy, headers_map:)
-    # Note: You can also pass the `:header_names` option to the paginator 
-    ```
-    
+```ruby
+{ page:  'current-page',
+  limit: 'page-limit',
+  count: 'total-count',
+  pages: 'total-pages' }
+```
+
+You can customize or disable them. For example:
+
+```ruby Controller 
+headers_map = { page:  'current-page',
+                limit: 'per-page',
+                pages: false,  # disables the output
+                count: 'total' }
+headers = @pagy.headers_hash(pagy, headers_map:)
+# Note: You can also pass the `:header_names` option to the paginator 
+```
+|||
+
 See also [Common URL Options](../paginators#common-url-options)
 
 ==- Suggestions

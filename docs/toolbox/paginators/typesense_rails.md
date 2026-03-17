@@ -60,8 +60,8 @@ Search paginators don't query a DB, but use the same positional technique as [:o
 
 ==- Options
 
-- `search_method: :my_search`
-  - Customize the name of the `typesense_rails` method to use (default `:search`).
+`search_method: :my_search`
+: Customize the name of the `typesense_rails` method to use (default `:search`).
 
 See also [Offset Options](offset#options)
 

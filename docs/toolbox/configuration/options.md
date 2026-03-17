@@ -29,7 +29,8 @@ Pagy has a top-down hierarchical options system that allows you to set and overr
 >>> Paginator level
 
 - For example `pagy(paginator, collection, **options)`.
-- The options passed to a paginator override the `Pagy::OPTIONS` set upstream for that instance. 
+- The options passed to a paginator override the `Pagy::OPTIONS` set upstream for that instance.
+- They are also inherited by all the helpers used by the instance
 
 >>> Helper level
 
