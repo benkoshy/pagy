@@ -1,5 +1,6 @@
 start:
   pro: true
+  open: false
 
 input: .
 output: .public
@@ -72,7 +73,7 @@ lastUpdated:
     source: committer
 
 nav:
-  mode: stack # Pro key required
+  mode: stack
   icons:
     mode: pages
 

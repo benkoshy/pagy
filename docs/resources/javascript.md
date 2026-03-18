@@ -10,11 +10,6 @@ order: 80
 
 ---
 
-!!!warning 
-
-The helpers and paginators suffixed with `*_js` **require** JavaScript support.
-!!!
-
 !!!tip Add the `oj` gem to your gemfile
 It is not a requirement, but if present, the pagy `JSON` generation will be faster.
 

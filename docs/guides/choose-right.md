@@ -14,7 +14,7 @@ At the most basic level, pagination just means retrieving a (potentially big) co
 
 Pagy offers four different techniques, each implementing different types of paginators. Choose the right one to ensure the best performance and workflow.
 
->>> :icon-move-to-end-24:&nbsp;&nbsp;OFFSET
+>>> :icon-move-to-end-24:&nbsp;&nbsp;OFFSET {#offset}
 
 The most common pagination technique is counting the collection items (COUNT DB query), using the count to calculate where the specific pages start (i.e., OFFSET) and retrieving only the LIMIT items for that page (OFFSET+LIMIT DB query).
 
@@ -58,9 +58,9 @@ Use the `:countless` or `:countish` paginators to improve the DB performance **u
 
 ===
 
->>> :icon-key-24:&nbsp;&nbsp;KEYSET
+>>> :icon-key-24:&nbsp;&nbsp;KEYSET {#keyset}
 
-The KEYSET pagination technique allows the fastest and lighter DB performance. It does not count the (ordered) collection (which makes it faster), nor calculates any numeric page pointers in advance (which avoids the data-shift during browsing). It just uses the values in the last record of the page to retrieve the next one.
+The KEYSET pagination technique allows the fastest and lighter DB performance. It does not count the (ordered) collection (which makes it faster), nor calculates any numeric page pointers in advance (which avoids the data-shift during browsing). It just uses the values in the last record of the page to retrieve the next page.
 
 ==- Shortcomings
 
@@ -92,7 +92,7 @@ Use the `:keynav_js` paginator.
 
 ===
 
->>> :icon-calendar-24:&nbsp;&nbsp;TIME RANGE
+>>> :icon-calendar-24:&nbsp;&nbsp;TIME-RANGE {#time-range}
 
 This hybrid technique filters by a specific time period (Year, Month, Day, etc.) and applies the offset paginator within that period.
 
@@ -106,11 +106,11 @@ This hybrid technique filters by a specific time period (Year, Month, Day, etc.)
 
 ===
 
->>> :icon-search:&nbsp;&nbsp;SEARCH
+>>> :icon-search:&nbsp;&nbsp;SEARCH {#search}
 
 Pagy supports `ElasticsearchRails`, `Meilisearch`, `Searchkick`, and `TypesenseRails`.
 
-These paginators get the count, limit and results provided by the search platform. Pagy acts as an interface to these underlying gems, using the `:offset` paginator (without the shortcomings).
+These paginators get the count, limit and results provided by the search platform. Pagy acts as an interface to these underlying gems, using the `:offset` paginator (without its shortcomings).
 
 ==- Paginators&nbsp;&nbsp;[!badge variant="contrast" size="xs" corners="pill" text="4"]
 

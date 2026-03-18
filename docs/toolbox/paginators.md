@@ -55,14 +55,7 @@ Unused code consumes no memory.
 
 ==- Common Options
 
-!!!success Paginators can inherit and override options
-
-See [Options](configuration/options)
-!!!
-
-!!! Common Options for Paginators
-
-Individual paginators may offer additional options, which are documented with the paginator itself.
+!!! Paginators may add and document specific [Options](configuration/options).
 !!!
 
 `limit: 10`
@@ -93,9 +86,7 @@ See [URL Options](../resources/urls#url-options)
 
 ==- Common Readers
 
-!!! Common Readers for Paginators
-
-Individual paginators may offer additional readers, which are documented with the paginator itself.
+!!! Paginators may add and document specific Readers.
 !!!
 
 `page`
@@ -115,9 +106,7 @@ Individual paginators may offer additional readers, which are documented with th
 
 ==- Common Exceptions
 
-!!! Common Exceptions for Paginators
-
-Individual paginators may raise specific exceptions, which are documented with the paginator itself.
+!!! Paginators may add and document specific Exceptions.
 !!!
 
 `Pagy::OptionError`
@@ -129,35 +118,12 @@ Individual paginators may raise specific exceptions, which are documented with t
 
 ==- Troubleshooting
 
-##### Records may repeat in different pages be missing
-
-<br/>
+||| Records may repeat in different pages or be missing
 
 !!!danger Don't Paginate Unordered PostgreSQL Collections!
-
-```rb
-@pagy, @records = pagy(:offset, unordered)
-
-# behind the scenes, pagy selects the page of records with: 
-unordered.offset(pagy.offset).limit(pagy.limit)
-```
-
-!!!warning
-
-Citation: [PostgreSQL Documentation](https://www.postgresql.org/docs/16/queries-limit.html#:~:text=When%20using%20LIMIT,ORDER%20BY)
-
-When using LIMIT, always include an ORDER BY clause to constrain the result rows into a unique order. Otherwise, the subset of rows retrieved may be unpredictable.
-
 !!!
 
-!!!success Ensure the PostgreSQL collection is ordered!
-
-```rb
-# Results will be consistent and predictable with #order
-ordered         = unordered.order(:id)
-@pagy, @records = pagy_offset(ordered)
-```
-
-!!!
+You can simply chain something like `.order(:id)` and fix the issue _(See [PostgreSQL Documentation](https://www.postgresql.org/docs/16/queries-limit.html#:~:text=When%20using%20LIMIT,ORDER%20BY))_
+|||
 
 ===

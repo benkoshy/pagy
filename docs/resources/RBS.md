@@ -2,6 +2,10 @@
 label: RBS
 icon: verified-24
 order: 40
+nav:
+  badge:
+    text: "NEW"
+    variant: info
 ---
 
 #

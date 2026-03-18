@@ -35,13 +35,13 @@ gem 'pagy', '~> 43.4' # Omit the patch segment to avoid breaking changes
 
 >>> Use it in your app
 
-=== [!badge variant="contrast" size="xs" corners="pill" text="1"]&nbsp;&nbsp;Include the `pagy` method where you are going to use it _(usually ApplicationController)_:
+=== {{ include "snippets/mini-step" step: "2.1" }} Include the `pagy` method where you are going to use it _(usually ApplicationController)_:
 
 ```ruby
 include Pagy::Method
 ```
 
-=== [!badge variant="contrast" size="xs" corners="pill" text="2"]&nbsp;&nbsp;Use it to paginate any collection with any technique:
+=== {{ include "snippets/mini-step" step: "2.2" }} Use it to paginate any collection with any technique:
 
 ```ruby
 @pagy, @records = pagy(:offset, Product.some_scope, **options) # :offset paginator
@@ -51,7 +51,7 @@ include Pagy::Method
 
 _Read the [Choose Right](choose-right) guide to pick the right [paginators](../toolbox/paginators#paginators) for your app_
 
-=== [!badge variant="contrast" size="xs" corners="pill" text="3"]&nbsp;&nbsp;Render navigator tags and other helpers with the `@pagy` instance methods:
+=== {{ include "snippets/mini-step" step: "2.3" }} Render navigator tags and other helpers with the `@pagy` instance methods:
 
 ```erb
 <%# Render navigation bar helpers with various types and styles %>

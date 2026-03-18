@@ -15,7 +15,7 @@ order: 100
 The actual options are documented alongside the [paginators](../paginators) and [helpers](../helpers) that use them.
 !!!
 
-Pagy has a top-down hierarchical options system that allows you to set and override options at different levels.
+Pagy has a top-down hierarchical options system that allows you to set and override options at three different levels.
 
 >>> Global level
 

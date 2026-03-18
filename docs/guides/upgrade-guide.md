@@ -2,6 +2,11 @@
 label: Upgrade to 43
 icon: check-circle
 order: 80
+nav:
+  badge: 
+    icon: arrow-right
+    text: "43"
+    variant: info
 ---
 
 #
@@ -338,7 +343,7 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 ==- Javascript
 
-If your `pagy-old.rb` contains any JavaScript setup, it should still work, so you can move it to the `pagy.rb` file, however, for apps with builders, consider using the new [Pagy.sync_javascript](../resources/javascript) and removing all the old entries from your JavaScript config files.
+If your `pagy-old.rb` contains any JavaScript setup, it should still work, so you can move it to the `pagy.rb` file, however, for apps with builders, consider using the new [Pagy.sync_javascript](../resources/javascript/#pick-a-configuration) and removing all the old entries from your JavaScript config files.
 
 ==- Stylesheets
 

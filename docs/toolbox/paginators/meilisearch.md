@@ -13,7 +13,7 @@ categories:
 
 ---
 
-`:meilisearch` is a paginator designed for `Meilisearch` results.
+`:meilisearch` is a [SEARCH](/guides/choose-right/#search) paginator designed for `Meilisearch` results.
 
 +++ Active mode
 

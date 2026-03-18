@@ -12,30 +12,10 @@ categories:
 
 ---
 
-`:keyset` is the **fastest** paginator for SQL collections.
+`:keyset` is the **fastest** [KEYSET](/guides/choose-right/#keyset) paginator for SQL collections. 
+
 
 {{ include "snippets/run-app" app: "keyset" anchor: "keysets" }}
-
-!!!success
-
-- **It works with:**
-  - `ActiveRecord::Relation` or `Sequel::Dataset` sets
-  - Single or multiple ordered columns
-  - Any combination of order directions
-- **Unlike the classic OFFSET pagination:**
-  - Its performance is reliably fast from start to end, no matter how big your table is.
-  - It's completely accurate. Even with insertions or deletions during browsing, it will never repeat or miss records.
-  - Does not suffer from `RangeError`s
-!!!
-
-!!!warning It has limited UI support
-
-It's mostly used for API or infinite scrolling.
-
-!!!success For KEYSET pagination with UI support...
-
-Use the [:keynav_js](keynav_js.md) paginator.
-!!!
 
 ```ruby Controller
 @pagy, @records = pagy(:keyset, set, **options)
@@ -82,15 +62,29 @@ There are a few peculiar aspects of the keyset pagination technique that you mig
 
 `next`
 : The next `page`, i.e. the page of records beginning after the `cutoff`. Also the `cutoff` value retured by the `next` method.
+ 
+==- Features
+
+!!!success
+
+- **It works with:**
+  - `ActiveRecord::Relation` or `Sequel::Dataset` sets
+  - Single or multiple ordered columns
+  - Any combination of order directions
+
+- **Unlike the classic OFFSET pagination:**
+  - Its performance is reliably fast from start to end, no matter how big your table is.
+  - It's completely accurate. Even with insertions or deletions during browsing, it will never repeat or miss records.
+  - Does not suffer from `RangeError`s
+  
+!!!
 
 ==- Constraints
 
-!!!success IMPORTANT!
-
-Almost all the constraints below can be avoided by using the [:keynav_js](keynav_js) paginator when you need a proper UI.
+!!!tip When possible, use the [:keynav_js](keynav_js) paginator to overcome almost all these constraints.
 !!!
 
-!!!warning With the standard keyset pagination technique...
+!!!warning With any KEYSET pagination technique...
 
 - You can only paginate from one page to the next: no jumping to arbitrary pages.
 - The `set` must be `uniquely ordered`. Add the primary key (usually `:id`) as the last order column to be sure.
@@ -101,8 +95,10 @@ Almost all the constraints below can be avoided by using the [:keynav_js](keynav
 !!!warning With Pagy `:keyset`...
 
 You don't know the `previous` and the `last` page; you only know the `first` and `next` pages for performance and simplicity.
+   
+!!!
 
-!!!success
+!!!tip
 
 If you want to paginate backward, like: `last` ... `previous` ... `previous`, just call `reverse_order` on your set, and proceed forward
 like:
@@ -230,33 +226,36 @@ When we pull the `next` page from the `cutoff-Y`, we find only the remaining 9 r
 
 <br/>
 
-!!!danger The set may not be `uniquely ordered`
+
+||| :icon-stop-24: Order issue
+
+Neither column is unique
 
 ```rb
-# Neither column is unique
 Product.order(:name, :production_date)
 ```
 
-!!!success Append the primary key to the order
+||| :icon-check-circle-24: Append the primary key to the order
+
+The :id is usually the primary key
 
 ```rb
-# Add the :id as the last column
 Product.order(:name, :production_date, :id)
 ```
 
-!!!
+|||
 
-!!!danger You may have an encoding problem
+||| :icon-stop-24: Encoding issue
 
 The generic `to_json` method used to encode the `page` may lose some information when decoded
 
-!!!success
+||| :icon-check-circle-24: Solution
 
 - Check the actual executed DB query and the actual stored value
 - Identify the column that has a format that doesn't match with the keyset
 - Override the encoding with the [:pre_serialize](#options) option
 
-!!!
+|||
 
 <br/>
 
@@ -264,15 +263,16 @@ The generic `to_json` method used to encode the `page` may lose some information
 
 <br/>
 
-!!!danger Most likely the index is not right, or your case needs a custom query
+||| Most likely the index is not right, or your case needs a custom query
 
-!!!success
+!!!tip
 
 - Ensure that the composite index reflects exactly the columns sequence and order of your keyset
 - Research your specific DB features, type of index, and performance for different ordering. Use SQL `EXPLAIN ANALYZE` or similar tool to confirm.
 - Consider using the same direction order, enabling the `:tuple_comparison`, and changing type of index (different DBs may behave differently).
 - Consider overriding the `Keyset#compose_predicate` method.
-
 !!!
+
+|||
 
 ===

@@ -12,7 +12,7 @@ categories:
 
 ---
 
-`:offset` is a generic OFFSET paginator usable with ORM collections or regular `Array` objects.
+`:offset` is a generic [OFFSET](/guides/choose-right/#offset) paginator usable with ORM collections or regular `Array` objects.
 
 !!!warning Consider using the `:countish` paginator when possible!
 
@@ -20,7 +20,7 @@ The [:countish](countish.md) offers identical UI features but it's faster.
 
 !!!
 
-It uses the complete OFFSET pagination technique, which triggers two SQL queries per request:
+It uses the complete [OFFSET](/guides/choose-right/#offset) pagination technique, which triggers two SQL queries per request:
 
 - a `COUNT` query to get the count
 - an `OFFSET` + `LIMIT` query to get the records
@@ -81,7 +81,7 @@ See also [Common Readers](../paginators#common-readers)
 ==- Exceptions
 
 `Pagy::RangeError`
-: A subclass of `Pagy::OptionError`. Raised for out-of-range `:page` requests, when the `raise_range_error: true` option is enabled.
+: A subclass of [`Pagy::OptionError`](/toolbox/paginators/#common-exceptions) raised when the `raise_range_error: true` option is enabled.
 
 See also [Common Exceptions](../paginators#common-exceptions)
 

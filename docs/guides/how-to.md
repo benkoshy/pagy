@@ -20,23 +20,14 @@ Check the [Choose Right Guide](choose-right)
 
 ==- Control the items per page
 
-- **Fixed**
-  - Use the `:limit` option to set the number of items to serve with each page.
-- **Requestable**
-  - Use the `limit` option combined with the `:client_max_limit` option, allowing the client to request a variable `:limit` up to the specified `:client_max_limit`.
-  - Additionally, you can use the [limit_tag_js](../toolbox/helpers/limit_tag_js) helper to provide a UI selector to the user.
+Fixed
+: Use the `:limit` option to set the number of items to serve with each page. _(See [Common Options](../toolbox/paginators#common-options))_
 
-```ruby
-@pagy, @products = pagy(:offset, collection, limit: 10)
-@pagy, @products = pagy(:offset, collection, limit: 10, client_max_limit: 1_000)
-```
+Requestable 
+: Use the `:limit` option combined with the `:client_max_limit` option, allowing the client to request a variable `:limit` up to the specified `:client_max_limit`. _(See [Common Options](../toolbox/paginators#common-options))_
 
-!!!warning ActiveRecord `limit`
-
-The `:limit` option defined here will override any existing `limit` set in `ActiveRecord` collections.
-!!!
-
-See [Common Options](../toolbox/paginators#common-options).
+Interactive
+: Use the [limit_tag_js](../toolbox/helpers/limit_tag_js) helper to provide a UI selector to the user.
 
 ==- Control the pagination bar
 
@@ -141,30 +132,52 @@ Simply pass it as the collection: `pagy(:offset, my_array, **options)`
 
 Pagy works seamlessly with `ActiveRecord` collections, but certain collections may require specific handling:
 
-- **Grouped collections**
-  - For better performance of grouped counts, you may want to use the [:count_over](../toolbox/paginators/offset#options) option
-- **Decorated collections**
-  - Do it in two steps:
-    1. Get the page of records without decoration
-    2. Decorate the retrieved records.
-  ```ruby controller
-  @pagy, records     = pagy(:offset, Post.all)
-  @decorated_records = records.decorate # or YourDecorator.method(records) whatever works
-  ```
-- **Custom scope/count**
-  - If the default pagy doesn't get the right count:
-  ```ruby controller
-  # pass the right count to pagy (that will directly use it skipping its own `collection.count(:all)`)
-  @pagy, @records = pagy(:offset, custom_scope, count: custom_count) # Example implementation
-  ```
-- **Ransack results**
-  - Ransack's `result` method returns an `ActiveRecord` collection that is ready for pagination:
-  ```ruby controller
-  q = Person.ransack(params[:q])
-  @pagy, @people = pagy(:offset, q.result)
-  ```
-- **PostgreSQL Collections**
-  - [Always ensure your collections are ordered!](../toolbox/paginators#troubleshooting)
+:::
+
+=== Grouped collections
+
+For better performance of grouped counts, you may want to use the [:count_over](../toolbox/paginators/offset#options) option
+
+=== Decorated collections
+
+Do it in two steps:
+
+>>> Get the page of records without decoration
+
+```ruby controller
+@pagy, records = pagy(:offset, Post.all)
+```
+>>> Decorate the retrieved records.
+
+```ruby controller
+@decorated_records = records.decorate # or YourDecorator.method(records) whatever works
+```
+
+>>>
+
+=== Custom scope/count
+
+If the default pagy doesn't get the right count:
+
+```ruby controller
+# pass the right count to pagy (that will directly use it skipping its own `collection.count(:all)`)
+@pagy, @records = pagy(:offset, custom_scope, count: custom_count) # Example implementation
+```
+
+=== Ransack results
+
+Ransack's `result` method returns an `ActiveRecord` collection that is ready for pagination:
+
+```ruby controller
+q = Person.ransack(params[:q])
+@pagy, @people = pagy(:offset, q.result)
+```
+
+=== PostgreSQL Collections
+
+[Always ensure your collections are ordered!](../toolbox/paginators#troubleshooting)
+
+:::
 
 ==- Paginate for generic API clients
 
@@ -195,8 +208,9 @@ Use the [:calendar](../toolbox/paginators/calendar) paginator for pagination fil
 ==- Paginate multiple independent collections
 
 When you need to paginate multiple collections in a single request, you need to explicitly differentiate the pagination objects. Here are some common methods to achieve this:
-
-##### Override the request path
+    
+:::
+=== {{ include "snippets/mini-step" step: "A" }} Override the request path
 
 <br/>
 
@@ -217,14 +231,14 @@ end
 <!-- Pagination links of `/bars?page=2` etc. -->
 ```
 
-##### Use separate turbo frames actions
+=== {{ include "snippets/mini-step" step: "B" }} Use separate turbo frames actions
 
 <br/>
 
 If you're using [hotwire](https://hotwired.dev/) ([turbo-rails](https://github.com/hotwired/turbo-rails) being the Rails implementation), another way of maintaining independent contexts is using separate turbo frames actions. Just wrap each independent context in a `turbo_frame_tag` and ensure a matching `turbo_frame_tag` is returned:
 
 ```erb
-  <-- movies/index.html.erb -->
+<-- movies/index.html.erb -->
 
 <-- movies#bad_movies -->
 <%= turbo_frame_tag "bad_movies", src: bad_movies_path do %>
@@ -239,8 +253,7 @@ If you're using [hotwire](https://hotwired.dev/) ([turbo-rails](https://github.c
 <% end %>   
 ```
 
-```rb
-  # controller action 
+```rb Controller Action
 def good
   @pagy, @movies = pagy(:offset, Movie.good, limit: 5)
 end
@@ -252,7 +265,7 @@ end
 
 Consider [Benito Serna's implementation of turbo-frames (on Rails) using search forms with the Ransack gem](https://bhserna.com/building-data-grid-with-search-rails-hotwire-ransack.html) along with a corresponding [demo app](https://github.com/bhserna/dynamic_data_grid_hotwire_ransack) for a similar implementation of the above logic.
 
-##### Use the root_key option
+=== {{ include "snippets/mini-step" step: "C" }} Use the root_key option
 
 <br/>
 
@@ -260,13 +273,13 @@ By default, pagy creates flat URLs for its links. If you need to handle multiple
 
 ```rb Controller Action
 
-def index # controller action
+def index
   @pagy_stars, @stars     = pagy(:offset, Star.all, root_key: 'stars')
   @pagy_nebulae, @nebulae = pagy(:offset, Nebula.all, root_key: 'nebulae')
 end
 ```
 
-##### Use different page keys
+=== {{ include "snippets/mini-step" step: "D" }} Use different page keys
 
 <br/>
 
@@ -274,11 +287,13 @@ You can also paginate multiple model in the same request by simply using differe
 
 ```rb
 
-def index # controller action
+def index
   @pagy_stars, @stars     = pagy(:offset, Star.all, page_key: 'pagy_stars')
   @pagy_nebulae, @nebulae = pagy(:offset, Nebula.all, page_key: 'pagy_nebulae')
 end
 ```
+
+:::
 
 ==- Paginate only max_pages, regardless of the count
 

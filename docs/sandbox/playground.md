@@ -20,6 +20,12 @@ $ pagy --help
 
 We have a few single-file apps ready to run in your browser for various purposes. Most of them are used to run the [E2e Test](https://github.com/ddnexus/pagy/blob/master/.github/workflows/e2e-test.yml) workflow.
 
+!!!success
+
+Bundler automatically installs the required gems during the first run.
+
+!!!
+
 === Repro App {#repro}
 
 You can use this app as a starting point to try Pagy or reproduce issues to get support or file bug reports.
@@ -43,12 +49,6 @@ pagy path/to/your-repro.ru
 >>> Open a browser and navigate to http://127.0.0.1:8000
 
 >>>
-
-!!!success
-
-Bundler installs the required gems during the first run.
-
-!!!
 
 ===
 

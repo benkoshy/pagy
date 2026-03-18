@@ -13,7 +13,7 @@ categories:
 
 ---
 
-`:elasticsearch_rails` is a paginator for `ElasticsearchRails` response objects. 
+`:elasticsearch_rails` is a [SEARCH](/guides/choose-right/#search) paginator for `ElasticsearchRails` response objects. 
 
 +++ Active mode
 

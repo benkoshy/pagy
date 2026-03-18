@@ -12,7 +12,7 @@ categories:
 
 ---
 
-`:countish` is an OFFSET paginator that memoizes the result of the `COUNT` query, running it only once per collection (instead of once per page), and optionally recounting it when it's stale.
+`:countish` is an [OFFSET](/guides/choose-right/#offset) paginator that memoizes the result of the `COUNT` query, running it only once per collection (instead of once per page), and optionally recounting it when it's stale.
 
 It **fully** supports all the helpers and navigators.
 

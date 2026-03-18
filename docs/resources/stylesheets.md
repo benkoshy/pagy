@@ -74,24 +74,28 @@ and adjust a few sliders to see the change in real time, right in your app, with
 
 >>>
 
-==- RTL Support
+==- Selectors
 
-The pagy stylesheets automatically support Right-To-Left (RTL) languages. It respects the standard `dir="rtl"` attribute of the `html` tag or any parent element of the pagination.
-
-==- In Depth: HTML Structure
-
-To ensure a minimalistic valid output, complete with all the ARIA attributes, pagy outputs a single line with the minimum number of tags and attributes required to identify all the parts of the nav bars:
+To ensure a minimalistic valid output, complete with all the [ARIA attributes](ARIA), pagy outputs a single line with the minimum number of tags and attributes required to identify all the parts of the nav bars:
 
 - The output of `series_nav` and `series_nav_js` helpers, is a series of `a` tags inside a `nav` tag wrapper.
 - The disabled links are so because they are missing the `href` attributes.
 - The `pagy nav` and `pagy nav-js` classes are assigned to the `nav` tag.
 
-!!! Tips
+{{ include "snippets/run-app" app: "demo" }}
+
+<br/>
+
+!!!tip
 
 - You can target the `gap` with `.pagy a:[role="separator"]`
 - You can target the previous and next links by using `.pagy a:first-child` and `.pagy a:last-child` pseudo classes
 - Check the stylesheet comments to target other specific elements.
 
 !!!
+
+==- RTL
+
+The pagy stylesheets automatically support Right-To-Left (RTL) languages. It respects the standard `dir="rtl"` attribute of the `html` tag or any parent element of the pagination.
 
 ===

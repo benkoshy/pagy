@@ -1,0 +1,1 @@
+[!badge variant="info" size="s" corners="pill" text="{{ $.step }}"]&nbsp;
