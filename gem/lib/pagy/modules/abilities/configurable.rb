@@ -5,7 +5,7 @@ class Pagy
   module Configurable
     # Deprecated: Sync the pagy javascript targets. Use sync(:javascripts, ...) instead.
     def sync_javascript(...)
-      warn "[PAGY] 'Pagy.sync_javascript(...) is deprecated: use Pagy.sync(:javascript, ...) instead.'"
+      warn "[PAGY] 'Pagy.sync_javascript(...)' is deprecated: use 'Pagy.sync(:javascript, ...)' instead."
       sync(:javascript, ...)
     end
 

@@ -33,7 +33,12 @@ class Pagy
   autoload :SyncTask,           path.join('tasks/sync')
 
   OPTIONS = {} # rubocop:disable Style/MutableConstant
-  def self.options = OPTIONS
+
+  def self.options
+    OPTIONS.tap do
+      warn "[PAGY] 'Pagy.options' is deprecated: use 'Pagy::OPTIONS directly'"
+    end
+  end
 
   extend Configurable
   include Linkable
