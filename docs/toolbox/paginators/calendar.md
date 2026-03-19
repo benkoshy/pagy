@@ -20,7 +20,7 @@ categories:
 !!!warning ActiveSupport Required!
 !!!
 
-The `:calendar` paginator combines the functionality of `time-range` with the `OFFSET` pagination.
+The `:calendar` is a [TIME-RANGE](/guides/choose-right/#time-range) paginator.
 
 It enables cascade-filtering of the collection by time units _(year, quarter, month, week, and day)_, followed by paginating the filtered collection using the `:offset` paginator.
 

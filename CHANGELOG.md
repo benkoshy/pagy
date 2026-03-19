@@ -43,7 +43,16 @@ If you upgrade from version `< 9.0.0` see the following:
 > If you need to update through multiple versions, reimplementing the updated pagination
 > from scratch might be faster.
 
+## Deprecations
+
+- `Pagy.options`: Use `Pagy::OPTIONS` directly.
+- `Pagy.sync_javascript(...)`: Use `Pagy.sync(:javascript, ...)` instead.
+
 <hr>
+
+### Version 43.4.1
+
+- Normalize deprecations
 
 ### Version 43.4.0
 

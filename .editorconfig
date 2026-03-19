@@ -1,0 +1,5 @@
+# top-most EditorConfig file
+root = true
+
+[docs/_includes/snippets/*]
+insert_final_newline = false

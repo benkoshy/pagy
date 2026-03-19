@@ -22,6 +22,12 @@ describe 'Pagy Specs' do
     _(Pagy::OPTIONS).must_be_kind_of Hash
   end
 
+  it "warns for deprecation" do
+    assert_output(nil, /Pagy.options/) do
+      Pagy.options
+    end
+  end
+
   it 'includes modules' do
     _(Pagy.included_modules).must_include Pagy::Linkable
     _(Pagy.included_modules).must_include Pagy::HelperLoader

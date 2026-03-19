@@ -12,7 +12,7 @@ categories:
 
 ---
 
-`:keynav_js` is a fast KEYSET paginator that supports the UI. It's a pagy exclusive technique.
+`:keynav_js` is a fast [KEYSET](/guides/choose-right/#keyset) paginator that supports the UI. It's a pagy exclusive technique.
 
 {{ include "snippets/run-app" app: "keynav" anchor: "keysets" }}
 

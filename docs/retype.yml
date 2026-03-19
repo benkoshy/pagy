@@ -1,5 +1,6 @@
 start:
   pro: true
+  open: false
 
 input: .
 output: .public
@@ -8,7 +9,7 @@ url: https://ddnexus.github.io/pagy/
 branding:
   title: Pagy
   logo: assets/images/pagy-the-frog.png
-  label: 43.4.0
+  label: 43.4.1
   colors:
     label:
       text: "#ffffff"
@@ -72,7 +73,7 @@ lastUpdated:
     source: committer
 
 nav:
-  mode: stack # Pro key required
+  mode: stack
   icons:
     mode: pages
 

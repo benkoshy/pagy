@@ -13,7 +13,7 @@ categories:
 
 ---
 
-`:searchkick` is a paginator for  `Searchkick::Results` objects.
+`:searchkick` is a [SEARCH](/guides/choose-right/#search) paginator for  `Searchkick::Results` objects.
 
 ```ruby pagy.rb (initializer)
 Searchkick.extend Pagy::Search

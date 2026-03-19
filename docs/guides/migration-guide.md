@@ -10,17 +10,13 @@ order: 70
 
 ---
 
-This page tries to cover most of the standard changes you will need to make in order to migrate from a legacy pagination.
+{{ include "snippets/ask-for-support" }}
 
-Feel free to [ask via Pagy Support](https://github.com/ddnexus/pagy/discussions/categories/q-a) if you need help.
+This page tries to cover most of the standard changes you will need to make in order to migrate from a legacy pagination.
 
 ## Steps
 
 The Pagy API is quite different from other pagination gems, however, if you split the process in the following general steps it should be quite simple.
-
-1. Remove the legacy code, trying to convert the statements that have a direct relation with Pagy
-2. Run the app so to raise exceptions in order to find legacy code that may still be in place
-3. When the app runs without errors, adjust the pagination to look and work as before: just many times faster and using many times less memory
 
 >>> Remove the old code
 

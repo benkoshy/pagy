@@ -64,7 +64,7 @@ Serving paginated collections is a retrieval action that does not modify data; t
 
 ==- POST
 
-If you must use POST to retrieve paginated collections, you should build your own POST forms/requests using the data provided by Pagy (e.g., via the `data_hash` helper). However, Pagy parses and handles POST parameters out of the box without additional configuration.
+If you must use POST to retrieve paginated collections, you should build your own POST forms/requests using the data provided by Pagy (e.g., via the `data_hash` helper). However, Pagy parses and handles POST request parameters out of the box without additional configuration.
 
 ==- Dynamic Segments
 
@@ -75,18 +75,18 @@ Routers (like the Rails' one) allow defining parameters as part of the path (e.g
 Pagy does not support, nor recommends dynamic path segments for the `:page` param.
 
 !!!
-
-### Why?
+  
+#### Why?
 
 The Cons are overwhelming.
 
-#### Pros
+##### Pros
 
 {.list-icon}
 - :icon-thumbsup-24: Aesthetically cleaner URLs
 - :icon-thumbsup-24: Possibility to cache single pages at the edge _(rarely necessary)_
 
-#### Cons
+##### Cons
 
 {.list-icon}
 - **RFC 3986 Compliance**
@@ -99,8 +99,9 @@ The Cons are overwhelming.
   - :icon-thumbsdown-24: Dynamic segments are framework-specific routing concepts, not query params concepts.
   - :icon-thumbsdown-24: Using framework code is not only non-agnostic, but significantly slower than pagy's generic query param handling.
   - :icon-thumbsdown-24: Using it _(or even just checking for it)_ would be an unnecessary burden for all the apps.
-
-### OK, but what if I still want it in my own app?
+  
+:::
+=== OK, but what if I still want it in my own app?
 
 <br/>
 
@@ -108,10 +109,11 @@ The Cons are overwhelming.
 
 It is not an officially supported or tested feature, as it bypasses the standard, high-performance Pagy URL generation logic.
  
-**Use it at your own risk and maintenance extra work!**
+**Use it at your own risk and extra maintenance!**
 
 !!!
 
 :::code source="../gem/apps/enable_rails_page_segment.rb" title="enable_rails_page_segment.rb":::
-
+  
+:::
 ===

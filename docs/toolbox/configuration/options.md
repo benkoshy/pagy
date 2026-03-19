@@ -15,7 +15,7 @@ order: 100
 The actual options are documented alongside the [paginators](../paginators) and [helpers](../helpers) that use them.
 !!!
 
-Pagy has a top-down hierarchical options system that allows you to set and override options at different levels.
+Pagy has a top-down hierarchical options system that allows you to set and override options at three different levels.
 
 >>> Global level
 
@@ -23,7 +23,6 @@ Pagy has a top-down hierarchical options system that allows you to set and overr
 - Set in the [pagy.rb initializer](initializer).
 - The `Pagy::OPTIONS` are inherited by all paginators and helpers.
 - You can set all kinds of options at the global level, no matter which is the destination downstream (i.e., paginator or helper).
-- **Notice**: Using the legacy `Pagy.options` accessor is discouraged but supported.
 - **IMPORTANT**: Freeze it after you are done in the initializer, for good safe practice.
 
 >>> Paginator level

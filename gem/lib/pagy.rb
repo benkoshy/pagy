@@ -10,7 +10,7 @@ require_relative 'pagy/toolbox/helpers/loaders'
 # Top superclass: it defines only what's common to all the subclasses
 # noinspection RubyMismatchedArgumentType
 class Pagy
-  VERSION     = '43.4.0'
+  VERSION     = '43.4.1'
   ROOT        = Pathname.new(__dir__).parent.freeze
   DEFAULT     = { limit: 20, limit_key: 'limit', page_key: 'page' }.freeze
   PAGE_TOKEN  = EscapedValue.new('P ')
@@ -33,7 +33,12 @@ class Pagy
   autoload :SyncTask,           path.join('tasks/sync')
 
   OPTIONS = {} # rubocop:disable Style/MutableConstant
-  def self.options = OPTIONS
+
+  def self.options
+    OPTIONS.tap do
+      warn "[PAGY] 'Pagy.options' is deprecated: use 'Pagy::OPTIONS directly'"
+    end
+  end
 
   extend Configurable
   include Linkable
