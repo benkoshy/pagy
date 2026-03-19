@@ -50,6 +50,10 @@ If you upgrade from version `< 9.0.0` see the following:
 
 <hr>
 
+### Version 43.4.1
+
+- Normalize deprecations
+
 ### Version 43.4.0
 
 - Improve stylesheets and docs

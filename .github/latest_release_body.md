@@ -1,11 +1,7 @@
-### Changes in 43.4.0
+### Changes in 43.4.1
 
 <!-- changes_start -->
-- Improve stylesheets and docs
-- Improve JavaScript:
-  - Add sync method and task
-  - Deprecate sync_javascript
-  - Simplify build, configuration and docs
+- Normalize deprecations
 <!-- changes_end -->
 
 [CHANGELOG](https://ddnexus.github.io/pagy/changelog)
