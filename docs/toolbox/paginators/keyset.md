@@ -12,10 +12,48 @@ categories:
 
 ---
 
-`:keyset` is the **fastest** [KEYSET](/guides/choose-right/#keyset) paginator for SQL collections. 
-
+`:keyset` is the **fastest** [KEYSET](/guides/choose-right/#keyset) paginator for SQL collections.
 
 {{ include "snippets/run-app" app: "keyset" anchor: "keysets" }}
+
+==- Setup
+
+Depending on your **order requirements**, here is how you set it up for maximum efficiency:
+
++++ Specific order
+
+>>> Ensure that your set is `uniquely ordered`
+
+{{ include "snippets/mini-step" step: "Option 1" }} If the combination of the values of the ordered columns **is certainly unique**...
+
+```rb
+set = collection.order(:brand).order(:model)
+```
+
+{{ include "snippets/mini-step" step: "Option 2" }} If **it's possibly not unique**, just append a unique column to the order (e.g., your primary keys).
+
+```rb
+set = collection.order(:last_name).order(:first_name).order(:id)
+```
+
+>>> Ensure that your table has the appropriate index AND index type
+
+{{ include "snippets/mini-step" step: "•1" }} The index must include the exact same columns and ordering direction of your set.<br>
+{{ include "snippets/mini-step" step: "•2" }} The index type must minimize the data scan (e.g. B-tree, B+ Tree, ...)
+
+>>>
+
++++ No order
+
+Just order by `:id`. It's fast out of the box without any setup...
+
+```rb
+set = collection.order(:id)
+```
+
++++
+
+=== Usage
 
 ```ruby Controller
 @pagy, @records = pagy(:keyset, set, **options)
@@ -28,6 +66,43 @@ categories:
 <!-- The only supported UI helper -->
 <%== @pagy.next_tag(text: 'Next page &gt;') %>
 ```
+
+==- Features
+
+!!!success
+
+- **It works with:**
+  - `ActiveRecord::Relation` or `Sequel::Dataset` sets
+  - Single or multiple ordered columns
+  - Any combination of order directions
+
+- **Unlike the classic OFFSET pagination:**
+  - Its performance is reliably fast from start to end, no matter how big your table is.
+  - It's completely accurate. Even with insertions or deletions during browsing, it will never repeat or miss records.
+  - Does not suffer from `RangeError`s
+
+!!!
+
+==- Constraints
+
+!!!tip When an UI is needed and using [KEYSET Pagination](/guides/choose-right/#keyset) is possible, use the [:keynav_js](keynav_js) paginator to overcome almost all these constraints.
+!!!
+
+!!!warning With any KEYSET pagination technique...
+- You can only paginate from one page to the next: no jumping to arbitrary pages.
+- The `set` must be `uniquely ordered`. Add the primary key (usually `:id`) as the last order column to be sure.
+- You should add the most suitable DB index for your ordering strategy, or it will be slow.
+!!!
+
+!!!warning With Pagy `:keyset`...
+You don't know the `previous` and the `last` page; you only know the `first` and `next` pages for performance and simplicity.
+!!!
+
+!!!tip
+If you want to paginate backward, like: `last` ... `previous` ... `previous`, just call `reverse_order` on your set, and proceed forward
+like:
+`first` ... `next` ... `next` ... It does exactly the same: just faster and simpler.
+!!!
 
 ==- Glossary
 
@@ -57,82 +132,14 @@ There are a few peculiar aspects of the keyset pagination technique that you mig
 `cutoff`
 : The value that identifies where the `page` ends, and the `next` one begins. It is the `Base64` URL-safe encoded string of the serialized array of the `keyet attribute` values.
 
+`cutoffs`
+: The array of `cutoff`s of the known pagination state, used only by [keynav](keynav_js) to keep track of the visited pages during the navigation. They are cached in the `sessionStorage` of the client.
+
 `page`
 : The current `page`, i.e. the page of records beginning after the `cutoff` of the previous page. Also the `:page` option, which is set to the `cutoff` of the previous page
 
 `next`
 : The next `page`, i.e. the page of records beginning after the `cutoff`. Also the `cutoff` value retured by the `next` method.
- 
-==- Features
-
-!!!success
-
-- **It works with:**
-  - `ActiveRecord::Relation` or `Sequel::Dataset` sets
-  - Single or multiple ordered columns
-  - Any combination of order directions
-
-- **Unlike the classic OFFSET pagination:**
-  - Its performance is reliably fast from start to end, no matter how big your table is.
-  - It's completely accurate. Even with insertions or deletions during browsing, it will never repeat or miss records.
-  - Does not suffer from `RangeError`s
-  
-!!!
-
-==- Constraints
-
-!!!tip When possible, use the [:keynav_js](keynav_js) paginator to overcome almost all these constraints.
-!!!
-
-!!!warning With any KEYSET pagination technique...
-
-- You can only paginate from one page to the next: no jumping to arbitrary pages.
-- The `set` must be `uniquely ordered`. Add the primary key (usually `:id`) as the last order column to be sure.
-- You should add the most suitable DB index for your ordering strategy, or it will be slow.
-
-!!!
-
-!!!warning With Pagy `:keyset`...
-
-You don't know the `previous` and the `last` page; you only know the `first` and `next` pages for performance and simplicity.
-   
-!!!
-
-!!!tip
-
-If you want to paginate backward, like: `last` ... `previous` ... `previous`, just call `reverse_order` on your set, and proceed forward
-like:
-`first` ... `next` ... `next` ... It does exactly the same: just faster and simpler.
-
-!!!
-
-==- Setup
-
-Ensure that your set is `uniquely ordered`, and that your tables have the appropriate indexes.
-
-Depending on your order requirements, here is how you set it up:
-
-+++ No order requirements
-
-!!!success If you don't need any specific ordering...
-
-`order(:id)` is the simplest choice because the `id` column is unique and already indexed.
-
-It is fast out of the box without any setup.
-<br><br><br><br>
-!!!
-
-+++ Specific order requirements
-
-!!!success If you need a specific ordering...
-
-- **In order to make it work**...
-  - Ensure the uniquenes of the last ordered columns OR append your primary keys to your order.
-- **In order to make it fast**...<br/>
-  - Ensure to have an index including the exact same columns and ordering direction of your set.
-
-!!!
-+++
 
 ==- Options
 
@@ -144,21 +151,21 @@ It is fast out of the box without any setup.
 
 `pre_serialize: serialize`
 : Set it to a `lambda` that receives the `keyset_attributes` hash. Modify this hash directly to customize the serialization of specific values (e.g., to preserve `Time` object precision). The lambda's return value is ignored.
-  ```ruby 
+  ```ruby
   serialize = lambda do |attributes|
     # Convert it to a string matching the stored value/format in SQLite DB
     attributes[:created_at] = attributes[:created_at].strftime('%F %T.%6N')
   end
   ```
 
-See also [Common Options](../paginators#common-options)
+See also [Paginators Shared Options](../paginators/#shared-options)
 
 ==- Readers
 
 `records`
 : The `Array` of fetched records for the current page.
 
-See also [Common Readers](../paginators#common-readers)
+See also [Paginators Shared Readers](../paginators#shared-readers)
 
 ==- How it works
 
@@ -209,13 +216,11 @@ beginning of set >[· · · · · · · · · X]· · · · · · · · · Y]· 
 When we pull the `next` page from the `cutoff-Y`, we find only the remaining 9 records, which means that it's the _"last page"_, which naturally ends with the end of the `set`, so it doesn't have any `cutoff` value to separate it from further records.
 
 !!! Keynotes
-
 - A `cutoff` identifies a "cutoff value", for a `page` in the `set`. It is not a record, nor a reference to it.
 - Its value is extracted from the `keyset attributes values` array of the last record of the `page`, converted to JSON, and encoded as a Base64 URL-safe string, for easy use in URLs.
   - The `:keyset` paginator embeds it in the request URL; the `:keynav_js` paginator caches it on the client `sessionStorage`.
 - All the `page`s but the last, end with the `cutoff`.
 - All the `page`s but the first, begin AFTER the `cutoff` of the previous `page`.
-
 !!!
 
 ==- Troubleshooting
@@ -225,7 +230,6 @@ When we pull the `next` page from the `cutoff-Y`, we find only the remaining 9 r
 ##### 1. Records may repeat or be missing from successive pages
 
 <br/>
-
 
 ||| :icon-stop-24: Order issue
 
@@ -266,7 +270,6 @@ The generic `to_json` method used to encode the `page` may lose some information
 ||| Most likely the index is not right, or your case needs a custom query
 
 !!!tip
-
 - Ensure that the composite index reflects exactly the columns sequence and order of your keyset
 - Research your specific DB features, type of index, and performance for different ordering. Use SQL `EXPLAIN ANALYZE` or similar tool to confirm.
 - Consider using the same direction order, enabling the `:tuple_comparison`, and changing type of index (different DBs may behave differently).

@@ -10,7 +10,7 @@
 [![Stars](https://shields.io/github/stars/ddnexus/pagy?style=social)](https://github.com/ddnexus/pagy/stargazers)</span> <span>
 [![Gurubase](https://img.shields.io/badge/Gurubase-Ask%20Pagy%20AI-006BFF)](https://gurubase.io/g/pagy)</span>
 
-# 
+#
 
 <h2><img src="assets/images/pagy-the-frog.png" alt="💚" width="75" style="vertical-align:bottom;"><br/>Pagy the leaping gem!</h2>
 
@@ -94,7 +94,7 @@ include Pagy::Method
 
 # Paginate your collection with one of several paginators
 @pagy, @records = pagy(...)
-``` 
+```
 
 _See all the available [paginators](https://ddnexus.github.io/pagy/toolbox/paginators/#paginators)_
 

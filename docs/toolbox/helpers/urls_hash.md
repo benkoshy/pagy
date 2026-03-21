@@ -18,6 +18,8 @@ categories:
 !!!success It works with all paginators
 !!!
 
+=== Usage
+
 ```ruby Controller
 urls_hash = @pagy.urls_hash(**options)
 ```
@@ -43,6 +45,6 @@ require 'pagy/console'
 
 ==- Options
 
-See [Common URL Options](../paginators#common-url-options)
+See [Helpers Shared Options](../helpers/#shared-options)
 
 ===

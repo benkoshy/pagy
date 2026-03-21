@@ -1,7 +1,7 @@
 ---
 label: Migrate From Other Gems
 icon: paper-airplane
-order: 70
+order: 80
 ---
 
 #
@@ -14,25 +14,24 @@ order: 70
 
 This page tries to cover most of the standard changes you will need to make in order to migrate from a legacy pagination.
 
-## Steps
+### Steps
 
 The Pagy API is quite different from other pagination gems, however, if you split the process in the following general steps it should be quite simple.
 
 >>> Remove the old code
 
-==- Preparation
+==- {{ include "snippets/mini-step" step: "•1" }} Preparation
 
 - Uninstall the legacy gem and replace it with `gem "pagy"` in the `Gemfile`.
 - Add `include Pagy::Method` statement to the application controller.
 - Keep both the legacy gem and Pagy documentation accessible for reference.
 
-==- Application-wide search and replace
+==- {{ include "snippets/mini-step" step: "•2" }} Application-wide search and replace
 
-Search for the class name of the legacy gem, for example `WillPaginate` or `Kaminari`. You should find most of the code relative to global gem configuration, or monkey patching.
+- Search for the class name of the legacy gem, for example `WillPaginate` or `Kaminari`. You should find most of the code relative to global gem configuration, or monkey patching.
+- Remove all the legacy settings of the old gem.
 
-Remove all the legacy settings of the old gem.
-
-==- Cleanup the Models
+==- {{ include "snippets/mini-step" step: "•3" }} Cleanup the Models
 
 Look for terms like `per_page`, `per`, and similar, as these are configuration settings. Include them in the appropriate paginator call in the controller (e.g., `pagy(:offset, collection, limit: 10)`) or globally in the Pagy initializer (e.g., `Pagy::OPTIONS[:limit] = 10`).
 
@@ -42,7 +41,8 @@ If the app uses the `page` scope in model methods or scopes, remove it, along wi
 #@records = Product.paginated_scope(params[:page])
 @pagy, @records = pagy(:offset, Product.non_paginated_scope)
 ```
-==- Search and replace in the Controllers
+
+==- {{ include "snippets/mini-step" step: "•4" }} Search and replace in the Controllers
 
 In controllers, legacy pagination statements generally map directly to Pagy, making them straightforward to convert.
 
@@ -52,7 +52,7 @@ Search for keywords like `page` and `paginate` statements and use the `pagy(:off
 #@records = Product.some_scope.page(params[:page])
 #@records = Product.paginate(:page => params[:page])
 
-@pagy, @records = pagy(:offset, Product.some_scope)
+@pagy, @records = pagy(:offset, Product.my_scope)
 
 #@records = Product.some_scope.page(params[:page]).per(15)
 #@records = Product.some_scope.page(params[:page]).per_page(15)
@@ -61,7 +61,7 @@ Search for keywords like `page` and `paginate` statements and use the `pagy(:off
 @pagy, @records = pagy(:offset, Product.all, limit: 15)
 ```
 
-==- Search and replace in the Views
+==- {{ include "snippets/mini-step" step: "•5" }} Search and replace in the Views
 
 Similarly, in views, legacy pagination statements typically correspond directly to Pagy, simplifying conversion.
 
@@ -83,12 +83,11 @@ If any legacy code remains, it will raise an exception. Remove the old code and 
 
 >>> Fine-tuning
 
-Once the app displays pagination correctly, customize Pagy as needed. If the previous pagination used custom elements (e.g., custom params, URLs, links, HTML elements, etc.), adjustments may be required for compatibility.
+Once the app displays pagination correctly, customize Pagy as needed _(see [Stylesheets](/resources/stylesheets))_.
 
-Please take a look at the topics in the [how-to](how-to.md) documentation: that should cover most of your custom needs.
+If the previous pagination used custom elements (e.g., custom params, URLs, links, HTML elements, etc.), adjustments may be required for compatibility. Please take a look at the topics in the [How To](how-to.md) docs: that should cover most of your custom needs.
 
-### CSS
-
-CSS styling applied to pagination elements may require minor adjustments. However, if the app uses pagination from Bootstrap or another framework, the existing CSS should function seamlessly with Pagy navigation helpers.
-
+!!!tip
+If the app uses pagination from `Bootstrap` or `Bulma` frameworks, the existing CSS should function seamlessly with Pagy navigation helpers. _(See [Nav Styles](/toolbox/helpers/#shared-nav-styles))_
+!!!
 >>>

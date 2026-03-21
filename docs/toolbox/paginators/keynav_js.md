@@ -4,6 +4,10 @@ icon: key
 order: 70
 categories:
   - Paginators
+nav:
+  badge:
+    text: "NEW"
+    variant: info
 ---
 
 #
@@ -14,19 +18,36 @@ categories:
 
 `:keynav_js` is a fast [KEYSET](/guides/choose-right/#keyset) paginator that supports the UI. It's a pagy exclusive technique.
 
+The Keynav pagination adds the numeric variables (`@page`, `@last`, `@previous`, `@next`, `@in`) to its instances, supporting their usage with the UI. It does so by transparently exchanging data with the client, that stores the state of the pagination.
+
+If something goes wrong on the client side, it falls back to the [:countless](countless.md) paginator seamlessly.
+
 {{ include "snippets/run-app" app: "keynav" anchor: "keysets" }}
 
-```ruby Controller 
+!!!warning This documentation extends the [:keyset](keyset.md) documentation.
+It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
+!!!
+
+==- Setup
+
+>>> [Keyset Setup](keyset#setup)
+
+>>> [JavaScript Support](/resources/javascript.md)
+
+>>>
+
+=== Usage
+
+```ruby Controller
 @pagy, @records = pagy(:keynav_js, collection, **options)
 ```
 
 - `@pagy` is the pagination instance. It provides the [readers](#readers) and the [helpers](../helpers) to use in your code.
 - `@records` is the eager-loaded `Array` of the page records.
 
-!!!warning This documentation integrates the [:keyset](keyset.md) documentation.
+==- Options
 
-It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
-!!!
+See the [Keyset Options](keyset/#options)
 
 ==- Readers
 
@@ -37,29 +58,6 @@ It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
 : The number of pages.
 
 See also [Keyset Readers](keyset#readers)
-
-==- Glossary
-
-Integrates the [Keyset Glossary](keyset#glossary)
-
-{ .compact }
-
-`keynav pagination`
-: The pagy exclusive technique to use `keyset` pagination, providing **nearly complete** support for **most** navigation helpers. The fastest technique with UI capabilities.
-
-`page`
-: The array of options from the client prepared by the `keynav_js`, to paginate the requested page.
-
-`cutoffs`
-: The array of `cutoff`s of the known pagination state, used to keep track of the visited pages during the navigation. They are cached in the `sessionStorage` of the client.
-
-==- How it works
-
-The Keynav pagination adds the numeric variables (`@page`, `@last`, `@previous`, `@next`, `@in`) to its instances, supporting their usage with the UI. It does so by transparently exchanging data with the client, that stores the state of the pagination.
-
-If something goes wrong on the client side, it falls back to the [:countless](countless.md) paginator seamlessly.
-
-You can use the `:keyset_js` paginator as you would use the [:countless paginator](countless.md). You just need the [Keyset Setup](keyset#setup) and [JavaScript Support](../../resources/javascript.md), to get a lot more performance.
 
 ==- In-depth: Cutoffs Filtering
 
@@ -101,13 +99,11 @@ For example, the filtering of the page could be logically described like:
 - Page #3 `WHERE AFTER CUTOFF-Y LIMIT 10`               <- regular beginning filter (no cutoff for last page)
 ```
 
-!!! Implementing page-rebalancing:
-
+!!! Implementing page-rebalancing
 When the number of records on a visited page has drastically changed, it would be helpful to mitigate the surprise effect on the user by:
 
 - Automatically compacting the empty (or almost empty) visited pages.
 - Automatically splitting the excessively grown visited pages.
-  
 !!!
 
 ==- Caveat

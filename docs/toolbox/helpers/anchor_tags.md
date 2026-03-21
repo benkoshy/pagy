@@ -15,7 +15,7 @@ categories:
 ---
 
 :::raised
-![](../../assets/images/pagy-anchor_tags.png){width=73}
+![](/assets/images/pagy-anchor_tags.png){width=73}
 :::
 <br/>
 
@@ -31,9 +31,11 @@ Useful to build minimalistic helpers UIs that don't use nav bar links (e.g. `:co
 !!!warning `previous_tag` works with all paginators but `:keyset`
 !!!
 
+=== Usage
+
 ```erb
-<%== @pagy.previous_tag %>
 <%== @pagy.next_tag %>
+<%== @pagy.previous_tag %>
 ```
 
 ==- Examples
@@ -63,6 +65,6 @@ require 'pagy/console'
 `aria_label: 'My Link'`
 : Override the default aria label string looked up in the dictionary
 
-See also [Common URL Options](../paginators#common-url-options)
+See also [Helpers Shared Options](../helpers/#shared-options)
 
 ===

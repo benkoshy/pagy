@@ -4,7 +4,7 @@ order: 100
 icon: play
 ---
 
-#   
+#
 
 ## :icon-play-24:&nbsp;&nbsp;Playground
 
@@ -77,12 +77,12 @@ Calendar App {#calendar}
 Keyset Apps  {#keysets}
 : These are the interactive showcase/repro for the `:keyset` paginator with `ActiveRecord` or `Sequel` sets:
 
-  ```sh      
-  pagy | grep key   
+  ```sh
+  pagy | grep key
     keynav                     Showcase the Keynav pagination (ActiveRecord example)
     keyset                     Showcase the Keyset pagination (ActiveRecord example)
     keyset_sequel              Showcase the Keyset pagination (Sequel example)
-   
+
   pagy keynav
   pagy keyset
   pagy keyset_sequel
@@ -97,7 +97,7 @@ All the pagy apps use [bundler/inline](https://bundler.io/guides/bundler_in_a_si
 Depending on your environment, you might get this message for some gem:
 
 ```txt
-You have already activated GEMNAME v1, but your Gemfile requires GEMNAME v2. 
+You have already activated GEMNAME v1, but your Gemfile requires GEMNAME v2.
 Prepending `bundle exec` to your command may solve this.
 ```
 

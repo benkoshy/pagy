@@ -1,5 +1,5 @@
 ---
-label: "&nbsp;✳&nbsp;&nbsp;&nbsp;Paginators" 
+label: "&nbsp;✳&nbsp;&nbsp;&nbsp;Paginators"
 icon: database
 order: 90
 categories:
@@ -10,7 +10,7 @@ categories:
 
 ## ✳&nbsp;&nbsp;Paginators
 
-=== The `pagy` Method
+||| The `pagy` Method
 
 The `pagy` method provides a common interface to all paginators. Include it where you are going to paginate a collection _(usually in ApplicationController)_:
 
@@ -25,38 +25,38 @@ You can use it to paginate ANY collection, with ANY technique. For example:
 @pagy, @records = pagy(...)
 ```
 
-- `:offset`, `:keyset`, etc. are symbols identifying the [paginator](#paginators). They implement the specific pagination. 
+- `:offset`, `:keyset`, etc. are symbols identifying the [paginator](#paginators). They implement the specific pagination.
 - `@pagy` is the pagination instance. It provides all the instance helper methods to use in your code.
 - `@records` are the records belonging to the requested page.
 
-!!!success
-
-The `pagy` method expects to find the rack request at `self.request`, however, you can also use pagy [outside controllers or views](../guides/how-to/#use-pagy-outside-controllers-or-views), or even [with a non-rack app](../guides/how-to/#use-pagy-with-non-rack-apps).
+!!!info
+The `pagy` method expects to find the rack request at `self.request`, however, you can also use pagy [outside controllers or views](/guides/how-to/#use-pagy-outside-controllers-or-views), or even [with a non-rack app](/guides/how-to/#use-pagy-with-non-rack-apps).
 !!!
 
-===
+|||
 
 ### Paginators
 
-!!!tip Read also the [Choose Right Guide](../guides/choose-right.md) to ensure good performance and smooth workflow.
+!!!tip Read also the [Choose Right Guide](/guides/choose-right.md) to ensure good performance and smooth workflow.
 !!!
 
 The `paginators` are symbolic names of different pagination types/contexts (e.g., `:offset`, `:keyset`, `countless`, etc.). You pass the name to the `pagy` method and pagy will internally instantiate and handle the appropriate paginator class.
 
 !!!warning Avoid instantiating Pagy classes directly
-
 Instantiate paginator classes only if the documentation explicitly suggests it.
 !!!
 
 !!!success Paginators and classes are autoloaded only if used!
-
 Unused code consumes no memory.
 !!!
 
-==- Common Options
+==- Shared Options
 
 !!! Paginators may add and document specific [Options](configuration/options).
 !!!
+
+:icon-crosshairs-24:&nbsp; URL Options
+: See [URL Options](/resources/urls#url-options)
 
 `limit: 10`
 : Specifies the number of items per page (default: `20`)
@@ -68,7 +68,7 @@ Unused code consumes no memory.
 : Set it only to force the current `:page`. _(It is set automatically from the request param)_.
 
 `client_max_limit: 1_000`
-: Set the maximum `:limit` that the client is allowed to `request`. Higher requested `:limit`s are silently capped. 
+: Set the maximum `:limit` that the client is allowed to `request`. Higher requested `:limit`s are silently capped.
   : **IMPORTANT** If falsey, the client cannot request any `:limit`.
 
 `request: request || hash`
@@ -77,14 +77,10 @@ Unused code consumes no memory.
   hash_request = { base_url: 'http://www.example.com',
                    path:     '/path',
                    params:   { 'param1' => 1234 }, # The string-keyed params hash from the request
-                   cookie:   'xyz' }               # The 'pagy' cookie, only for keynav  
+                   cookie:   'xyz' }               # The 'pagy' cookie, only for keynav
   ```
 
-==- Common URL Options
-
-See [URL Options](../resources/urls#url-options)
-
-==- Common Readers
+==- Shared Readers
 
 !!! Paginators may add and document specific Readers.
 !!!
@@ -100,11 +96,11 @@ See [URL Options](../resources/urls#url-options)
 
 `options`
 : The options of the object
-  
+
 `next`
 : The next page
 
-==- Common Exceptions
+==- Shared Exceptions
 
 !!! Paginators may add and document specific Exceptions.
 !!!

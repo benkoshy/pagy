@@ -18,37 +18,37 @@ categories:
 +++Pagy
 
 :::raised
-![](../../assets/images/pagy-series_nav_js-11.png){width=428}
+![](/assets/images/pagy-series_nav_js-11.png){width=428}
 :::
 :::raised
-![](../../assets/images/pagy-series_nav_js-9.png){width=358}
+![](/assets/images/pagy-series_nav_js-9.png){width=358}
 :::
 :::raised
-![](../../assets/images/pagy-series_nav_js-7.png){width=288}
+![](/assets/images/pagy-series_nav_js-7.png){width=288}
 :::
 
 +++Bootstrap
 
 :::raised
-![](../../assets/images/bootstrap-series_nav_js-11.png){width=428}
+![](/assets/images/bootstrap-series_nav_js-11.png){width=428}
 :::
 :::raised
-![](../../assets/images/bootstrap-series_nav_js-9.png){width=358}
+![](/assets/images/bootstrap-series_nav_js-9.png){width=358}
 :::
 :::raised
-![](../../assets/images/bootstrap-series_nav_js-7.png){width=288}
+![](/assets/images/bootstrap-series_nav_js-7.png){width=288}
 :::
 
 +++Bulma
 
 :::raised
-![](../../assets/images/bulma-series_nav_js-11.png){width=428}
+![](/assets/images/bulma-series_nav_js-11.png){width=428}
 :::
 :::raised
-![](../../assets/images/bulma-series_nav_js-9.png){width=358}
+![](/assets/images/bulma-series_nav_js-9.png){width=358}
 :::
 :::raised
-![](../../assets/images/bulma-series_nav_js-7.png){width=288}
+![](/assets/images/bulma-series_nav_js-7.png){width=288}
 :::
 
 +++
@@ -62,6 +62,8 @@ categories:
 
 !!!warning It works with all paginators but `:keyset`
 !!!
+
+=== Usage
 
 ```erb
 <%== @pagy.series_nav_js(**options) %>  <%# default pagy style %>
@@ -89,7 +91,7 @@ require 'pagy/console'
 
 ==- Styles
 
-See [Common Nav Styles](../helpers#common-nav-styles)
+See [Shared Nav Styles](../helpers#shared-nav-styles)
 
 ==- Options
 
@@ -99,7 +101,7 @@ Enable responsiveness. Assign different number of `:slots` to different tag widt
 
 |||
 
-See also other applicable options: [Common Nav Options](../helpers#common-nav-options) and [Common URL Options](../paginators#common-url-options)
+See also [Helpers Shared Options](../helpers/#shared-options) and [Navs Shared Options](../helpers#navs-shared-options)
 
 ==- In Depth: `:steps` Option
 
@@ -111,13 +113,11 @@ For example:
 
 `{ 0 => 5, 540 => 7, 720 => 9 }` means that from `0` to `540` pixels width, Pagy will use `5` slots, from `540` to `720` it will use `7` slots, and over `720` it will use `9` slots. (Read more about the `:slots` option in the [How to control the pagination bar](../../guides/how-to#control-the-pagination-bar) section.)
 
-!!!warning :steps must contain a `0` width 
-
+!!!warning :steps must contain a `0` width
 You can set any number of steps with any arbitrary width/slots. The only requirement is that the `:steps` hash must always contain the `0` width, or a `Pagy::OptionsError` exception will be raised.
 !!!
 
 !!! Notice
-
 The `:slots` and `:compact` options used by the `series_nav` are not directly available.
 !!!
 
@@ -137,27 +137,20 @@ Consider these guidelines to achieve optimal results:
 ==- Caveats
 
 !!!warning HTML Fallback
-
 If Javascript is disabled in the client browser, this helper will not render anything. You should implement your own HTML fallback:
-
 ```erb
 <noscript><%== pagy_nav(@pagy) %></noscript>
 ```
-
 !!!
 
 !!!warning Window Resizing
-
 The `series_nav_js` elements are automatically re-rendered on window resize. If another function changes the size without causing a window resize, you need to explicitly re-render:
-
 ```js
 document.getElementById('my-pagy-nav-js').render();
 ```
-
 !!!
 
 !!!danger Overriding `*_js` helpers is not recommended
-
 The `*_js` helpers are tightly coupled with the javascript code, so any partial overriding on one side would be quite fragile
 and might break in a next release.
 !!!

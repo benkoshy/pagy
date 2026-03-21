@@ -15,14 +15,17 @@ categories:
 
 `:searchkick` is a [SEARCH](/guides/choose-right/#search) paginator for  `Searchkick::Results` objects.
 
+=== Setup
+
 ```ruby pagy.rb (initializer)
 Searchkick.extend Pagy::Search
 ```
 
+=== Usage
+
 +++ Active mode
 
 !!!success Pagy searches and paginates
-
 Use the `pagy_search` method instead of the `search` method.
 !!!
 
@@ -42,7 +45,6 @@ search = Searchkick.pagy_search(params[:q], models: [Article, Categories])
 +++ Passive mode
 
 !!!success You search and paginate
-
 Pagy creates its object out of your result.
 !!!
 
@@ -56,7 +58,6 @@ Pagy creates its object out of your result.
 +++
 
 !!!
-
 Search paginators don't query a DB, but use the same positional technique as [:offset](offset.md) paginators, with shared options and readers.
 !!!
 

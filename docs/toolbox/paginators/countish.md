@@ -4,6 +4,10 @@ icon: move-to-end-24
 order: 95
 categories:
   - Paginators
+nav:
+  badge:
+    text: "NEW"
+    variant: info
 ---
 
 #
@@ -16,8 +20,9 @@ categories:
 
 It **fully** supports all the helpers and navigators.
 
+=== Usage
 
-```ruby Controller 
+```ruby Controller
 # count only once and memoize for all pages
 @pagy, @records = pagy(:countish, collection, **options)
 # count once, memoize, and recount when the memoized count is older than ttl
@@ -31,14 +36,11 @@ It **fully** supports all the helpers and navigators.
 ==- Options
 
 `:ttl = 180`
-: `nil` (falsey) queries the DB for the COUNT only once, and reuse it for all the other pages served.
-  : A positive number of seconds enables recounting.
+: A positive number of seconds enables recounting. Set to `nil` (falsey) queries the DB for the COUNT only once, and reuse it for all the other pages served.
 
 !!!warning Recounting/TTL
-
 - Recounting gets the user more precise info and minimizes the page differences with lengthy page-browsing and abundant DB insertions/deletions.
 - It does not fix the OFFSET-intrinsic "drift" of records on active DB insertions/deletions.
-
 !!!
 
 See also [Offset Options](offset#options)

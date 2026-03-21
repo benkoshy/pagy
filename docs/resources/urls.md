@@ -13,13 +13,12 @@ order: 50
 Pagy uses the current URL as the base to generate all the other page URLs. It retrieves it from the `self.request` when available, or from a `:request` option set to a `Rack::Request` or a simple Hash of `:base_url`, `:path`, `:params` _(and a pagy `:cookie` value in case of Keynav pagination)_.
 
 !!!primary
-
 Pagy generates its specialized URLs ~20x faster than generic helpers like rails' `url_for`. When possible, it just replaces the page value, without recalculating every part of a URL.
 !!!
 
 ==- URL Options
 
-These options give you full control over the URL composition. You can use them for all [paginators](../toolbox/paginators.md) and `@pagy` [helpers](../toolbox/helpers.md)
+These options give you full control over the URL composition. You can use them for all [paginators](/toolbox/paginators.md) and `@pagy` [helpers](/toolbox/helpers.md)
 
 `absolute: true`
 : Makes the URL absolute.
@@ -40,7 +39,7 @@ These options give you full control over the URL composition. You can use them f
 : Set it to enable nested URLs with nested query string `?my_root[page]=2&my_root[limit]=100`)). Use it to handle multiple pagination objects in the same request.
 
 `path: '/my_path'`
-: Overrides the request path in pagination URLs. Use the path only (not the absolute URL). _(see [Override the request path](../guides/how-to#paginate-multiple-independent-collections))_
+: Overrides the request path in pagination URLs. Use the path only (not the absolute URL). _(see [Override the request path](/guides/how-to#paginate-multiple-independent-collections))_
 
 `querify: tweak`
 : Set it to a `Lambda` to directly edit the passed string-keyed params hash itself. Its result is ignored.
@@ -71,11 +70,9 @@ If you must use POST to retrieve paginated collections, you should build your ow
 Routers (like the Rails' one) allow defining parameters as part of the path (e.g., `/items/:page`)...
 
 !!!danger
-
 Pagy does not support, nor recommends dynamic path segments for the `:page` param.
-
 !!!
-  
+
 #### Why?
 
 The Cons are overwhelming.
@@ -99,21 +96,19 @@ The Cons are overwhelming.
   - :icon-thumbsdown-24: Dynamic segments are framework-specific routing concepts, not query params concepts.
   - :icon-thumbsdown-24: Using framework code is not only non-agnostic, but significantly slower than pagy's generic query param handling.
   - :icon-thumbsdown-24: Using it _(or even just checking for it)_ would be an unnecessary burden for all the apps.
-  
+
 :::
 === OK, but what if I still want it in my own app?
 
 <br/>
 
 !!!danger This file is provided as a courtesy configuration
-
 It is not an officially supported or tested feature, as it bypasses the standard, high-performance Pagy URL generation logic.
- 
-**Use it at your own risk and extra maintenance!**
 
+**Use it at your own risk and extra maintenance!**
 !!!
 
 :::code source="../gem/apps/enable_rails_page_segment.rb" title="enable_rails_page_segment.rb":::
-  
+
 :::
 ===

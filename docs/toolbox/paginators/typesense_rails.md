@@ -5,6 +5,10 @@ order: 20
 categories:
   - Paginators
   - Search
+nav:
+  badge:
+    text: "NEW"
+    variant: info
 ---
 
 #
@@ -15,9 +19,11 @@ categories:
 
 `:typesense_rails` is a [SEARCH](/guides/choose-right/#search) paginator designed for `Typesense::Rails` results.
 
-#### Configuration
+=== Setup
 
 Ensure `Typesense.configuration[:pagination_backend] == nil`.
+
+=== Usage
 
 +++ Active mode
 
@@ -40,7 +46,6 @@ search = Article.pagy_search(params[:q], to_query)
 +++ Passive Mode
 
 !!!success You search and paginate
-
 Pagy creates its object out of your result.
 !!!
 
@@ -54,7 +59,6 @@ Pagy creates its object out of your result.
 +++
 
 !!!
-
 Search paginators don't query a DB, but use the same positional technique as [:offset](offset.md) paginators, with shared options and readers.
 !!!
 

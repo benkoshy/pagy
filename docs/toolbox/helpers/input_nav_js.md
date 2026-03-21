@@ -16,15 +16,15 @@ categories:
 ---
 
 :::raised
-![input_nav_js](../../assets/images/pagy-input_nav_js.png){width=204}
+![input_nav_js](/assets/images/pagy-input_nav_js.png){width=204}
 
 ---
 
-![input_nav_js(:bootstrap)](../../assets/images/bootstrap-input_nav_js.png){width=178}
+![input_nav_js(:bootstrap)](/assets/images/bootstrap-input_nav_js.png){width=178}
 
 ---
 
-![input_nav_js(:bulma)](../../assets/images/bulma-input_nav_js.png){width=201}
+![input_nav_js(:bulma)](/assets/images/bulma-input_nav_js.png){width=201}
 :::
 <br/>
 
@@ -36,6 +36,8 @@ It is the fastest and lightest navigator, recommended when you care about effici
 
 !!!warning It works with all paginators but `:keyset`
 !!!
+
+=== Usage
 
 ```erb
 <%== @pagy.input_nav_js(**options) %>  <%# default pagy style %>
@@ -63,16 +65,15 @@ require 'pagy/console'
 
 ==- Styles
 
-See [Common Nav Styles](../helpers#common-nav-styles)
+See [Shared Nav Styles](../helpers#shared-nav-styles)
 
 ==- Options
 
-See [Common Nav Options](../helpers#common-nav-options) and [Common URL Options](../paginators#common-url-options)
+See [Helpers Shared Options](../helpers/#shared-options) and [Navs Shared Options](../helpers#navs-shared-options)
 
 ==- Caveats
 
 !!!danger Overriding `*_js` helpers is not recommended
-
 The `*_js` helpers are tightly coupled with the javascript code, so any partial overriding on one side would be quite fragile
 and might break in a next release.
 !!!

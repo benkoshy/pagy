@@ -1,1 +1,1 @@
-&nbsp;&nbsp;[!button variant="info" icon="alert" size="s" corners="pill" text="JavaScript Support Required!"](/resources/javascript)
+&nbsp;&nbsp;[!button variant="info" icon="alert" size="s" corners="pill" text="JavaScript Setup Required!"](/resources/javascript)

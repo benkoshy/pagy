@@ -15,9 +15,7 @@ categories:
 ---
 
 :::raised
-
 <p id="text-only">Displaying items 201-220 of 1000 in total</p>
-
 :::
 <br>
 
@@ -27,6 +25,8 @@ categories:
 
 !!!warning It works with all paginators but `:keyset`
 !!!
+
+=== Usage
 
 ```erb
 <%== @pagy.info_tag(**options) %>
@@ -58,7 +58,9 @@ The method also accepts a few optional keyword arguments:
 `id: 'my-info'`
 : The `id` HTML attribute to the `span` tag wrapping the info.
 
-`item_name: 'Products'` 
+`item_name: 'Products'`
 : The already pluralized string that will be used in place of the default `item/items`
+
+See also [Helpers Shared Options](../helpers/#shared-options)
 
 ===

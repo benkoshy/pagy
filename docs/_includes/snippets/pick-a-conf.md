@@ -9,7 +9,7 @@ The following statement will copy and keep synced the `pagy*` file in your own `
 
 It will become and processed exactly like one of your own files.
 
-```rb [pagy.rb initializer](../toolbox/configuration/initializer)
+```rb [pagy.rb initializer](/toolbox/configuration/initializer)
 # Replace 'pagy*' with the file you picked
 Pagy.sync({{ $.resource }}, Rails.root.join('{{ $.remote_dir }}'), 'pagy*') if Rails.development?
 ```
@@ -18,7 +18,7 @@ Pagy.sync({{ $.resource }}, Rails.root.join('{{ $.remote_dir }}'), 'pagy*') if R
 If you prefer to sync manually or during an automation step, you can define your own task with a single line in the `Rakefile`, or `*.rake` file:
 
 ```rb
-# Pagy::SyncTask.new(resource, destination, *targets) 
+# Pagy::SyncTask.new(resource, destination, *targets)
 # Replace 'pagy*' with the file you picked
 Pagy::SyncTask.new({{ $.resource }}, Rails.root.join('{{ $.remote_dir }}'), 'pagy*')
 ```
@@ -36,7 +36,7 @@ bundle exec rake pagy:sync{{ $.resource }}
 !!!
 
 ```rb
-Rails.application.config.assets.paths << Pagy::ROOT.join('{{ $.resource_dir }}') 
+Rails.application.config.assets.paths << Pagy::ROOT.join('{{ $.resource_dir }}')
 ```
 
 +++
