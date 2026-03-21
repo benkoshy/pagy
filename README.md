@@ -64,7 +64,10 @@ Take a look at the [Examples](#-examples) for a quick overview of the new API.
 
 ### <span style="font-size: .65em; vertical-align: middle">💚</span> v3 was already quite good...
 
-[<img src="assets/images/ips-chart.png" title="~40x Faster!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#ips-benchmark) [<img src="assets/images/memory-chart.png" title="~36x Lighter!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#memory-profile) [<img src="assets/images/objects-chart.png" title="~35x Simpler!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#memory-profile) [<img src="assets/images/resource-consumption-chart.png" title="1,410x More Efficient!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#efficiency-ratio)
+[<img src="assets/images/ips-chart.png" title="~40x Faster!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#ips-benchmark)<br>
+[<img src="assets/images/memory-chart.png" title="~36x Lighter!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#memory-profile)<br>
+[<img src="assets/images/objects-chart.png" title="~35x Simpler!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#memory-profile)<br>
+[<img src="assets/images/resource-consumption-chart.png" title="1,410x More Efficient!" width="500">](https://ddnexus.github.io/pagination-comparison/gems.html#efficiency-ratio)
 
 <br/>
 

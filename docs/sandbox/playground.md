@@ -26,7 +26,7 @@ Bundler automatically installs the required gems during the first run.
 
 !!!
 
-=== Repro App {#repro}
+=== Repro App _(interaction example)_ {#repro}
 
 You can use this app as a starting point to try Pagy or reproduce issues to get support or file bug reports.
 

@@ -29,7 +29,7 @@ If you want to learn more about the changes:
 
 ### Steps
 
->>> Replace the `pagy.rb` config file
+>>> Replace the `pagy.rb` config file...
 
 - Rename your `pagy.rb` initializer as `pagy-old.rb`
 - Add the new [pagy.rb](/toolbox/configuration/initializer) initializer in its place
@@ -38,7 +38,7 @@ If you want to learn more about the changes:
 
 _In the next steps we will use the `pagy-old.rb` as the blueprint to guide most of the changes, and we will edit the new `pagy.rb` as needed._
 
->>> Replace your used extras
+>>> Remove your used extras...
 
 The new version doesn't use the extras anymore. They got integrated in the core code, and a few have been discontinued.
 
@@ -297,7 +297,7 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 ===
 
->>> Final steps
+>>> Update the API...
 
 ==- Search and replace
 
@@ -339,7 +339,7 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 ===
 
->>> Finalize the upgrade
+>>> Finalize the upgrade...
 
 ==- Javascript
 
