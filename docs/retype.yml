@@ -48,10 +48,6 @@ include:
   - "!gem/**/README.md"
   - README.md
 
-edit:
-  repo: https://github.com/ddnexus/pagy
-  branch: master
-
 search:
   mode: full
 
