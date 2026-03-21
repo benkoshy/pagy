@@ -40,6 +40,14 @@ describe 'Pagy::Keyset::Adapters::Sequel Specs' do
       _(keyset).must_equal({})
     end
 
+    it 'extracts the first ordering only' do
+      # The second clause is redundant, however first one should take precedence.
+      host.set = dataset.unordered
+      host.set = PetSequel.order(Sequel.desc(:id), Sequel.asc(:id))
+      keyset   = host.send(:extract_keyset)
+      _(keyset).must_equal({ id: :desc })
+    end
+
     it 'raises TypeError for unsupported order types' do
       # Sequel.lit creates a Sequel::LiteralString, which is not supported
       host.set = dataset.order(Sequel.lit('name DESC'))

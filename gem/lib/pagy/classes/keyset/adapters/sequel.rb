@@ -12,9 +12,9 @@ class Pagy
           @set.opts[:order].each_with_object({}) do |item, keyset|
             case item
             when Symbol
-              keyset[item] = :asc
+              keyset[item] ||= :asc
             when ::Sequel::SQL::OrderedExpression
-              keyset[item.expression] = item.descending ? :desc : :asc
+              keyset[item.expression] ||= (item.descending ? :desc : :asc)
             else
               raise TypeError, "#{item.class.inspect} is not a supported Sequel::SQL::OrderedExpression"
             end
