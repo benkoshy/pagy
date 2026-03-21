@@ -2,9 +2,6 @@
 label: headers_hash
 icon: list-unordered
 order: 190
-categories:
-  - Methods
-  - Helpers
 ---
 
 #

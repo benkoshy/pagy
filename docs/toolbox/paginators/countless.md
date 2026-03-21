@@ -2,8 +2,6 @@
 label: :countless
 icon: move-to-end-24
 order: 90
-categories:
-  - Paginators
 ---
 
 #
@@ -15,7 +13,7 @@ categories:
 `:countless` is an [OFFSET](/guides/choose-right/#offset) paginator that avoids the `COUNT` query, reducing the number of queries per page in half. UI helpers are working with some limitations (see [Caveat](#caveat)).
 
 !!!warning Consider using the `:keynav_js` paginator when possible!
-The [:keynav_js](keynav_js.md) offers identical UI features but utilizes the faster `keyset` pagination.
+The [:keynav_js](keynav_js.md) offers identical UI features but utilizes the faster [KEYSET](/guides/choose-right) pagination.
 !!!
 
 === Usage
@@ -43,6 +41,6 @@ See [Offset Readers](offset#readers)
 
 ==- Caveat
 
-Nav bar links beyond the last or highest visited page are not displayed.
+Nav bar links beyond the highest visited page are not displayed.
 
 ===

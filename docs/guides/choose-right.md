@@ -108,7 +108,7 @@ This hybrid technique filters by a specific time period (Year, Month, Day, etc.)
 
 Pagy supports `ElasticsearchRails`, `Meilisearch`, `Searchkick`, and `TypesenseRails`.
 
-These paginators get the count, limit and results provided by the search platform. Pagy acts as an interface to these underlying gems, using the `:offset` paginator (without its shortcomings).
+The search paginators get the count, limit and results provided by the search platform. Pagy acts as an interface to these underlying gems, using the [OFFSET](#offset) technique, without its shortcomings.
 
 ==- Paginators&nbsp;&nbsp;[!badge variant="contrast" size="xs" corners="pill" text="4"]
 

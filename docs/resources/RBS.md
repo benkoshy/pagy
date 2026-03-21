@@ -23,5 +23,5 @@ Pagy provides a centralized RBS file for the public API. It should give your typ
 ===
 
 !!!warning
-Please report any issue with signatures by opening a [new RBS issue](https://github.com/ddnexus/pagy/issues/new?template=Signatures.yml).
+Please report any issue with signatures by opening a [New RBS Issue](https://github.com/ddnexus/pagy/issues/new?template=Signatures.yml).
 !!!

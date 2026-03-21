@@ -15,7 +15,7 @@ Pagy.sync({{ $.resource }}, Rails.root.join('{{ $.remote_dir }}'), 'pagy*') if R
 ```
 ==- Sync Task
 
-If you prefer to sync manually or during an automation step, you can define your own task with a single line in the `Rakefile`, or `*.rake` file:
+If you prefer to sync manually or during an automation step, you can define your own task with a single line in the `Rakefile`, or any `*.rake` file:
 
 ```rb
 # Pagy::SyncTask.new(resource, destination, *targets)

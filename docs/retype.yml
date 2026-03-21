@@ -55,7 +55,8 @@ backlinks:
   enabled: false
 
 breadcrumb:
-  enabled: false
+  home: Pagy
+  separator: ":icon-arrow-right-24:"
 
 theme:
   base:
@@ -73,5 +74,8 @@ nav:
   icons:
     mode: pages
 
+nextprev:
+  mode: exclude
+
 footer:
-  copyright: "&copy; 2017-{{ date.now.year }} [Domizio Demichelis](https://github.com/ddnexus) - [MIT License](https://opensource.org/licenses/MIT)"
+  copyright: "&copy; 2017-{{ date.now.year }} • [Domizio Demichelis](https://github.com/ddnexus) • [MIT License](https://opensource.org/licenses/MIT)"

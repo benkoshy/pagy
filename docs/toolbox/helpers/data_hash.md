@@ -2,9 +2,6 @@
 label: data_hash
 icon: list-unordered
 order: 200
-categories:
-- Methods
-- Helpers
 ---
 
 #

@@ -10,7 +10,7 @@ order: 90
 
 ---
 
-Allows you to interact with Pagy in an [irb](https://github.com/ruby/irb)/[pry](https://github.com/pry/pry) environment without an app, providing a pre-configured stubbed environment for you.
+Allows you to interact with Pagy in an [irb](https://github.com/ruby/irb) or [pry](https://github.com/pry/pry) environment without an app, providing a pre-configured stubbed environment for you.
 
 You can use a few methods to create a simple collection paginated with the `:offset` paginator or to set the parameters as needed.
 

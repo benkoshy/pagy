@@ -3,10 +3,6 @@ label: series_nav
 icon: code
 order: 170
 image: ""
-categories:
-  - Methods
-  - Navs
-  - Tags
 ---
 
 #

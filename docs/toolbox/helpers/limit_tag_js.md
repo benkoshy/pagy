@@ -3,9 +3,6 @@ label: limit_tag_js
 icon: code-square
 order: 130
 image: ""
-categories:
-  - Methods
-  - Tags
 ---
 
 #

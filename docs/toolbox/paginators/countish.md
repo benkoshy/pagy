@@ -2,8 +2,6 @@
 label: :countish
 icon: move-to-end-24
 order: 95
-categories:
-  - Paginators
 nav:
   badge:
     text: "NEW"
@@ -35,7 +33,7 @@ It **fully** supports all the helpers and navigators.
 
 ==- Options
 
-`:ttl = 180`
+`ttl: 180`
 : A positive number of seconds enables recounting. Set to `nil` (falsey) queries the DB for the COUNT only once, and reuse it for all the other pages served.
 
 !!!warning Recounting/TTL

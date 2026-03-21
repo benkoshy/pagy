@@ -3,9 +3,6 @@ label: info_tag
 icon: code-square
 order: 120
 image: ""
-categories:
-  - Methods
-  - Tags
 ---
 
 #

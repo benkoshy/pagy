@@ -2,9 +2,6 @@
 label: :elasticsearch_rails
 icon: search
 order: 50
-categories:
-  - Paginators
-  - Search
 ---
 
 #

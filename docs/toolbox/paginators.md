@@ -2,8 +2,6 @@
 label: "&nbsp;✳&nbsp;&nbsp;&nbsp;Paginators"
 icon: database
 order: 90
-categories:
-  - Paginators
 ---
 
 #
@@ -30,7 +28,7 @@ You can use it to paginate ANY collection, with ANY technique. For example:
 - `@records` are the records belonging to the requested page.
 
 !!!info
-The `pagy` method expects to find the rack request at `self.request`, however, you can also use pagy [outside controllers or views](/guides/how-to/#use-pagy-outside-controllers-or-views), or even [with a non-rack app](/guides/how-to/#use-pagy-with-non-rack-apps).
+The `pagy` method expects to find the rack request at `self.request`, however, you can also use pagy [outside controllers or views](/guides/how-to/#use-pagy-outside-controllers-or-views), or pass your [:request](#shared-options) option.
 !!!
 
 |||

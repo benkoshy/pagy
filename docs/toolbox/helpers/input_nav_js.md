@@ -3,10 +3,6 @@ label: input_nav_js
 icon: code
 order: 150
 image: ""
-categories:
-  - Methods
-  - Navs
-  - Tags
 ---
 
 #

@@ -2,8 +2,6 @@
 label: "&nbsp;✳&nbsp;&nbsp;&nbsp;Helpers"
 icon: mention
 order: 80
-categories:
-  - Helpers
 ---
 
 #

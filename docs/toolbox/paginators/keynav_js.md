@@ -2,8 +2,6 @@
 label: :keynav_js
 icon: key
 order: 70
-categories:
-  - Paginators
 nav:
   badge:
     text: "NEW"
@@ -108,6 +106,6 @@ When the number of records on a visited page has drastically changed, it would b
 
 ==- Caveat
 
-Nav bar links beyond the last or highest visited page are not displayed.
+Nav bar links beyond the highest visited page are not displayed.
 
 ===

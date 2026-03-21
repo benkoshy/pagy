@@ -2,9 +2,6 @@
 label: urls_hash
 icon: list-unordered
 order: 180
-categories:
-  - Methods
-  - Helpers
 ---
 
 #

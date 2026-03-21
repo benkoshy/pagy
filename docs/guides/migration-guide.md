@@ -10,9 +10,7 @@ order: 80
 
 ---
 
-{{ include "snippets/ask-for-support" }}
-
-This page tries to cover most of the standard changes you will need to make in order to migrate from a legacy pagination.
+This page tries to cover most of the standard changes you will need to make in order to migrate from legacy pagination.
 
 ### Steps
 
@@ -91,3 +89,5 @@ If the previous pagination used custom elements (e.g., custom params, URLs, link
 If the app uses pagination from `Bootstrap` or `Bulma` frameworks, the existing CSS should function seamlessly with Pagy navigation helpers. _(See [Nav Styles](/toolbox/helpers/#shared-nav-styles))_
 !!!
 >>>
+
+{{ include "snippets/ask-for-support" }}

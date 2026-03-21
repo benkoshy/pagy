@@ -21,12 +21,6 @@ Pagy version 43 is a complete redesign of the legacy code. Its improvements make
 Cherry-pick only what applies to your app: you can safely skip all the rest.
 !!!
 
-If you want to learn more about the changes:
-
-- Consult the docs and [How To Guide](how-to)
-- Ask Pagy AI specific questions (with the bottom-right button in this page)
-- Ask in the [Q&A discussion](https://github.com/ddnexus/pagy/discussions/categories/q-a).
-
 ### Steps
 
 >>> Replace the `pagy.rb` config file...
@@ -322,20 +316,20 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 ==- Replace the `:params` variable...
 
-- Use the `:querify` option, which is a `lambda` that can modify the string-keyed params hash at will. It is a bit more verbose, but it's more powerful and low-level. It solves an incompatibility with the old high-level `:params` hash/lambda and improves performance. It is part of the [URL Options](/resources/urls/#url-options) group that gives you full and efficient control over the URL composition.
-- Example:
-  ```ruby
-  # Old symbol-keyed, high-level hash variable
-  params: { a: 1, b: 2 }
-  # New string-keyed, low-level, direct modification of the params hash
-  querify: ->(p) { p.merge!('a' => 1, 'b' => 2) }
-  # It also allows to do things like:
-  querify = ->(p) { p.except!('not_useful').merge!('custom' => 'useful') }
-  ```
+Use the `:querify` option, which is a `lambda` that can modify the string-keyed params hash at will. It is a bit more verbose, but it's more powerful and low-level. It solves an incompatibility with the old high-level `:params` hash/lambda and improves performance. It is part of the [URL Options](/resources/urls/#url-options) group that gives you full and efficient control over the URL composition. For example:
+
+```ruby
+# Old symbol-keyed, high-level hash variable
+params: { a: 1, b: 2 }
+# New string-keyed, low-level, direct modification of the params hash
+querify: ->(p) { p.merge!('a' => 1, 'b' => 2) }
+# It also allows to do things like:
+querify = ->(p) { p.except!('not_useful').merge!('custom' => 'useful') }
+```
 
 ==- Replace the `*prev*` abbreviated naming
 
-- Use `*previous*` in all the options, accessors, methods, etc.
+Use `*previous*` in all the options, accessors, methods, etc.
 
 ===
 
@@ -350,17 +344,16 @@ If your `pagy-old.rb` contains any JavaScript setup, it should still work, so yo
 The CSS for the default pagy helpers have new selectors and variables. See the new [Stylesheets](/resources/stylesheets) to interactively update your custom CSS.
 
 !!!success CSS Frameworks
-
 Supported CSS frameworks (like Bootstrap and Bulma) don't require any change.
-
 !!!
 
 ==- Pagy::I18n and Locale Files
 
-- If your `pagy-old.rb` contains the `Pagy::I18n` setup, and the setup includes some custom dictionary file, then uncomment and set up the relevant `Pagy::I18n` lookup section in the `pagy.rb` file. _(See the [I18n docs](/resources/i18n) for details)_
-- Update your custom dictionary files (if any) to the new [dictionary structure](/resources/i18n/#dictionary-file-example), or they won't work correctly.
-- Besides that, you don't need any line of the old setup, because all the locales are autoloaded when your app uses them.
-- Remove all the I18n code from the `pagy-old.rb`.
+{{ include "snippets/mini-step" step: "•1" }}  If your `pagy-old.rb` contains the `Pagy::I18n` setup, and the setup includes some custom dictionary file, then uncomment and set up the relevant `Pagy::I18n` lookup section in the `pagy.rb` file. _(See the [I18n docs](/resources/i18n) for details)_
+
+{{ include "snippets/mini-step" step: "•2" }}  Update your custom dictionary files (if any) to the new [dictionary structure](/resources/i18n/#dictionary-file-example), or they won't work correctly.
+
+{{ include "snippets/mini-step" step: "•3" }} Remove all the I18n code from the `pagy-old.rb`. All the locales are autoloaded when your app uses them.
 
 ==- Overriding
 
@@ -385,12 +378,14 @@ You may want also to check these internal renaming:
 
 ==- Delete the `pagy-old.rb` file
 
-- At this point, there should be no more code in the `pagy-old.rb`.
+At this point, there should be no more code in the `pagy-old.rb`.
 
 ===
 
 >>>
 
+{{ include "snippets/ask-for-support" }}
+
 !!!warning
-Please report any issue with this guide by opening a [new docs issue](https://github.com/ddnexus/pagy/issues/new?template=Documentation.yml).
+Please report any issue with this guide by opening a [New Docs Issue](https://github.com/ddnexus/pagy/issues/new?template=Documentation.yml).
 !!!

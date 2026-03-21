@@ -2,9 +2,6 @@
 label: :searchkick
 icon: search
 order: 30
-categories:
-  - Paginators
-  - Search
 ---
 
 #

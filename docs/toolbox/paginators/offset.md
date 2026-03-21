@@ -2,8 +2,6 @@
 label: :offset
 icon: move-to-end-24
 order: 100
-categories:
-  - Paginators
 ---
 
 #

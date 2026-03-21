@@ -2,9 +2,6 @@
 label: :typesense_rails
 icon: search
 order: 20
-categories:
-  - Paginators
-  - Search
 nav:
   badge:
     text: "NEW"

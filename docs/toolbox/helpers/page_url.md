@@ -2,9 +2,6 @@
 label: page_url
 icon: diff-renamed
 order: 175
-categories:
-  - Methods
-  - Helpers
 ---
 
 #

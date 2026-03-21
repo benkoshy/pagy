@@ -59,11 +59,11 @@ The query params are strictly string-keyed Hash. This avoids the performance ove
 
 ==- GET
 
-Serving paginated collections is a retrieval action that does not modify data; therefore, it should rely on GET requests. Since most applications follow this standard, Pagy produces GET URLs and helpers out of the box.
+Serving paginated collections is a retrieval action that does not modify data; therefore, it should rely on GET requests. Since most applications follow this standard, Pagy parses and produces GET URLs out of the box.
 
 ==- POST
 
-If you must use POST to retrieve paginated collections, you should build your own POST forms/requests using the data provided by Pagy (e.g., via the `data_hash` helper). However, Pagy parses and handles POST request parameters out of the box without additional configuration.
+If you must use POST to retrieve paginated collections, you should build your own POST forms/requests using the data provided by Pagy _(e.g., via the [data_hash](/toolbox/helpers/data_hash) or [readers](/toolbox/paginators/#shared-readers))_. However, Pagy parses and handles POST request parameters out of the box without additional configuration.
 
 ==- Dynamic Segments
 

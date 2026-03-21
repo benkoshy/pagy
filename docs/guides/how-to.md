@@ -12,8 +12,6 @@ icon: tools
 
 This page provides practical tips and examples to help you to use Pagy efficiently.
 
-You can also [ask the Pagy AI](https://gurubase.io/g/pagy) for instant answers to questions not covered on this page.
-
 ==- Choose the right pagination technique
 
 Check the [Choose Right Guide](choose-right)
@@ -50,7 +48,7 @@ Pagy retrieves the page from the `'page'` request params hash. To force a specif
 
 You can customize the `aria-label` attributes of any `*nav*` helper by providing a `:aria_label` string.
 
-See the [:aria_label](/toolbox/helpers#shared-nav-options) option.
+See the [:aria_label](/toolbox/helpers#navs-shared-options) option.
 
 You can also replace the `pagy.aria_label.nav` strings in the dictionary, as well as the `pagy.aria_label.previous` and the `pagy.aria_label.next`.
 
@@ -490,3 +488,5 @@ If you use the `session` for caching, configure it to use `ActiveRecord`, `Redis
 !!!
 
 ===
+
+{{ include "snippets/ask-for-support" }}

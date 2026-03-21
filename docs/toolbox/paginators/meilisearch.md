@@ -2,9 +2,6 @@
 label: :meilisearch
 icon: search
 order: 40
-categories:
-  - Paginators
-  - Search
 ---
 
 #

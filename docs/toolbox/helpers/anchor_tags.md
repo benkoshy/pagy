@@ -3,9 +3,6 @@ label: anchor_tags
 icon: code-square
 order: 140
 image: ""
-categories:
-  - Methods
-  - Tags
 ---
 
 #

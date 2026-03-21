@@ -12,7 +12,7 @@ order: 60
 
 Since version `7.0.0`, Pagy introduced a consistent set of ARIA-compliant attributes across all its helpers.
 
-=== Nav helpers
+=== :icon-code:&nbsp; Nav helpers
 
 Pagy provides a customizable `aria-label` for the root element of its helpers. It is usually a `nav` element. For the few helper styles that use a different root element, Pagy adds a `role="navigation"` attribute.
 
@@ -29,7 +29,7 @@ The `nav` elements are `landmark  roles` and should be distinctly labeled.
 ```
 !!!
 
-==- Links
+==- :icon-link:&nbsp; Links
 
 Links to the previous and next pages are rendered as "&lt;" and "&gt;" and are aria-labelled as translated `"Previous"` and `"Next"`. You can customize both the link text and the `aria-label` by editing the `pagy.previous`, `pagy.next`, `pagy.aria_label.previous`, and `pagy.aria_label.next` values in the locale files.
 

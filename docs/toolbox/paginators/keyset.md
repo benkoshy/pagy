@@ -2,8 +2,6 @@
 label: :keyset
 icon: key
 order: 80
-categories:
-  - Paginators
 ---
 
 #
