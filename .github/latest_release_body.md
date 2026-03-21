@@ -1,7 +1,7 @@
-### Changes in 43.4.1
+### Changes in 43.4.2
 
 <!-- changes_start -->
-- Normalize deprecations
+- Fix edge-case for queries with multiple orderings on same column (#888)
 <!-- changes_end -->
 
 [CHANGELOG](https://ddnexus.github.io/pagy/changelog)
