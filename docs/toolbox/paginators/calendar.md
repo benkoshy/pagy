@@ -30,19 +30,9 @@ It enables cascade-filtering of the collection by time units _(year, quarter, mo
 !!!warning Avoid using it for sparse datasets with numerous empty pages.
 !!!
 
-```ruby
-  @calendar, @pagy, @records = pagy(:calendar, collection, year: {}, month: {}, offset: {})
-```
+==- Setup
 
-- `@calendar` is a specialized hash that contains the pagy time unit objects (e.g., `:year` and `:month` in this example).
-- `@pagy` is the object representing the current page of records.
-- `@records` is the paginated subset of the collection.
-- The `:year` and `:month` parameters create time unit objects (default options are used in this example).
-- `:offset` is the offset instance that paginates the time-filtered collection.
-
-==- Usage
-
-You must define a few simple methods in your app to configure and coordinate the objects created by the `pagy` method. Se the following examples and comments (adapted from the [Calendar app code](../../sandbox/playground.md/#calendar))
+You must define a few simple methods in your app to configure and coordinate the objects created by the `pagy` method. See the following examples and comments _(adapted from the [Calendar app code](/sandbox/playground/#calendar))_
 
 ```ruby Controller
 # Note: All time values must be instances of ActiveSupport::TimeWithZone.
@@ -59,7 +49,7 @@ def pagy_calendar_filter(collection, from, to)
 end
 
 # OPTIONAL: return the array of counts per time unit
-# If this method is defined, pagy  will add an extra 'empty-page' CSS class 
+# If this method is defined, pagy  will add an extra 'empty-page' CSS class
 # to the links leading to empty pages, along with a title attribute containing information about each page link.
 def pagy_calendar_counts(collection, unit, from, to)
   # If collection is in order: :desc, add the reverse: true option to the next line
@@ -92,6 +82,18 @@ end
 <a href="<%= @calendar.url_at(Time.zone.now) %>">Go to now</a>
 ```
 
+=== Usage
+
+```ruby
+  @calendar, @pagy, @records = pagy(:calendar, collection, year: {}, month: {}, offset: {})
+```
+
+- `@calendar` is a specialized hash that contains the pagy time unit objects (e.g., `:year` and `:month` in this example).
+- `@pagy` is the object representing the current page of records.
+- `@records` is the paginated subset of the collection.
+- The `:year` and `:month` parameters create time unit objects (default options are used in this example).
+- `:offset` is the offset instance that paginates the time-filtered collection.
+
 ==- Calendar Configuration
 
 The calendar configuration defines the calendar objects to be generated. These objects filter the collection by the selected time units.
@@ -99,12 +101,11 @@ The calendar configuration defines the calendar objects to be generated. These o
 You can include one or more Unit levels using keys like `:year`, `:quarter`, `:month`, `:week`, or `:day`. Assign each key a hash of unit options. Use an empty hash for default values, e.g., `year: {}, month: {}, ...`.
 
 !!!warning Option restrictions
-
 Do not try to set `:page`, `:page_key`, `:querify`, or `:period` options manually. These options are handled automatically, so setting them explicitly has no effect.
 
 The `Pagy::OPTIONS` are not applied to the Unit objects.
 !!!
- 
+
 #### The `disabled` flag
 
 <br/>
@@ -113,18 +114,14 @@ The calendar is enabled by default. However, you can include an optional `:disab
 
 ==- Calendar Methods
 
-||| `@calendar.url_at(time_with_zone, **options)`
-
-Returns a URL complete with all parameters for the pages in each filter bar that includes the given time. For example:
+`@calendar.url_at(time, **options)`
+: Returns a URL complete with all parameters for the pages in each filter bar that includes the given time. For example:
     `@calendar.url_at(Time.zone.now)` generates the filter bar URLs pointing to today.
 
-If `time` is outside the pagination range it raises a `Pagy::RangeError`, however you can pass the `fit_time: true` option to avoid the error and get the url to the page closest to the passed time argument (first or last page).
-|||
+  If `time` is outside the pagination range it raises a `Pagy::RangeError`, however you can pass the `fit_time: true` option to avoid the error and get the url to the page closest to the passed time argument (first or last page).
 
-||| `@calendar.showtime`
-
-Displays the time of the smallest time unit currently visible on the calendar.
-|||
+`@calendar.showtime`
+: Displays the time of the smallest time unit currently visible on the calendar.
 
 ==- Unit Options
 
@@ -136,7 +133,7 @@ Displays the time of the smallest time unit currently visible on the calendar.
 
 ==- Offset configuration
 
-This is the optional configuration for the core `:offset` paginator. If omitted a default one will be created. It is always used, regardless of the `:disabled` flag value.
+This is the optional configuration for the core [:offset](offset) paginator. If omitted a default one will be created. It is always used, regardless of the `:disabled` flag value.
 
 It is not subject to the restrictions mentioned in the [Calendar configuration](#calendar-configuration).
 
@@ -153,7 +150,6 @@ Pagy::Calendar.localize_with_rails_i18n_gem(*your_locales)
 ==- Caveats
 
 !!!warning Calendar pages with no records are visible and accessible.
-
 You may want to display a message when `@records.empty?`.
 !!!
 

@@ -6,29 +6,22 @@ order: 80
 
 #
 
-## :icon-file-code-24:&nbsp;&nbsp;JavaScript Support
+## :icon-file-code-24:&nbsp;&nbsp;JavaScript
 
 ---
 
 !!!tip Add the `oj` gem to your gemfile
 It is not a requirement, but if present, the pagy `JSON` generation will be faster.
-
 !!!
 
-<br>
-
-### Setup Steps
-
-<br>
+### Setup
 
 >>> Pick a format...
 
 +++ pagy.mjs
 
 !!!success
-
 Good for apps **with** a minifier _(Sprockets, builers, ...)_
-
 !!!
 
 Make `Pagy` available in your JavaScript environment with...
@@ -40,9 +33,7 @@ import Pagy from "pagy.mjs"
 +++ pagy.min.js
 
 !!!success
-
 Good for apps **without** a minifier _(Propshaft, Importmaps, ...)_
-
 !!!
 
 Make `Pagy` available in your JavaScript environment with...
@@ -50,16 +41,14 @@ Make `Pagy` available in your JavaScript environment with...
 ```erb ERB template / HTML page
 <%= javascript_include_tag "pagy.min.js" ...%>
 
-<!-- or if your app does not provide helpers --> 
+<!-- or if your app does not provide helpers -->
 <script src="/path/to/pagy.min.js"></script>
 ```
 
 +++ pagy.js
 
 !!!warning Good **only** for pagy development / debugging
-
 With inline sourcemap
-
 !!!
 
 +++

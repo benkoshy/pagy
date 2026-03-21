@@ -20,7 +20,6 @@ You can activate them by adding this line in the `<head>` of your layout/page:
 
 {{ include "snippets/run-app" app: "demo" }}
 
-
 #### Pagy Wand
 
 Adjust a few sliders to see the style change in real time, right in your app...
@@ -30,7 +29,7 @@ Adjust a few sliders to see the style change in real time, right in your app...
 - Click on the :icon-question: icon on the Wand for help.
 
 :::raised
-![PagyWand](../assets/images/dev-tools.png){width=450}
+![PagyWand](/assets/images/dev-tools.png){width=450}
 :::
 
 <br>
@@ -38,7 +37,7 @@ Adjust a few sliders to see the style change in real time, right in your app...
 Watch the Pagy wand [demo video](https://youtu.be/GhhNRrVG9jg):
 
 :::raised
-[![](../assets/images/pagy-wand-demo-screenshot.png){width=450}](https://youtu.be/GhhNRrVG9jg)
+[![](/assets/images/pagy-wand-demo-screenshot.png){width=450}](https://youtu.be/GhhNRrVG9jg)
 :::
 
 <br>

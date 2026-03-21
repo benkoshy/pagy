@@ -15,11 +15,12 @@ categories:
 `:countless` is an [OFFSET](/guides/choose-right/#offset) paginator that avoids the `COUNT` query, reducing the number of queries per page in half. UI helpers are working with some limitations (see [Caveat](#caveat)).
 
 !!!warning Consider using the `:keynav_js` paginator when possible!
-
 The [:keynav_js](keynav_js.md) offers identical UI features but utilizes the faster `keyset` pagination.
 !!!
 
-```ruby Controller 
+=== Usage
+
+```ruby Controller
 @pagy, @records = pagy(:countless, collection, **options)
 ```
 

@@ -18,6 +18,14 @@ categories:
 !!!success It works with all paginators
 !!!
 
+=== Usage
+
+```ruby Console
+@pagy.page_url(:next)
+@pagy.page_url(23, page_key: 'custom_page')
+...
+```
+
 ==- Examples
 
 ```ruby Console
@@ -57,6 +65,6 @@ require 'pagy/console'
 
 ==- Options
 
-See [Common URL Options](../paginators#common-url-options)
+See [Helpers Shared Options](../helpers/#shared-options)
 
 ===

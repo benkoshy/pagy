@@ -1968,7 +1968,6 @@ Dropped `pagy_serialized`, `pagy_apply_init_tag` and `PagyInit` javascript names
 - [2a90e6a](http://github.com/ddnexus/pagy/commit/2a90e6a): stop following the GitFlow conventions (extra complexity for no advantage for this project; too many merge commits; history difficult to follow)
 - [198883c](http://github.com/ddnexus/pagy/commit/198883c): Fix legacy changelog url (#144)
 
-
 ### Version 2.1.2
 
 ### Changes
@@ -2216,7 +2215,6 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [a64a8bd](http://github.com/ddnexus/pagy/commit/a64a8bd): fix for items test
 - [e9ab4a1](http://github.com/ddnexus/pagy/commit/e9ab4a1): renamed argument items > fetched; removed redundant assignation
 
-
 ### Version 1.2.1
 
 ### Changes
@@ -2420,7 +2418,6 @@ The pagy initializer has changed: please replace/update it: [pagy.rb](https://gi
 - [6414395](https://github.com/ddnexus/pagy/commit/6414395): added GoRails screencast link to README
 - [a8ad399](https://github.com/ddnexus/pagy/commit/a8ad399): docs fixes and improvements
 - [435e849](https://github.com/ddnexus/pagy/commit/435e849): updated docs
-
 
 ### Version 0.19.0
 

@@ -1,9 +1,9 @@
 ---
 label: Upgrade to 43
 icon: check-circle
-order: 80
+order: 70
 nav:
-  badge: 
+  badge:
     icon: arrow-right
     text: "43"
     variant: info
@@ -18,9 +18,7 @@ nav:
 Pagy version 43 is a complete redesign of the legacy code. Its improvements make pagination a lot simpler and powerful, but require a quite different way to use it.
 
 !!!success Follow this guide to upgrade your app in just a few minutes.
-
 Cherry-pick only what applies to your app: you can safely skip all the rest.
-
 !!!
 
 If you want to learn more about the changes:
@@ -29,10 +27,12 @@ If you want to learn more about the changes:
 - Ask Pagy AI specific questions (with the bottom-right button in this page)
 - Ask in the [Q&A discussion](https://github.com/ddnexus/pagy/discussions/categories/q-a).
 
+### Steps
+
 >>> Replace the `pagy.rb` config file
 
 - Rename your `pagy.rb` initializer as `pagy-old.rb`
-- Add the new [pagy.rb](../toolbox/configuration/initializer) initializer in its place
+- Add the new [pagy.rb](/toolbox/configuration/initializer) initializer in its place
 - Cut/remove the `Pagy::DEFAULT[...]` lines from `pagy-old.rb` and paste/add them to `pagy.rb`
 - Replace all the `Pagy::DEFAULT[...]` entries with `Pagy::OPTIONS[...]` in `pagy.rb`
 
@@ -42,7 +42,7 @@ _In the next steps we will use the `pagy-old.rb` as the blueprint to guide most 
 
 The new version doesn't use the extras anymore. They got integrated in the core code, and a few have been discontinued.
 
-- Search any active `require 'pagy/extras/*` in the `pagy-old.rb` file
+- Search any active `require 'pagy/extras/*` in the `pagy-old.rb` file...
 - When you find one, follow the specific section below to upgrade your code.
 - As you proceed, remove each entry from the `pagy-old.rb`.
 
@@ -269,13 +269,13 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 ==- `standalone`
 
-- Replace the `:url` variable with the `:request` [Common option](../toolbox/paginators/#common-options) hash. For example:
+- Replace the `:url` variable with the `:request` [Shared option](/toolbox/paginators//#shared-options) hash. For example:
 
   ```ruby
   request: { base_url: 'http://www.example.com',
              path:     '/path',
-             params:   { 'param1' => 1234 }, # The string-keyed hash params from the request 
-             cookie:   'xyz' }               # The 'pagy' cookie, only for keynav  
+             params:   { 'param1' => 1234 }, # The string-keyed hash params from the request
+             cookie:   'xyz' }               # The 'pagy' cookie, only for keynav
   ```
 
 ==- `i18n`
@@ -307,7 +307,7 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 |--------------------------------------|------------------------------------|
 | `include Pagy::Backend`              | `include Pagy::Method`             |
 | `include Pagy::Frontend`             | _(remove: integrated)_             |
-| `pagy_nav(@pagy, ...)`               | `@pagy.series_nav(...)`            | 
+| `pagy_nav(@pagy, ...)`               | `@pagy.series_nav(...)`            |
 | `Pagy.root.`                         | `Pagy::ROOT.`                      |
 | `page_param: :...` _(symbol value)_  | `page_key: '...'` _(string value)_ |
 | `pagy_info(@pagy, ...)`              | `@pagy.info_tag(...)`              |
@@ -322,13 +322,13 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 ==- Replace the `:params` variable...
 
-- Use the `:querify` option, which is a `lambda` that can modify the string-keyed params hash at will. It is a bit more verbose, but it's more powerful and low-level. It solves an incompatibility with the old high-level `:params` hash/lambda and improves performance. It is part of the [Common URL Options](../toolbox/paginators#common-url-options) group that gives you full and efficient control over the URL composition.
+- Use the `:querify` option, which is a `lambda` that can modify the string-keyed params hash at will. It is a bit more verbose, but it's more powerful and low-level. It solves an incompatibility with the old high-level `:params` hash/lambda and improves performance. It is part of the [URL Options](/resources/urls/#url-options) group that gives you full and efficient control over the URL composition.
 - Example:
   ```ruby
   # Old symbol-keyed, high-level hash variable
-  params: { a: 1, b: 2 } 
+  params: { a: 1, b: 2 }
   # New string-keyed, low-level, direct modification of the params hash
-  querify: ->(p) { p.merge!('a' => 1, 'b' => 2) } 
+  querify: ->(p) { p.merge!('a' => 1, 'b' => 2) }
   # It also allows to do things like:
   querify = ->(p) { p.except!('not_useful').merge!('custom' => 'useful') }
   ```
@@ -343,11 +343,11 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 ==- Javascript
 
-If your `pagy-old.rb` contains any JavaScript setup, it should still work, so you can move it to the `pagy.rb` file, however, for apps with builders, consider using the new [Pagy.sync_javascript](../resources/javascript/#pick-a-configuration) and removing all the old entries from your JavaScript config files.
+If your `pagy-old.rb` contains any JavaScript setup, it should still work, so you can move it to the `pagy.rb` file, however, for apps with builders, consider using the new [Pagy.sync_javascript](/resources/javascript/#pick-a-configuration) and removing all the old entries from your JavaScript config files.
 
 ==- Stylesheets
 
-The CSS for the default pagy helpers have new selectors and variables. See the new [Stylesheets](../resources/stylesheets) to interactively update your custom CSS.
+The CSS for the default pagy helpers have new selectors and variables. See the new [Stylesheets](/resources/stylesheets) to interactively update your custom CSS.
 
 !!!success CSS Frameworks
 
@@ -357,8 +357,8 @@ Supported CSS frameworks (like Bootstrap and Bulma) don't require any change.
 
 ==- Pagy::I18n and Locale Files
 
-- If your `pagy-old.rb` contains the `Pagy::I18n` setup, and the setup includes some custom dictionary file, then uncomment and set up the relevant `Pagy::I18n` lookup section in the `pagy.rb` file. _(See the [I18n docs](../resources/i18n) for details)_
-- Update your custom dictionary files (if any) to the new [dictionary structure](../resources/i18n/#dictionary-file-example), or they won't work correctly.
+- If your `pagy-old.rb` contains the `Pagy::I18n` setup, and the setup includes some custom dictionary file, then uncomment and set up the relevant `Pagy::I18n` lookup section in the `pagy.rb` file. _(See the [I18n docs](/resources/i18n) for details)_
+- Update your custom dictionary files (if any) to the new [dictionary structure](/resources/i18n/#dictionary-file-example), or they won't work correctly.
 - Besides that, you don't need any line of the old setup, because all the locales are autoloaded when your app uses them.
 - Remove all the I18n code from the `pagy-old.rb`.
 
@@ -366,7 +366,7 @@ Supported CSS frameworks (like Bootstrap and Bulma) don't require any change.
 
 - Overriding methods in controllers/helpers is not possible or discouraged.
 - The cleanest approach for local overriding is via Ruby refinements or the initializer for global override.
-- Check the [How To Override Pagy Methods](../guides/how-to/#override-pagy-methods).
+- Check the [How To Override Pagy Methods](/guides/how-to/#override-pagy-methods).
 - If your `pagy-old.rb` contains overridden methods, copy the methods over to the `pagy.rb` initializer, however, consider that:
   - Internal Pagy protected methods have been extensively refactored, likely renamed, and occasionally removed.
   - You should reconcile internal overrides by reviewing the updated Pagy codebase.
@@ -388,11 +388,9 @@ You may want also to check these internal renaming:
 - At this point, there should be no more code in the `pagy-old.rb`.
 
 ===
- 
+
 >>>
 
 !!!warning
-
 Please report any issue with this guide by opening a [new docs issue](https://github.com/ddnexus/pagy/issues/new?template=Documentation.yml).
-
 !!!

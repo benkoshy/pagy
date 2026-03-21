@@ -2,7 +2,7 @@
 label: :offset
 icon: move-to-end-24
 order: 100
-categories: 
+categories:
   - Paginators
 ---
 
@@ -14,18 +14,18 @@ categories:
 
 `:offset` is a generic [OFFSET](/guides/choose-right/#offset) paginator usable with ORM collections or regular `Array` objects.
 
-!!!warning Consider using the `:countish` paginator when possible!
-
-The [:countish](countish.md) offers identical UI features but it's faster.
-
-!!!
-
 It uses the complete [OFFSET](/guides/choose-right/#offset) pagination technique, which triggers two SQL queries per request:
 
 - a `COUNT` query to get the count
 - an `OFFSET` + `LIMIT` query to get the records
 
 It **fully** supports all the helpers and navigators.
+
+!!!warning Consider using the `:countish` paginator when possible!
+The [:countish](countish.md) paginator offers identical UI features, but it's up to 2x faster.
+!!!
+
+=== Usage
 
 ```ruby Controller
 @pagy, @records = pagy(:offset, collection, **options)
@@ -42,7 +42,7 @@ It **fully** supports all the helpers and navigators.
 `raise_range_error: true`
 : Enable the `Pagy::RangeError` (which is otherwise rescued to an empty page by default).
 
-See also [Common Options](../paginators#common-options)
+See also [Paginators Shared Options](../paginators/#shared-options)
 
 ==- Readers
 
@@ -74,15 +74,15 @@ See also [Common Options](../paginators#common-options)
 : The number of pages.
 
 `records`
-: The fetched records for the current page.  
+: The fetched records for the current page.
 
-See also [Common Readers](../paginators#common-readers)
+See also [Paginators Shared Readers](../paginators#shared-readers)
 
 ==- Exceptions
 
 `Pagy::RangeError`
-: A subclass of [`Pagy::OptionError`](/toolbox/paginators/#common-exceptions) raised when the `raise_range_error: true` option is enabled.
+: A subclass of [`Pagy::OptionError`](/toolbox/paginators/#shared-exceptions) raised when the `raise_range_error: true` option is enabled.
 
-See also [Common Exceptions](../paginators#common-exceptions)
+See also [Paginator Shared Exceptions](../paginators#shared-exceptions)
 
 ===

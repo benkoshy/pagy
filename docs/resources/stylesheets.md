@@ -6,7 +6,7 @@ image: ""
 
 ---
 
-#  
+#
 
 ## :icon-file-24:&nbsp;&nbsp;Stylesheets
 
@@ -15,14 +15,12 @@ image: ""
 Pagy includes a couple of CSS files and the tools to integrate with your app's themes _interactively_.
 
 !!!warning
-
 You don't need any stylesheets if you use the pagy `:bootstrap` or `:bulma` helpers and styles.
-
 !!!
 
 <br>
 
-### Setup Steps
+### Setup
 
 <br>
 
@@ -31,33 +29,30 @@ You don't need any stylesheets if you use the pagy `:bootstrap` or `:bulma` help
 +++ pagy.css
 
 !!!success
-
 Good for any app
-
 !!!
 
 ==- CSS Source
 
 :::code source="/gem/stylesheets/pagy.css" title="pagy.css":::
- 
+
 ===
 
 +++ pagy-tailwind.css
 
 !!!warning Good only for apps using tailwind
-
 !!!
- 
+
 ==- CSS Source
 
 :::code source="/gem/stylesheets/pagy-tailwind.css" title="pagy-tailwind.css":::
-  
+
 ===
 
 +++
 
 {{ include "snippets/pick-a-conf" resource: ":stylesheet" resource_dir: "stylesheets" remote_dir: "app/stylesheets" }}
-   
+
 >>> Customize the style...
 
 Add this line to any template `<head>`...
@@ -66,10 +61,10 @@ Add this line to any template `<head>`...
 <%== Pagy.dev_tools %>
 ```
 
-and adjust a few sliders to see the change in real time, right in your app, with the [Pagy Wand](../sandbox/dev_tools)
+and adjust a few sliders to see the change in real time, right in your app, with the [Pagy Wand](/sandbox/dev_tools)
 
 :::raised
-![PagyWand](../assets/images/dev-tools.png){width=300}
+![PagyWand](/assets/images/dev-tools.png){width=300}
 :::
 
 >>>
@@ -87,11 +82,9 @@ To ensure a minimalistic valid output, complete with all the [ARIA attributes](A
 <br/>
 
 !!!tip
-
 - You can target the `gap` with `.pagy a:[role="separator"]`
 - You can target the previous and next links by using `.pagy a:first-child` and `.pagy a:last-child` pseudo classes
 - Check the stylesheet comments to target other specific elements.
-
 !!!
 
 ==- RTL

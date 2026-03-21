@@ -21,21 +21,21 @@ Check the [Choose Right Guide](choose-right)
 ==- Control the items per page
 
 Fixed
-: Use the `:limit` option to set the number of items to serve with each page. _(See [Common Options](../toolbox/paginators#common-options))_
+: Use the `:limit` option to set the number of items to serve with each page. _(See [Paginators Shared Options](/toolbox/paginators/#shared-options))_
 
-Requestable 
-: Use the `:limit` option combined with the `:client_max_limit` option, allowing the client to request a variable `:limit` up to the specified `:client_max_limit`. _(See [Common Options](../toolbox/paginators#common-options))_
+Requestable
+: Use the `:limit` option combined with the `:client_max_limit` option, allowing the client to request a variable `:limit` up to the specified `:client_max_limit`. _(See [Paginators Shared Options](/toolbox/paginators/#shared-options))_
 
 Interactive
-: Use the [limit_tag_js](../toolbox/helpers/limit_tag_js) helper to provide a UI selector to the user.
+: Use the [limit_tag_js](/toolbox/helpers/limit_tag_js) helper to provide a UI selector to the user.
 
 ==- Control the pagination bar
 
-Pagy provides [series_nav](../toolbox/helpers/series_nav) and [series_nav_js](../toolbox/helpers/series_nav_js) helpers for displaying a pagination bar.
+Pagy provides [series_nav](/toolbox/helpers/series_nav) and [series_nav_js](/toolbox/helpers/series_nav_js) helpers for displaying a pagination bar.
 
 You can customize the number and position of page links in the navigation bar using:
 
-- The [:slots and :compact options](../toolbox/helpers/series_nav#options).
+- The [:slots and :compact options](/toolbox/helpers/series_nav#options).
 - Overriding the `series` method for full control over the pagination bar
 
 ==- Force the `:page`
@@ -50,11 +50,11 @@ Pagy retrieves the page from the `'page'` request params hash. To force a specif
 
 You can customize the `aria-label` attributes of any `*nav*` helper by providing a `:aria_label` string.
 
-See the [:aria_label](../toolbox/helpers#common-nav-options) option.
+See the [:aria_label](/toolbox/helpers#shared-nav-options) option.
 
 You can also replace the `pagy.aria_label.nav` strings in the dictionary, as well as the `pagy.aria_label.previous` and the `pagy.aria_label.next`.
 
-See [ARIA](../resources/ARIA).
+See [ARIA](/resources/ARIA).
 
 ==- Customize the page and limit URL keys
 
@@ -63,7 +63,7 @@ By default, Pagy retrieves the page from the request params hash and generates U
 - Set `page_key: 'custom_page'` to customize URL generation, e.g., `?custom_page=3`.
 - Set the `:limit_key` to customize the `limit` param the same way.
 
-See [Common URL Options](../toolbox/paginators#common-url-options)
+See [URL Options](/resources/urls#url-options)
 
 ==- Paginate with JSON:API nested URLs
 
@@ -76,19 +76,19 @@ Enable `jsonapi: true`, optionally providing `:page_key` and `:limit_key`:
 
 ==- Customize the URL query
 
-See the [:querify Option](../toolbox/paginators#common-url-options)
+See the [:querify Option](/resources/urls#url-options)
 
 ==- Add a URL fragment
 
-Use the [:fragment](../toolbox/paginators#common-url-options) option.
+See the [URL Options](/resources/urls#url-options)
 
 ==- Add HTML attributes to the anchor tags (links)
 
-Use the [:anchor_string](../toolbox/helpers#common-options). It's especially useful for adding `data-turbo-*` or `data-*` Stimulus attributes.
+Use the [:anchor_string](/toolbox/helpers/#shared-options). It's especially useful for adding `data-turbo-*` or `data-*` Stimulus attributes.
 
 ==- Customize CSS styles
 
-Pagy includes different formats of [stylesheets](../resources/stylesheets) for customization, as well as styled `nav` tags for `:bootstrap` and `:bulma`.
+Pagy includes different formats of [stylesheets](/resources/stylesheets) for customization, as well as styled `nav` tags for `:bootstrap` and `:bulma`.
 
 You can also override the specific helper method.
 
@@ -107,7 +107,7 @@ The `input_nav_js` and `limit_tag_js` use inline style attributes. You can overr
 - Identify the method file's path in the gem `lib` dir (e.g., 'pagy/...').
 - Note the name of the module where it is defined (e.g., `Pagy::...`).
 
-Copy and paste the original method in the [Pagy Initializer](../toolbox/configuration/initializer)
+Copy and paste the original method in the [Pagy Initializer](/toolbox/configuration/initializer)
 
 ```ruby pagy.rb (initializer)
 require 'pagy/...' # path to the overridden method file
@@ -118,7 +118,7 @@ module MyOverridingModule # wrap it with your arbitrarily named module
     # Custom logic here...
   end
 end
-# prepend your module to the overridden module 
+# prepend your module to the overridden module
 Pagy::AnyModule.prepend MyOverridingModule
 ```
 
@@ -136,7 +136,7 @@ Pagy works seamlessly with `ActiveRecord` collections, but certain collections m
 
 === Grouped collections
 
-For better performance of grouped counts, you may want to use the [:count_over](../toolbox/paginators/offset#options) option
+For better performance of grouped counts, you may want to use the [:count_over](/toolbox/paginators/offset#options) option
 
 === Decorated collections
 
@@ -175,7 +175,7 @@ q = Person.ransack(params[:q])
 
 === PostgreSQL Collections
 
-[Always ensure your collections are ordered!](../toolbox/paginators#troubleshooting)
+[Always ensure your collections are ordered!](/toolbox/paginators#troubleshooting)
 
 :::
 
@@ -183,34 +183,34 @@ q = Person.ransack(params[:q])
 
 Explore the following options:
 
-- [:keyset paginator](../toolbox/paginators/keyset)
-- [headers_hash helper](../toolbox/helpers/headers_hash)
-- [:client_max_limit option](../toolbox/paginators#common-options)
-- [:jsonapi option](../toolbox/paginators#common-options)
+- [:keyset paginator](/toolbox/paginators/keyset)
+- [headers_hash helper](/toolbox/helpers/headers_hash)
+- [:client_max_limit option](/toolbox/paginators/#shared-options)
+- [:jsonapi option](/toolbox/paginators/#shared-options)
 
 ==- Paginate for Javascript Frameworks
 
-You can send selected `@pagy` instance data to the client as JSON using the [data_hash](../toolbox/helpers/data_hash) helper, including pagination metadata in your JSON response.
+You can send selected `@pagy` instance data to the client as JSON using the [data_hash](/toolbox/helpers/data_hash) helper, including pagination metadata in your JSON response.
 
 ==- Paginate search platform results
 
 See these paginators:
 
-- [elasticsearch_rails](../toolbox/paginators/elasticsearch_rails)
-- [meilisearch](../toolbox/paginators/meilisearch)
-- [searchkick](../toolbox/paginators/searchkick)
-- [typesense_rails](../toolbox/paginators/typesense_rails)
+- [elasticsearch_rails](/toolbox/paginators/elasticsearch_rails)
+- [meilisearch](/toolbox/paginators/meilisearch)
+- [searchkick](/toolbox/paginators/searchkick)
+- [typesense_rails](/toolbox/paginators/typesense_rails)
 
 ==- Paginate by date
 
-Use the [:calendar](../toolbox/paginators/calendar) paginator for pagination filtering by calendar time units (e.g., year, quarter, month, week, day).
+Use the [:calendar](/toolbox/paginators/calendar) paginator for pagination filtering by calendar time units (e.g., year, quarter, month, week, day).
 
 ==- Paginate multiple independent collections
 
 When you need to paginate multiple collections in a single request, you need to explicitly differentiate the pagination objects. Here are some common methods to achieve this:
-    
+
 :::
-=== {{ include "snippets/mini-step" step: "A" }} Override the request path
+=== :icon-light-bulb:&nbsp; Override the request path
 
 <br/>
 
@@ -231,7 +231,7 @@ end
 <!-- Pagination links of `/bars?page=2` etc. -->
 ```
 
-=== {{ include "snippets/mini-step" step: "B" }} Use separate turbo frames actions
+=== :icon-light-bulb:&nbsp; Use separate turbo frames actions
 
 <br/>
 
@@ -250,7 +250,7 @@ If you're using [hotwire](https://hotwired.dev/) ([turbo-rails](https://github.c
 <%= turbo_frame_tag "good_movies", src: good_movies_path  do %>
 <%= render "movies_table", locals: {movies: @movies}%>
 <%== @pagy.series_nav %>
-<% end %>   
+<% end %>
 ```
 
 ```rb Controller Action
@@ -260,12 +260,12 @@ end
 
 def bad
   @pagy, @movies = pagy(:offset, Movie.bad, limit: 5)
-end 
+end
 ```
 
 Consider [Benito Serna's implementation of turbo-frames (on Rails) using search forms with the Ransack gem](https://bhserna.com/building-data-grid-with-search-rails-hotwire-ransack.html) along with a corresponding [demo app](https://github.com/bhserna/dynamic_data_grid_hotwire_ransack) for a similar implementation of the above logic.
 
-=== {{ include "snippets/mini-step" step: "C" }} Use the root_key option
+=== :icon-light-bulb:&nbsp; Use the root_key option
 
 <br/>
 
@@ -279,7 +279,7 @@ def index
 end
 ```
 
-=== {{ include "snippets/mini-step" step: "D" }} Use different page keys
+=== :icon-light-bulb:&nbsp; Use different page keys
 
 <br/>
 
@@ -297,7 +297,7 @@ end
 
 ==- Paginate only max_pages, regardless of the count
 
-See [:max_pages](../toolbox/paginators#common-options) option.
+See [:max_pages](/toolbox/paginators/#shared-options) option
 
 ==- Paginate collections with metadata
 
@@ -332,21 +332,21 @@ Unlike other gems, Pagy does not decide for you that the nav of a single page of
 
 Check out these paginators:
 
-- [:countish](../toolbox/paginators/countish)
-- [:countless](../toolbox/paginators/countless)
-- [:keyset](../toolbox/paginators/keyset)
-- [:keynav_js](../toolbox/paginators/keynav_js)
+- [:countish](/toolbox/paginators/countish)
+- [:countless](/toolbox/paginators/countless)
+- [:keyset](/toolbox/paginators/keyset)
+- [:keynav_js](/toolbox/paginators/keynav_js)
 
 ==- Maximize Performance
 
 - Consider the paginators:
-  - [:countish](../toolbox/paginators/countish)
-  - [:countless](../toolbox/paginators/countless)
-  - [:keyset](../toolbox/paginators/keyset)
-  - [:keynav_js](../toolbox/paginators/keynav_js)
+  - [:countish](/toolbox/paginators/countish)
+  - [:countless](/toolbox/paginators/countless)
+  - [:keyset](/toolbox/paginators/keyset)
+  - [:keynav_js](/toolbox/paginators/keynav_js)
 - Consider the  helpers:
-  - [series_nav_js](../toolbox/helpers/series_nav_js) 
-  - [series_nav_js](../toolbox/helpers/input_nav_js) 
+  - [series_nav_js](/toolbox/helpers/series_nav_js)
+  - [series_nav_js](/toolbox/helpers/input_nav_js)
 
 ==- Ignore Brakeman UnescapedOutputs false positives warnings
 
@@ -391,7 +391,7 @@ rescue_from Pagy::OptionError do |exception|
 end
 ```
 
-See [common exceptions](../toolbox/paginators/#common-exceptions) for details.
+See [paginator Shared Exceptions](/toolbox/paginators/#shared-exceptions) for details.
 
 ==- Test with Pagy
 
@@ -401,8 +401,7 @@ See [common exceptions](../toolbox/paginators/#common-exceptions) for details.
 ==- Using your pagination templates
 
 !!!warning Warning!
-
-The pagy nav helpers are not only a lot faster than templates, but accept dynamic arguments and comply with ARIA and I18n standards. 
+The pagy nav helpers are not only a lot faster than templates, but accept dynamic arguments and comply with ARIA and I18n standards.
 
 Using your own templates is possible, but it's likely just reinventing a slower wheel.
 !!!
@@ -416,7 +415,7 @@ require "pagy/toolbox/helpers/support/a_lambda"
 
 Here is a static example that doesn't use any other helper nor dictionary file for the sake of simplicity, however, feel free to add your dynamic options and use any helper and dictionary entries as you need:
 
-:::code source="../assets/nav.html.erb" :::
+:::code source="/assets/nav.html.erb" :::
 
 You can use it as usual: just remember to pass the `:pagy` local set to the `@pagy` object:
 
@@ -425,17 +424,18 @@ You can use it as usual: just remember to pass the `:pagy` local set to the `@pa
 ```
 
 !!!
-
 You may want to look at the actual output interactively by running:
+
 ```sh
 pagy demo
 ```
+
 ...and point your browser to  http://127.0.0.1:8000/template
 !!!
 
 ==- Use Pagy with non-rack apps
 
-For non-rack environments that don't respond to the request method, you should pass the [:request](../toolbox/paginators#common-options) option to the paginator.
+For non-rack environments that don't respond to the request method, you should pass the [:request](/toolbox/paginators/#shared-options) option to the paginator.
 
 ==- Use `pagy` outside controllers or views
 

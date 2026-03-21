@@ -17,25 +17,12 @@ The `@pagy` instance provides all the helpers to use in your code.
 Its class is determined by the paginator used, but you can safely ignore it.
 
 !!!success The `@pagy` helpers are autoloaded only if used!
-
 Unused code consumes no memory.
 !!!
 
-==- Common Options
+==- Shared Nav Styles
 
-!!!success Helpers can inherit and override options
-
-See also [Options](configuration/options)
-!!!
-
-||| `anchor_string: 'data-turbo-frame="paginate"'`
-
-Concatenate a verbatim raw string to the internal HTML of the anchor tags. It must contain properly formatted HTML attributes. It's not suitable for `*_hash` helpers.
-|||
-
-==- Common Nav Styles
-
-`:pagy/nil` 
+`:pagy/nil`
 : Pagy default style
 
 `:bootstrap`
@@ -44,13 +31,24 @@ Concatenate a verbatim raw string to the internal HTML of the anchor tags. It mu
 `:bulma`
 : Set `classes: 'pagination is-small any-class'` style option to override the default `'pagination'` classes.
 
-==- Common Nav Options
+==- Shared Options
+
+!!! Helpers may add and document specific [Options](configuration/options).
+!!!
+
+:icon-crosshairs-24:&nbsp; URL Options
+: See [URL Options](/resources/urls#url-options)
+
+`anchor_string: 'data-turbo-frame="paginate"'`
+: Concatenate a verbatim raw string to the internal HTML of the anchor tags. It must contain properly formatted HTML attributes. It's not suitable for `*_hash` helpers.
+
+==- Navs Shared Options
 
 `id: 'my-nav'`
 : Set the `id` HTML attribute of the `nav` tag.
 
 `aria_label: 'My Label'`
-: Override the default `pagy.aria_label.nav` string of the `aria-label` attribute.<br/>See [ARIA](../resources/aria.md)
+: Override the default `pagy.aria_label.nav` string of the `aria-label` attribute.<br/>See [ARIA](/resources/aria.md)
 
   !!!danger The `nav` elements are `landmark  roles`, and should be distinctly labeled!
 

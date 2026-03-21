@@ -4,7 +4,7 @@ icon: accessibility
 order: 60
 ---
 
-#    
+#
 
 ## :icon-accessibility-24:&nbsp;&nbsp;ARIA Attributes
 
@@ -19,18 +19,14 @@ Pagy provides a customizable `aria-label` for the root element of its helpers. I
 The default string for the `aria-label` of the root element is "Page" / "Pages" (translated and pluralized according to the total number of pages). This is arguably a better description of the navigation content than just "Pagination" (which is also difficult to translate in certain languages).
 
 !!!danger Don't rely on ARIA default with multiple nav elements!
-
 The `nav` elements are `landmark  roles` and should be distinctly labeled.
-
 !!!
 
 !!!success Override the default `:aria_label`s for multiple navs with distinct values!
-
 ```erb
 <%# Explicitly set the aria_label %>
 <%== @pagy.series_nav(aria_label: 'Search result pages') %>
 ```
-
 !!!
 
 ==- Links
@@ -40,11 +36,11 @@ Links to the previous and next pages are rendered as "&lt;" and "&gt;" and are a
 Page links do not include an `aria-label` attribute because their text is a simple number (read by screen readers in the user's native language), making an explicit attribute redundant and inefficient.
 
 Disabled links include the `aria-disabled="true"` attribute.
- 
+
 The current page is marked with the `aria-current="page"` attribute.
- 
+
 The `role="link"` attribute is applied to link elements in styles that lack an `a` tag or a `href` attribute.
- 
+
 The `role="separator"` is applied to the `:gap`.
 
 ===

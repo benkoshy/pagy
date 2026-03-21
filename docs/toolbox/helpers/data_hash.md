@@ -18,10 +18,12 @@ categories:
 !!!success It works with all paginators
 !!!
 
+=== Usage
+
 ```ruby Controller
 @pagy, @records = pagy(:offset, collection, **options)
 pagy_hash       = @pagy.data_hash(data_keys: %i[page previous next previous_url next_url ...])
-#=> { page: 3, previous: 2, next: 4, previous_url: ... } 
+#=> { page: 3, previous: 2, next: 4, previous_url: ... }
 render json: { data: @records, pagy: pagy_hash }
 ```
 
@@ -43,7 +45,7 @@ require 'pagy/console'
 `data_keys = %i[...]`
 : For efficiency, always set the `:data_keys` option to restrict the output to ONLY the keys you need among the default list:
   - `:count`
-  - `current_url`
+  - `:current_url`
   - `:first_url`
   - `:from`
   - `:in`
@@ -60,10 +62,10 @@ require 'pagy/console'
   - `:previous_url`
   - `:to`
   - `:url_template`
-  
+
   Notice that you can also add other pagy method names not included in the default list (see [this discussion](https://github.com/ddnexus/pagy/discussions/812) for an example)
 
-See also [Common URL Options](../paginators#common-url-options)
+See also [Helpers Shared Options](../helpers/#shared-options)
 
 ==- Usage of `:url_template`
 
@@ -79,7 +81,6 @@ pageUrl = url_template.replace("P ", '123')
 ```
 
 !!!warning You may not need it for simple cases!
-
 Consider using the available `:*_url` data_keys directly instead of relying on the `:url_template`.
 !!!
 

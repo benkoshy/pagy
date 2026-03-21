@@ -15,7 +15,7 @@ categories:
 ---
 
 :::raised
-![](../../assets/images/pagy-limit_tag_js.png){width=202}
+![](/assets/images/pagy-limit_tag_js.png){width=202}
 :::
 <br/>
 
@@ -26,12 +26,13 @@ The `limit_tag_js` allows the user to select any arbitrary limit per page, up to
 !!!warning It works with all paginators but `:keyset`
 !!!
 
+=== Usage
+
 ```erb
 <%== @pagy.limit_tag_js %>
 ```
 
 !!!success Pagy requests the _right_ page number
-
 After selecting a new limit, pagy reloads the page that roughly contains the same items shown before the reload.
 !!!
 
@@ -52,12 +53,11 @@ require 'pagy/console'
 
 ==- Options
 
-See [Common URL Options](../paginators#common-url-options)
+See [Helpers Shared Options](../helpers/#shared-options)
 
 ==- Caveats
 
 !!!danger Overriding `*_js` helpers is not recommended
-
 The `*_js` helpers are tightly coupled with the JavaScript code, so any partial overriding on one side would be quite fragile and might break in future releases.
 !!!
 ===

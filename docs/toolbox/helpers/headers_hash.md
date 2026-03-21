@@ -20,12 +20,14 @@ It also adheres to the header casing introduced by `rack` version `3+` _(see the
 !!!success It works with all paginators
 !!!
 
-```ruby Controller
+=== Usage
+
+```rb Controller
 # Any paginator will work
 @pagy, @records = pagy(:offset, collection, **options)
+
 # Merge the headers to the response
-headers = @pagy.headers_hash(**options)
-response.headers.merge!(headers)
+response.headers.merge!(@pagy.headers_hash)
 render json: @records
 ```
 
@@ -42,36 +44,43 @@ require 'pagy/console'
 => {"link" => "<http://www.example.com/path?example=123>; rel=\"first\", <http://www.example.com/path?example=123&page=2>; rel=\"previous\", <http://www.example.com/path?example=123&page=4>; rel=\"next\", <http://www.example.com/path?example=123&page=50>; rel=\"last\"", "current-page" => "3", "page-limit" => "20", "total-pages" => "50", "total-count" => "1000"}
 ```
 
+```text Example of default output
+link <https://example.com:8080/foo?page=1>; rel="first", <https://example.com:8080/foo?page=2>; rel="prev",
+<https://example.com:8080/foo?page=4>; rel="next", <https://example.com:8080/foo?page=50>; rel="last"
+current-page 3
+page-limit 20
+total-pages 50
+total-count 1000
+```
+
 ==- Options
 
-||| `header_names`
-The default pagy `:headers_names` are:
+`header_map`
+: Customize the headers:
 
-```ruby
-{ page:  'current-page',
-  limit: 'page-limit',
-  count: 'total-count',
-  pages: 'total-pages' }
-```
+  ```rb
+  default_map = { page:  'current-page',
+                    limit: 'page-limit',
+                    count: 'total-count',
+                    pages: 'total-pages' }
 
-You can customize or disable them. For example:
+  # Optional customization
+  headers_map = { page:  'current-page',
+                    limit: 'per-page',
+                    pages: false,  # disable the output
+                    count: 'total' }
+  headers = @pagy.headers_hash(pagy, headers_map:)
+  # Note: You can also pass the `:header_map` option to the paginator
+  ```
 
-```ruby Controller 
-headers_map = { page:  'current-page',
-                limit: 'per-page',
-                pages: false,  # disables the output
-                count: 'total' }
-headers = @pagy.headers_hash(pagy, headers_map:)
-# Note: You can also pass the `:header_names` option to the paginator 
-```
-|||
+See also [Helpers Shared Options](../helpers/#shared-options)
 
-See also [Common URL Options](../paginators#common-url-options)
-
-==- Suggestions
+==- :icon-light-bulb-24:&nbsp; Suggestions
 <br/>
 
-Instead of explicitly merging the headers before each rendering, if you use rails, you can add an `after_action` to your application controller:
+>>> Instead of explicitly merging the headers before each rendering...
+
+If you use rails, you can add an `after_action` to your application controller:
 
 ```ruby Controller (after_action)
 # It merges the headers if `@pagy` is initialized
@@ -81,14 +90,16 @@ after_action { response.headers.merge!(@pagy.headers_hash) if @pagy }
 render json: records
 ```
 
-If your code is consistent across different actions, you can encapsulate the statements in a custom `pagy_render` method in your
+>>> If your code is consistent across different actions...
+
+You can encapsulate the statements in a custom `pagy_render` method in your
 application controller. For example:
 
-```ruby Controller
+```ruby Controller (method)
 
 def pagy_render(collection, **)
   pagy, records = pagy(:offset, collection, **) # Any other paginator works as well
-  response.headers.merge!(header_hash) # Adds pagination headers to the response
+  response.headers.merge!(@pagy.header_hash) # Adds pagination headers to the response
   render json: records
 end
 
@@ -96,15 +107,5 @@ end
 pagy_render(collection, **options)
 ```
 
-==- Sample Output
-
-```text Example of the default HTTP headers
-link <https://example.com:8080/foo?page=1>; rel="first", <https://example.com:8080/foo?page=2>; rel="prev", 
-<https://example.com:8080/foo?page=4>; rel="next", <https://example.com:8080/foo?page=50>; rel="last"
-current-page 3
-page-limit 20
-total-pages 50
-total-count 1000
-```
-
+>>>
 ===

@@ -13,12 +13,13 @@ categories:
 
 ---
 
-`:elasticsearch_rails` is a [SEARCH](/guides/choose-right/#search) paginator for `ElasticsearchRails` response objects. 
+`:elasticsearch_rails` is a [SEARCH](/guides/choose-right/#search) paginator for `ElasticsearchRails` response objects.
+
+=== Usage
 
 +++ Active mode
 
 !!!success Pagy searches and paginate
-
 You use the `pagy_search` method in place of the `search` method.
 !!!
 
@@ -38,7 +39,6 @@ search = Article.pagy_search(params[:q]).results
 +++ Passive mode
 
 !!!success You search and paginate
-
 Pagy creates its object out of your result.
 !!!
 
@@ -52,7 +52,6 @@ Pagy creates its object out of your result.
 +++
 
 !!!
-
 Search paginators don't query a DB, but use the same positional technique as [:offset](offset.md) paginators, with shared options and readers.
 !!!
 

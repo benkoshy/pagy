@@ -16,15 +16,15 @@ categories:
 ---
 
 :::raised
-![series_nav](../../assets/images/pagy-series_nav.png){width=288}
+![series_nav](/assets/images/pagy-series_nav.png){width=288}
 
 ---
 
-![series_nav(:bootstrap)](../../assets/images/bootstrap-series_nav.png){width=248}
+![series_nav(:bootstrap)](/assets/images/bootstrap-series_nav.png){width=248}
 
 ---
 
-![series_nav(:bulma)](../../assets/images/bulma-series_nav.png){width=304}
+![series_nav(:bulma)](/assets/images/bulma-series_nav.png){width=304}
 :::
 <br/>
 
@@ -34,6 +34,8 @@ categories:
 
 !!!warning It works with all paginators but `:keyset`
 !!!
+
+=== Usage
 
 ```erb
 <%== @pagy.series_nav(**options) %>  <%# default pagy style %>
@@ -61,7 +63,7 @@ require 'pagy/console'
 
 ==- Styles
 
-See [Common Nav Styles](../helpers#common-nav-styles)
+See [Shared Nav Styles](../helpers#shared-nav-styles)
 
 ==- Options
 
@@ -74,6 +76,7 @@ See [Common Nav Styles](../helpers#common-nav-styles)
 `compact: true`
 : Fill all the slots with contiguous pages, regardless the number of slots.
 
-See also other applicable options: [Common Nav Options](../helpers#common-nav-options) and [Common URL Options](../paginators#common-url-options)
+See also [Helpers Shared Options](../helpers/#shared-options) and [Navs Shared Options](../helpers#navs-shared-options)
+
 
 ===

@@ -52,8 +52,8 @@ require 'pagy/console'
 
 >> puts pagy.input_nav_js
 <nav class="pagy input-nav-js" aria-label="Pages" data-pagy="WyJjaiIsIi9wYXRoP2V4YW1wbGU9MTIzJnBhZ2U9UCAiXQ=="><a role="link" aria-disabled="true" aria-label="Previous">&lt;</a><label>Page <input name="page" type="number" min="1" max="100" value="1" aria-current="page" style="text-align: center; width: 4rem; padding: 0;"><a style="display: none;">#</a> of 100</label><a href="/path?example=123&page=2" aria-label="Next">&gt;</a></nav>
-=> nil 
- 
+=> nil
+
 >> puts pagy.info_tag
 <span class="pagy info">Displaying items 1-10 of 1000 in total</span>
 => nil

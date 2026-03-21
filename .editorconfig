@@ -1,5 +1,6 @@
 # top-most EditorConfig file
 root = true
 
-[docs/_includes/snippets/*]
-insert_final_newline = false
+[*]
+trim_trailing_whitespace = true
+insert_final_newline = true
