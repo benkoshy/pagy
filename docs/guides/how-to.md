@@ -352,13 +352,25 @@ Pagy outputs safe HTML, however being an agnostic pagination gem it does not use
 
 Avoid the warning by adding it to the `brakeman.ignore` file. More details [here](https://github.com/ddnexus/pagy/issues/243) and [here](https://github.com/presidentbeef/brakeman/issues/1519).
 
-==- Raise Pagy::RangeError exceptions
+==- Handle Pagy Exceptions
 
-With the OFFSET pagination technique, it may happen that the users/clients paginate after the end of the collection (when one or a few records got deleted) and a user went to a stale page.
+:::
+
+=== :icon-stop:&nbsp; `Pagy::OptionError`
+
+It is a subclass of `ArgumentError` that offers information to rescue invalid options. For example: with `rescue Pagy::OptionError => e` you can get access to a few readers:
+
+- `e.pagy` the pagy object
+- `e.option` the offending option symbol (e.g. `:page`)
+- `e.value` the value of the offending option (e.g. `-3`)
+
+=== :icon-stop:&nbsp; `Pagy::RangeError`
+
+With the [OFFSET](/guides/choose-right/#offset) pagination technique, it may happen that the users/clients paginate after the end of the collection (when one or a few records got deleted) and a user went to a stale page.
 
 By default, Pagy doesn't raise any exceptions for requesting an out-of-range page. Instead, it does not retrieve any records and serves the navs as usual, so the user can visit a different page.
 
-Sometimes you may want to take a diffrent action, so you can set the option `raise_range_error: true`, `rescue` it and do whatever fits your app better. For example:
+Sometimes you may want to take a different action, so you can set the option `raise_range_error: true`, `rescue` it and do whatever fits your app better. For example:
 
 ```ruby controller
 rescue_from Pagy::RangeError, with: :redirect_to_last_page
@@ -369,6 +381,8 @@ def redirect_to_last_page(exception)
   redirect_to url_for(page: exception.pagy.last), notice: "Page ##{params[:page]} is out-of-range. Showing page #{exception.pagy.last} instead."
 end
 ```
+
+:::
 
 ==- Manage bad bot requests
 

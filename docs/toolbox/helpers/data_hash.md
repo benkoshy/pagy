@@ -62,7 +62,7 @@ require 'pagy/console'
 
   Notice that you can also add other pagy method names not included in the default list (see [this discussion](https://github.com/ddnexus/pagy/discussions/812) for an example)
 
-See also [Helpers Shared Options](../helpers/#shared-options)
+{{ include "snippets/helper-options" }}
 
 ==- :icon-tools:&nbsp; Usage of `:url_template`
 

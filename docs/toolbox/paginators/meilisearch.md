@@ -57,10 +57,10 @@ Search paginators don't query a DB, but use the same positional technique as [:o
 `search_method: :my_search`
 : Allows customization of the `meilisearch` method to use (default: `:ms_search`).
 
-See also [Offset Options](offset#options)
+{{ include "snippets/paginator-options" }}
 
 ==- :icon-mention:&nbsp; Readers
 
-See [Offset Readers](offset#readers)
+{{ include "snippets/offset-readers" }}
 
 ===

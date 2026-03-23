@@ -41,10 +41,10 @@ It **fully** supports all the helpers and navigators.
 - It does not fix the OFFSET-intrinsic "drift" of records on active DB insertions/deletions.
 !!!
 
-See also [Offset Options](offset#options)
+{{ include "snippets/offset-options" }}
 
 ==- :icon-mention:&nbsp; Readers
 
-See [Offset Readers](offset#readers)
+{{ include "snippets/offset-readers" }}
 
 ===

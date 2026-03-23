@@ -125,7 +125,7 @@ The calendar is enabled by default. However, you can include an optional `:disab
 
 <br>
 
-- The  [:offset](offset) object is always used, regardless of the `:disabled` flag value. If omitted a default one will be created.
+- The  [:offset](offset) paginator object is always used, regardless of the `:disabled` flag value. If omitted a default one will be created.
 - It is not subject to the Option Restrictions mentioned above.
 
 ==- :icon-hash:&nbsp; Methods

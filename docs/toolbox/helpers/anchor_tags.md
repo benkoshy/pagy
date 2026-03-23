@@ -62,6 +62,6 @@ require 'pagy/console'
 `aria_label: 'My Link'`
 : Override the default aria label string looked up in the dictionary
 
-See also [Helpers Shared Options](../helpers/#shared-options)
+{{ include "snippets/helper-options" }}
 
 ===

@@ -57,9 +57,7 @@ require 'pagy/console'
 => nil
 ```
 
-==- :icon-eye:&nbsp; Styles
-
-See [Shared Nav Styles](../helpers#shared-nav-styles)
+{{ include "snippets/nav-styles" }}
 
 ==- :icon-sliders:&nbsp; Options
 
@@ -72,7 +70,7 @@ See [Shared Nav Styles](../helpers#shared-nav-styles)
 `compact: true`
 : Fill all the slots with contiguous pages, regardless the number of slots.
 
-See also [Helpers Shared Options](../helpers/#shared-options) and [Navs Shared Options](../helpers#navs-shared-options)
-
+{{ include "snippets/nav-options" }}
+{{ include "snippets/helper-options" }}
 
 ===

@@ -58,6 +58,6 @@ The method also accepts a few optional keyword arguments:
 `item_name: 'Products'`
 : The already pluralized string that will be used in place of the default `item/items`
 
-See also [Helpers Shared Options](../helpers/#shared-options)
+{{ include "snippets/helper-options" }}
 
 ===

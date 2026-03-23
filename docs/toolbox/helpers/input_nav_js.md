@@ -59,13 +59,12 @@ require 'pagy/console'
 => nil
 ```
 
-==- :icon-eye:&nbsp; Styles
-
-See [Shared Nav Styles](../helpers#shared-nav-styles)
+{{ include "snippets/nav-styles" }}
 
 ==- :icon-sliders:&nbsp; Options
 
-See [Helpers Shared Options](../helpers/#shared-options) and [Navs Shared Options](../helpers#navs-shared-options)
+{{ include "snippets/nav-options" }}
+{{ include "snippets/helper-options" }}
 
 ==- :icon-alert:&nbsp; Caveats
 

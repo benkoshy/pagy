@@ -85,19 +85,15 @@ require 'pagy/console'
 => nil
 ```
 
-==- :icon-eye:&nbsp; Styles
-
-See [Shared Nav Styles](../helpers#shared-nav-styles)
+{{ include "snippets/nav-styles" }}
 
 ==- :icon-sliders:&nbsp; Options
 
-||| `steps: { 0 => 5, 540 => 7, 720 => 9 }`
+`steps: { 0 => 5, 540 => 7, ... }`
+: Enable responsiveness. Assign different number of `:slots` to different tag widths.
 
-Enable responsiveness. Assign different number of `:slots` to different tag widths.
-
-|||
-
-See also [Helpers Shared Options](../helpers/#shared-options) and [Navs Shared Options](../helpers#navs-shared-options)
+{{ include "snippets/nav-options" }}
+{{ include "snippets/helper-options" }}
 
 ==- :icon-log:&nbsp; In Depth: `:steps` Option
 

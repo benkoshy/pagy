@@ -42,6 +42,6 @@ require 'pagy/console'
 
 ==- :icon-sliders:&nbsp; Options
 
-See [Helpers Shared Options](../helpers/#shared-options)
+{{ include "snippets/helper-options" }}
 
 ===

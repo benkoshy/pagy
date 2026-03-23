@@ -70,7 +70,7 @@ total-count 1000
   # Note: You can also pass the `:header_map` option to the paginator
   ```
 
-See also [Helpers Shared Options](../helpers/#shared-options)
+{{ include "snippets/helper-options" }}
 
 ==- :icon-light-bulb-24:&nbsp; Suggestions
 <br/>

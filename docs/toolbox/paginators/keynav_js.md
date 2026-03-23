@@ -45,9 +45,12 @@ It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
 
 ==- :icon-sliders:&nbsp; Options
 
-See the [Keyset Options](keyset/#options)
+{{ include "snippets/keyset-options" }}
 
 ==- :icon-mention:&nbsp; Readers
+
+`previous`
+: The previous page
 
 `last`
 : The last page.
@@ -55,7 +58,7 @@ See the [Keyset Options](keyset/#options)
 `pages`
 : The number of pages.
 
-See also [Keyset Readers](keyset#readers)
+{{ include "snippets/keyset-readers" }}
 
 ==- :icon-log:&nbsp; In-depth: Cutoffs Filtering
 
