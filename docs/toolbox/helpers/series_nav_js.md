@@ -59,7 +59,7 @@ image: ""
 !!!warning It works with all paginators but `:keyset`
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```erb
 <%== @pagy.series_nav_js(**options) %>  <%# default pagy style %>
@@ -67,7 +67,7 @@ image: ""
 <%== @pagy.series_nav_js(:bulma, **options) %>
 ```
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -85,11 +85,11 @@ require 'pagy/console'
 => nil
 ```
 
-==- Styles
+==- :icon-eye:&nbsp; Styles
 
 See [Shared Nav Styles](../helpers#shared-nav-styles)
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 ||| `steps: { 0 => 5, 540 => 7, 720 => 9 }`
 
@@ -99,7 +99,7 @@ Enable responsiveness. Assign different number of `:slots` to different tag widt
 
 See also [Helpers Shared Options](../helpers/#shared-options) and [Navs Shared Options](../helpers#navs-shared-options)
 
-==- In Depth: `:steps` Option
+==- :icon-log:&nbsp; In Depth: `:steps` Option
 
 Notice: when `:steps` is not set, the `series_nav_js` behaves almost as a `series_nav`: just faster.
 
@@ -130,7 +130,7 @@ Consider these guidelines to achieve optimal results:
 3. Synchronize the pagy `:steps` with your container's discrete width changes, for consistent alignment.
 4. Test responsiveness to confirm that assigned slots fit within the corresponding width for each step.
 
-==- Caveats
+==- :icon-alert:&nbsp; Caveats
 
 !!!warning HTML Fallback
 If Javascript is disabled in the client browser, this helper will not render anything. You should implement your own HTML fallback:

@@ -31,7 +31,7 @@ image: ""
 !!!warning It works with all paginators but `:keyset`
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```erb
 <%== @pagy.series_nav(**options) %>  <%# default pagy style %>
@@ -39,7 +39,7 @@ image: ""
 <%== @pagy.series_nav(:bulma, **options) %>
 ```
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -57,11 +57,11 @@ require 'pagy/console'
 => nil
 ```
 
-==- Styles
+==- :icon-eye:&nbsp; Styles
 
 See [Shared Nav Styles](../helpers#shared-nav-styles)
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 `slots: 9`
 : Override the default number of page `:slots` used for the navigation bar.

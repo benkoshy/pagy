@@ -28,14 +28,14 @@ Useful to build minimalistic helpers UIs that don't use nav bar links (e.g. `:co
 !!!warning `previous_tag` works with all paginators but `:keyset`
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```erb
 <%== @pagy.next_tag %>
 <%== @pagy.previous_tag %>
 ```
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -54,7 +54,7 @@ require 'pagy/console'
 => nil
 ```
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 `text: 'My Page'`
 : Override the default generated page label

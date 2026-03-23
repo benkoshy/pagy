@@ -15,13 +15,13 @@ order: 180
 !!!success It works with all paginators
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```ruby Controller
 urls_hash = @pagy.urls_hash(**options)
 ```
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -40,7 +40,7 @@ require 'pagy/console'
 => {first: "/path?example=123", previous: "/path?example=123&page=2", next: "/path?example=123&page=4", last: "/path?example=123&page=50"}
 ```
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 See [Helpers Shared Options](../helpers/#shared-options)
 

@@ -28,7 +28,7 @@ It enables cascade-filtering of the collection by time units _(year, quarter, mo
 !!!warning Avoid using it for sparse datasets with numerous empty pages.
 !!!
 
-==- Setup
+==- :icon-list-ordered:&nbsp; Setup
 
 You must define a few simple methods in your app to configure and coordinate the objects created by the `pagy` method. See the following examples and comments _(adapted from the [Calendar app code](/sandbox/playground/#calendar))_
 
@@ -80,7 +80,7 @@ end
 <a href="<%= @calendar.url_at(Time.zone.now) %>">Go to now</a>
 ```
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```ruby
   @calendar, @pagy, @records = pagy(:calendar, collection, year: {}, month: {}, offset: {})
@@ -92,13 +92,24 @@ end
 - The `:year` and `:month` parameters create time unit objects (default options are used in this example).
 - `:offset` is the offset instance that paginates the time-filtered collection.
 
-==- Calendar Configuration
+==- :icon-gear:&nbsp; Configuration
 
 The calendar configuration defines the calendar objects to be generated. These objects filter the collection by the selected time units.
 
 You can include one or more Unit levels using keys like `:year`, `:quarter`, `:month`, `:week`, or `:day`. Assign each key a hash of unit options. Use an empty hash for default values, e.g., `year: {}, month: {}, ...`.
 
-!!!warning Option restrictions
+#### Unit Options
+
+<br>
+
+`order: :desc`
+: Sets the order of the unit, either `:asc` or `:desc`. Make sure to order your collection accordingly.
+
+`format: '<strftime>'`
+: Change the label format for the unit links.
+
+
+!!!warning Option Restrictions
 Do not try to set `:page`, `:page_key`, `:querify`, or `:period` options manually. These options are handled automatically, so setting them explicitly has no effect.
 
 The `Pagy::OPTIONS` are not applied to the Unit objects.
@@ -108,9 +119,16 @@ The `Pagy::OPTIONS` are not applied to the Unit objects.
 
 <br/>
 
-The calendar is enabled by default. However, you can include an optional `:disabled` boolean flag in the `configuration` hash to disable the calendar bars. This is useful to display the regular pages of the collection whithout any fitering nor Calendar UI.
+The calendar is enabled by default. However, you can include an optional `:disabled` boolean flag in the `configuration` hash to disable the calendar bars. This is useful to display the regular pages of the collection without any filtering nor Calendar UI.
 
-==- Calendar Methods
+#### Offset Object
+
+<br>
+
+- The  [:offset](offset) object is always used, regardless of the `:disabled` flag value. If omitted a default one will be created.
+- It is not subject to the Option Restrictions mentioned above.
+
+==- :icon-hash:&nbsp; Methods
 
 `@calendar.url_at(time, **options)`
 : Returns a URL complete with all parameters for the pages in each filter bar that includes the given time. For example:
@@ -121,21 +139,7 @@ The calendar is enabled by default. However, you can include an optional `:disab
 `@calendar.showtime`
 : Displays the time of the smallest time unit currently visible on the calendar.
 
-==- Unit Options
-
-`order: :desc`
-: Sets the order of the unit, either `:asc` or `:desc`. Make sure to order your collection accordingly.
-
-`format: '<strftime>'`
-: Change the label format for the unit links.
-
-==- Offset configuration
-
-This is the optional configuration for the core [:offset](offset) paginator. If omitted a default one will be created. It is always used, regardless of the `:disabled` flag value.
-
-It is not subject to the restrictions mentioned in the [Calendar configuration](#calendar-configuration).
-
-==- Localization
+==- :icon-location:&nbsp; Localization
 
 Pagy provides the calendar localization only for `en` locales. For non-en locales pagy requires the `rails-i18n` to be installed.
 
@@ -145,7 +149,7 @@ Pass the locales that your app uses to the method `localize_with_rails_i18n_gem`
 Pagy::Calendar.localize_with_rails_i18n_gem(*your_locales)
 ```
 
-==- Caveats
+==- :icon-alert:&nbsp; Caveats
 
 !!!warning Calendar pages with no records are visible and accessible.
 You may want to display a message when `@records.empty?`.

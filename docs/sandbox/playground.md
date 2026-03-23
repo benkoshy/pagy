@@ -16,7 +16,7 @@ You can showcase, clone, and develop a few Pagy apps without needing to set anyt
 $ pagy --help
 ```
 
-### Apps
+### :icon-apps:&nbsp; Apps
 
 We have a few single-file apps ready to run in your browser for various purposes. Most of them are used to run the [E2e Test](https://github.com/ddnexus/pagy/blob/master/.github/workflows/e2e-test.yml) workflow.
 
@@ -26,11 +26,11 @@ Bundler automatically installs the required gems during the first run.
 
 !!!
 
-=== Repro App _(interaction example)_ {#repro}
+==- :icon-pulse:&nbsp; Repro _(interaction example)_ {#repro}
 
 You can use this app as a starting point to try Pagy or reproduce issues to get support or file bug reports.
 
->>> Clone the `repro` app
+>>> Clone the app
 
 ```sh
 pagy clone repro
@@ -50,32 +50,34 @@ pagy path/to/your-repro.ru
 
 >>>
 
-===
+==- :icon-ruby:&nbsp; Rails {#rails}
 
-Rails App {#rails}
-: Use it to reproduce **Rails-related** Pagy issues
+Use it to reproduce **Rails-related** Pagy issues
 
   ```sh
   pagy clone rails
   pagy ./rails.ru
   ```
 
-Demo App {#demo}
-: The interactive showcase for all the pagy helpers and CSS styles
+==- :icon-eye:&nbsp; Demo {#demo}
+
+The interactive showcase for all the pagy helpers and CSS styles
 
   ```sh
   pagy demo
   ```
 
-Calendar App {#calendar}
-: This is the interactive showcase and reproduction tool for the `:calendar` paginator
+==- :icon-calendar:&nbsp; Calendar {#calendar}
+
+This is the interactive showcase and reproduction tool for the `:calendar` paginator
 
   ```sh
   pagy calendar
   ```
 
-Keyset Apps  {#keysets}
-: These are the interactive showcase/repro for the `:keyset` paginator with `ActiveRecord` or `Sequel` sets:
+==- :icon-key:&nbsp; Keyset / Keynav  {#keysets}
+
+These are the interactive showcase/repro for the `:keyset` paginator with `ActiveRecord` or `Sequel` sets:
 
   ```sh
   pagy | grep key
@@ -87,10 +89,9 @@ Keyset Apps  {#keysets}
   pagy keyset
   pagy keyset_sequel
   ```
+===
 
-### Troubleshooting
-
-==- Bundler inline
+==- :icon-stop:&nbsp; Troubleshooting
 
 All the pagy apps use [bundler/inline](https://bundler.io/guides/bundler_in_a_single_file_ruby_script.html).
 

@@ -12,7 +12,7 @@ order: 40
 
 `:meilisearch` is a [SEARCH](/guides/choose-right/#search) paginator designed for `Meilisearch` results.
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 +++ Active mode
 
@@ -52,14 +52,14 @@ Pagy creates its object out of your result.
 Search paginators don't query a DB, but use the same positional technique as [:offset](offset.md) paginators, with shared options and readers.
 !!!
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 `search_method: :my_search`
 : Allows customization of the `meilisearch` method to use (default: `:ms_search`).
 
 See also [Offset Options](offset#options)
 
-==- Readers
+==- :icon-mention:&nbsp; Readers
 
 See [Offset Readers](offset#readers)
 

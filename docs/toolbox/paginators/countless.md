@@ -16,7 +16,7 @@ order: 90
 The [:keynav_js](keynav_js.md) offers identical UI features but utilizes the faster [KEYSET](/guides/choose-right) pagination.
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```ruby Controller
 @pagy, @records = pagy(:countless, collection, **options)
@@ -25,7 +25,7 @@ The [:keynav_js](keynav_js.md) offers identical UI features but utilizes the fas
 - `@pagy` is the pagination instance. It provides the [readers](#readers) and the [helpers](../helpers) to use in your code.
 - `@records` represents the eager-loaded `Array` of records for the page.
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 `headless: true`
 : Use this option when UI is unnecessary (e.g., for infinite scrolling) and/or to skip eager loading. In this scenario:
@@ -35,11 +35,11 @@ The [:keynav_js](keynav_js.md) offers identical UI features but utilizes the fas
 
 See also [Offset Options](offset#options)
 
-==- Readers
+==- :icon-mention:&nbsp; Readers
 
 See [Offset Readers](offset#readers)
 
-==- Caveat
+==- :icon-alert:&nbsp; Caveat
 
 Nav bar links beyond the highest visited page are not displayed.
 

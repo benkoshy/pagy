@@ -17,7 +17,7 @@ It also adheres to the header casing introduced by `rack` version `3+` _(see the
 !!!success It works with all paginators
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```rb Controller
 # Any paginator will work
@@ -28,7 +28,7 @@ response.headers.merge!(@pagy.headers_hash)
 render json: @records
 ```
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -50,7 +50,7 @@ total-pages 50
 total-count 1000
 ```
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 `header_map`
 : Customize the headers:

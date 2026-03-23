@@ -15,7 +15,7 @@ order: 175
 !!!success It works with all paginators
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```ruby Console
 @pagy.page_url(:next)
@@ -23,7 +23,7 @@ order: 175
 ...
 ```
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -60,7 +60,7 @@ require 'pagy/console'
 => "http://www.example.com/path?example=123&page=long-page-id"
 ```
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 See [Helpers Shared Options](../helpers/#shared-options)
 

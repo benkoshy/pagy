@@ -23,7 +23,7 @@ The `limit_tag_js` allows the user to select any arbitrary limit per page, up to
 !!!warning It works with all paginators but `:keyset`
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```erb
 <%== @pagy.limit_tag_js %>
@@ -33,7 +33,7 @@ The `limit_tag_js` allows the user to select any arbitrary limit per page, up to
 After selecting a new limit, pagy reloads the page that roughly contains the same items shown before the reload.
 !!!
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -48,11 +48,11 @@ require 'pagy/console'
 => nil
 ```
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 See [Helpers Shared Options](../helpers/#shared-options)
 
-==- Caveats
+==- :icon-alert:&nbsp; Caveats
 
 !!!danger Overriding `*_js` helpers is not recommended
 The `*_js` helpers are tightly coupled with the JavaScript code, so any partial overriding on one side would be quite fragile and might break in future releases.

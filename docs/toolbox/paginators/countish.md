@@ -18,7 +18,7 @@ nav:
 
 It **fully** supports all the helpers and navigators.
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```ruby Controller
 # count only once and memoize for all pages
@@ -31,7 +31,7 @@ It **fully** supports all the helpers and navigators.
 - `@records` represents the paginated collection of records for the page (lazy-loaded records).
 - `:ttl` is the Time To Live of the memoized count. Counts only once if `nil`.
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 `ttl: 180`
 : A positive number of seconds enables recounting. Set to `nil` (falsey) queries the DB for the COUNT only once, and reuse it for all the other pages served.
@@ -43,7 +43,7 @@ It **fully** supports all the helpers and navigators.
 
 See also [Offset Options](offset#options)
 
-==- Readers
+==- :icon-mention:&nbsp; Readers
 
 See [Offset Readers](offset#readers)
 

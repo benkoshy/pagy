@@ -42,6 +42,8 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 #### Extras
 
+<br>
+
 ==- `array`
 
 {.compact}
@@ -64,17 +66,17 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 {.compact}
 
-| Search (old)                                   | Replace with (new)                                  |
-|------------------------------------------------|-----------------------------------------------------|
-| `pagy_nav_js(@pagy, ...)`                      | `@pagy.series_nav_js(...)`                          |
-| `pagy_combo_nav_js(@pagy, ...)`                | `@pagy.input_nav_js(...)`                           |
-| `pagy_limit_selector_js(@pagy, ...)`           | `@pagy.limit_tag_js(...)`                           |
-| `pagy_prev_url(@pagy, ...)`                    | `@pagy.page_url(:previous, ...)`                    |
-| `pagy_next_url(@pagy, ...)`                    | `@pagy.page_url(:next, ...)`                        |
-| `pagy_prev_a(@pagy, ...)`                      | `@pagy.previous_tag(...)`                           |
-| `pagy_next_a(@pagy, ...)`                      | `@pagy.next_tag(...)`                               |
-| `pagy_prev_link(@pagy, ...)`                   | discontinued: implement manually                    |
-| `pagy_next_link(@pagy, ...)`                   | discontinued: implement manually                    |
+| Search (old)                                    | Replace with (new)                                  |
+|-------------------------------------------------|-----------------------------------------------------|
+| `pagy_nav_js(@pagy, ...)`                       | `@pagy.series_nav_js(...)`                          |
+| `pagy_combo_nav_js(@pagy, ...)`                 | `@pagy.input_nav_js(...)`                           |
+| `pagy_limit_selector_js(@pagy, ...)`            | `@pagy.limit_tag_js(...)`                           |
+| `pagy_prev_url(@pagy, ...)`                     | `@pagy.page_url(:previous, ...)`                    |
+| `pagy_next_url(@pagy, ...)`                     | `@pagy.page_url(:next, ...)`                        |
+| `pagy_prev_a(@pagy, ...)`                       | `@pagy.previous_tag(...)`                           |
+| `pagy_next_a(@pagy, ...)`                       | `@pagy.next_tag(...)`                               |
+| `pagy_prev_link(@pagy, ...)`                    | discontinued: implement manually                    |
+| `pagy_next_link(@pagy, ...)`                    | discontinued: implement manually                    |
 | `size: ...`<br/>`Pagy::OPTIONS[:size] = ...`    | `slots: ...`<br/>`Pagy::OPTIONS[:slots] = ...`       |
 | `ends: false`<br/>`Pagy::OPTIONS[:end] = false` | `compact: true`<br/>`Pagy::OPTIONS[:compact] = true` |
 
@@ -84,11 +86,11 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 {.compact}
 
-| Search (old)                                   | Replace with (new)                                  |
-|------------------------------------------------|-----------------------------------------------------|
-| `pagy_bootstrap_nav(@pagy, ...)`               | `@pagy.series_nav(:bootstrap, ...)`                 |
-| `pagy_bootstrap_nav_js(@pagy, ...)`            | `@pagy.series_nav_js(:bootstrap, ...)`              |
-| `pagy_bootstrap_combo_nav_js(@pagy, ...)`      | `@pagy.input_nav_js(:bootstrap, ...)`               |
+| Search (old)                                    | Replace with (new)                                  |
+|-------------------------------------------------|-----------------------------------------------------|
+| `pagy_bootstrap_nav(@pagy, ...)`                | `@pagy.series_nav(:bootstrap, ...)`                 |
+| `pagy_bootstrap_nav_js(@pagy, ...)`             | `@pagy.series_nav_js(:bootstrap, ...)`              |
+| `pagy_bootstrap_combo_nav_js(@pagy, ...)`       | `@pagy.input_nav_js(:bootstrap, ...)`               |
 | `size: ...`<br/>`Pagy::OPTIONS[:size] = ...`    | `slots: ...`<br/>`Pagy::OPTIONS[:slots] = ...`       |
 | `ends: false`<br/>`Pagy::OPTIONS[:end] = false` | `compact: true`<br/>`Pagy::OPTIONS[:compact] = true` |
 
@@ -100,11 +102,11 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 {.compact}
 
-| Search (old)                                   | Replace with (new)                                  |
-|------------------------------------------------|-----------------------------------------------------|
-| `pagy_bulma_nav(@pagy, ...)`                   | `@pagy.series_nav(:bulma, ...)`                     |
-| `pagy_bulma_nav_js(@pagy, ...)`                | `@pagy.series_nav_js(:bulma, ...)`                  |
-| `pagy_bulma_combo_nav_js(@pagy, ...)`          | `@pagy.input_nav_js(:bulma, ...)`                   |
+| Search (old)                                    | Replace with (new)                                  |
+|-------------------------------------------------|-----------------------------------------------------|
+| `pagy_bulma_nav(@pagy, ...)`                    | `@pagy.series_nav(:bulma, ...)`                     |
+| `pagy_bulma_nav_js(@pagy, ...)`                 | `@pagy.series_nav_js(:bulma, ...)`                  |
+| `pagy_bulma_combo_nav_js(@pagy, ...)`           | `@pagy.input_nav_js(:bulma, ...)`                   |
 | `size: ...`<br/>`Pagy::OPTIONS[:size] = ...`    | `slots: ...`<br/>`Pagy::OPTIONS[:slots] = ...`       |
 | `ends: false`<br/>`Pagy::OPTIONS[:end] = false` | `compact: true`<br/>`Pagy::OPTIONS[:compact] = true` |
 
@@ -115,9 +117,9 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 {.compact}
 
-| Search (old)                                                            | Replace with (new)                                    |
-|-------------------------------------------------------------------------|-------------------------------------------------------|
-| `pagy_countless(...)`                                                   | `pagy(:countless, ...)`                               |
+| Search (old)                                                             | Replace with (new)                                    |
+|--------------------------------------------------------------------------|-------------------------------------------------------|
+| `pagy_countless(...)`                                                    | `pagy(:countless, ...)`                               |
 | `countless_minimal: true`<br/>`Pagy::OPTIONS[:countless_minimal] = true` | `headless: true`<br/>`Pagy::OPTIONS[:headless] = true` |
 
 ==- `calendar`
@@ -142,10 +144,10 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 {.compact}
 
-| Search (old)                                                                            | Replace with (new)                                            |
-|-----------------------------------------------------------------------------------------|---------------------------------------------------------------|
-| `pagy_elasticsearch_rails(...)`                                                         | `pagy(:elasticsearch_rails, ...)`                             |
-| `Pagy.new_from_elasticsearch_rails(...)`                                                | `pagy(:elasticsearch_rails, ...)`                             |
+| Search (old)                                                                             | Replace with (new)                                            |
+|------------------------------------------------------------------------------------------|---------------------------------------------------------------|
+| `pagy_elasticsearch_rails(...)`                                                          | `pagy(:elasticsearch_rails, ...)`                             |
+| `Pagy.new_from_elasticsearch_rails(...)`                                                 | `pagy(:elasticsearch_rails, ...)`                             |
 | `elasticsearch_rails_search: ...`<br/>`Pagy::OPTIONS[:elasticsearch_rails_search] = ...` | `search_method: ...`<br/>`Pagy::OPTIONS[:search_method] = ...` |
 
 - **Customization of the `pagy_search` method name has been discontinued:**
@@ -158,10 +160,10 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 {.compact}
 
-| Search (old)                                                            | Replace with (new)                                            |
-|-------------------------------------------------------------------------|---------------------------------------------------------------|
-| `pagy_meilisearch(...)`                                                 | `pagy(:meilisearch, ...)`                                     |
-| `Pagy.new_from_meilisearch(...)`                                        | `pagy(:meilisearch, ...)`                                     |
+| Search (old)                                                             | Replace with (new)                                            |
+|--------------------------------------------------------------------------|---------------------------------------------------------------|
+| `pagy_meilisearch(...)`                                                  | `pagy(:meilisearch, ...)`                                     |
+| `Pagy.new_from_meilisearch(...)`                                         | `pagy(:meilisearch, ...)`                                     |
 | `meilisearch_search: ...`<br/>`Pagy::OPTIONS[:meilisearch_search] = ...` | `search_method: ...`<br/>`Pagy::OPTIONS[:search_method] = ...` |
 
 - **Customization of the `pagy_search` method name has been discontinued:**
@@ -174,10 +176,10 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 {.compact}
 
-| Search (old)                                                          | Replace with (new)                                            |
-|-----------------------------------------------------------------------|---------------------------------------------------------------|
-| `pagy_searchkick(...)`                                                | `pagy(:searchkick, ...)`                                      |
-| `Pagy.new_from_searchkick(...)`                                       | `pagy(:searchkick, ...)`                                      |
+| Search (old)                                                           | Replace with (new)                                            |
+|------------------------------------------------------------------------|---------------------------------------------------------------|
+| `pagy_searchkick(...)`                                                 | `pagy(:searchkick, ...)`                                      |
+| `Pagy.new_from_searchkick(...)`                                        | `pagy(:searchkick, ...)`                                      |
 | `searchkick_search: ...`<br/>`Pagy::OPTIONS[:searchkick_search] = ...` | `search_method: ...`<br/>`Pagy::OPTIONS[:search_method] = ...` |
 
 - **Customization of the `pagy_search` method name has been discontinued:**
@@ -188,10 +190,10 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 {.compact}
 
-| Search (old)                                      | Replace with (new)                                        |
-|---------------------------------------------------|-----------------------------------------------------------|
-| `pagy_headers(...)`                               | `@pagy.headers_hash(...)`                                 |
-| `pagy_headers_merge`                              | `response.headers.merge!(@pagy.headers_hash)`             |
+| Search (old)                                       | Replace with (new)                                        |
+|----------------------------------------------------|-----------------------------------------------------------|
+| `pagy_headers(...)`                                | `@pagy.headers_hash(...)`                                 |
+| `pagy_headers_merge`                               | `response.headers.merge!(@pagy.headers_hash)`             |
 | `headers: ...`<br/>`Pagy::OPTIONS[:headers] = ...` | `headers_map: ...`<br/>`Pagy::OPTIONS[:headers_map] = ...` |
 
 - _Notice that the `:limit` header default is now `'page-limit` (it was `'page-items'`)._
@@ -238,11 +240,11 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 {.compact}
 
-| Search (old)                                        | Replace with (new)                                    |
-|-----------------------------------------------------|-------------------------------------------------------|
-| `pagy_metadata(@pagy, ...)`                         | `@pagy.data_hash(...)`                                |
+| Search (old)                                         | Replace with (new)                                    |
+|------------------------------------------------------|-------------------------------------------------------|
+| `pagy_metadata(@pagy, ...)`                          | `@pagy.data_hash(...)`                                |
 | `metadata: ...`<br/>`Pagy::OPTIONS[:metadata] = ...` | `data_keys: ...`<br/>`Pagy::OPTIONS[:data_keys] = ...` |
-| data_key -> `:scaffold_url`                         | `:url_template`                                       |
+| data_key -> `:scaffold_url`                          | `:url_template`                                       |
 
 ==- `overflow`
 
@@ -316,7 +318,7 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 ==- Replace the `:params` variable...
 
-Use the `:querify` option, which is a `lambda` that can modify the string-keyed params hash at will. It is a bit more verbose, but it's more powerful and low-level. It solves an incompatibility with the old high-level `:params` hash/lambda and improves performance. It is part of the [URL Options](/resources/urls/#url-options) group that gives you full and efficient control over the URL composition. For example:
+Use the `:querify` option, which is a `lambda` that can modify the string-keyed params hash at will. It is a bit more verbose, but it's more powerful and low-level. It solves an incompatibility with the old high-level `:params` hash/lambda and improves performance. It is part of the [URL Options](/resources/urls/#options) group that gives you full and efficient control over the URL composition. For example:
 
 ```ruby
 # Old symbol-keyed, high-level hash variable
@@ -337,7 +339,7 @@ Use `*previous*` in all the options, accessors, methods, etc.
 
 ==- Javascript
 
-If your `pagy-old.rb` contains any JavaScript setup, it should still work, so you can move it to the `pagy.rb` file, however, for apps with builders, consider using the new [Pagy.sync_javascript](/resources/javascript/#pick-a-configuration) and removing all the old entries from your JavaScript config files.
+If your `pagy-old.rb` contains any JavaScript setup, it should still work, so you can move it to the `pagy.rb` file, however, for apps with builders, consider using the new [Pagy.sync](/resources/javascript/#pick-a-configuration) and removing all the old entries from your JavaScript config files.
 
 ==- Stylesheets
 
@@ -351,7 +353,7 @@ Supported CSS frameworks (like Bootstrap and Bulma) don't require any change.
 
 {{ include "snippets/mini-step" step: "•1" }}  If your `pagy-old.rb` contains the `Pagy::I18n` setup, and the setup includes some custom dictionary file, then uncomment and set up the relevant `Pagy::I18n` lookup section in the `pagy.rb` file. _(See the [I18n docs](/resources/i18n) for details)_
 
-{{ include "snippets/mini-step" step: "•2" }}  Update your custom dictionary files (if any) to the new [dictionary structure](/resources/i18n/#dictionary-file-example), or they won't work correctly.
+{{ include "snippets/mini-step" step: "•2" }}  Update your custom dictionary files (if any) to the new [dictionary structure](/resources/i18n/#sample-dictionary), or they won't work correctly.
 
 {{ include "snippets/mini-step" step: "•3" }} Remove all the I18n code from the `pagy-old.rb`. All the locales are autoloaded when your app uses them.
 

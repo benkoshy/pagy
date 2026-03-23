@@ -15,7 +15,7 @@ order: 200
 !!!success It works with all paginators
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```ruby Controller
 @pagy, @records = pagy(:offset, collection, **options)
@@ -24,7 +24,7 @@ pagy_hash       = @pagy.data_hash(data_keys: %i[page previous next previous_url 
 render json: { data: @records, pagy: pagy_hash }
 ```
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -37,7 +37,7 @@ require 'pagy/console'
 => {page: 3, previous: 2, next: 4, previous_url: "/path?example=123&page=2", next_url: "/path?example=123&page=4"}
 ```
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 `data_keys = %i[...]`
 : For efficiency, always set the `:data_keys` option to restrict the output to ONLY the keys you need among the default list:
@@ -64,7 +64,7 @@ require 'pagy/console'
 
 See also [Helpers Shared Options](../helpers/#shared-options)
 
-==- Usage of `:url_template`
+==- :icon-tools:&nbsp; Usage of `:url_template`
 
 This is a URL string containing the `"P "` page token as a placeholder for the page value.
 

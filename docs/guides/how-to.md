@@ -61,7 +61,7 @@ By default, Pagy retrieves the page from the request params hash and generates U
 - Set `page_key: 'custom_page'` to customize URL generation, e.g., `?custom_page=3`.
 - Set the `:limit_key` to customize the `limit` param the same way.
 
-See [URL Options](/resources/urls#url-options)
+See [URL Options](/resources/urls#options)
 
 ==- Paginate with JSON:API nested URLs
 
@@ -74,11 +74,11 @@ Enable `jsonapi: true`, optionally providing `:page_key` and `:limit_key`:
 
 ==- Customize the URL query
 
-See the [:querify Option](/resources/urls#url-options)
+See the [:querify Option](/resources/urls#options)
 
 ==- Add a URL fragment
 
-See the [URL Options](/resources/urls#url-options)
+See the [URL Options](/resources/urls#options)
 
 ==- Add HTML attributes to the anchor tags (links)
 

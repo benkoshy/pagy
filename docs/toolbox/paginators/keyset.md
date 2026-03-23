@@ -14,7 +14,7 @@ order: 80
 
 {{ include "snippets/run-app" app: "keyset" anchor: "keysets" }}
 
-==- Setup
+==- :icon-list-ordered:&nbsp; Setup
 
 Depending on your **order requirements**, here is how you set it up for maximum efficiency:
 
@@ -51,7 +51,7 @@ set = collection.order(:id)
 
 +++
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```ruby Controller
 @pagy, @records = pagy(:keyset, set, **options)
@@ -65,7 +65,7 @@ set = collection.order(:id)
 <%== @pagy.next_tag(text: 'Next page &gt;') %>
 ```
 
-==- Features
+==- :icon-star:&nbsp; Features
 
 !!!success
 
@@ -81,7 +81,7 @@ set = collection.order(:id)
 
 !!!
 
-==- Constraints
+==- :icon-blocked:&nbsp; Constraints
 
 !!!tip When an UI is needed and using [KEYSET Pagination](/guides/choose-right/#keyset) is possible, use the [:keynav_js](keynav_js) paginator to overcome almost all these constraints.
 !!!
@@ -102,7 +102,7 @@ like:
 `first` ... `next` ... `next` ... It does exactly the same: just faster and simpler.
 !!!
 
-==- Glossary
+==- :icon-book:&nbsp; Glossary
 
 There are a few peculiar aspects of the keyset pagination technique that you might not be familiar with. Here is a concise list:
 
@@ -139,7 +139,7 @@ There are a few peculiar aspects of the keyset pagination technique that you mig
 `next`
 : The next `page`, i.e. the page of records beginning after the `cutoff`. Also the `cutoff` value retured by the `next` method.
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 `keyset: {...}`
 : Set it only to force the `keyset` hash of column/order pairs. _(It is set automatically from the set order)_
@@ -158,14 +158,14 @@ There are a few peculiar aspects of the keyset pagination technique that you mig
 
 See also [Paginators Shared Options](../paginators/#shared-options)
 
-==- Readers
+==- :icon-mention:&nbsp; Readers
 
 `records`
 : The `Array` of fetched records for the current page.
 
 See also [Paginators Shared Readers](../paginators#shared-readers)
 
-==- How it works
+==- :icon-info:&nbsp; How it works
 
 <br/>
 
@@ -174,7 +174,7 @@ See also [Paginators Shared Readers](../paginators#shared-readers)
 3. At each request, the new `page` is decoded into arguments that are coupled with a `where` filter query, and a `:limit` of new records is retrieved.
 4. The collection ends when `pagy.next.nil?`.
 
-==- In Depth: Cutoffs
+==- :icon-log:&nbsp; In Depth: Cutoffs
 
 The `cutoff` of a `page` is the **value** that identifies where the `page` _has ended_, and the `next` one begins.
 
@@ -221,7 +221,7 @@ When we pull the `next` page from the `cutoff-Y`, we find only the remaining 9 r
 - All the `page`s but the first, begin AFTER the `cutoff` of the previous `page`.
 !!!
 
-==- Troubleshooting
+==- :icon-stop:&nbsp; Troubleshooting
 
 <br/>
 

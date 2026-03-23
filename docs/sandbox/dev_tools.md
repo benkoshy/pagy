@@ -20,7 +20,7 @@ You can activate them by adding this line in the `<head>` of your layout/page:
 
 {{ include "snippets/run-app" app: "demo" }}
 
-#### Pagy Wand
+#### :icon-north-star:&nbsp; Pagy Wand
 
 Adjust a few sliders to see the style changing in real time, right in your app...
 
@@ -34,7 +34,7 @@ Adjust a few sliders to see the style changing in real time, right in your app..
 
 <br>
 
-Watch the Pagy wand [demo video](https://youtu.be/GhhNRrVG9jg):
+Watch the Pagy Wand [demo video](https://youtu.be/GhhNRrVG9jg):
 
 :::raised
 [![](/assets/images/pagy-wand-demo-screenshot.png){width=450}](https://youtu.be/GhhNRrVG9jg)
@@ -42,6 +42,6 @@ Watch the Pagy wand [demo video](https://youtu.be/GhhNRrVG9jg):
 
 <br>
 
-#### Pagy AI
+#### :icon-sparkle:&nbsp; Pagy AI
 
 Answer to your specific questions, right in your app. Just type questions like: _"What are the available paginators for DBs and search platforms?"_

@@ -23,7 +23,7 @@ It **fully** supports all the helpers and navigators.
 The [:countish](countish.md) paginator offers identical UI features, but it's up to 2x faster.
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```ruby Controller
 @pagy, @records = pagy(:offset, collection, **options)
@@ -32,7 +32,7 @@ The [:countish](countish.md) paginator offers identical UI features, but it's up
 - `@pagy` is the pagination instance. It provides the [readers](#readers) and the [helpers](../helpers) to use in your code.
 - `@records` represents the paginated collection of records for the page (lazy-loaded records).
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 `count_over: true`
 : Use this option with `GROUP BY` collections to calculate the total number of results using `COUNT(*) OVER ()`.
@@ -42,7 +42,7 @@ The [:countish](countish.md) paginator offers identical UI features, but it's up
 
 See also [Paginators Shared Options](../paginators/#shared-options)
 
-==- Readers
+==- :icon-mention:&nbsp; Readers
 
 `offset`
 : The OFFSET used in the SQL query
@@ -76,7 +76,7 @@ See also [Paginators Shared Options](../paginators/#shared-options)
 
 See also [Paginators Shared Readers](../paginators#shared-readers)
 
-==- Exceptions
+==- :icon-stop:&nbsp; Exceptions
 
 `Pagy::RangeError`
 : A subclass of [`Pagy::OptionError`](/toolbox/paginators/#shared-exceptions) raised when the `raise_range_error: true` option is enabled.

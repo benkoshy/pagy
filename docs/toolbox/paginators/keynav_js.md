@@ -26,7 +26,7 @@ If something goes wrong on the client side, it falls back to the [:countless](co
 It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
 !!!
 
-==- Setup
+==- :icon-list-ordered:&nbsp; Setup
 
 >>> [Keyset Setup](keyset#setup)
 
@@ -34,7 +34,7 @@ It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
 
 >>>
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```ruby Controller
 @pagy, @records = pagy(:keynav_js, collection, **options)
@@ -43,11 +43,11 @@ It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
 - `@pagy` is the pagination instance. It provides the [readers](#readers) and the [helpers](../helpers) to use in your code.
 - `@records` is the eager-loaded `Array` of the page records.
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 See the [Keyset Options](keyset/#options)
 
-==- Readers
+==- :icon-mention:&nbsp; Readers
 
 `last`
 : The last page.
@@ -57,7 +57,7 @@ See the [Keyset Options](keyset/#options)
 
 See also [Keyset Readers](keyset#readers)
 
-==- In-depth: Cutoffs Filtering
+==- :icon-log:&nbsp; In-depth: Cutoffs Filtering
 
 Let's take a new look at the diagram of the keyset pagination explained in the [Keyset documentation](keyset#in-depth-cutoffs):
 
@@ -104,7 +104,7 @@ When the number of records on a visited page has drastically changed, it would b
 - Automatically splitting the excessively grown visited pages.
 !!!
 
-==- Caveat
+==- :icon-alert:&nbsp; Caveat
 
 Nav bar links beyond the highest visited page are not displayed.
 

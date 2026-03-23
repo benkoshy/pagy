@@ -23,13 +23,13 @@ image: ""
 !!!warning It works with all paginators but `:keyset`
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```erb
 <%== @pagy.info_tag(**options) %>
 ```
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -48,7 +48,7 @@ require 'pagy/console'
 => nil
 ```
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 The method also accepts a few optional keyword arguments:
 

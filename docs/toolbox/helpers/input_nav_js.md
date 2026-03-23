@@ -33,7 +33,7 @@ It is the fastest and lightest navigator, recommended when you care about effici
 !!!warning It works with all paginators but `:keyset`
 !!!
 
-=== Usage
+=== :icon-tools:&nbsp; Usage
 
 ```erb
 <%== @pagy.input_nav_js(**options) %>  <%# default pagy style %>
@@ -41,7 +41,7 @@ It is the fastest and lightest navigator, recommended when you care about effici
 <%== @pagy.input_nav_js(:bulma, **options) %>
 ```
 
-==- Examples
+==- :icon-pin:&nbsp; Examples
 
 ```ruby Console
 require 'pagy/console'
@@ -59,15 +59,15 @@ require 'pagy/console'
 => nil
 ```
 
-==- Styles
+==- :icon-eye:&nbsp; Styles
 
 See [Shared Nav Styles](../helpers#shared-nav-styles)
 
-==- Options
+==- :icon-sliders:&nbsp; Options
 
 See [Helpers Shared Options](../helpers/#shared-options) and [Navs Shared Options](../helpers#navs-shared-options)
 
-==- Caveats
+==- :icon-alert:&nbsp; Caveats
 
 !!!danger Overriding `*_js` helpers is not recommended
 The `*_js` helpers are tightly coupled with the javascript code, so any partial overriding on one side would be quite fragile

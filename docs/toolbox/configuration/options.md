@@ -42,7 +42,7 @@ Pagy has a top-down hierarchical options system that allows setting and overridi
 
 !!!success
 - **Keep options local**
-  - For clarity, set options as close as possible to where they're consumed.
+  - For clarity, set options as close to where they're consumed as possible.
 - **Widen the scope when needed**
   - Use higher-level options when they conveniently affect broader scopes.
 !!!

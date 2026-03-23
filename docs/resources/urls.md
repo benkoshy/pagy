@@ -16,7 +16,7 @@ Pagy uses the current URL as the base to generate all the other page URLs. It re
 Pagy generates its specialized URLs ~20x faster than generic helpers like rails' `url_for`. When possible, it just replaces the page value, without recalculating every part of a URL.
 !!!
 
-==- URL Options
+==- :icon-sliders:&nbsp; Options
 
 These options give you full control over the URL composition. You can use them for all [paginators](/toolbox/paginators.md) and `@pagy` [helpers](/toolbox/helpers.md)
 
@@ -47,25 +47,25 @@ These options give you full control over the URL composition. You can use them f
   tweak = ->(q) { q.except!('not_useful').merge!('custom' => 'useful') }
   ```
 
-==- URL Params
+==- :icon-blocked:&nbsp; Params
 
 ##### No framework params
 
-Pagy does not use the `request.params` because they are modified differently by different frameworks. It can only rely on the `request.GET` and `request.POST` methods, which are consistent across all Rack environments.
+Pagy ignores the `request.params` because they are modified differently by different frameworks (Rails, Sinatra, etc.). It can only rely on the `request.GET` and `request.POST` methods, which are consistent across all Rack environments.
 
-##### String-keyed Hash
+##### No symbolic params
 
-The query params are strictly string-keyed Hash. This avoids the performance overhead of converting symbols back and forth during URL composition.
+The params that Pagy handles composing its URLs, are **strictly string-keyed**. That's how every gem/framework handles URLs, because it avoids the maintenance and performance overhead of converting symbols back and forth during URL composition.
 
-==- GET
+==- :icon-download:&nbsp; GET
 
 Serving paginated collections is a retrieval action that does not modify data; therefore, it should rely on GET requests. Since most applications follow this standard, Pagy parses and produces GET URLs out of the box.
 
-==- POST
+==- :icon-upload:&nbsp; POST
 
-If you must use POST to retrieve paginated collections, you should build your own POST forms/requests using the data provided by Pagy _(e.g., via the [data_hash](/toolbox/helpers/data_hash) or [readers](/toolbox/paginators/#shared-readers))_. However, Pagy parses and handles POST request parameters out of the box without additional configuration.
+If you must use POST to retrieve paginated collections, you should build your own POST forms/requests using the data provided by Pagy _(e.g., via the [data_hash](/toolbox/helpers/data_hash) or instance readers)_. However, Pagy parses and handles POST request parameters out of the box without additional configuration.
 
-==- Dynamic Segments
+==- :icon-stop:&nbsp; Dynamic Segments
 
 Routers (like the Rails' one) allow defining parameters as part of the path (e.g., `/items/:page`)...
 

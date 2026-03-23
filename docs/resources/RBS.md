@@ -16,7 +16,7 @@ nav:
 
 Pagy provides a centralized RBS file for the public API. It should give your type checker and linter the info to work in your IDE.
 
-==- RBS File
+==- :icon-file-check:&nbsp; RBS File
 
 :::code source="../gem/sig/pagy.rbs" title="pagy.rbs" language="ruby":::
 

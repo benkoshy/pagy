@@ -18,29 +18,18 @@ Its class is determined by the paginator used, but you can safely ignore it.
 Unused code consumes no memory.
 !!!
 
-==- Shared Nav Styles
-
-`:pagy/nil`
-: Pagy default style
-
-`:bootstrap`
-: Set `classes: 'pagination pagination-sm any-class'` style option to override the default `'pagination'` class.
-
-`:bulma`
-: Set `classes: 'pagination is-small any-class'` style option to override the default `'pagination'` classes.
-
-==- Shared Options
+==- :icon-sliders:&nbsp; Shared Options
 
 !!! Helpers may add and document specific [Options](configuration/options).
 !!!
 
 :icon-crosshairs-24:&nbsp; URL Options
-: See [URL Options](/resources/urls#url-options)
+: See [URL Options](/resources/urls#options)
 
 `anchor_string: 'data-turbo-frame="paginate"'`
 : Concatenate a verbatim raw string to the internal HTML of the anchor tags. It must contain properly formatted HTML attributes. It's not suitable for `*_hash` helpers.
 
-==- Navs Shared Options
+==- :icon-sliders:&nbsp; Navs Shared Options
 
 `id: 'my-nav'`
 : Set the `id` HTML attribute of the `nav` tag.
@@ -56,4 +45,15 @@ Unused code consumes no memory.
   <%# Explicitly set the aria_label %>
   <%== @pagy.series_nav(aria_label: 'Search result pages') %>
   ```
+==- :icon-eye:&nbsp; Shared Nav Styles
+
+`:pagy/nil`
+: Pagy default style
+
+`:bootstrap`
+: Set `classes: 'pagination pagination-sm any-class'` style option to override the default `'pagination'` class.
+
+`:bulma`
+: Set `classes: 'pagination is-small any-class'` style option to override the default `'pagination'` classes.
+
 ===

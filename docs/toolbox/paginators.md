@@ -48,13 +48,13 @@ Instantiate paginator classes only if the documentation explicitly suggests it.
 Unused code consumes no memory.
 !!!
 
-==- Shared Options
+==- :icon-sliders:&nbsp; Shared Options
 
 !!! Paginators may add and document specific [Options](configuration/options).
 !!!
 
 :icon-crosshairs-24:&nbsp; URL Options
-: See [URL Options](/resources/urls#url-options)
+: See [URL Options](/resources/urls#options)
 
 `limit: 10`
 : Specifies the number of items per page (default: `20`)
@@ -78,7 +78,7 @@ Unused code consumes no memory.
                    cookie:   'xyz' }               # The 'pagy' cookie, only for keynav
   ```
 
-==- Shared Readers
+==- :icon-mention:&nbsp; Shared Readers
 
 !!! Paginators may add and document specific Readers.
 !!!
@@ -98,7 +98,7 @@ Unused code consumes no memory.
 `next`
 : The next page
 
-==- Shared Exceptions
+==- :icon-stop:&nbsp; Shared Exceptions
 
 !!! Paginators may add and document specific Exceptions.
 !!!
@@ -110,7 +110,7 @@ Unused code consumes no memory.
   - `e.option` the offending option symbol (e.g. `:page`)
   - `e.value` the value of the offending option (e.g. `-3`)
 
-==- Troubleshooting
+==- :icon-stop:&nbsp; Troubleshooting
 
 ||| Records may repeat in different pages or be missing
 

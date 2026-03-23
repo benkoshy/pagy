@@ -18,11 +18,7 @@ Pagy includes a couple of CSS files and the tools to integrate with your app's t
 You don't need any stylesheets if you use the pagy `:bootstrap` or `:bulma` helpers and styles.
 !!!
 
-<br>
-
 ### Setup
-
-<br>
 
 >>> Pick a file...
 
@@ -69,7 +65,7 @@ and adjust a few sliders to see the change in real time, right in your app, with
 
 >>>
 
-==- Selectors
+==- :icon-key-asterisk:&nbsp; Selectors
 
 To ensure a minimalistic valid output, complete with all the [ARIA attributes](ARIA), pagy outputs a single line with the minimum number of tags and attributes required to identify all the parts of the nav bars:
 
@@ -87,7 +83,7 @@ To ensure a minimalistic valid output, complete with all the [ARIA attributes](A
 - Check the stylesheet comments to target other specific elements.
 !!!
 
-==- RTL
+==- :icon-arrow-left:&nbsp; RTL
 
 The pagy stylesheets automatically support Right-To-Left (RTL) languages. It respects the standard `dir="rtl"` attribute of the `html` tag or any parent element of the pagination.
 

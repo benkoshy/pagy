@@ -47,8 +47,7 @@ Make `Pagy` available in your JavaScript environment with...
 
 +++ pagy.js
 
-!!!warning Good **only** for pagy development / debugging
-With inline sourcemap
+!!!warning Use it only for development / debugging of Pagy itself.
 !!!
 
 +++
