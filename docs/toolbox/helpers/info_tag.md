@@ -16,7 +16,9 @@ image: ""
 :::
 <br>
 
+:::content-center
 {{ include "snippets/run-app" app: "demo" }}
+:::
 
 `info_tag` provides information about the content of the current pagination.
 

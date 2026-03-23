@@ -16,7 +16,9 @@ image: ""
 :::
 <br/>
 
+:::content-center
 {{ include "snippets/run-app" app: "demo" }}
+:::
 
 The `previous_tag` and `next_tag` return the enabled/disabled previous/next page anchor tag.
 

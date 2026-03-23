@@ -20,8 +20,7 @@ It is not a requirement, but if present, the pagy `JSON` generation will be fast
 
 +++ pagy.mjs
 
-!!!success
-Good for apps **with** a minifier _(Sprockets, builers, ...)_
+!!!success Good for apps **with** a minifier _(Sprockets, builers, ...)_
 !!!
 
 Make `Pagy` available in your JavaScript environment with...
@@ -32,8 +31,7 @@ import Pagy from "pagy.mjs"
 
 +++ pagy.min.js
 
-!!!success
-Good for apps **without** a minifier _(Propshaft, Importmaps, ...)_
+!!!success Good for apps **without** a minifier _(Propshaft, Importmaps, ...)_
 !!!
 
 Make `Pagy` available in your JavaScript environment with...

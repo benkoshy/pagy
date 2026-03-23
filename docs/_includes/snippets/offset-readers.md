@@ -10,16 +10,16 @@
 `to`
 : The position in the collection of the last item on the page. _(Different Pagy classes may use different value types for it)._
 
-`previous`
-: The previous page
-
 `last`
 : The last page.
 
 `pages`
 : The number of pages.
 
-`records`
-: The fetched records for the current page.
+`max_pages: 500`
+: Restricts pagination to only `:max_pages`. _(Ignored by `Pagy::Calendar::*` unit instances)_
+
+`previous`
+: The previous page
 
 {{ include "paginator-readers"

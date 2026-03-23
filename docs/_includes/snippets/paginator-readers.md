@@ -1,3 +1,6 @@
+`next`
+: The next page
+
 `page`
 : The current page
 
@@ -7,8 +10,8 @@
 `in`
 : The actual items in the page
 
-`options`
-: The options of the object
+`records`
+: The fetched records for the current page.
 
-`next`
-: The next page
+`options`
+: The hash of options of the object

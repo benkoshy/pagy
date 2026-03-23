@@ -10,15 +10,35 @@ order: 80
 
 ---
 
-`:keyset` is the **fastest** [KEYSET](/guides/choose-right/#keyset) paginator for SQL collections.
+`:keyset` is the **fastest** [KEYSET](/guides/choose-right/#keyset) paginator for `ActiveRecord::Relation` or `Sequel::Dataset` SQL ordered collections.
+
+It uses a much faster pagination technique than [OFFSET](/guides/choose-right/#offset).
 
 {{ include "snippets/run-app" app: "keyset" anchor: "keysets" }}
+
+
+==- :icon-blocked:&nbsp; Constraints
+
+!!!tip When an UI is needed, and using [KEYSET Pagination](/guides/choose-right/#keyset) is possible, use the [:keynav_js](keynav_js) paginator to overcome almost all these constraints.
+!!!
+
+!!!warning With any KEYSET pagination technique...
+- You can only paginate from one page to the next: no jumping to arbitrary pages.
+- The `set` must be `uniquely ordered`. Add the primary key (usually `:id`) as the last order column to be sure.
+- You should add the most suitable DB index for your ordering strategy, or it there will be no performance gain.
+  !!!
+
+!!!warning With Pagy `:keyset`...
+You don't know the `previous` and the `last` page; you only know the `first` and `next` pages.
+
+:icon-light-bulb: If you want to paginate backward, just call `reverse_order` on your set, and proceed forward.
+!!!
 
 ==- :icon-list-ordered:&nbsp; Setup
 
 Depending on your **order requirements**, here is how you set it up for maximum efficiency:
 
-+++ Specific order
++++ Specific Order Requirement
 
 >>> Ensure that your set is `uniquely ordered`
 
@@ -41,7 +61,7 @@ set = collection.order(:last_name).order(:first_name).order(:id)
 
 >>>
 
-+++ No order
++++ No Order Requirement
 
 Just order by `:id`. It's fast out of the box without any setup...
 
@@ -65,42 +85,13 @@ set = collection.order(:id)
 <%== @pagy.next_tag(text: 'Next page &gt;') %>
 ```
 
-==- :icon-star:&nbsp; Features
+==- :icon-sliders:&nbsp; Options
 
-!!!success
+{{ include "snippets/keyset-options" }}
 
-- **It works with:**
-  - `ActiveRecord::Relation` or `Sequel::Dataset` sets
-  - Single or multiple ordered columns
-  - Any combination of order directions
+==- :icon-mention:&nbsp; Readers
 
-- **Unlike the classic OFFSET pagination:**
-  - Its performance is reliably fast from start to end, no matter how big your table is.
-  - It's completely accurate. Even with insertions or deletions during browsing, it will never repeat or miss records.
-  - Does not suffer from `RangeError`s
-
-!!!
-
-==- :icon-blocked:&nbsp; Constraints
-
-!!!tip When an UI is needed and using [KEYSET Pagination](/guides/choose-right/#keyset) is possible, use the [:keynav_js](keynav_js) paginator to overcome almost all these constraints.
-!!!
-
-!!!warning With any KEYSET pagination technique...
-- You can only paginate from one page to the next: no jumping to arbitrary pages.
-- The `set` must be `uniquely ordered`. Add the primary key (usually `:id`) as the last order column to be sure.
-- You should add the most suitable DB index for your ordering strategy, or it will be slow.
-!!!
-
-!!!warning With Pagy `:keyset`...
-You don't know the `previous` and the `last` page; you only know the `first` and `next` pages for performance and simplicity.
-!!!
-
-!!!tip
-If you want to paginate backward, like: `last` ... `previous` ... `previous`, just call `reverse_order` on your set, and proceed forward
-like:
-`first` ... `next` ... `next` ... It does exactly the same: just faster and simpler.
-!!!
+{{ include "snippets/keyset-readers" }}
 
 ==- :icon-book:&nbsp; Glossary
 
@@ -138,23 +129,6 @@ There are a few peculiar aspects of the keyset pagination technique that you mig
 
 `next`
 : The next `page`, i.e. the page of records beginning after the `cutoff`. Also the `cutoff` value retured by the `next` method.
-
-==- :icon-sliders:&nbsp; Options
-
-{{ include "snippets/keyset-options" }}
-
-==- :icon-mention:&nbsp; Readers
-
-{{ include "snippets/keyset-readers" }}
-
-==- :icon-info:&nbsp; How it works
-
-<br/>
-
-1. You pass an `uniquely ordered` `set` and pagy pulls the `:limit` of records of the first page.
-2. You request the `next` URL, which has the `page` param set to the `cutoff` of the current page.
-3. At each request, the new `page` is decoded into arguments that are coupled with a `where` filter query, and a `:limit` of new records is retrieved.
-4. The collection ends when `pagy.next.nil?`.
 
 ==- :icon-log:&nbsp; In Depth: Cutoffs
 

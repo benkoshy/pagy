@@ -49,7 +49,9 @@ image: ""
 
 +++
 
+:::content-center
 {{ include "snippets/run-app" app: "demo" }}
+:::
 
 `series_nav_js` functions similarly to a [series_nav](series_nav.md), with the following added features:
 
@@ -93,6 +95,7 @@ require 'pagy/console'
 : Enable responsiveness. Assign different number of `:slots` to different tag widths.
 
 {{ include "snippets/nav-options" }}
+
 {{ include "snippets/helper-options" }}
 
 ==- :icon-log:&nbsp; In Depth: `:steps` Option

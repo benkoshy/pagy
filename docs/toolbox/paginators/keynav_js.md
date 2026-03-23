@@ -45,18 +45,21 @@ It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
 
 ==- :icon-sliders:&nbsp; Options
 
+`max_pages: 500`
+: Restricts pagination to only `:max_pages`. _(Ignored by `Pagy::Calendar::*` unit instances)_
+
 {{ include "snippets/keyset-options" }}
 
 ==- :icon-mention:&nbsp; Readers
-
-`previous`
-: The previous page
 
 `last`
 : The last page.
 
 `pages`
 : The number of pages.
+
+`previous`
+: The previous page
 
 {{ include "snippets/keyset-readers" }}
 
@@ -109,6 +112,7 @@ When the number of records on a visited page has drastically changed, it would b
 
 ==- :icon-alert:&nbsp; Caveat
 
-Nav bar links beyond the highest visited page are not displayed.
+!!!warning Nav bar links beyond the highest visited page are not known/displayed.
+!!!
 
 ===

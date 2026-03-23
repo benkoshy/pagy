@@ -36,10 +36,9 @@ It **fully** supports all the helpers and navigators.
 `ttl: 180`
 : A positive number of seconds enables recounting. Set to `nil` (falsey) queries the DB for the COUNT only once, and reuse it for all the other pages served.
 
-!!!warning Recounting/TTL
-- Recounting gets the user more precise info and minimizes the page differences with lengthy page-browsing and abundant DB insertions/deletions.
-- It does not fix the OFFSET-intrinsic "drift" of records on active DB insertions/deletions.
-!!!
+  !!!warning Recounting/TTL
+  - Recounting gets the user more precise info and minimizes the page differences with lengthy page-browsing and abundant DB insertions/deletions.
+    - It does not fix the OFFSET-intrinsic "drift" of records on active DB insertions/deletions.
 
 {{ include "snippets/offset-options" }}
 

@@ -18,9 +18,18 @@ Pagy generates its specialized URLs ~20x faster than generic helpers like rails'
 
 ==- :icon-sliders:&nbsp; Options
 
-These options give you full control over the URL composition. You can use them for all [paginators](/toolbox/paginators.md) and `@pagy` [helpers](/toolbox/helpers.md)
+These options give you full control over the URL composition for [paginator](/toolbox/paginators.md) and [helper](/toolbox/helpers.md):
 
-{{ include "snippets/url-options" }}
+:::
+=== Consumed by Paginators
+
+{{ include "snippets/paginator-url-options" }}
+
+=== Consumed by Helpers
+
+{{ include "snippets/helper-url-options" }}
+
+:::
 
 ==- :icon-blocked:&nbsp; Params
 

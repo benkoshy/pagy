@@ -41,6 +41,7 @@ The [:keynav_js](keynav_js.md) offers identical UI features but utilizes the fas
 
 ==- :icon-alert:&nbsp; Caveat
 
-Nav bar links beyond the highest visited page are not displayed.
+!!!warning Nav bar links beyond the highest visited page are not known/displayed.
+!!!
 
 ===

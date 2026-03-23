@@ -14,24 +14,17 @@ icon: rocket
 Check the [Migration Guide](migration-guide) first
 !!!
 
->>> Install
+>>> Install it...
 
-Prevent unexpected breaking changes in stable releases (see [omit the patch version](http://guides.rubygems.org/patterns/#pessimistic-version-constraint)):
-
-```ruby Gemfile (stable)
+```ruby Gemfile
 gem 'pagy', '~> 43.4' # Omit the patch segment to avoid breaking changes
 ```
 
-==- Try pagy...
+>>> Try it...
 
-- **In the Browser**
-  - Run `pagy demo` in your terminal, and visit http://127.0.0.1:8000
-- **In IRB**
-  - Include the [Pagy::Console](/sandbox/console)
+{{ include "snippets/run-app" app: "demo" }}
 
-===
-
->>> Use it in your app
+>>> Use it...
 
 === {{ include "snippets/mini-step" step: "•1" }} Include the `pagy` method where you are going to use it _(usually ApplicationController)_:
 

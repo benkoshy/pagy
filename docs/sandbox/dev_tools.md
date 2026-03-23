@@ -18,7 +18,9 @@ You can activate them by adding this line in the `<head>` of your layout/page:
 <%== Pagy.dev_tools %>
 ```
 
+:::content-center
 {{ include "snippets/run-app" app: "demo" }}
+:::
 
 #### :icon-north-star:&nbsp; Pagy Wand
 

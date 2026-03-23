@@ -24,7 +24,9 @@ image: ""
 :::
 <br/>
 
+:::content-center
 {{ include "snippets/run-app" app: "demo" }}
+:::
 
 `input_nav_js` combines navigation and pagination info in a single compact element.
 
@@ -64,6 +66,7 @@ require 'pagy/console'
 ==- :icon-sliders:&nbsp; Options
 
 {{ include "snippets/nav-options" }}
+
 {{ include "snippets/helper-options" }}
 
 ==- :icon-alert:&nbsp; Caveats

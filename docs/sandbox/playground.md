@@ -20,12 +20,6 @@ $ pagy --help
 
 We have a few single-file apps ready to run in your browser for various purposes. Most of them are used to run the [E2e Test](https://github.com/ddnexus/pagy/blob/master/.github/workflows/e2e-test.yml) workflow.
 
-!!!success
-
-Bundler automatically installs the required gems during the first run.
-
-!!!
-
 ==- :icon-pulse:&nbsp; Repro _(interaction example)_ {#repro}
 
 You can use this app as a starting point to try Pagy or reproduce issues to get support or file bug reports.
@@ -93,7 +87,7 @@ These are the interactive showcase/repro for the `:keyset` paginator with `Activ
 
 ==- :icon-stop:&nbsp; Troubleshooting
 
-All the pagy apps use [bundler/inline](https://bundler.io/guides/bundler_in_a_single_file_ruby_script.html).
+All the pagy apps use [bundler/inline](https://bundler.io/guides/bundler_in_a_single_file_ruby_script.html), that should be able to install all the gems automatically at app startup.
 
 Depending on your environment, you might get this message for some gem:
 

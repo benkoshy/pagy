@@ -83,10 +83,10 @@ If any legacy code remains, it will raise an exception. Remove the old code and 
 
 Once the app displays pagination correctly, customize Pagy as needed _(see [Stylesheets](/resources/stylesheets))_.
 
-If the previous pagination used custom elements (e.g., custom params, URLs, links, HTML elements, etc.), adjustments may be required for compatibility. Please take a look at the topics in the [How To](how-to.md) docs: that should cover most of your custom needs.
+If the previous pagination used custom elements (e.g., custom params, URLs, links, HTML elements, etc.), adjustments may be required for compatibility. Please take a look at the topics in the [How To](how-to) docs: that should cover most of your custom needs.
 
 !!!tip
-If the app uses pagination from `Bootstrap` or `Bulma` frameworks, the existing CSS should function seamlessly with Pagy navigation helpers. _(See [Nav Styles](/toolbox/helpers/#shared-nav-styles))_
+If the app uses pagination from `Bootstrap` or `Bulma` frameworks, the existing CSS should function seamlessly with Pagy navigation helpers.
 !!!
 >>>
 

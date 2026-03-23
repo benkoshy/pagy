@@ -16,7 +16,9 @@ image: ""
 :::
 <br/>
 
+:::content-center
 {{ include "snippets/run-app" app: "demo" }}
+:::
 
 The `limit_tag_js` allows the user to select any arbitrary limit per page, up to the `:client_max_limit` option. It raises an `OptionError` exception if the `:client_max_limit` is not truthy.
 

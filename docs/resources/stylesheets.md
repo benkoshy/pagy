@@ -24,8 +24,7 @@ You don't need any stylesheets if you use the pagy `:bootstrap` or `:bulma` help
 
 +++ pagy.css
 
-!!!success
-Good for any app
+!!!success Good for any app
 !!!
 
 ==- CSS Source
@@ -36,7 +35,7 @@ Good for any app
 
 +++ pagy-tailwind.css
 
-!!!warning Good only for apps using tailwind
+!!!warning Works only with apps using tailwind
 !!!
 
 ==- CSS Source

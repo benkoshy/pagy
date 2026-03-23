@@ -13,7 +13,9 @@ image: ""
 ![calendar_app](/assets/images/calendar-app.png){width=600}
 :::
 
+:::content-center
 {{ include "snippets/run-app" app: "calendar" }}
+:::
 
 !!!warning ActiveSupport Required!
 !!!
