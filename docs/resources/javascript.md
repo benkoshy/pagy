@@ -6,7 +6,7 @@ order: 80
 
 #
 
-## :icon-file-code-24:&nbsp;&nbsp;JavaScript
+## :icon-file-code:&nbsp;&nbsp;JavaScript
 
 ---
 

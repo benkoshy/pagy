@@ -6,7 +6,7 @@ order: 80
 
 #
 
-## :icon-ai-model-24:&nbsp;&nbsp;DevTools
+## :icon-ai-model:&nbsp;&nbsp;DevTools
 
 ---
 

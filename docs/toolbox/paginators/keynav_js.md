@@ -10,7 +10,7 @@ nav:
 
 #
 
-## :icon-key-24:&nbsp;&nbsp;:keynav_js{{ include "snippets/js-required" }}
+## :icon-key:&nbsp;&nbsp;:keynav_js{{ include "snippets/js-required" }}
 
 ---
 

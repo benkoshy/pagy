@@ -6,7 +6,7 @@ order: 30
 
 #
 
-## :icon-search-24:&nbsp;&nbsp;:searchkick
+## :icon-search:&nbsp;&nbsp;:searchkick
 
 ---
 

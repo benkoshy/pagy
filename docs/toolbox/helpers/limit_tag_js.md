@@ -7,7 +7,7 @@ image: ""
 
 #
 
-## :icon-code-square-24:&nbsp;&nbsp;limit_tag_js{{ include "snippets/js-required" }}
+## :icon-code-square:&nbsp;&nbsp;limit_tag_js{{ include "snippets/js-required" }}
 
 ---
 

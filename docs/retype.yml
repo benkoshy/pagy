@@ -56,7 +56,7 @@ backlinks:
 
 breadcrumb:
   home: Pagy
-  separator: ":icon-arrow-right-24:"
+  separator: ":icon-arrow-right:"
 
 theme:
   base:

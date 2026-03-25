@@ -6,7 +6,7 @@ order: 50
 
 #
 
-## :icon-search-24:&nbsp;&nbsp;:elasticsearch_rails
+## :icon-search:&nbsp;&nbsp;:elasticsearch_rails
 
 ---
 

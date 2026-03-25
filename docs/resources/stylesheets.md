@@ -8,7 +8,7 @@ image: ""
 
 #
 
-## :icon-file-24:&nbsp;&nbsp;Stylesheets
+## :icon-file:&nbsp;&nbsp;Stylesheets
 
 ---
 

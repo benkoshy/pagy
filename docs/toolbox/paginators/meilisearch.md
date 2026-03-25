@@ -6,7 +6,7 @@ order: 40
 
 #
 
-## :icon-search-24:&nbsp;&nbsp;:meilisearch
+## :icon-search:&nbsp;&nbsp;:meilisearch
 
 ---
 

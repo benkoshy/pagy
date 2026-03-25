@@ -6,7 +6,7 @@ icon: play
 
 #
 
-## :icon-play-24:&nbsp;&nbsp;Playground
+## :icon-play:&nbsp;&nbsp;Playground
 
 ---
 

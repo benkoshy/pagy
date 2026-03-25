@@ -7,7 +7,7 @@ image: ""
 
 #
 
-## :icon-code-24:&nbsp;&nbsp;series_nav
+## :icon-code:&nbsp;&nbsp;series_nav
 
 ---
 

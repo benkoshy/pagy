@@ -10,7 +10,7 @@ nav:
 
 #
 
-## :icon-move-to-end-24:&nbsp;&nbsp;:countish
+## :icon-move-to-end:&nbsp;&nbsp;:countish
 
 ---
 

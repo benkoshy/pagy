@@ -7,7 +7,7 @@ image: ""
 
 #
 
-## :icon-calendar-24:&nbsp;&nbsp;:calendar
+## :icon-calendar:&nbsp;&nbsp;:calendar
 
 :::raised
 ![calendar_app](/assets/images/calendar-app.png){width=600}

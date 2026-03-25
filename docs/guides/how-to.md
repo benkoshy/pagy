@@ -6,7 +6,7 @@ icon: tools
 
 #
 
-## :icon-tools-24:&nbsp;&nbsp;How To
+## :icon-tools:&nbsp;&nbsp;How To
 
 ---
 

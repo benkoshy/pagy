@@ -7,7 +7,7 @@ image: ""
 
 #
 
-## :icon-code-24:&nbsp;&nbsp;series_nav_js{{ include "snippets/js-required" }}
+## :icon-code:&nbsp;&nbsp;series_nav_js{{ include "snippets/js-required" }}
 
 <br>
 

@@ -6,7 +6,7 @@ order: 60
 
 #
 
-## :icon-accessibility-24:&nbsp;&nbsp;ARIA Attributes
+## :icon-accessibility:&nbsp;&nbsp;ARIA Attributes
 
 ---
 

@@ -6,7 +6,7 @@ order: 190
 
 #
 
-## :icon-list-unordered-24:&nbsp;&nbsp;headers_hash
+## :icon-list-unordered:&nbsp;&nbsp;headers_hash
 
 ---
 
@@ -72,7 +72,7 @@ total-count 1000
 
 {{ include "snippets/helper-options" }}
 
-==- :icon-light-bulb-24:&nbsp; Suggestions
+==- :icon-light-bulb:&nbsp; Suggestions
 
 >>> Instead of explicitly merging the headers before each rendering...
 

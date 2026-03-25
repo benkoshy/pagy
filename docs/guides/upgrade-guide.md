@@ -11,7 +11,7 @@ nav:
 
 #
 
-## :icon-check-circle-24:&nbsp;&nbsp;Upgrade to 43
+## :icon-check-circle:&nbsp;&nbsp;Upgrade to 43
 
 ---
 

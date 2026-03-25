@@ -6,7 +6,7 @@ order: 100
 
 #
 
-## :icon-sliders-24:&nbsp;&nbsp;Options Hierarchy
+## :icon-sliders:&nbsp;&nbsp;Options Hierarchy
 
 ---
 

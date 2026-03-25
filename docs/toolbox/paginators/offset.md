@@ -6,7 +6,7 @@ order: 100
 
 #
 
-## :icon-move-to-end-24:&nbsp;&nbsp;:offset
+## :icon-move-to-end:&nbsp;&nbsp;:offset
 
 ---
 

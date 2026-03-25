@@ -6,7 +6,7 @@ order: 50
 
 #
 
-## :icon-crosshairs-24:&nbsp;&nbsp;URLs
+## :icon-crosshairs:&nbsp;&nbsp;URLs
 
 ---
 
@@ -64,22 +64,22 @@ The Cons are overwhelming.
 ##### Pros
 
 {.list-icon}
-- :icon-thumbsup-24: Aesthetically cleaner URLs
-- :icon-thumbsup-24: Possibility to cache single pages at the edge _(rarely necessary)_
+- :icon-thumbsup: Aesthetically cleaner URLs
+- :icon-thumbsup: Possibility to cache single pages at the edge _(rarely necessary)_
 
 ##### Cons
 
 {.list-icon}
 - **RFC 3986 Compliance**
-  - :icon-thumbsdown-24: The `:page` parameter represents non-hierarchical data, which fits the definition of the query string component.
-  - :icon-thumbsdown-24: It does not fit the definition of the path component, which represents hierarchical resources.
+  - :icon-thumbsdown: The `:page` parameter represents non-hierarchical data, which fits the definition of the query string component.
+  - :icon-thumbsdown: It does not fit the definition of the path component, which represents hierarchical resources.
 - **Data Identification**
-  - :icon-thumbsdown-24: A query string parameter is labeled data (`?page=2`) identifiable without external context.
-  - :icon-thumbsdown-24: A path segment (`/2`) is unlabeled and relies on external routing logic to be handled, so it cannot be identified/used by agnostic code.
+  - :icon-thumbsdown: A query string parameter is labeled data (`?page=2`) identifiable without external context.
+  - :icon-thumbsdown: A path segment (`/2`) is unlabeled and relies on external routing logic to be handled, so it cannot be identified/used by agnostic code.
 - **Performance**
-  - :icon-thumbsdown-24: Dynamic segments are framework-specific routing concepts, not query params concepts.
-  - :icon-thumbsdown-24: Using framework code is not only non-agnostic, but significantly slower than pagy's generic query param handling.
-  - :icon-thumbsdown-24: Using it _(or even just checking for it)_ would be an unnecessary burden for all the apps.
+  - :icon-thumbsdown: Dynamic segments are framework-specific routing concepts, not query params concepts.
+  - :icon-thumbsdown: Using framework code is not only non-agnostic, but significantly slower than pagy's generic query param handling.
+  - :icon-thumbsdown: Using it _(or even just checking for it)_ would be an unnecessary burden for all the apps.
 
 :::
 ==- OK, but what if I still want it in my own app?

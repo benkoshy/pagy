@@ -10,7 +10,7 @@ nav:
 
 #
 
-## :icon-verified-24:&nbsp;&nbsp;RBS Signatures
+## :icon-verified:&nbsp;&nbsp;RBS Signatures
 
 ---
 

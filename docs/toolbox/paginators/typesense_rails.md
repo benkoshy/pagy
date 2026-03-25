@@ -10,7 +10,7 @@ nav:
 
 #
 
-## :icon-search-24:&nbsp;&nbsp;:typesense_rails
+## :icon-search:&nbsp;&nbsp;:typesense_rails
 
 ---
 

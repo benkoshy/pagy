@@ -7,7 +7,7 @@ image: ""
 
 #
 
-## :icon-code-square-24:&nbsp;&nbsp;anchor_tags
+## :icon-code-square:&nbsp;&nbsp;anchor_tags
 
 ---
 

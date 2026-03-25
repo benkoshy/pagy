@@ -6,7 +6,7 @@ icon: rocket
 
 #
 
-## :icon-rocket-24:&nbsp;&nbsp;Quick Start
+## :icon-rocket:&nbsp;&nbsp;Quick Start
 
 ---
 

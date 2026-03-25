@@ -6,7 +6,7 @@ order: 80
 
 #
 
-## :icon-key-24:&nbsp;&nbsp;:keyset
+## :icon-key:&nbsp;&nbsp;:keyset
 
 ---
 
@@ -190,7 +190,7 @@ _Not unique combination..._
 Product.order(:name, :production_date)
 ```
 
-||| :icon-check-circle-24: Append the primary key to the order
+||| :icon-check-circle: Append the primary key to the order
 
 _The `:id` is usually the primary key..._
 
@@ -204,7 +204,7 @@ Product.order(:name, :production_date, :id)
 
 The generic `to_json` method used to encode the `page` may lose some information when decoded
 
-||| :icon-check-circle-24: Solution
+||| :icon-check-circle: Solution
 
 - Check the actual executed DB query and the actual stored value
 - Identify the column that has a format that doesn't match with the keyset
@@ -218,7 +218,7 @@ The generic `to_json` method used to encode the `page` may lose some information
 
 The index has the wrong order, or it's the wrong type
 
-||| :icon-check-circle-24: Solutions
+||| :icon-check-circle: Solutions
 
 - Ensure that the index reflects exactly the columns sequence and order of your keyset
 - Use a B-tree or B+ Tree index. Use SQL `EXPLAIN ANALYZE` or similar tool to confirm no table scan is performed.

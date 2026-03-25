@@ -6,7 +6,7 @@ order: 95
 
 #
 
-## :icon-thumbsup-24:&nbsp;&nbsp;Choose the right tool
+## :icon-thumbsup:&nbsp;&nbsp;Choose the right tool
 
 ---
 
@@ -16,7 +16,7 @@ Pagy offers four different techniques, each implementing different types of pagi
 
 ### Pagination Types
 
->>> :icon-move-to-end-24:&nbsp;&nbsp;OFFSET {#offset}
+>>> :icon-move-to-end:&nbsp;&nbsp;OFFSET {#offset}
 
 The most common pagination technique is counting the collection items (COUNT DB query), using the count to calculate where the specific pages start (i.e., OFFSET) and retrieving only the LIMIT items for that page (OFFSET+LIMIT DB query).
 
@@ -39,26 +39,26 @@ Use the `:countless` or `:countish` paginators to improve the DB performance **u
 <br/>
 
 {.list-icon}
-- [:icon-move-to-end-24:&nbsp;:offset](/toolbox/paginators/offset.md)
-  - :icon-check-circle-24: **Best for**: Standard App (Small Data)
-  - :icon-thumbsup-24:     **Pros**: Simple setup, full UI support
-  - :icon-thumbsdown-24:   **Cons**: Slow on big tables (two queries per page), data-shift
+- [:icon-move-to-end:&nbsp;:offset](/toolbox/paginators/offset.md)
+  - :icon-check-circle: **Best for**: Standard App (Small Data)
+  - :icon-thumbsup:     **Pros**: Simple setup, full UI support
+  - :icon-thumbsdown:   **Cons**: Slow on big tables (two queries per page), data-shift
 
 {.list-icon}
-- [:icon-move-to-end-24:&nbsp;:countish](/toolbox/paginators/countish.md)
-  - :icon-check-circle-24: **Best for**: Standard App (Large Data)
-  - :icon-thumbsup-24:     **Pros**: Same as `:offset`, but far better performance than `:offset` (memoizes the total count)
-  - :icon-thumbsdown-24:   **Cons**: Same as `:offset`, the `count` may become stale (likely a negligible side effect)
+- [:icon-move-to-end:&nbsp;:countish](/toolbox/paginators/countish.md)
+  - :icon-check-circle: **Best for**: Standard App (Large Data)
+  - :icon-thumbsup:     **Pros**: Same as `:offset`, but far better performance than `:offset` (memoizes the total count)
+  - :icon-thumbsdown:   **Cons**: Same as `:offset`, the `count` may become stale (likely a negligible side effect)
 
 {.list-icon}
-- [:icon-move-to-end-24:&nbsp;:countless](/toolbox/paginators/countless.md)
-  - :icon-check-circle-24: **Best for**: API, Infinite Scroll
-  - :icon-thumbsup-24:     **Pros**: Fastest in the offset family (only one query per page)
-  - :icon-thumbsdown-24:   **Cons**: Same as `:offset`, the `count` is always `nil`, UI support with a few limitations
+- [:icon-move-to-end:&nbsp;:countless](/toolbox/paginators/countless.md)
+  - :icon-check-circle: **Best for**: API, Infinite Scroll
+  - :icon-thumbsup:     **Pros**: Fastest in the offset family (only one query per page)
+  - :icon-thumbsdown:   **Cons**: Same as `:offset`, the `count` is always `nil`, UI support with a few limitations
 
 ===
 
->>> :icon-key-24:&nbsp;&nbsp;KEYSET {#keyset}
+>>> :icon-key:&nbsp;&nbsp;KEYSET {#keyset}
 
 The KEYSET pagination technique allows the fastest and lighter DB performance. It does not count the (ordered) collection (which makes it faster), nor calculates any numeric page pointers in advance (which avoids the data-shift during browsing). It just uses the values in the last record of the page to retrieve the next page.
 
@@ -78,19 +78,19 @@ Use the `:keynav_js` paginator.
 
 {.list-icon}
 - [:icon-key:&nbsp;:keyset](/toolbox/paginators/keyset)
-  - :icon-check-circle-24: __Best for__: API, Infinite Scroll
-  - :icon-thumbsup-24:     __Pros__: Fastest paginator, no data-shift, fastest single query per page
-  - :icon-thumbsdown-24:   __Cons__: Very limited UI support, appropriate DB indices required
+  - :icon-check-circle: __Best for__: API, Infinite Scroll
+  - :icon-thumbsup:     __Pros__: Fastest paginator, no data-shift, fastest single query per page
+  - :icon-thumbsdown:   __Cons__: Very limited UI support, appropriate DB indices required
 
 {.list-icon}
 - [:icon-key:&nbsp;:keynav_js](/toolbox/paginators/keynav_js)
-  - :icon-check-circle-24: __Best for__: Standard App (Large Data)
-  - :icon-thumbsup-24:     __Pros__: All the pros of `:keyset`+`:countless`, numeric pages
-  - :icon-thumbsdown-24:   __Cons__: Same as `:countless`, requires JavaScript support (or it falls back to the `:countless` paginator)
+  - :icon-check-circle: __Best for__: Standard App (Large Data)
+  - :icon-thumbsup:     __Pros__: All the pros of `:keyset`+`:countless`, numeric pages
+  - :icon-thumbsdown:   __Cons__: Same as `:countless`, requires JavaScript support (or it falls back to the `:countless` paginator)
 
 ===
 
->>> :icon-calendar-24:&nbsp;&nbsp;TIME-RANGE {#time-range}
+>>> :icon-calendar:&nbsp;&nbsp;TIME-RANGE {#time-range}
 
 This hybrid technique filters by a specific time period (Year, Month, Day, etc.) and applies the offset paginator within that period.
 
@@ -98,9 +98,9 @@ This hybrid technique filters by a specific time period (Year, Month, Day, etc.)
 
 {.list-icon}
 - [:icon-calendar: :calendar](/toolbox/paginators/calendar.md)
-  - :icon-check-circle-24: **Best for**: Time-Series, Logs collections
-  - :icon-thumbsup-24:     **Pros**: Natural navigation for date-based data
-  - :icon-thumbsdown-24:   **Cons**: The setup for the UI is more involved
+  - :icon-check-circle: **Best for**: Time-Series, Logs collections
+  - :icon-thumbsup:     **Pros**: Natural navigation for date-based data
+  - :icon-thumbsdown:   **Cons**: The setup for the UI is more involved
 
 ===
 
@@ -117,9 +117,9 @@ The search paginators get the count, limit and results provided by the search pl
 [:icon-search:&nbsp;:meilisearch](/toolbox/paginators/meilisearch.md)&nbsp;&nbsp;
 [:icon-search:&nbsp;:searchkick](/toolbox/paginators/searchkick.md)&nbsp;&nbsp;
 [:icon-search:&nbsp;:typesense_rails](/toolbox/paginators/typesense_rails.md)
-  - :icon-check-circle-24: **Best for**: Search Results
-  - :icon-thumbsup-24:     **Pros**: Leverages the engine's native response
-  - :icon-thumbsdown-24:   **Cons**: None (simple interface with search platform gems)
+  - :icon-check-circle: **Best for**: Search Results
+  - :icon-thumbsup:     **Pros**: Leverages the engine's native response
+  - :icon-thumbsdown:   **Cons**: None (simple interface with search platform gems)
 
 ===
 

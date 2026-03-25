@@ -6,7 +6,7 @@ order: 80
 
 #
 
-## :icon-paper-airplane-24:&nbsp;&nbsp;Migrate WillPaginate/Kaminari
+## :icon-paper-airplane:&nbsp;&nbsp;Migrate WillPaginate/Kaminari
 
 ---
 

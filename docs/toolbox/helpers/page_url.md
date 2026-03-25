@@ -6,7 +6,7 @@ order: 175
 
 #
 
-## :icon-diff-renamed-24:&nbsp;&nbsp;page_url
+## :icon-diff-renamed:&nbsp;&nbsp;page_url
 
 ---
 

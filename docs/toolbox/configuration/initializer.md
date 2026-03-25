@@ -6,7 +6,7 @@ order: 80
 
 #
 
-## :icon-gear-24:&nbsp;&nbsp;Initializer
+## :icon-gear:&nbsp;&nbsp;Initializer
 
 ---
 
