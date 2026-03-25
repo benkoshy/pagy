@@ -50,6 +50,10 @@ If you upgrade from version `< 9.0.0` see the following:
 - `:max_pages` option: use https://ddnexus.github.io/pagy/guides/how-to/#paginate-only-max-records instead.
 <hr>
 
+### Version 43.4.3
+
+- Deprecate the :max_pages option (close #890)
+
 ### Version 43.4.2
 
 - Fix edge-case for queries with multiple orderings on same column (#888)

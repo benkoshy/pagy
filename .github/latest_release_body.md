@@ -1,7 +1,7 @@
-### Changes in 43.4.2
+### Changes in 43.4.3
 
 <!-- changes_start -->
-- Fix edge-case for queries with multiple orderings on same column (#888)
+- Deprecate the :max_pages option (close #890)
 <!-- changes_end -->
 
 [CHANGELOG](https://ddnexus.github.io/pagy/changelog)
