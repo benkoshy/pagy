@@ -14,6 +14,8 @@ icon: rocket
 Check the [Migration Guide](migration-guide) first
 !!!
 
+### Steps
+
 >>> Install it...
 
 ```ruby Gemfile

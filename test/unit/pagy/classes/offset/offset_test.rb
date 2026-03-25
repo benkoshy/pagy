@@ -59,7 +59,9 @@ describe 'Pagy::Offset Specs' do
       # Logic: @last = max_pages if @last > max_pages
       # So if we ask for page 6, and last is clamped to 5:
       # in_range? checks @page <= @last (6 <= 5 is false) -> Error
-      _ { pagy_class.new(count: 100, limit: 10, max_pages: 5, page: 6, raise_range_error: true) }.must_raise Pagy::RangeError
+      assert_output(nil, /:max_pages/) do
+        _ { pagy_class.new(count: 100, limit: 10, max_pages: 5, page: 6, raise_range_error: true) }.must_raise Pagy::RangeError
+      end
     end
   end
 

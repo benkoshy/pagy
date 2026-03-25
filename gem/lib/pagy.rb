@@ -10,7 +10,7 @@ require_relative 'pagy/toolbox/helpers/loaders'
 # Top superclass: it defines only what's common to all the subclasses
 # noinspection RubyMismatchedArgumentType
 class Pagy
-  VERSION     = '43.4.2'
+  VERSION     = '43.4.3'
   ROOT        = Pathname.new(__dir__).parent.freeze
   DEFAULT     = { limit: 20, limit_key: 'limit', page_key: 'page' }.freeze
   PAGE_TOKEN  = EscapedValue.new('P ')
@@ -71,6 +71,11 @@ class Pagy
 
   # Merge all the DEFAULT constants of the class hierarchy with the options
   def assign_options(**options)
+    if options.key?(:max_pages)
+      warn "[PAGY] the ':max_pages' option is deprecated: " \
+           'use https://ddnexus.github.io/pagy/guides/how-to/#paginate-only-max-records instead.'
+    end
+
     @request = options.delete(:request) # internal object
     default  = {}
     current  = self.class

@@ -45,9 +45,6 @@ It's easier to understand if you familiarize with the [:keyset](keyset.md) docs.
 
 ==- :icon-sliders:&nbsp; Options
 
-`max_pages: 500`
-: Restricts pagination to only `:max_pages`. _(Ignored by `Pagy::Calendar::*` unit instances)_
-
 {{ include "snippets/keyset-options" }}
 
 ==- :icon-mention:&nbsp; Readers

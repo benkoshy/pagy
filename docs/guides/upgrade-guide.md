@@ -265,7 +265,7 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 
 ==- `standalone`
 
-- Replace the `:url` variable with the `:request` [Shared option](/toolbox/paginators//#shared-options) hash. For example:
+- Replace the `:url` variable with the `:request` hash option. For example:
 
   ```ruby
   request: { base_url: 'http://www.example.com',
