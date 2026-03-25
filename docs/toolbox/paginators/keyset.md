@@ -38,6 +38,14 @@ You don't know the `previous` and the `last` page; you only know the `first` and
 
 Depending on your **order requirements**, here is how you set it up for maximum efficiency:
 
++++ No Order Requirement
+
+Just order by `:id`. It's fast out of the box without any setup...
+
+```rb
+set = collection.order(:id)
+```
+
 +++ Specific Order Requirement
 
 >>> Ensure that your set is `uniquely ordered`
@@ -60,14 +68,6 @@ set = collection.order(:last_name).order(:first_name).order(:id)
 {{ include "snippets/mini-step" step: "•2" }} The index type must minimize the data scan (e.g. B-tree, B+ Tree, ...)
 
 >>>
-
-+++ No Order Requirement
-
-Just order by `:id`. It's fast out of the box without any setup...
-
-```rb
-set = collection.order(:id)
-```
 
 +++
 
@@ -179,15 +179,12 @@ When we pull the `next` page from the `cutoff-Y`, we find only the remaining 9 r
 
 ==- :icon-stop:&nbsp; Troubleshooting
 
-<br/>
+:::
+==- {{ include "snippets/mini-step" step:"1" }} Records may repeat or be missing from successive pages
 
-##### 1. Records may repeat or be missing from successive pages
+||| :icon-question: Order issue
 
-<br/>
-
-||| :icon-stop-24: Order issue
-
-Neither column is unique
+_Not unique combination..._
 
 ```rb
 Product.order(:name, :production_date)
@@ -195,7 +192,7 @@ Product.order(:name, :production_date)
 
 ||| :icon-check-circle-24: Append the primary key to the order
 
-The :id is usually the primary key
+_The `:id` is usually the primary key..._
 
 ```rb
 Product.order(:name, :production_date, :id)
@@ -203,7 +200,7 @@ Product.order(:name, :production_date, :id)
 
 |||
 
-||| :icon-stop-24: Encoding issue
+||| :icon-question: Encoding issue
 
 The generic `to_json` method used to encode the `page` may lose some information when decoded
 
@@ -215,20 +212,17 @@ The generic `to_json` method used to encode the `page` may lose some information
 
 |||
 
-<br/>
+==- {{ include "snippets/mini-step" step:"2" }} The order is OK, but the DB is still slow
 
-##### 2. The order is OK, but the DB is still slow
+||| :icon-question: Index issue
 
-<br/>
+The index has the wrong order, or it's the wrong type
 
-||| Most likely the index is not right, or your case needs a custom query
+||| :icon-check-circle-24: Solutions
 
-!!!tip
-- Ensure that the composite index reflects exactly the columns sequence and order of your keyset
-- Research your specific DB features, type of index, and performance for different ordering. Use SQL `EXPLAIN ANALYZE` or similar tool to confirm.
-- Consider using the same direction order, enabling the `:tuple_comparison`, and changing type of index (different DBs may behave differently).
-- Consider overriding the `Keyset#compose_predicate` method.
-!!!
+- Ensure that the index reflects exactly the columns sequence and order of your keyset
+- Use a B-tree or B+ Tree index. Use SQL `EXPLAIN ANALYZE` or similar tool to confirm no table scan is performed.
+- With a same-direction order keysets, enabling the `:tuple_comparison` option may help if your DB supports it.
 
 |||
 

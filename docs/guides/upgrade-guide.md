@@ -40,10 +40,9 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 - When you find one, follow the specific section below to upgrade your code.
 - As you proceed, remove each entry from the `pagy-old.rb`.
 
-#### Extras
+==- Extras
 
-<br>
-
+:::
 ==- `array`
 
 {.compact}
@@ -261,7 +260,7 @@ The new version doesn't use the extras anymore. They got integrated in the core 
   - The `:overflow` variable is not used anymore.
   - If you did not use the extra (i.e., Pagy raised errors), set `raise_range_error: true`.
   - If you used `overflow: :empty_page` or just required the overflow extra, simply remove it (this is now the default behavior).
-  - If you used `overflow: :last_page` and still want this behavior despite the reasons above, see this [How To Example](https://ddnexus.github.io/pagy/guides/how-to/#raise-pagyrangeerror-exceptions).
+  - If you used `overflow: :last_page` and still want this behavior despite the reasons above, see this [How To Example](/guides/how-to/#pagyrangeerror).
 
 ==- `standalone`
 
@@ -291,6 +290,7 @@ The new version doesn't use the extras anymore. They got integrated in the core 
 - It was mostly useless and half-baked, causing many complications in both the Ruby and JavaScript code for no significant benefit.
 - Use an appropriate approach to address your requirement, such as utilizing URL rewriting at the HTTP server level.
 
+:::
 ===
 
 >>> Update the API...

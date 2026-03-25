@@ -132,11 +132,11 @@ Pagy works seamlessly with `ActiveRecord` collections, but certain collections m
 
 :::
 
-=== Grouped collections
+==- Grouped collections
 
 For better performance of grouped counts, you may want to use the [:count_over](/toolbox/paginators/offset#options) option
 
-=== Decorated collections
+==- Decorated collections
 
 Do it in two steps:
 
@@ -153,7 +153,7 @@ Do it in two steps:
 
 >>>
 
-=== Custom scope/count
+==- Custom scope/count
 
 If the default pagy doesn't get the right count:
 
@@ -162,7 +162,7 @@ If the default pagy doesn't get the right count:
 @pagy, @records = pagy(:offset, custom_scope, count: custom_count) # Example implementation
 ```
 
-=== Ransack results
+==- Ransack results
 
 Ransack's `result` method returns an `ActiveRecord` collection that is ready for pagination:
 
@@ -171,7 +171,7 @@ q = Person.ransack(params[:q])
 @pagy, @people = pagy(:offset, q.result)
 ```
 
-=== PostgreSQL Collections
+==- PostgreSQL Collections
 
 [Always ensure your collections are ordered!](/toolbox/paginators#troubleshooting)
 
@@ -186,7 +186,7 @@ Explore the following options:
 - `:client_max_limit` paginator option
 - `:jsonapi option` paginator option
 
-==- Paginate for Javascript Frameworks
+==- Paginate for JavaScript Frameworks
 
 You can send selected `@pagy` instance data to the client as JSON using the [data_hash](/toolbox/helpers/data_hash) helper, including pagination metadata in your JSON response.
 
@@ -208,7 +208,7 @@ Use the [:calendar](/toolbox/paginators/calendar) paginator for pagination filte
 When you need to paginate multiple collections in a single request, you need to explicitly differentiate the pagination objects. Here are some common methods to achieve this:
 
 :::
-=== :icon-light-bulb:&nbsp; Override the request path
+==- :icon-light-bulb:&nbsp; Override the request path
 
 <br/>
 
@@ -229,7 +229,7 @@ end
 <!-- Pagination links of `/bars?page=2` etc. -->
 ```
 
-=== :icon-light-bulb:&nbsp; Use separate turbo frames actions
+==- :icon-light-bulb:&nbsp; Use separate turbo frames actions
 
 <br/>
 
@@ -263,7 +263,7 @@ end
 
 Consider [Benito Serna's implementation of turbo-frames (on Rails) using search forms with the Ransack gem](https://bhserna.com/building-data-grid-with-search-rails-hotwire-ransack.html) along with a corresponding [demo app](https://github.com/bhserna/dynamic_data_grid_hotwire_ransack) for a similar implementation of the above logic.
 
-=== :icon-light-bulb:&nbsp; Use the root_key option
+==- :icon-light-bulb:&nbsp; Use the root_key option
 
 <br/>
 
@@ -277,7 +277,7 @@ def index
 end
 ```
 
-=== :icon-light-bulb:&nbsp; Use different page keys
+==- :icon-light-bulb:&nbsp; Use different page keys
 
 <br/>
 
@@ -366,7 +366,7 @@ Avoid the warning by adding it to the `brakeman.ignore` file. More details [here
 
 :::
 
-=== :icon-stop:&nbsp; `Pagy::OptionError`
+==- :icon-stop:&nbsp; `Pagy::OptionError`
 
 It is a subclass of `ArgumentError` that offers information to rescue invalid options. For example: with `rescue Pagy::OptionError => e` you can get access to a few readers:
 
@@ -374,7 +374,7 @@ It is a subclass of `ArgumentError` that offers information to rescue invalid op
 - `e.option` the offending option symbol (e.g. `:page`)
 - `e.value` the value of the offending option (e.g. `-3`)
 
-=== :icon-stop:&nbsp; `Pagy::RangeError`
+==- :icon-stop:&nbsp; `Pagy::RangeError`
 
 With the [OFFSET](/guides/choose-right/#offset) pagination technique, it may happen that the users/clients paginate after the end of the collection (when one or a few records got deleted) and a user went to a stale page.
 
@@ -412,8 +412,6 @@ rescue_from Pagy::OptionError do |exception|
   end
 end
 ```
-
-See [paginator Shared Exceptions](/toolbox/paginators/#shared-exceptions) for details.
 
 ==- Test with Pagy
 

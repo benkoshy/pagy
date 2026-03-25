@@ -82,7 +82,7 @@ The Cons are overwhelming.
   - :icon-thumbsdown-24: Using it _(or even just checking for it)_ would be an unnecessary burden for all the apps.
 
 :::
-=== OK, but what if I still want it in my own app?
+==- OK, but what if I still want it in my own app?
 
 <br/>
 

@@ -73,7 +73,6 @@ total-count 1000
 {{ include "snippets/helper-options" }}
 
 ==- :icon-light-bulb-24:&nbsp; Suggestions
-<br/>
 
 >>> Instead of explicitly merging the headers before each rendering...
 
