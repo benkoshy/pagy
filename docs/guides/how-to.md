@@ -19,10 +19,10 @@ Check the [Choose Right Guide](choose-right)
 ==- Control the items per page
 
 Fixed
-: Use the `:limit` option to set the number of items to serve with each page. _(See [Paginators Shared Options](/toolbox/paginators/#shared-options))_
+: Pass the `:limit` option to the paginator to set the number of items to serve with each page.
 
 Requestable
-: Use the `:limit` option combined with the `:client_max_limit` option, allowing the client to request a variable `:limit` up to the specified `:client_max_limit`. _(See [Paginators Shared Options](/toolbox/paginators/#shared-options))_
+: Pass the `:limit` option combined with the `:client_max_limit` option to the paginator, allowing the client to request a variable `:limit` up to the specified `:client_max_limit`.
 
 Interactive
 : Use the [limit_tag_js](/toolbox/helpers/limit_tag_js) helper to provide a UI selector to the user.
@@ -48,7 +48,7 @@ Pagy retrieves the page from the `'page'` request params hash. To force a specif
 
 You can customize the `aria-label` attributes of any `*nav*` helper by providing a `:aria_label` string.
 
-See the [:aria_label](/toolbox/helpers#navs-shared-options) option.
+Pass the `:aria_label` option to the helper.
 
 You can also replace the `pagy.aria_label.nav` strings in the dictionary, as well as the `pagy.aria_label.previous` and the `pagy.aria_label.next`.
 
@@ -82,7 +82,7 @@ See the [URL Options](/resources/urls#options)
 
 ==- Add HTML attributes to the anchor tags (links)
 
-Use the [:anchor_string](/toolbox/helpers/#shared-options). It's especially useful for adding `data-turbo-*` or `data-*` Stimulus attributes.
+Pass the `:anchor_string` option to the helper. It's especially useful for adding `data-turbo-*` or `data-*` Stimulus attributes.
 
 ==- Customize CSS styles
 
@@ -183,8 +183,8 @@ Explore the following options:
 
 - [:keyset paginator](/toolbox/paginators/keyset)
 - [headers_hash helper](/toolbox/helpers/headers_hash)
-- [:client_max_limit option](/toolbox/paginators/#shared-options)
-- [:jsonapi option](/toolbox/paginators/#shared-options)
+- `:client_max_limit` paginator option
+- `:jsonapi option` paginator option
 
 ==- Paginate for Javascript Frameworks
 
@@ -293,9 +293,19 @@ end
 
 :::
 
-==- Paginate only max_pages, regardless of the count
+==- Paginate only MAX records
 
-See [:max_pages](/toolbox/paginators/#shared-options) option
+You may want to limit the availability of your records either for speeding up the DB queries (especially important if you use [OFFSET](/guides/choose-right/#offset) pagination), or simply to avoid exposing all your data to scrapers.
+
+The best way to ensure this is limiting your collection with `limit(max_count)`, and passing it as a sub-collection to `pagy`:
+
+```rb
+collection      = Product.where(...).limit(1000)
+sub_collection  = collection.from(collection, :products)
+@pagy, @records = pagy(:offset, sub_collection, ...)
+```
+
+It works with all [OFFSET](/guides/choose-right/#offset) and [KEYSET](/guides/choose-right/#keyset) paginators.
 
 ==- Paginate collections with metadata
 
@@ -447,7 +457,7 @@ pagy demo
 
 ==- Use Pagy with non-rack apps
 
-For non-rack environments that don't respond to the request method, you should pass the [:request](/toolbox/paginators/#shared-options) option to the paginator.
+For non-rack environments that don't respond to the request method, you should pass the `:request` option to the paginator.
 
 ==- Use `pagy` outside controllers or views
 

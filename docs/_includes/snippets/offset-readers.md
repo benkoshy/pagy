@@ -16,9 +16,6 @@
 `pages`
 : The number of pages.
 
-`max_pages: 500`
-: Restricts pagination to only `:max_pages`. _(Ignored by `Pagy::Calendar::*` unit instances)_
-
 `previous`
 : The previous page
 
