@@ -33,14 +33,13 @@ These options give you full control over the URL composition for [paginator](/to
 
 ==- :icon-blocked:&nbsp; Params
 
-##### No framework params
-
+!!!danger No framework params!
 Pagy ignores the `request.params` because they are modified differently by different frameworks (Rails, Sinatra, etc.). It can only rely on the `request.GET` and `request.POST` methods, which are consistent across all Rack environments.
+!!!
 
-##### No symbolic params
-
+!!!danger No symbolic params!
 The params that Pagy handles composing its URLs, are **strictly string-keyed**. That's how every gem/framework handles URLs, because it avoids the maintenance and performance overhead of converting symbols back and forth during URL composition.
-
+!!!
 ==- :icon-download:&nbsp; GET
 
 Serving paginated collections is a retrieval action that does not modify data; therefore, it should rely on GET requests. Since most applications follow this standard, Pagy parses and produces GET URLs out of the box.
