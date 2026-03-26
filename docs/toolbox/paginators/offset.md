@@ -20,7 +20,7 @@ It uses the complete [OFFSET](/guides/choose-right/#offset) pagination technique
 It **fully** supports all the helpers and navigators.
 
 !!!warning Consider using the `:countish` paginator when possible!
-The [:countish](countish.md) paginator offers identical UI features, but it's up to 2x faster.
+The [:countish](countish) paginator offers identical UI features, but it's up to 2x faster.
 !!!
 
 === :icon-tools:&nbsp; Usage
@@ -29,7 +29,7 @@ The [:countish](countish.md) paginator offers identical UI features, but it's up
 @pagy, @records = pagy(:offset, collection, **options)
 ```
 
-- `@pagy` is the pagination instance. It provides the [readers](#readers) and the [helpers](../helpers) to use in your code.
+- `@pagy` is the pagination instance. It provides the [readers](/toolbox/paginators/offset/#readers) and the [helpers](../helpers) to use in your code.
 - `@records` represents the paginated collection of records for the page (lazy-loaded records).
 
 ==- :icon-sliders:&nbsp; Options

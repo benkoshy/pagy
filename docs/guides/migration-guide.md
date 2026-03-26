@@ -22,11 +22,10 @@ The Pagy API is quite different from other pagination gems, however, if you spli
 
 - Uninstall the legacy gem and replace it with `gem "pagy"` in the `Gemfile`.
 - Add `include Pagy::Method` statement to the application controller.
-- Keep both the legacy gem and Pagy documentation accessible for reference.
 
 ==- {{ include "snippets/mini-step" step: "•2" }} Application-wide search and replace
 
-- Search for the class name of the legacy gem, for example `WillPaginate` or `Kaminari`. You should find most of the code relative to global gem configuration, or monkey patching.
+- Search for the class name of the legacy gem, for example `WillPaginate` or `Kaminari`. You should find most of the code relative to global gem configuration or monkey patching.
 - Remove all the legacy settings of the old gem.
 
 ==- {{ include "snippets/mini-step" step: "•3" }} Cleanup the Models

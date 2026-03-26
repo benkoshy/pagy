@@ -90,7 +90,8 @@ Pagy includes different formats of [stylesheets](/resources/stylesheets) for cus
 
 You can also override the specific helper method.
 
-==- Override CSS rules in element "style" attribute
+:::
+==- Override th element "style" attribute
 
 The `input_nav_js` and `limit_tag_js` use inline style attributes. You can override these rules in your stylesheet files using the `[style]` attribute selector and `!important`. Below is an example of overriding the `width` of an `input` element:
 
@@ -99,6 +100,7 @@ The `input_nav_js` and `limit_tag_js` use inline style attributes. You can overr
   width: 5rem !important; /* just an useless example */
 }
 ```
+:::
 
 ==- Override pagy methods
 
@@ -132,11 +134,11 @@ Pagy works seamlessly with `ActiveRecord` collections, but certain collections m
 
 :::
 
-==- Grouped collections
+==- :icon-database:&nbsp; Grouped collections
 
 For better performance of grouped counts, you may want to use the [:count_over](/toolbox/paginators/offset#options) option
 
-==- Decorated collections
+==- :icon-database:&nbsp; Decorated collections
 
 Do it in two steps:
 
@@ -153,7 +155,7 @@ Do it in two steps:
 
 >>>
 
-==- Custom scope/count
+==- :icon-database:&nbsp; Custom scope/count
 
 If the default pagy doesn't get the right count:
 
@@ -162,7 +164,7 @@ If the default pagy doesn't get the right count:
 @pagy, @records = pagy(:offset, custom_scope, count: custom_count) # Example implementation
 ```
 
-==- Ransack results
+==- :icon-database:&nbsp; Ransack results
 
 Ransack's `result` method returns an `ActiveRecord` collection that is ready for pagination:
 
@@ -171,7 +173,7 @@ q = Person.ransack(params[:q])
 @pagy, @people = pagy(:offset, q.result)
 ```
 
-==- PostgreSQL Collections
+==- :icon-database:&nbsp; PostgreSQL Collections
 
 [Always ensure your collections are ordered!](/toolbox/paginators#troubleshooting)
 
@@ -295,17 +297,21 @@ end
 
 ==- Paginate only MAX records
 
-You may want to limit the availability of your records either for speeding up the DB queries (especially important if you use [OFFSET](/guides/choose-right/#offset) pagination), or simply to avoid exposing all your data to scrapers.
+You may want to limit the availability of your records either for speeding up the DB queries (especially useful with [OFFSET](/guides/choose-right/#offset) paginators with big tables), or simply to avoid exposing all your data to scrapers.
 
-The best way to ensure this is limiting your collection with `limit(max_count)`, and passing it as a sub-collection to `pagy`:
+The best way to ensure it, is creating a limited collection using an ActiveRecord Virtual Table:
 
 ```rb
-collection      = Product.where(...).limit(1000)
-sub_collection  = collection.from(collection, :products)
-@pagy, @records = pagy(:offset, sub_collection, ...)
+max_records     = 10_000
+collection      = Product.where(...).limit(max_records)   # Add the max_records limit to your collection
+limited         = collection.from(collection, :products)  # Create a limited collection using the :products Virtual Table
+@pagy, @records = pagy(:offset, limited, **options)       # Paginate the limited collection
 ```
-
-It works with all [OFFSET](/guides/choose-right/#offset) and [KEYSET](/guides/choose-right/#keyset) paginators.
+!!!success
+- It works with all [OFFSET](/guides/choose-right/#offset) and [KEYSET](/guides/choose-right/#keyset) paginators.
+- It produces faster COUNT and OFFSET queries, limiting the table scan
+- It enforces strict control over the quantity of records you expose
+!!!
 
 ==- Paginate collections with metadata
 
@@ -336,15 +342,6 @@ Unlike other gems, Pagy does not decide for you that the nav of a single page of
 <%== @pagy.series_nav if @pagy.last > 1 %>
 ```
 
-==- Deal with a slow collection COUNT(*)
-
-Check out these paginators:
-
-- [:countish](/toolbox/paginators/countish)
-- [:countless](/toolbox/paginators/countless)
-- [:keyset](/toolbox/paginators/keyset)
-- [:keynav_js](/toolbox/paginators/keynav_js)
-
 ==- Maximize Performance
 
 - Consider the paginators:
@@ -355,8 +352,10 @@ Check out these paginators:
 - Consider the  helpers:
   - [series_nav_js](/toolbox/helpers/series_nav_js)
   - [series_nav_js](/toolbox/helpers/input_nav_js)
+- When possible
+  - [Paginate only MAX records](./#paginate-only-max-records)
 
-==- Ignore Brakeman UnescapedOutputs false positives warnings
+  ==- Ignore Brakeman UnescapedOutputs false positives warnings
 
 Pagy outputs safe HTML, however being an agnostic pagination gem it does not use the specific `html_safe` rails helper for its output. That is noted by the [Brakeman](https://github.com/presidentbeef/brakeman) gem, that will raise a warning.
 
@@ -391,27 +390,7 @@ def redirect_to_last_page(exception)
   redirect_to url_for(page: exception.pagy.last), notice: "Page ##{params[:page]} is out-of-range. Showing page #{exception.pagy.last} instead."
 end
 ```
-
 :::
-
-==- Manage bad bot requests
-
-Bots may attempt to sniff your app by posting questionable page params e.g. `https://some_url&page=password` and generate tons of annoying bad request errors.
-
-Here is a snippet to handle that:
-
-```rb controller
-rescue_from Pagy::OptionError do |exception|
-  if exception.option == :page
-    # apply your own logic to handle / not handle the exception
-    redirect_to action: :index, params: request.query_parameters.merge(page: 1) # redirect to the first page
-    # or just force the page without redirecting
-    # @pagy, @records = pagy(:offset, collection, page: 1)
-  else
-    raise
-  end
-end
-```
 
 ==- Test with Pagy
 

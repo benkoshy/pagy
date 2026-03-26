@@ -31,10 +31,11 @@ It is straightforward to understand and set up and very versatile for the UI, bu
   - Notice that querying the precise count for each page DOES NOT fix the data-shift problem.
 
 !!!tip For better DB performance with OFFSET...
-Use the `:countless` or `:countish` paginators to improve the DB performance **up-to two times**.
+- Use the [:countish](./#offset-paginators) or [:countless](./#offset-paginators) paginators to improve the DB performance **up-to two times**.
+- [Paginate only MAX records](/guides/how-to/#paginate-only-max-records) when possible.
 !!!
 
-==- Paginators&nbsp;&nbsp;[!badge variant="contrast" size="xs" corners="pill" text="3"]
+==- Paginators&nbsp;&nbsp;[!badge variant="contrast" size="xs" corners="pill" text="3"] {#offset-paginators}
 
 <br/>
 
@@ -69,10 +70,10 @@ The KEYSET pagination technique allows the fastest and lighter DB performance. I
 - It supports only APIs and infinite scrolling.
 
 !!!tip For UI support with KEYSET pagination...
-Use the `:keynav_js` paginator.
+Use the [:keynav_js](./#keyset-paginators) paginator.
 !!!
 
-==- Paginators&nbsp;&nbsp;[!badge variant="contrast" size="xs" corners="pill" text="2"]
+==- Paginators&nbsp;&nbsp;[!badge variant="contrast" size="xs" corners="pill" text="2"]  {#keyset-paginators}
 
 <br/>
 
