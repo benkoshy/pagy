@@ -79,7 +79,7 @@ describe 'Pagy::Keyset::Adapters::Sequel Specs' do
 
   describe '#typecast' do
     it 'typecasts string inputs to model types' do
-      input = { 'birthdate' => '2023-01-01', 'name' => 'Test' }
+      input = { birthdate: '2023-01-01', name: 'Test' }
       host.keyset = { birthdate: :asc, name: :asc }
 
       casted = host.send(:typecast, input)

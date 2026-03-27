@@ -65,8 +65,7 @@ describe 'Pagy::Keyset::Adapters::ActiveRecord Specs' do
 
   describe '#typecast' do
     it 'typecasts string inputs to model types' do
-      # Birthdate is a Date column, input is String
-      input = { 'birthdate' => '2023-01-01', 'name' => 'Test' }
+      input = { birthdate: '2023-01-01', name: 'Test' }
       host.keyset = { birthdate: :asc, name: :asc }
 
       casted = host.send(:typecast, input)

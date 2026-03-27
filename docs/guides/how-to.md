@@ -355,9 +355,9 @@ Unlike other gems, Pagy does not decide for you that the nav of a single page of
 - When possible
   - [Paginate only MAX records](./#paginate-only-max-records)
 
-  ==- Ignore Brakeman UnescapedOutputs false positives warnings
+==- Ignore Brakeman false positives warnings
 
-Pagy outputs safe HTML, however being an agnostic pagination gem it does not use the specific `html_safe` rails helper for its output. That is noted by the [Brakeman](https://github.com/presidentbeef/brakeman) gem, that will raise a warning.
+Pagy outputs safe HTML, however being an agnostic pagination gem it does not use the specific `html_safe` rails helper for its output. That is noted by the [Brakeman](https://github.com/presidentbeef/brakeman) gem, that will raise a `UnescapedOutputs` warning.
 
 Avoid the warning by adding it to the `brakeman.ignore` file. More details [here](https://github.com/ddnexus/pagy/issues/243) and [here](https://github.com/presidentbeef/brakeman/issues/1519).
 

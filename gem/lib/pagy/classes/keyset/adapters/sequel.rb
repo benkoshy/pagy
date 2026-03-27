@@ -34,11 +34,14 @@ class Pagy
 
         # Typecast the attributes
         def typecast(attributes)
-          model = @set.opts[:model]
-          model.unrestrict_primary_key if (primary_key_is_restricted = model.restrict_primary_key?)
-          attributes = model.new(attributes).to_hash.slice(*attributes.keys.map(&:to_sym))
-          model.restrict_primary_key if primary_key_is_restricted
-          attributes
+          model = @set.model
+          db    = @set.db
+          {}.tap do |result|
+            @keyset.each_key do |k|
+              type      = model.db_schema[k].fetch(:type)
+              result[k] = db.typecast_value(type, attributes[k])
+            end
+          end
         end
 
         # Append the missing keyset keys, if the set is restricted by select

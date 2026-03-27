@@ -25,8 +25,12 @@ class Pagy
 
         # Typecast the attributes
         def typecast(attributes)
-          @set.model.new(attributes).slice(attributes.keys)
-              .to_hash.transform_keys(&:to_sym)
+          model = @set.model
+          {}.tap do |result|
+            @keyset.each_key do |k|
+              result[k] = model.type_for_attribute(k).cast(attributes[k])
+            end
+          end
         end
 
         # Append the missing keyset keys, if the set is restricted by select
