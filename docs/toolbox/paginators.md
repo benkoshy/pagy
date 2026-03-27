@@ -50,12 +50,17 @@ Unused code consumes no memory.
 
 ==- :icon-stop:&nbsp; Troubleshooting
 
-||| Records may repeat in different pages or be missing
+:::
+==- Records may repeat in different pages or be missing
 
-!!!danger Don't Paginate Unordered PostgreSQL Collections!
-!!!
+||| :icon-question: Unordered PostgreSQL collection
 
-You can simply chain something like `.order(:id)` and fix the issue _(See [PostgreSQL Documentation](https://www.postgresql.org/docs/16/queries-limit.html#:~:text=When%20using%20LIMIT,ORDER%20BY))_
+PostgreSQL collections must be ordered.
+
+||| :icon-check-circle: Solutions
+
+Chain something like `.order(:id)` to your collection. _See the [PostgreSQL Documentation](https://www.postgresql.org/docs/16/queries-limit.html#:~:text=When%20using%20LIMIT,ORDER%20BY)_
+
 |||
-
+:::
 ===
