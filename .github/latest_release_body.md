@@ -1,7 +1,7 @@
-### Changes in 43.4.3
+### Changes in 43.4.4
 
 <!-- changes_start -->
-- Deprecate the :max_pages option (close #890)
+- Make typecasting in Keyset based classes safer and more efficient
 <!-- changes_end -->
 
 [CHANGELOG](https://ddnexus.github.io/pagy/changelog)
