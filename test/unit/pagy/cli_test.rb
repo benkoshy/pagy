@@ -44,29 +44,41 @@ describe 'Pagy::CLI Specs' do
       _(err).must_include 'Expected APP to be in'
     end
 
-    it 'clones app' do
-      FileUtils.stub :cp, true, [PagyApps::INDEX['demo'], '.', { verbose: true }] do
-        cli.start(%w[clone demo])
+    it 'actually clones app' do
+      Dir.mktmpdir do |dir|
+        Dir.chdir(dir) do
+          capture_io { cli.start(%w[clone demo]) }
+          assert_path_exists 'demo.ru'
+        end
       end
     end
 
     it 'aborts if file exists and user says no' do
-      File.stub :exist?, true do
-        # Stub 'gets' (used for user input)
-        cli.stub :gets, 'n' do
-          _, err = capture_io do
-            _ { cli.start(%w[clone demo]) }.must_raise SystemExit
+      Dir.mktmpdir do |dir|
+        Dir.chdir(dir) do
+          # The CLI checks File.exist?(name), where name is 'demo'
+          File.write('demo', 'original content')
+
+          cli.stub :gets, "n\n" do
+            _, err = capture_io do
+              _ { cli.start(%w[clone demo]) }.must_raise SystemExit
+            end
+            _(err).must_include 'already present'
+            _(File.read('demo')).must_equal 'original content'
           end
-          _(err).must_include 'already present'
         end
       end
     end
 
     it 'overwrites if user says yes' do
-      File.stub :exist?, true do
-        cli.stub :gets, 'y' do
-          FileUtils.stub :cp, true do
+      Dir.mktmpdir do |dir|
+        Dir.chdir(dir) do
+          File.write('demo', 'old content')
+          cli.stub :gets, "y\n" do
             capture_io { cli.start(%w[clone demo]) }
+            # FileUtils.cp will copy the source to '.'
+            # If the source is '.../demo.ru', it creates 'demo.ru'
+            assert_path_exists 'demo.ru'
           end
         end
       end
@@ -87,20 +99,27 @@ describe 'Pagy::CLI Specs' do
     end
 
     it 'launches local file' do
-      File.stub :exist?, true do
-        cli.stub :exec, ->(cmd) { cmd } do
-          cmd = cli.start(['my.ru', '-e', 'production'])
-          _(cmd).must_include 'my.ru'
-          _(cmd).must_include '-E production'
+      Dir.mktmpdir do |dir|
+        Dir.chdir(dir) do
+          File.write('my.ru', '# rackup file')
+          cli.stub :exec, ->(cmd) { cmd } do
+            cmd = cli.start(['my.ru', '-e', 'production'])
+            _(cmd).must_include 'my.ru'
+            _(cmd).must_include '-E production'
+          end
         end
       end
     end
 
     it 'aborts if local file missing' do
-      _, err = capture_io do
-        _ { cli.start(['missing.ru']) }.must_raise SystemExit
+      Dir.mktmpdir do |dir|
+        Dir.chdir(dir) do
+          _, err = capture_io do
+            _ { cli.start(['missing.ru']) }.must_raise SystemExit
+          end
+          _(err).must_include 'app not found'
+        end
       end
-      _(err).must_include 'app not found'
     end
   end
 end

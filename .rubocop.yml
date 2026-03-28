@@ -122,3 +122,8 @@ Lint/MissingSuper:
 
 Minitest/EmptyLineBeforeAssertionMethods:
   Enabled: false
+
+ThreadSafety/DirChdir:
+  Enabled: true
+  Exclude:
+    - test/**/*
