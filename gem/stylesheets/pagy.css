@@ -1,4 +1,6 @@
 .pagy {
+  /* PagyWand Generated Variables */
+  /* Copy from the PagyWand "CSS Override" field, and paste in YOUR own CSS to override the style */
   --B: 1;
   --H: 0;
   --S: 0;
@@ -12,20 +14,24 @@
   --font-weight: 600;
   --line-height: 1.75;
 
-  --text:               hsla(var(--H) var(--S) calc(var(--L) - (25 * var(--B))) / var(--A));
-  --text-hover:         hsla(var(--H) var(--S) calc(var(--L) - (30 * var(--B))) / var(--A));
-  --text-current:       hsla(var(--H) var(--S) calc(100 * (var(--B) + 1)) / var(--A));
-  --background:         hsla(var(--H) var(--S) calc(var(--L) + (30 * var(--B))) / var(--A));
-  --background-hover:   hsla(var(--H) var(--S) calc(var(--L) + (20 * var(--B))) / var(--A));
-  --background-current: hsla(var(--H) var(--S) var(--L) / var(--A));
-  --background-input:   hsla(var(--H) var(--S) calc(var(--L) + (45 * var(--B))) / var(--A));
+  /* Calculated Color Variables */
+  --text:               hsl(var(--H) var(--S) calc(var(--L) - (25 * var(--B))) / var(--A));
+  --text-hover:         hsl(var(--H) var(--S) calc(var(--L) - (30 * var(--B))) / var(--A));
+  --text-current:       hsl(var(--H) var(--S) calc(100 * (var(--B) + 1)) / var(--A));
+  --background:         hsl(var(--H) var(--S) calc(var(--L) + (30 * var(--B))) / var(--A));
+  --background-hover:   hsl(var(--H) var(--S) calc(var(--L) + (20 * var(--B))) / var(--A));
+  --background-current: hsl(var(--H) var(--S) var(--L) / var(--A));
+  --background-input:   hsl(var(--H) var(--S) calc(var(--L) + (45 * var(--B))) / var(--A));
 
+  /* Base Properties */
   color: var(--text);
   font-size: var(--font-size);
   line-height: var(--line-height);
   font-weight: var(--font-weight);
   display: flex;
 }
+
+/* Element Rules */
 
 .pagy > :not([hidden]) ~ :not([hidden]) {
   margin-inline-start: var(--spacing);
