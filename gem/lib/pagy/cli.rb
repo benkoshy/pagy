@@ -22,46 +22,19 @@ class Pagy
       options = { env: 'development', host: HOST, port: PORT, quiet: false }
 
       parser = OptionParser.new do |opts|
-        opts.banner = <<~BANNER
-          Pagy #{VERSION} (https://ddnexus.github.io/pagy/playground)
-          Playground to showcase, clone and develop Pagy APPs
-
-          Usage:
-            pagy APP [opts]   Showcase APP from the installed gem
-            pagy clone APP    Clone APP to the current dir
-            pagy FILE [opts]  Develop app FILE from local path
-        BANNER
+        opts.banner = add_banner
 
         opts.summary_indent = '  '
         opts.summary_width  = 18
 
         opts.separator "\nAPPs"
-        PagyApps::INDEX.each do |name, path|
-          desc = File.readlines(path)[3].sub('#    ', '').strip
-          opts.separator "  #{name.ljust(18)}#{desc}"
+        PagyApps::INDEX.each do |name, path|          
+          opts.separator app_name_and_description(name, path)
         end
 
-        opts.separator "\nRackup options"
-        opts.on('-e', '--env ENV', 'Environment')     { |v| options[:env] = v }
-        opts.on('-o', '--host HOST', 'Host')          { |v| options[:host] = v }
-        opts.on('-p', '--port PORT', 'Port')          { |v| options[:port] = v }
-        opts.on('-t', '--threads THREADS', 'Threads') { |v| options[:threads] = v }
+        specify_options(opts, options)
 
-        opts.separator "\nOther options"
-        opts.on('-q', '--quiet', 'Quiet mode for development') { options[:quiet] = true }
-        opts.on('-v', '--version', 'Show version') do
-          puts VERSION
-          exit
-        end
-        opts.on('-h', '--help', 'Show this help') do
-          puts opts
-          exit
-        end
-
-        opts.separator "\nExamples"
-        opts.separator "  pagy demo          Showcase demo at http://#{HOST}:#{PORT}"
-        opts.separator '  pagy clone repro   Clone repro to ./repro.ru (rename it)'
-        opts.separator "  pagy ~/myapp.ru    Develop ~/myapp.ru at #{HOST}:#{PORT}"
+        list_examples(opts)
       end
 
       begin
@@ -130,6 +103,53 @@ class Pagy
         gem 'logger'
         gem 'rackup'
       end
+    end
+
+    ## Helpers for OptionParser
+    def add_banner
+      <<~BANNER
+          Pagy #{VERSION} (https://ddnexus.github.io/pagy/playground)
+          Playground to showcase, clone and develop Pagy APPs
+
+          Usage:
+            pagy APP [opts]   Showcase APP from the installed gem
+            pagy clone APP    Clone APP to the current dir
+            pagy FILE [opts]  Develop app FILE from local path
+        BANNER
+    end
+
+    def app_name_and_description(name, path)
+      "  #{name.ljust(18)}#{get_app_description(path)}"
+    end
+
+    def get_app_description(path)
+      File.readlines(path)[3].sub('#    ', '').strip
+    end
+
+    def specify_options(opts, options)
+        opts.separator "\nRackup options"
+        opts.on('-e', '--env ENV', 'Environment')     { |v| options[:env] = v }
+        opts.on('-o', '--host HOST', 'Host')          { |v| options[:host] = v }
+        opts.on('-p', '--port PORT', 'Port')          { |v| options[:port] = v }
+        opts.on('-t', '--threads THREADS', 'Threads') { |v| options[:threads] = v }
+
+        opts.separator "\nOther options"
+        opts.on('-q', '--quiet', 'Quiet mode for development') { options[:quiet] = true }
+        opts.on('-v', '--version', 'Show version') do
+          puts VERSION
+          exit
+        end
+        opts.on('-h', '--help', 'Show this help') do
+          puts opts
+          exit
+        end
+    end
+
+    def list_examples(opts)
+      opts.separator "\nExamples"
+        opts.separator "  pagy demo          Showcase demo at http://#{HOST}:#{PORT}"
+        opts.separator '  pagy clone repro   Clone repro to ./repro.ru (rename it)'
+        opts.separator "  pagy ~/myapp.ru    Develop ~/myapp.ru at #{HOST}:#{PORT}"
     end
   end
 end
