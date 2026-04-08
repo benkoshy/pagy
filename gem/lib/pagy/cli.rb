@@ -51,9 +51,8 @@ class Pagy
       options
     end
 
-    def run_command(args, options)
-      run_from_repo = Pagy::ROOT.join('pagy.gemspec').exist?
-      setup_gems(run_from_repo)
+    def run_command(args, options)      
+      setup_gems
 
       arg = args.shift
 
@@ -96,9 +95,12 @@ class Pagy
     end
 
     # Kept as a separate method because mocking 'gemfile' (dsl) is complex otherwise
-    def setup_gems(run_from_repo)
+    def setup_gems
       require 'bundler/inline'
-      gemfile(!run_from_repo) do
+
+      install_gems = !Pagy::ROOT.join('pagy.gemspec').exist?
+
+      gemfile(install_gems) do
         source 'https://rubygems.org'
         gem 'logger'
         gem 'rackup'

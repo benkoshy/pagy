@@ -8,7 +8,7 @@ describe 'Pagy::CLI Specs' do
 
   # Stub side-effects: setup_gems
   before do
-    cli.define_singleton_method(:setup_gems) { |_| true }
+    cli.define_singleton_method(:setup_gems) { true }
   end
 
   describe 'Options' do
