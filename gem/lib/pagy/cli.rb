@@ -28,7 +28,7 @@ class Pagy
         opts.summary_width  = 18
 
         opts.separator "\nAPPs"
-        PagyApps::INDEX.each do |name, path|          
+        PagyApps::INDEX.each do |name, path|
           opts.separator app_name_and_description(name, path)
         end
 
@@ -51,7 +51,7 @@ class Pagy
       options
     end
 
-    def run_command(args, options)      
+    def run_command(args, options)
       setup_gems
 
       arg = args.shift
@@ -110,14 +110,14 @@ class Pagy
     ## Helpers for OptionParser
     def add_banner
       <<~BANNER
-          Pagy #{VERSION} (https://ddnexus.github.io/pagy/playground)
-          Playground to showcase, clone and develop Pagy APPs
+        Pagy #{VERSION} (https://ddnexus.github.io/pagy/playground)
+        Playground to showcase, clone and develop Pagy APPs
 
-          Usage:
-            pagy APP [opts]   Showcase APP from the installed gem
-            pagy clone APP    Clone APP to the current dir
-            pagy FILE [opts]  Develop app FILE from local path
-        BANNER
+        Usage:
+          pagy APP [opts]   Showcase APP from the installed gem
+          pagy clone APP    Clone APP to the current dir
+          pagy FILE [opts]  Develop app FILE from local path
+      BANNER
     end
 
     def app_name_and_description(name, path)
@@ -129,29 +129,29 @@ class Pagy
     end
 
     def specify_options(opts, options)
-        opts.separator "\nRackup options"
-        opts.on('-e', '--env ENV', 'Environment')     { |v| options[:env] = v }
-        opts.on('-o', '--host HOST', 'Host')          { |v| options[:host] = v }
-        opts.on('-p', '--port PORT', 'Port')          { |v| options[:port] = v }
-        opts.on('-t', '--threads THREADS', 'Threads') { |v| options[:threads] = v }
+      opts.separator "\nRackup options"
+      opts.on('-e', '--env ENV', 'Environment')     { |v| options[:env] = v }
+      opts.on('-o', '--host HOST', 'Host')          { |v| options[:host] = v }
+      opts.on('-p', '--port PORT', 'Port')          { |v| options[:port] = v }
+      opts.on('-t', '--threads THREADS', 'Threads') { |v| options[:threads] = v }
 
-        opts.separator "\nOther options"
-        opts.on('-q', '--quiet', 'Quiet mode for development') { options[:quiet] = true }
-        opts.on('-v', '--version', 'Show version') do
-          puts VERSION
-          exit
-        end
-        opts.on('-h', '--help', 'Show this help') do
-          puts opts
-          exit
-        end
+      opts.separator "\nOther options"
+      opts.on('-q', '--quiet', 'Quiet mode for development') { options[:quiet] = true }
+      opts.on('-v', '--version', 'Show version') do
+        puts VERSION
+        exit
+      end
+      opts.on('-h', '--help', 'Show this help') do
+        puts opts
+        exit
+      end
     end
 
     def list_examples(opts)
       opts.separator "\nExamples"
-        opts.separator "  pagy demo          Showcase demo at http://#{HOST}:#{PORT}"
-        opts.separator '  pagy clone repro   Clone repro to ./repro.ru (rename it)'
-        opts.separator "  pagy ~/myapp.ru    Develop ~/myapp.ru at #{HOST}:#{PORT}"
+      opts.separator "  pagy demo          Showcase demo at http://#{HOST}:#{PORT}"
+      opts.separator '  pagy clone repro   Clone repro to ./repro.ru (rename it)'
+      opts.separator "  pagy ~/myapp.ru    Develop ~/myapp.ru at #{HOST}:#{PORT}"
     end
   end
 end
